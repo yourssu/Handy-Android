@@ -9,30 +9,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
 public val HandyIcons.Filled.Add: ImageVector
     get() {
         if (_add != null) {
             return _add!!
         }
-        _add = ImageVector.Builder(
-            name = "Filled.Add",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color.Black),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _add = handyIcon(name = "Filled.Add") {
+            handyPath {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
                 curveTo(17.7736f, 2f, 22f, 6.2264f, 22f, 11.44f)
@@ -62,7 +48,7 @@ public val HandyIcons.Filled.Add: ImageVector
                 verticalLineTo(12.75f)
                 close()
             }
-        }.build()
+        }
         return _add!!
     }
 

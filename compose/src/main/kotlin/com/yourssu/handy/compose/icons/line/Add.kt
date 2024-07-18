@@ -9,30 +9,16 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
 public val HandyIcons.Line.Add: ImageVector
     get() {
         if (_add != null) {
             return _add!!
         }
-        _add = ImageVector.Builder(
-            name = "Line.Add",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _add = handyIcon(name = "Line.Add") {
+            handyPath {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
                 curveTo(17.7736f, 2f, 22f, 6.2264f, 22f, 11.44f)
@@ -54,17 +40,7 @@ public val HandyIcons.Line.Add: ImageVector
                 horizontalLineTo(12.56f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.NonZero
-            ) {
+            handyPath {
                 moveTo(16f, 11.25f)
                 horizontalLineTo(12.75f)
                 verticalLineTo(8f)
@@ -84,7 +60,7 @@ public val HandyIcons.Line.Add: ImageVector
                 curveTo(16.75f, 11.5858f, 16.4142f, 11.25f, 16f, 11.25f)
                 close()
             }
-        }.build()
+        }
         return _add!!
     }
 
