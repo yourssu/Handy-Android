@@ -1,17 +1,32 @@
-package com.yourssu.handy.compose.icons.line
-
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
-public val HandyIcons.Line.Add: ImageVector
+
+@Preview
+@Composable
+private fun VectorPreview() {
+    Image(Subtractline, null)
+}
+
+private var _Subtractline: ImageVector? = null
+
+public val Subtractline: ImageVector
     get() {
-        if (_add != null) {
-            return _add!!
+        if (_Subtractline != null) {
+            return _Subtractline!!
         }
-        _add = handyIcon(name = "Line.Add") {
-            handyPath {
+        _Subtractline = ImageVector.Builder(
+            name = "Subtractline",
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        ).apply {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
                 curveTo(17.7736f, 2f, 22f, 6.2264f, 22f, 11.44f)
@@ -35,26 +50,15 @@ public val HandyIcons.Line.Add: ImageVector
             }
             handyPath {
                 moveTo(16f, 11.25f)
-                horizontalLineTo(12.75f)
-                verticalLineTo(8f)
-                curveTo(12.75f, 7.5858f, 12.4142f, 7.25f, 12f, 7.25f)
-                curveTo(11.5858f, 7.25f, 11.25f, 7.5858f, 11.25f, 8f)
-                verticalLineTo(11.25f)
                 horizontalLineTo(8f)
                 curveTo(7.5858f, 11.25f, 7.25f, 11.5858f, 7.25f, 12f)
                 curveTo(7.25f, 12.4142f, 7.5858f, 12.75f, 8f, 12.75f)
-                horizontalLineTo(11.25f)
-                verticalLineTo(16f)
-                curveTo(11.25f, 16.4142f, 11.5858f, 16.75f, 12f, 16.75f)
-                curveTo(12.4142f, 16.75f, 12.75f, 16.4142f, 12.75f, 16f)
-                verticalLineTo(12.75f)
                 horizontalLineTo(16f)
                 curveTo(16.4142f, 12.75f, 16.75f, 12.4142f, 16.75f, 12f)
                 curveTo(16.75f, 11.5858f, 16.4142f, 11.25f, 16f, 11.25f)
                 close()
             }
-        }
-        return _add!!
+        }.build()
+        return _Subtractline!!
     }
 
-private var _add: ImageVector? = null

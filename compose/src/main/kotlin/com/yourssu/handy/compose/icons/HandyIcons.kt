@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.vector.DefaultFillType
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.PathBuilder
 import androidx.compose.ui.graphics.vector.path
@@ -33,6 +34,7 @@ inline fun ImageVector.Builder.handyPath(
     fillAlpha: Float = 1.0f,
     strokeAlpha: Float = 1.0f,
     strokeLineWidth: Float = 1.0f,
+    pathFillType: PathFillType = DefaultFillType,
     pathBuilder: PathBuilder.() -> Unit
 ) = path(
     fill = SolidColor(Color.Black),
@@ -43,7 +45,7 @@ inline fun ImageVector.Builder.handyPath(
     strokeLineCap = StrokeCap.Butt,
     strokeLineJoin = StrokeJoin.Miter,
     strokeLineMiter = 1.0f,
-    pathFillType = PathFillType.NonZero,
+    pathFillType = pathFillType,
     pathBuilder = pathBuilder
 )
 
