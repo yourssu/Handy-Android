@@ -28,12 +28,13 @@ val fonts = FontFamily(
 )
 
 /**
- * @param color 텍스트 색상
- * @param fontSize 텍스트의 크기. 기기 설정에 관계 없이 일정한 크기를 나타내기 위해 Dp 단위를 사용합니다.
- * @param fontWeight 서체의 두께 (예: bold)
- * @param fontStyle 서체의 스타일 (예: italic)
- * @param letterSpacing 자간. 기본값: -2%
- * @param lineHeight 행간
+ * @property color 텍스트 색상
+ * @property fontSize 텍스트의 크기. 기기 설정에 관계 없이 일정한 크기를 나타내기 위해 Dp 단위를 사용합니다.
+ * @property fontWeight 서체의 두께 (예: bold)
+ * @property fontStyle 서체의 스타일 (예: italic)
+ * @property letterSpacing 자간. 기본값: -2%
+ * @property lineHeight 행간
+ * @property textAlign 텍스트 정렬
  */
 @Immutable
 data class HandyTextStyle internal constructor(
@@ -47,6 +48,14 @@ data class HandyTextStyle internal constructor(
 ) {
     private val fontFamily = fonts
 
+    /**
+     * HandyTextStyle을 [androidx.compose.foundation.text.BasicText]에 적용하기 위한
+     * [TextStyle]로 변환하는 함수입니다.
+     *
+     * [Dp] 단위로 되어있는 fontSize, lineHeight를 [TextUnit]으로 변환하고,
+     * 피그마의 텍스트와 다르게 렌더링되는 이슈를 해결하기 위해 platformStyle과 lineHeightStyle을 추가했습니다.
+     * [ref](https://medium.com/androiddevelopers/fixing-font-padding-in-compose-text-768cd232425b)
+     */
     @Composable
     fun toTextStyle() = TextStyle(
         color = color,
@@ -64,6 +73,11 @@ data class HandyTextStyle internal constructor(
         )
     )
 
+    /**
+     * 현재 스타일 객체와 주어진 `other` 객체와의 조합으로 생긴 새로운 스타일 객체를 반환합니다.
+     *
+     * `other` 객체에서 빠진(missing) 프로퍼티가 현재 스타일의 프로퍼티로 대체된다고 생각할 수 있습니다.
+     */
     fun merge(other: HandyTextStyle? = null): HandyTextStyle {
         if (other == null || other == Default) return this
         return HandyTextStyle(
