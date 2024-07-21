@@ -4,16 +4,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import androidx.compose.ui.unit.takeOrElse
 import com.yourssu.handy.compose.R
 
 val fonts = FontFamily(
@@ -34,10 +37,11 @@ val fonts = FontFamily(
 data class HandyTextStyle internal constructor(
     val color: Color = Color.Unspecified,
     val fontSize: Dp = Dp.Unspecified,
-    val fontWeight: FontWeight = FontWeight.Normal,
-    val fontStyle: FontStyle = FontStyle.Normal,
+    val fontStyle: FontStyle? = FontStyle.Normal,
+    val fontWeight: FontWeight? = FontWeight.Normal,
     val letterSpacing: TextUnit = (-0.02).em,
     val lineHeight: Dp = Dp.Unspecified,
+    val textAlign: TextAlign = TextAlign.Start
 ) {
     private val fontFamily = fonts
 
@@ -45,12 +49,26 @@ data class HandyTextStyle internal constructor(
     fun toTextStyle() = TextStyle(
         color = color,
         fontSize = with(LocalDensity.current) { fontSize.toSp() },
+        fontStyle = fontStyle,
         fontWeight = fontWeight,
         fontFamily = fontFamily,
-        fontStyle = fontStyle,
         letterSpacing = letterSpacing,
-        lineHeight = with(LocalDensity.current) { lineHeight.toSp() }
+        lineHeight = with(LocalDensity.current) { lineHeight.toSp() },
+        textAlign = textAlign
     )
+
+    fun merge(other: HandyTextStyle? = null): HandyTextStyle {
+        if (other == null || other == Default) return this
+        return HandyTextStyle(
+            color = other.color.takeOrElse { color },
+            fontSize = other.fontSize.takeOrElse { fontSize },
+            fontStyle = other.fontStyle ?: fontStyle,
+            fontWeight = other.fontWeight ?: fontWeight,
+            letterSpacing = other.letterSpacing.takeOrElse { letterSpacing },
+            lineHeight = other.lineHeight.takeOrElse { lineHeight },
+            textAlign = if (other.textAlign == TextAlign.Unspecified) textAlign else other.textAlign
+        )
+    }
 
     companion object {
         @Stable
@@ -59,7 +77,7 @@ data class HandyTextStyle internal constructor(
 }
 
 @Immutable
-class Typography(
+class Typography internal constructor(
     D1_56: HandyTextStyle,
     D2_48: HandyTextStyle,
     D3_40: HandyTextStyle,
