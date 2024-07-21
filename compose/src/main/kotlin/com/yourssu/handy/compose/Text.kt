@@ -1,7 +1,5 @@
 package com.yourssu.handy.compose
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
@@ -13,7 +11,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import com.yourssu.handy.compose.foundation.HandyTextStyle
@@ -66,12 +63,3 @@ fun Text(
 }
 
 val LocalTextStyle = compositionLocalOf { HandyTypography.B1Rg16 }
-
-@Preview
-@Composable
-private fun Preview() {
-    Column(Modifier.background(Color.White)) {
-        Text(text = "한글 입력", style = HandyTypography.H1Lt32)
-        Text(text = "안녕하세요.", style = HandyTypography.H1Lt32)
-    }
-}
