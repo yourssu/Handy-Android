@@ -113,3 +113,7 @@ data class ColorScheme(
     val paginationBasicUnselected: Color = ColorGray500,
 
 )
+
+val lightColorScheme = ColorScheme()
+val darkColorScheme = ColorScheme()
+
