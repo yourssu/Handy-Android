@@ -5,6 +5,8 @@ import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _add: ImageVector? = null
+
 public val HandyIcons.Filled.Add: ImageVector
     get() {
         if (_add != null) {
@@ -44,5 +46,3 @@ public val HandyIcons.Filled.Add: ImageVector
         }
         return _add!!
     }
-
-private var _add: ImageVector? = null

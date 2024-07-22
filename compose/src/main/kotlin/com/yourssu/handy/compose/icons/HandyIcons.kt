@@ -13,10 +13,7 @@ import androidx.compose.ui.unit.dp
 
 object HandyIcons {
     object Filled
-
     object Line
-
-    val Default = Filled
 }
 
 inline fun handyIcon(

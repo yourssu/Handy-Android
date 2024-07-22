@@ -1,41 +1,20 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _alertTriangle: ImageVector? = null
 
-private var _Alerttrianglefilled: ImageVector? = null
-
-public val Alerttrianglefilled: ImageVector
+public val HandyIcons.Filled.AlertTriangle: ImageVector
     get() {
-        if (_Alerttrianglefilled != null) {
-            return _Alerttrianglefilled!!
+        if (_alertTriangle != null) {
+            return _alertTriangle!!
         }
-        _Alerttrianglefilled = ImageVector.Builder(
-            name = "Alerttrianglefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _alertTriangle = handyIcon(name = "Filled.AlertTriangle") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(20.8555f, 15.5035f)
                 lineTo(15.2155f, 5.06351f)
                 curveTo(14.511f, 3.7902f, 13.1706f, 3f, 11.7155f, 3f)
@@ -63,7 +42,6 @@ public val Alerttrianglefilled: ImageVector
                 curveTo(10.8655f, 16.1577f, 11.2013f, 16.4935f, 11.6155f, 16.4935f)
                 close()
             }
-        }.build()
-        return _Alerttrianglefilled!!
+        }
+        return _alertTriangle!!
     }
-

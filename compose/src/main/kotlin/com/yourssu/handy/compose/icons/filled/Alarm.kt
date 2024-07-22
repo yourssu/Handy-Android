@@ -1,27 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _alarm: ImageVector? = null
 
-private var _Alarmfilled: ImageVector? = null
-
-public val Alarmfilled: ImageVector
+public val HandyIcons.Filled.Alarm: ImageVector
     get() {
-        if (_Alarmfilled != null) {
-            return _Alarmfilled!!
+        if (_alarm != null) {
+            return _alarm!!
         }
-        _Alarmfilled = ImageVector.Builder(
-            name = "Alarmfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _alarm = handyIcon(name = "Filled.Alarm") {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(2.6572f, 13.352f)
                 curveTo(2.6572f, 8.3814f, 6.6866f, 4.352f, 11.6572f, 4.352f)
@@ -69,7 +61,6 @@ public val Alarmfilled: ImageVector
                 curveTo(2.9548f, 7.0141f, 3.1756f, 6.9222f, 3.3272f, 6.752f)
                 close()
             }
-        }.build()
-        return _Alarmfilled!!
+        }
+        return _alarm!!
     }
-

@@ -1,26 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _arrowLeftUp: ImageVector? = null
 
-private var _Arrowleftupfilled: ImageVector? = null
-
-public val Arrowleftupfilled: ImageVector
+public val HandyIcons.Filled.ArrowLeftUp: ImageVector
     get() {
-        if (_Arrowleftupfilled != null) {
-            return _Arrowleftupfilled!!
+        if (_arrowLeftUp != null) {
+            return _arrowLeftUp!!
         }
-        _Arrowleftupfilled = ImageVector.Builder(
-            name = "Arrowleftupfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _arrowLeftUp = handyIcon(name = "Filled.ArrowLeftUp") {
             handyPath {
                 moveTo(16.2498f, 18.38f)
                 curveTo(16.5337f, 18.6559f, 16.914f, 18.8102f, 17.3098f, 18.81f)
@@ -42,7 +34,7 @@ public val Arrowleftupfilled: ImageVector
                 lineTo(16.2498f, 18.38f)
                 close()
             }
-        }.build()
-        return _Arrowleftupfilled!!
+        }
+        return _arrowLeftUp!!
     }
 

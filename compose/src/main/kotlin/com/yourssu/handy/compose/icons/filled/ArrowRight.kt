@@ -1,15 +1,14 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyPath
 
 
 private var _Arrowrightfilled: ImageVector? = null
 
-public val Arrowrightfilled: ImageVector
+public val HandyIcons.Filled.ArrowRight: ImageVector
     get() {
         if (_Arrowrightfilled != null) {
             return _Arrowrightfilled!!
