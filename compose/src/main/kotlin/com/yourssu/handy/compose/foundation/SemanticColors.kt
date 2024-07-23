@@ -1,6 +1,7 @@
 package com.yourssu.handy.compose.foundation
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 @Immutable
@@ -112,8 +113,12 @@ data class ColorScheme(
     val paginationBasicSelected: Color = ColorNeutralBlack,
     val paginationBasicUnselected: Color = ColorGray500,
 
-)
+    )
 
 val lightColorScheme = ColorScheme()
-val darkColorScheme = ColorScheme()
+ val darkColorScheme = ColorScheme()
+
+internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme }
+val LocalContentColor = staticCompositionLocalOf { lightColorScheme.textBasicPrimary }
+
 
