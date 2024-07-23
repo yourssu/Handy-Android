@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.foundation.LocalContentColor
 
 @Composable
 fun Text(
@@ -35,7 +36,7 @@ fun Text(
 ) {
     val textColor = color.takeOrElse {
         style.color.takeOrElse {
-            Color.Black // TODO: LocalContentColor
+            LocalContentColor.current
         }
     }
 
