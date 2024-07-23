@@ -1,11 +1,12 @@
 package com.yourssu.handy.compose.foundation
 
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
-enum class Radius(val dp: Dp) {
-    XS(number8),
-    S(number10),
-    M(number12),
-    L(number14),
-    XL(number16)
+enum class Radius(dp: Dp) {
+    XS(8.dp),
+    S(10.dp),
+    M(12.dp),
+    L(14.dp),
+    XL(16.dp)
 }
