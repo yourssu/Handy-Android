@@ -14,11 +14,11 @@ data class ColorScheme(
 
     // Background / Brand
     val bgBrandPrimary: Color = ColorViolet500,
-    val bgBrandLight: Color = ColorViolet50,
+    val bgBrandSecondary: Color = ColorViolet50,
 
     // Background / Status
-    val bgBrandNegative: Color = ColorStatusRedMain,
-    val bgBrandPositive: Color = ColorViolet500,
+    val bgStatusNegative: Color = ColorStatusRedMain,
+    val bgStatusPositive: Color = ColorViolet500,
 
     // Text / Basic
     val textBasicPrimary: Color = ColorNeutralBlack,
@@ -84,7 +84,7 @@ data class ColorScheme(
     val buttonFabSecondaryPressed: Color = ColorGray100,
     val buttonFabSecondaryDisabled: Color = ColorNeutralWhite,
 
-    // Icon / Primary
+    // Icon / Basic
     val iconBasicPrimary: Color = ColorNeutralBlack,
     val iconBasicSecondary: Color = ColorGray700,
     val iconBasicTertiary: Color = ColorGray500,
