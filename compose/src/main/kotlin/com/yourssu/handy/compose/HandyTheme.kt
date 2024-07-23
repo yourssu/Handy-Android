@@ -12,7 +12,6 @@ import com.yourssu.handy.compose.foundation.lightColorScheme
 @Composable
 fun HandyTheme(
     isDarkMode: Boolean = isSystemInDarkTheme(),
-    //typography: HandyTypography = HandyTheme.typography,
     content: @Composable () -> Unit,
 ) {
     val colors = if (isDarkMode) {
@@ -22,10 +21,9 @@ fun HandyTheme(
     }
     CompositionLocalProvider(
         LocalColorScheme provides colors,
-        // LocalTypography provides typography,
        LocalContentColor provides colors.textBasicPrimary,
     ) {
-        // content textStyle
+        content()
     }
 }
 
@@ -33,8 +31,4 @@ object HandyTheme {
     val colors: ColorScheme
         @Composable
         get() = LocalColorScheme.current
-
-    // val typography: HandyTypography
-    //    @Composable
-    //    get() = LocalTypography.current
 }
