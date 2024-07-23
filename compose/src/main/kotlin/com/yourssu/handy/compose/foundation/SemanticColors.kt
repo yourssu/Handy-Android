@@ -1,6 +1,7 @@
 package com.yourssu.handy.compose.foundation
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
@@ -116,9 +117,9 @@ data class ColorScheme(
     )
 
 val lightColorScheme = ColorScheme()
- val darkColorScheme = ColorScheme()
+val darkColorScheme = ColorScheme()
 
 internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme }
-val LocalContentColor = staticCompositionLocalOf { lightColorScheme.textBasicPrimary }
+val LocalContentColor = compositionLocalOf { lightColorScheme.textBasicPrimary }
 
 
