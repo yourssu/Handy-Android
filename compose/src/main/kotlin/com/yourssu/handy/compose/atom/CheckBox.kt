@@ -53,8 +53,7 @@ fun CheckBox(
     modifier: Modifier = Modifier,
     text: String = "",
     isDisabled: Boolean = false,
-
-    ) {
+) {
     val icon = when {
         checked -> R.drawable.ic_checkcircle_selected
         isDisabled -> R.drawable.ic_checkcircle_disabled
@@ -81,7 +80,6 @@ fun CheckBox(
             // color = contentColor
         )
     }
-
 }
 
 @Preview(showBackground = true)
@@ -109,6 +107,5 @@ private fun CheckBoxPreview() {
                 text = "disabled"
             )
         }
-
     }
 }
