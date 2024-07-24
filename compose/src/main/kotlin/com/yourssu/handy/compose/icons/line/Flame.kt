@@ -1,14 +1,9 @@
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 
 @Preview
@@ -31,17 +26,7 @@ public val Flameline: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14.5601f, 14.36f)
                 horizontalLineTo(14.6201f)
                 curveTo(16.5849f, 13.4928f, 18.1518f, 11.9187f, 19.0101f, 9.95f)

@@ -1,26 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
 
-private var _Checkfilled: ImageVector? = null
+private var _check: ImageVector? = null
 
-public val Checkfilled: ImageVector
+public val HandyIcons.Filled.Check: ImageVector
     get() {
-        if (_Checkfilled != null) {
-            return _Checkfilled!!
+        if (_check != null) {
+            return _check!!
         }
-        _Checkfilled = ImageVector.Builder(
-            name = "Checkfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _check = handyIcon(name = "Filled.Check") {
             handyPath {
                 moveTo(8.94631f, 18.2346f)
                 curveTo(8.5999f, 18.2344f, 8.2642f, 18.1142f, 7.9963f, 17.8946f)
@@ -36,7 +29,6 @@ public val Checkfilled: ImageVector
                 curveTo(9.69f, 18.0935f, 9.325f, 18.2367f, 8.9463f, 18.2346f)
                 close()
             }
-        }.build()
-        return _Checkfilled!!
+        }
+        return _check!!
     }
-

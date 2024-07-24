@@ -48,17 +48,7 @@ public val Shoppingbagfilled: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(20.7404f, 6.85986f)
                 lineTo(22.0004f, 15.1999f)
                 curveTo(22.5104f, 18.8499f, 20.0004f, 22.1699f, 16.6004f, 22.1999f)

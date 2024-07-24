@@ -1,30 +1,20 @@
 package com.yourssu.handy.compose.icons.filled
 
-private var _Cancelfilled: ImageVector? = null
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
-public val Cancelfilled: ImageVector
+private var _cancel: ImageVector? = null
+
+public val HandyIcons.Filled.Cancel: ImageVector
     get() {
-        if (_Cancelfilled != null) {
-            return _Cancelfilled!!
+        if (_cancel != null) {
+            return _cancel!!
         }
-        _Cancelfilled = ImageVector.Builder(
-            name = "Cancelfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _cancel = handyIcon(name = "Filled.Cancel") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4.53251f, 5.32491f)
                 lineTo(5.32447f, 4.53295f)
                 curveTo(9.011f, 0.8464f, 14.9881f, 0.8464f, 18.6746f, 4.5329f)
@@ -54,7 +44,6 @@ public val Cancelfilled: ImageVector
                 lineTo(13.0602f, 12f)
                 close()
             }
-        }.build()
-        return _Cancelfilled!!
+        }
+        return _cancel!!
     }
-

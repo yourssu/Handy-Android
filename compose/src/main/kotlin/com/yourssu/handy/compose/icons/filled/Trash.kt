@@ -39,17 +39,7 @@ public val Trashfilled: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(18.75f, 5f)
                 horizontalLineTo(16.08f)
                 lineTo(14.87f, 3.68f)
@@ -73,17 +63,7 @@ public val Trashfilled: ImageVector
                 lineTo(9.69f, 4.74f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4.23f, 9.52f)
                 verticalLineTo(17f)
                 curveTo(4.23f, 19.4632f, 6.2268f, 21.46f, 8.69f, 21.46f)

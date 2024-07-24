@@ -48,17 +48,7 @@ public val Mailfilled: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(6f, 4f)
                 horizontalLineTo(18f)
                 curveTo(20.2091f, 4f, 22f, 5.7909f, 22f, 8f)

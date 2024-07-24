@@ -39,17 +39,7 @@ public val Lockfilled: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(16.5515f, 7.12202f)
                 verticalLineTo(4.00202f)
                 curveTo(16.5521f, 3.1869f, 16.2209f, 2.4067f, 15.6343f, 1.8408f)

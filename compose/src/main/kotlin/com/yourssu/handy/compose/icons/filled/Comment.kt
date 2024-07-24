@@ -1,30 +1,20 @@
 package com.yourssu.handy.compose.icons.filled
 
-private var _Commentfilled: ImageVector? = null
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
-public val Commentfilled: ImageVector
+private var _comment: ImageVector? = null
+
+public val HandyIcons.Filled.Comment: ImageVector
     get() {
-        if (_Commentfilled != null) {
-            return _Commentfilled!!
+        if (_comment != null) {
+            return _comment!!
         }
-        _Commentfilled = ImageVector.Builder(
-            name = "Commentfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _comment = handyIcon(name = "Filled.Comment") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(17.5617f, 2f)
                 horizontalLineTo(6.44174f)
                 curveTo(3.9206f, 2.087f, 1.9399f, 4.1882f, 2.0017f, 6.71f)
@@ -56,7 +46,7 @@ public val Commentfilled: ImageVector
                 curveTo(7.5017f, 12.3842f, 7.8375f, 12.72f, 8.2517f, 12.72f)
                 close()
             }
-        }.build()
-        return _Commentfilled!!
+        }
+        return _comment!!
     }
 

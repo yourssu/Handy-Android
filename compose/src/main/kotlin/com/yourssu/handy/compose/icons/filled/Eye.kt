@@ -1,64 +1,20 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _eye: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Eyefilled, null)
-}
-
-private var _Eyefilled: ImageVector? = null
-
-public val Eyefilled: ImageVector
+public val HandyIcons.Filled.Eye: ImageVector
     get() {
-        if (_Eyefilled != null) {
-            return _Eyefilled!!
+        if (_eye != null) {
+            return _eye!!
         }
-        _Eyefilled = ImageVector.Builder(
-            name = "Eyefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _eye = handyIcon(name = "Filled.Eye") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(17.0276f, 7.64929f)
                 lineTo(21.2076f, 10.9893f)
                 curveTo(21.4779f, 11.2056f, 21.6352f, 11.5331f, 21.6352f, 11.8793f)
@@ -78,7 +34,7 @@ public val Eyefilled: ImageVector
                 curveTo(11.0474f, 9.5793f, 10.0176f, 10.609f, 10.0176f, 11.8793f)
                 close()
             }
-        }.build()
-        return _Eyefilled!!
+        }
+        return _eye!!
     }
 

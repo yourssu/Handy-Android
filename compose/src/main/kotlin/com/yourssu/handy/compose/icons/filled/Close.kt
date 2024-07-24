@@ -1,26 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
 
-private var _Closefilled: ImageVector? = null
+private var _close: ImageVector? = null
 
-public val Closefilled: ImageVector
+public val HandyIcons.Filled.Close: ImageVector
     get() {
-        if (_Closefilled != null) {
-            return _Closefilled!!
+        if (_close != null) {
+            return _close!!
         }
-        _Closefilled = ImageVector.Builder(
-            name = "Closefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _close = handyIcon(name = "Filled.Close") {
             handyPath {
                 moveTo(19.7188f, 18.3906f)
                 lineTo(13.325f, 12.0004f)
@@ -46,7 +39,6 @@ public val Closefilled: ImageVector
                 curveTo(19.9982f, 18.8059f, 19.897f, 18.5661f, 19.7188f, 18.3906f)
                 close()
             }
-        }.build()
-        return _Closefilled!!
+        }
+        return _close!!
     }
-

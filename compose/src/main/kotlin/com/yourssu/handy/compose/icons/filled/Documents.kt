@@ -1,26 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _document: ImageVector? = null
 
-private var _Documentsfilled: ImageVector? = null
-
-public val Documentsfilled: ImageVector
+public val HandyIcons.Filled.Document: ImageVector
     get() {
-        if (_Documentsfilled != null) {
-            return _Documentsfilled!!
+        if (_document != null) {
+            return _document!!
         }
-        _Documentsfilled = ImageVector.Builder(
-            name = "Documentsfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _document = handyIcon(name = "Filled.Document") {
             handyPath {
                 moveTo(18.9998f, 10.1502f)
                 horizontalLineTo(14.1598f)
@@ -52,7 +44,7 @@ public val Documentsfilled: ImageVector
                 curveTo(13.4593f, 8.9139f, 13.8487f, 9.0638f, 14.2498f, 9.0502f)
                 close()
             }
-        }.build()
-        return _Documentsfilled!!
+        }
+        return _document!!
     }
 

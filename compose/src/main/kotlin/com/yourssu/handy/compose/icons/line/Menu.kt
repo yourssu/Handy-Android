@@ -1,14 +1,9 @@
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 
 @Preview
@@ -31,17 +26,7 @@ public val Menuline: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4f, 7.5f)
                 curveTo(4f, 5.567f, 5.567f, 4f, 7.5f, 4f)
                 curveTo(9.433f, 4f, 11f, 5.567f, 11f, 7.5f)
@@ -55,17 +40,7 @@ public val Menuline: ImageVector
                 curveTo(8.6046f, 9.5f, 9.5f, 8.6046f, 9.5f, 7.5f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14f, 7.5f)
                 curveTo(14f, 5.567f, 15.567f, 4f, 17.5f, 4f)
                 curveTo(19.433f, 4f, 21f, 5.567f, 21f, 7.5f)
@@ -79,17 +54,7 @@ public val Menuline: ImageVector
                 curveTo(18.6046f, 9.5f, 19.5f, 8.6046f, 19.5f, 7.5f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4f, 17.5f)
                 curveTo(4f, 15.567f, 5.567f, 14f, 7.5f, 14f)
                 curveTo(9.433f, 14f, 11f, 15.567f, 11f, 17.5f)
@@ -103,17 +68,7 @@ public val Menuline: ImageVector
                 curveTo(8.6046f, 19.5f, 9.5f, 18.6046f, 9.5f, 17.5f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14f, 17.5f)
                 curveTo(14f, 15.567f, 15.567f, 14f, 17.5f, 14f)
                 curveTo(19.433f, 14f, 21f, 15.567f, 21f, 17.5f)

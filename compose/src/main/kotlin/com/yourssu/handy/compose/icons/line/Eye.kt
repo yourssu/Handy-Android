@@ -1,14 +1,9 @@
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 
 @Preview
@@ -31,17 +26,7 @@ public val Eyeline: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(9.12566f, 12.148f)
                 curveTo(9.1257f, 10.6036f, 10.318f, 9.3517f, 11.7888f, 9.3517f)
                 curveTo(13.2596f, 9.3517f, 14.452f, 10.6036f, 14.452f, 12.148f)
@@ -55,17 +40,7 @@ public val Eyeline: ImageVector
                 curveTo(11.2772f, 11.1753f, 10.8625f, 11.6108f, 10.8625f, 12.148f)
                 close()
             }
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(17.2425f, 7.00519f)
                 lineTo(22.0825f, 11.0659f)
                 curveTo(22.3955f, 11.329f, 22.5776f, 11.7271f, 22.5776f, 12.148f)

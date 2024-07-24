@@ -1,30 +1,20 @@
 package com.yourssu.handy.compose.icons.filled
 
-private var _Cropfilled: ImageVector? = null
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
-public val Cropfilled: ImageVector
+private var _crop: ImageVector? = null
+
+public val HandyIcons.Filled.Crop: ImageVector
     get() {
-        if (_Cropfilled != null) {
-            return _Cropfilled!!
+        if (_crop != null) {
+            return _crop!!
         }
-        _Cropfilled = ImageVector.Builder(
-            name = "Cropfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _crop = handyIcon(name = "Filled.Crop") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(15.5604f, 2.43994f)
                 horizontalLineTo(8.44043f)
                 curveTo(5.1267f, 2.4399f, 2.4404f, 5.1262f, 2.4404f, 8.4399f)
@@ -71,7 +61,7 @@ public val Cropfilled: ImageVector
                 verticalLineTo(16.6799f)
                 close()
             }
-        }.build()
-        return _Cropfilled!!
+        }
+        return _crop!!
     }
 

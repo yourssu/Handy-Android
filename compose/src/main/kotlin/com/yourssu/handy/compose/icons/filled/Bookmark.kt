@@ -1,26 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
 
-private var _Bookmarkfilled: ImageVector? = null
+private var _bookmark: ImageVector? = null
 
-public val Bookmarkfilled: ImageVector
+public val HandyIcons.Filled.Bookmark: ImageVector
     get() {
-        if (_Bookmarkfilled != null) {
-            return _Bookmarkfilled!!
+        if (_bookmark != null) {
+            return _bookmark!!
         }
-        _Bookmarkfilled = ImageVector.Builder(
-            name = "Bookmarkfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _bookmark = handyIcon(name = "Filled.Bookmark") {
             handyPath {
                 moveTo(16.77f, 20.7843f)
                 lineTo(12.48f, 17.4943f)
@@ -39,7 +32,7 @@ public val Bookmarkfilled: ImageVector
                 curveTo(17.501f, 21.0609f, 17.0855f, 21.0161f, 16.77f, 20.7843f)
                 close()
             }
-        }.build()
-        return _Bookmarkfilled!!
+        }
+        return _bookmark!!
     }
 

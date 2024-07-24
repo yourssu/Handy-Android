@@ -48,17 +48,7 @@ public val Infocirclefilled: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(2f, 11.785f)
                 curveTo(2f, 6.3809f, 6.3809f, 2f, 11.785f, 2f)
                 curveTo(17.1891f, 2f, 21.57f, 6.3809f, 21.57f, 11.785f)

@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _externalLink: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Externallinkfilled, null)
-}
-
-private var _Externallinkfilled: ImageVector? = null
-
-public val Externallinkfilled: ImageVector
+public val HandyIcons.Filled.ExternalLink: ImageVector
     get() {
-        if (_Externallinkfilled != null) {
-            return _Externallinkfilled!!
+        if (_externalLink != null) {
+            return _externalLink!!
         }
-        _Externallinkfilled = ImageVector.Builder(
-            name = "Externallinkfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _externalLink = handyIcon(name = "Filled.ExternalLink") {
             handyPath {
                 moveTo(17.34f, 7.04f)
                 lineTo(13.1f, 11.28f)
@@ -62,7 +48,7 @@ public val Externallinkfilled: ImageVector
                 curveTo(20.3195f, 3.6503f, 20.2991f, 3.5517f, 20.26f, 3.46f)
                 close()
             }
-        }.build()
-        return _Externallinkfilled!!
+        }
+        return _externalLink!!
     }
 

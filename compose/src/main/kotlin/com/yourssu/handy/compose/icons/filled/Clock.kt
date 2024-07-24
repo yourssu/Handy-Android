@@ -1,30 +1,20 @@
 package com.yourssu.handy.compose.icons.filled
 
-private var _Clockfilled: ImageVector? = null
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
-public val Clockfilled: ImageVector
+private var _clock: ImageVector? = null
+
+public val HandyIcons.Filled.Clock: ImageVector
     get() {
-        if (_Clockfilled != null) {
-            return _Clockfilled!!
+        if (_clock != null) {
+            return _clock!!
         }
-        _Clockfilled = ImageVector.Builder(
-            name = "Clockfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
-            path(
-                fill = SolidColor(Color(0xFF000000)),
-                fillAlpha = 1.0f,
-                stroke = null,
-                strokeAlpha = 1.0f,
-                strokeLineWidth = 1.0f,
-                strokeLineCap = StrokeCap.Butt,
-                strokeLineJoin = StrokeJoin.Miter,
-                strokeLineMiter = 1.0f,
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _clock = handyIcon(name = "Filled.Clock") {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(10f, 2f)
                 horizontalLineTo(14.24f)
                 curveTo(16.3617f, 2f, 18.3966f, 2.8428f, 19.8969f, 4.3431f)
@@ -49,7 +39,6 @@ public val Clockfilled: ImageVector
                 curveTo(11.12f, 17.6723f, 11.5677f, 18.12f, 12.12f, 18.12f)
                 close()
             }
-        }.build()
-        return _Clockfilled!!
+        }
+        return _clock!!
     }
-

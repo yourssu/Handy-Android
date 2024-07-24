@@ -1,33 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _edit: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Editfilled, null)
-}
-
-private var _Editfilled: ImageVector? = null
-
-public val Editfilled: ImageVector
+public val HandyIcons.Filled.Edit: ImageVector
     get() {
-        if (_Editfilled != null) {
-            return _Editfilled!!
+        if (_edit != null) {
+            return _edit!!
         }
-        _Editfilled = ImageVector.Builder(
-            name = "Editfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _edit = handyIcon(name = "Filled.Edit") {
             handyPath {
                 moveTo(13.2398f, 15.6201f)
                 lineTo(9.82976f, 16.3501f)
@@ -72,7 +58,7 @@ public val Editfilled: ImageVector
                 curveTo(16.4126f, 8.0626f, 16.8869f, 8.0626f, 17.1798f, 7.7701f)
                 close()
             }
-        }.build()
-        return _Editfilled!!
+        }
+        return _edit!!
     }
 

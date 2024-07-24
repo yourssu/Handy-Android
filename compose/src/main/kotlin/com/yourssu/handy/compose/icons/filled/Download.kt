@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _download: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Downloadfilled, null)
-}
-
-private var _Downloadfilled: ImageVector? = null
-
-public val Downloadfilled: ImageVector
+public val HandyIcons.Filled.Download: ImageVector
     get() {
-        if (_Downloadfilled != null) {
-            return _Downloadfilled!!
+        if (_download != null) {
+            return _download!!
         }
-        _Downloadfilled = ImageVector.Builder(
-            name = "Downloadfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _download = handyIcon(name = "Filled.Download") {
             handyPath {
                 moveTo(22.6611f, 13.33f)
                 verticalLineTo(17.25f)
@@ -66,7 +52,7 @@ public val Downloadfilled: ImageVector
                 curveTo(12.8061f, 3f, 13.1911f, 3.385f, 13.1911f, 3.86f)
                 close()
             }
-        }.build()
-        return _Downloadfilled!!
+        }
+        return _download!!
     }
 

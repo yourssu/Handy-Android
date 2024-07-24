@@ -1,26 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _copy: ImageVector? = null
 
-private var _Copyfilled: ImageVector? = null
-
-public val Copyfilled: ImageVector
+public val HandyIcons.Filled.Copy: ImageVector
     get() {
-        if (_Copyfilled != null) {
-            return _Copyfilled!!
+        if (_copy != null) {
+            return _copy!!
         }
-        _Copyfilled = ImageVector.Builder(
-            name = "Copyfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _copy = handyIcon(name = "Filled.Copy") {
             handyPath {
                 moveTo(2f, 6f)
                 curveTo(2f, 3.7909f, 3.7909f, 2f, 6f, 2f)
@@ -48,7 +40,7 @@ public val Copyfilled: ImageVector
                 curveTo(21.75f, 19.615f, 19.625f, 21.7445f, 17f, 21.75f)
                 close()
             }
-        }.build()
-        return _Copyfilled!!
+        }
+        return _copy!!
     }
 
