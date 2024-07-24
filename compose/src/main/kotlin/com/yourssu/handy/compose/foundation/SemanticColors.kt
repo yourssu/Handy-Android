@@ -112,14 +112,11 @@ data class ColorScheme(
 
     // Pagination / Basic
     val paginationBasicSelected: Color = ColorNeutralBlack,
-    val paginationBasicUnselected: Color = ColorGray500,
-
-    )
+    val paginationBasicUnselected: Color = ColorGray500
+)
 
 val lightColorScheme = ColorScheme()
 val darkColorScheme = ColorScheme()
 
 internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme }
 val LocalContentColor = compositionLocalOf { lightColorScheme.textBasicPrimary }
-
-
