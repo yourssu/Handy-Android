@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
@@ -34,17 +33,6 @@ private fun checkBoxSizeStateBySize(
     CheckBoxSize.LARGE -> IconSize.Large
 }
 
-@Stable
-@Composable
-private fun checkBoxColor(
-    checked: Boolean,
-    isDisabled: Boolean
-): Color = when {
-    isDisabled -> HandyTheme.colors.checkBoxDisabled
-    checked -> HandyTheme.colors.checkBoxSelected
-    else -> HandyTheme.colors.checkBoxUnselected
-}
-
 @Composable
 fun CheckBox(
     checked: Boolean,
@@ -62,8 +50,6 @@ fun CheckBox(
 
     val iconSize = checkBoxSizeStateBySize(size = sizeType)
 
-    val contentColor = checkBoxColor(checked = checked, isDisabled = isDisabled)
-
     Row(
         modifier = modifier
             .wrapContentWidth(),
@@ -76,8 +62,7 @@ fun CheckBox(
         )
         Spacer(modifier = Modifier.width(8.dp))
         BasicText(
-            text = text,
-            // color = contentColor
+            text = text
         )
     }
 }
