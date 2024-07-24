@@ -2,8 +2,7 @@ package com.yourssu.handy.compose.atom
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
@@ -60,9 +59,9 @@ fun CheckBox(
             modifier = Modifier,
             iconSize = iconSize,
         )
-        Spacer(modifier = Modifier.width(8.dp))
         BasicText(
-            text = text
+            text = text,
+            modifier = Modifier.padding(start = 8.dp)
         )
     }
 }
