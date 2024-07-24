@@ -10,16 +10,21 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.R
-import com.yourssu.handy.compose.base.Icon
-import com.yourssu.handy.compose.base.IconSize
 
 enum class CheckBoxSize {
     SMALL,
     MEDIUM,
     LARGE
+}
+
+sealed class IconSize(val value: Dp) {
+    data object Small : IconSize(16.dp)
+    data object Medium : IconSize(20.dp)
+    data object Large : IconSize(24.dp)
 }
 
 @Stable
@@ -54,11 +59,7 @@ fun CheckBox(
             .wrapContentWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
-            id = icon,
-            modifier = Modifier,
-            iconSize = iconSize,
-        )
+        // TODO : Icon
         BasicText(
             text = text,
             modifier = Modifier.padding(start = 8.dp)
