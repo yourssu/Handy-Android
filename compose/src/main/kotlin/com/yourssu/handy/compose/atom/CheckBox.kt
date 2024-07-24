@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,26 +14,10 @@ import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.R
 
-enum class CheckBoxSize {
-    SMALL,
-    MEDIUM,
-    LARGE
-}
-
-sealed class IconSize(val value: Dp) {
-    data object Small : IconSize(16.dp)
-    data object Medium : IconSize(20.dp)
-    data object Large : IconSize(24.dp)
-}
-
-@Stable
-@Composable
-private fun checkBoxSizeStateBySize(
-    size: CheckBoxSize
-): IconSize = when (size) {
-    CheckBoxSize.SMALL -> IconSize.Small
-    CheckBoxSize.MEDIUM -> IconSize.Medium
-    CheckBoxSize.LARGE -> IconSize.Large
+sealed class CheckBoxSize(val iconSize: Dp) {
+    data object Small : CheckBoxSize(16.dp)
+    data object Medium : CheckBoxSize(20.dp)
+    data object Large : CheckBoxSize(24.dp)
 }
 
 @Composable
@@ -52,7 +35,7 @@ fun CheckBox(
         else -> R.drawable.ic_checkcircle_unselected
     }
 
-    val iconSize = checkBoxSizeStateBySize(size = sizeType)
+    val iconSize = sizeType.iconSize
 
     Row(
         modifier = modifier
@@ -75,20 +58,20 @@ private fun CheckBoxPreview() {
             CheckBox(
                 checked = true,
                 onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
+                sizeType = CheckBoxSize.Medium,
                 text = "selected"
             )
             CheckBox(
                 checked = false,
                 onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
+                sizeType = CheckBoxSize.Medium,
                 text = "unselected"
             )
             CheckBox(
                 checked = false,
                 isDisabled = true,
                 onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
+                sizeType = CheckBoxSize.Medium,
                 text = "disabled"
             )
         }
