@@ -1,5 +1,6 @@
 package com.yourssu.handy.compose.atom
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -60,9 +61,9 @@ fun CheckBox(
         else -> R.drawable.ic_checkcircle_unselected
     }
 
-    val contentColor = checkBoxColor(checked = checked, isDisabled = isDisabled)
-
     val iconSize = checkBoxSizeStateBySize(size = sizeType)
+
+    val contentColor = checkBoxColor(checked = checked, isDisabled = isDisabled)
 
     Row(
         modifier = modifier
@@ -73,11 +74,11 @@ fun CheckBox(
             id = icon,
             modifier = Modifier,
             iconSize = iconSize,
-            tint = contentColor
         )
         Spacer(modifier = Modifier.width(8.dp))
         BasicText(
             text = text,
+            // color = contentColor
         )
     }
 
@@ -87,11 +88,27 @@ fun CheckBox(
 @Composable
 private fun CheckBoxPreview() {
     HandyTheme {
-        CheckBox(
-            checked = false,
-            onCheckedChange = {},
-            sizeType = CheckBoxSize.MEDIUM,
-            text = "hello"
-        )
+        Column {
+            CheckBox(
+                checked = true,
+                onCheckedChange = {},
+                sizeType = CheckBoxSize.MEDIUM,
+                text = "selected"
+            )
+            CheckBox(
+                checked = false,
+                onCheckedChange = {},
+                sizeType = CheckBoxSize.MEDIUM,
+                text = "unselected"
+            )
+            CheckBox(
+                checked = false,
+                isDisabled = true,
+                onCheckedChange = {},
+                sizeType = CheckBoxSize.MEDIUM,
+                text = "disabled"
+            )
+        }
+
     }
 }

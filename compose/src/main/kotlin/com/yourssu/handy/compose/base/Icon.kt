@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.toolingGraphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -15,7 +13,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.yourssu.handy.compose.foundation.LocalContentColor
 
 sealed class IconSize(val value: Dp) {
     data object Small : IconSize(16.dp)
@@ -28,7 +25,6 @@ fun Icon(
     @DrawableRes id: Int,
     modifier: Modifier = Modifier,
     iconSize: IconSize,
-    tint: Color = LocalContentColor.current
 ) {
     val imageVector = ImageVector.vectorResource(id = id)
     val painter = rememberVectorPainter(image = imageVector)
@@ -39,7 +35,6 @@ fun Icon(
             .size(iconSize.value)
             .paint(
                 painter = painter,
-                colorFilter = ColorFilter.tint(color = tint),
                 contentScale = ContentScale.Fit,
             )
     )
