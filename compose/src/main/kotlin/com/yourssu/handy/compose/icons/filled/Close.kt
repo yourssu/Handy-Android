@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Close: ImageVector
         if (_close != null) {
             return _close!!
         }
-        _close = handyIcon(name = "Filled.Close") {
+        _close = handyIcon {
             handyPath {
                 moveTo(19.7188f, 18.3906f)
                 lineTo(13.325f, 12.0004f)

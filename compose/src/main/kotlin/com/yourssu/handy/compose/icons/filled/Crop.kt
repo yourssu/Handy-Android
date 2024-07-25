@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Crop: ImageVector
         if (_crop != null) {
             return _crop!!
         }
-        _crop = handyIcon(name = "Filled.Crop") {
+        _crop = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(15.5604f, 2.43994f)
                 horizontalLineTo(8.44043f)

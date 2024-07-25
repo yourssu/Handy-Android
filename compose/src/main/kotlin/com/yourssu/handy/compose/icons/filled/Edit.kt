@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Edit: ImageVector
         if (_edit != null) {
             return _edit!!
         }
-        _edit = handyIcon(name = "Filled.Edit") {
+        _edit = handyIcon {
             handyPath {
                 moveTo(13.2398f, 15.6201f)
                 lineTo(9.82976f, 16.3501f)

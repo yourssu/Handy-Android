@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Check: ImageVector
         if (_check != null) {
             return _check!!
         }
-        _check = handyIcon(name = "Filled.Check") {
+        _check = handyIcon {
             handyPath {
                 moveTo(8.94631f, 18.2346f)
                 curveTo(8.5999f, 18.2344f, 8.2642f, 18.1142f, 7.9963f, 17.8946f)

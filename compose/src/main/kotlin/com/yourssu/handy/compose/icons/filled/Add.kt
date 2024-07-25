@@ -12,7 +12,7 @@ public val HandyIcons.Filled.Add: ImageVector
         if (_add != null) {
             return _add!!
         }
-        _add = handyIcon(name = "Filled.Add") {
+        _add = handyIcon {
             handyPath {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)

@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Eye: ImageVector
         if (_eye != null) {
             return _eye!!
         }
-        _eye = handyIcon(name = "Filled.Eye") {
+        _eye = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(17.0276f, 7.64929f)
                 lineTo(21.2076f, 10.9893f)

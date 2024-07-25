@@ -13,7 +13,7 @@ public val HandyIcons.Filled.AlertTriangle: ImageVector
         if (_alertTriangle != null) {
             return _alertTriangle!!
         }
-        _alertTriangle = handyIcon(name = "Filled.AlertTriangle") {
+        _alertTriangle = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(20.8555f, 15.5035f)
                 lineTo(15.2155f, 5.06351f)

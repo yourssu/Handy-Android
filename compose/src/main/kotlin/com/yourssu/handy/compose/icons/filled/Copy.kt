@@ -12,7 +12,7 @@ public val HandyIcons.Filled.Copy: ImageVector
         if (_copy != null) {
             return _copy!!
         }
-        _copy = handyIcon(name = "Filled.Copy") {
+        _copy = handyIcon {
             handyPath {
                 moveTo(2f, 6f)
                 curveTo(2f, 3.7909f, 3.7909f, 2f, 6f, 2f)

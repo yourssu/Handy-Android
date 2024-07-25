@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Bookmark: ImageVector
         if (_bookmark != null) {
             return _bookmark!!
         }
-        _bookmark = handyIcon(name = "Filled.Bookmark") {
+        _bookmark = handyIcon {
             handyPath {
                 moveTo(16.77f, 20.7843f)
                 lineTo(12.48f, 17.4943f)

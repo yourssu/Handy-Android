@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Cancel: ImageVector
         if (_cancel != null) {
             return _cancel!!
         }
-        _cancel = handyIcon(name = "Filled.Cancel") {
+        _cancel = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4.53251f, 5.32491f)
                 lineTo(5.32447f, 4.53295f)

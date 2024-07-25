@@ -12,7 +12,7 @@ public val HandyIcons.Filled.ExternalLink: ImageVector
         if (_externalLink != null) {
             return _externalLink!!
         }
-        _externalLink = handyIcon(name = "Filled.ExternalLink") {
+        _externalLink = handyIcon {
             handyPath {
                 moveTo(17.34f, 7.04f)
                 lineTo(13.1f, 11.28f)

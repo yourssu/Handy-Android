@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Clock: ImageVector
         if (_clock != null) {
             return _clock!!
         }
-        _clock = handyIcon(name = "Filled.Clock") {
+        _clock = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(10f, 2f)
                 horizontalLineTo(14.24f)

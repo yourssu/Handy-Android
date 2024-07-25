@@ -5,14 +5,14 @@ import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 
-private var _document: ImageVector? = null
+private var _documents: ImageVector? = null
 
-public val HandyIcons.Filled.Document: ImageVector
+public val HandyIcons.Filled.Documents: ImageVector
     get() {
-        if (_document != null) {
-            return _document!!
+        if (_documents != null) {
+            return _documents!!
         }
-        _document = handyIcon(name = "Filled.Document") {
+        _documents = handyIcon {
             handyPath {
                 moveTo(18.9998f, 10.1502f)
                 horizontalLineTo(14.1598f)
@@ -45,6 +45,6 @@ public val HandyIcons.Filled.Document: ImageVector
                 close()
             }
         }
-        return _document!!
+        return _documents!!
     }
 

@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Comment: ImageVector
         if (_comment != null) {
             return _comment!!
         }
-        _comment = handyIcon(name = "Filled.Comment") {
+        _comment = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(17.5617f, 2f)
                 horizontalLineTo(6.44174f)

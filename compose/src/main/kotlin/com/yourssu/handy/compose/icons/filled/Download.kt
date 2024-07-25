@@ -12,7 +12,7 @@ public val HandyIcons.Filled.Download: ImageVector
         if (_download != null) {
             return _download!!
         }
-        _download = handyIcon(name = "Filled.Download") {
+        _download = handyIcon {
             handyPath {
                 moveTo(22.6611f, 13.33f)
                 verticalLineTo(17.25f)

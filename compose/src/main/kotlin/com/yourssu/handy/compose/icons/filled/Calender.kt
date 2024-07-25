@@ -13,7 +13,7 @@ public val HandyIcons.Filled.Calender: ImageVector
         if (_calender != null) {
             return _calender!!
         }
-        _calender = handyIcon(name = "") {
+        _calender = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(16.9f, 3.57f)
                 horizontalLineTo(17f)

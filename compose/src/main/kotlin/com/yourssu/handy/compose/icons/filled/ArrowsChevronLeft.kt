@@ -13,7 +13,7 @@ public val HandyIcons.Filled.ArrowsChevronLeft: ImageVector
         if (_arrowsChevronLeft != null) {
             return _arrowsChevronLeft!!
         }
-        _arrowsChevronLeft = handyIcon(name = "Filled.ArrowsChevronLeft") {
+        _arrowsChevronLeft = handyIcon {
             handyPath {
                 moveTo(15.9999f, 21.5f)
                 curveTo(15.6025f, 21.4986f, 15.2216f, 21.3405f, 14.9399f, 21.06f)
