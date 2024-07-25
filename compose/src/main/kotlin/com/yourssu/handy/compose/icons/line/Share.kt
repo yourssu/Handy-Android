@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _share: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Shareline, null)
-}
-
-private var _Shareline: ImageVector? = null
-
-public val Shareline: ImageVector
+public val HandyIcons.Line.Share: ImageVector
     get() {
-        if (_Shareline != null) {
-            return _Shareline!!
+        if (_share != null) {
+            return _share!!
         }
-        _Shareline = ImageVector.Builder(
-            name = "Shareline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _share = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14.9529f, 15.2302f)
                 curveTo(15.4043f, 15.2315f, 15.8469f, 15.356f, 16.2329f, 15.5902f)
@@ -82,7 +70,7 @@ public val Shareline: ImageVector
                 curveTo(14.5911f, 18.6674f, 14.7678f, 18.6986f, 14.9429f, 18.6802f)
                 close()
             }
-        }.build()
-        return _Shareline!!
+        }
+        return _share!!
     }
 

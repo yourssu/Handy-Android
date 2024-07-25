@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _search: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(SearchLine, null)
-}
-
-private var _SearchLine: ImageVector? = null
-
-public val SearchLine: ImageVector
+public val HandyIcons.Line.Search: ImageVector
     get() {
-        if (_SearchLine != null) {
-            return _SearchLine!!
+        if (_search != null) {
+            return _search!!
         }
-        _SearchLine = ImageVector.Builder(
-            name = "SearchLine",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _search = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(19.9382f, 7.66933f)
                 curveTo(18.512f, 4.2447f, 15.1704f, 2.01f, 11.4607f, 2.0001f)
@@ -47,7 +35,7 @@ public val SearchLine: ImageVector
                 curveTo(19.1387f, 7.9605f, 19.7986f, 11.2834f, 18.6011f, 14.1691f)
                 close()
             }
-        }.build()
-        return _SearchLine!!
+        }
+        return _search!!
     }
 

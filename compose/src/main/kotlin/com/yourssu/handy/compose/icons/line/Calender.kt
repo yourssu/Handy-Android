@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _calender: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Calenderline, null)
-}
-
-private var _Calenderline: ImageVector? = null
-
-public val Calenderline: ImageVector
+public val HandyIcons.Line.Calender: ImageVector
     get() {
-        if (_Calenderline != null) {
-            return _Calenderline!!
+        if (_calender != null) {
+            return _calender!!
         }
-        _Calenderline = ImageVector.Builder(
-            name = "Calenderline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _calender = handyIcon {
             handyPath {
                 moveTo(16.5f, 8.16f)
                 horizontalLineTo(7.5f)
@@ -69,7 +57,7 @@ public val Calenderline: ImageVector
                 horizontalLineTo(17f)
                 close()
             }
-        }.build()
-        return _Calenderline!!
+        }
+        return _calender!!
     }
 

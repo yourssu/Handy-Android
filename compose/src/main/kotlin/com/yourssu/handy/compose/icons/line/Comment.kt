@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _comment: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Commentline, null)
-}
-
-private var _Commentline: ImageVector? = null
-
-public val Commentline: ImageVector
+public val HandyIcons.Line.Comment: ImageVector
     get() {
-        if (_Commentline != null) {
-            return _Commentline!!
+        if (_comment != null) {
+            return _comment!!
         }
-        _Commentline = ImageVector.Builder(
-            name = "Commentline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _comment = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(6.44226f, 2f)
                 horizontalLineTo(17.5623f)
@@ -74,7 +62,7 @@ public val Commentline: ImageVector
                 curveTo(16.5023f, 11.5858f, 16.1665f, 11.25f, 15.7523f, 11.25f)
                 close()
             }
-        }.build()
-        return _Commentline!!
+        }
+        return _comment!!
     }
 

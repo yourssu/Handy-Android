@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _copy: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Copyline, null)
-}
-
-private var _Copyline: ImageVector? = null
-
-public val Copyline: ImageVector
+public val HandyIcons.Line.Copy: ImageVector
     get() {
-        if (_Copyline != null) {
-            return _Copyline!!
+        if (_copy != null) {
+            return _copy!!
         }
-        _Copyline = ImageVector.Builder(
-            name = "Copyline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _copy = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(16.5f, 4.5f)
                 verticalLineTo(12.5f)
@@ -63,7 +51,7 @@ public val Copyline: ImageVector
                 curveTo(20.2446f, 7.088f, 19.912f, 6.7554f, 19.5f, 6.75f)
                 close()
             }
-        }.build()
-        return _Copyline!!
+        }
+        return _copy!!
     }
 

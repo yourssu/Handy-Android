@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _infoCircle: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Infocircleline, null)
-}
-
-private var _Infocircleline: ImageVector? = null
-
-public val Infocircleline: ImageVector
+public val HandyIcons.Line.InfoCircle: ImageVector
     get() {
-        if (_Infocircleline != null) {
-            return _Infocircleline!!
+        if (_infoCircle != null) {
+            return _infoCircle!!
         }
-        _Infocircleline = ImageVector.Builder(
-            name = "Infocircleline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _infoCircle = handyIcon {
             handyPath {
                 moveTo(11.79f, 8.04f)
                 curveTo(11.4065f, 8.0842f, 11.117f, 8.4089f, 11.117f, 8.795f)
@@ -61,7 +49,7 @@ public val Infocircleline: ImageVector
                 curveTo(20.0745f, 16.3662f, 16.3662f, 20.0745f, 11.79f, 20.08f)
                 close()
             }
-        }.build()
-        return _Infocircleline!!
+        }
+        return _infoCircle!!
     }
 

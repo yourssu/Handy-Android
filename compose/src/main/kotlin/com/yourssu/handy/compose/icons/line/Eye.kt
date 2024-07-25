@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _eye: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Eyeline, null)
-}
-
-private var _Eyeline: ImageVector? = null
-
-public val Eyeline: ImageVector
+public val HandyIcons.Line.Eye: ImageVector
     get() {
-        if (_Eyeline != null) {
-            return _Eyeline!!
+        if (_eye != null) {
+            return _eye!!
         }
-        _Eyeline = ImageVector.Builder(
-            name = "Eyeline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _eye = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(9.12566f, 12.148f)
                 curveTo(9.1257f, 10.6036f, 10.318f, 9.3517f, 11.7888f, 9.3517f)
@@ -62,7 +50,7 @@ public val Eyeline: ImageVector
                 lineTo(7.41197f, 15.9291f)
                 close()
             }
-        }.build()
-        return _Eyeline!!
+        }
+        return _eye!!
     }
 

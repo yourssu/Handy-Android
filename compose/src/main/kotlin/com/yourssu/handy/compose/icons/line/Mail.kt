@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _mail: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Mailline, null)
-}
-
-private var _Mailline: ImageVector? = null
-
-public val Mailline: ImageVector
+public val HandyIcons.Line.Mail: ImageVector
     get() {
-        if (_Mailline != null) {
-            return _Mailline!!
+        if (_mail != null) {
+            return _mail!!
         }
-        _Mailline = ImageVector.Builder(
-            name = "Mailline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _mail = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(18f, 4f)
                 horizontalLineTo(6f)
@@ -58,7 +46,7 @@ public val Mailline: ImageVector
                 verticalLineTo(17f)
                 close()
             }
-        }.build()
-        return _Mailline!!
+        }
+        return _mail!!
     }
 

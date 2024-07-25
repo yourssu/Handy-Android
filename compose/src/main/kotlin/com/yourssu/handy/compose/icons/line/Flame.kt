@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _flame: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Flameline, null)
-}
-
-private var _Flameline: ImageVector? = null
-
-public val Flameline: ImageVector
+public val HandyIcons.Line.Flame: ImageVector
     get() {
-        if (_Flameline != null) {
-            return _Flameline!!
+        if (_flame != null) {
+            return _flame!!
         }
-        _Flameline = ImageVector.Builder(
-            name = "Flameline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _flame = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14.5601f, 14.36f)
                 horizontalLineTo(14.6201f)
@@ -72,7 +60,7 @@ public val Flameline: ImageVector
                 curveTo(11.3438f, 19.9135f, 12.8164f, 19.9135f, 14.1201f, 19.36f)
                 close()
             }
-        }.build()
-        return _Flameline!!
+        }
+        return _flame!!
     }
 

@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _setting: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Settingline, null)
-}
-
-private var _Settingline: ImageVector? = null
-
-public val Settingline: ImageVector
+public val HandyIcons.Line.Setting: ImageVector
     get() {
-        if (_Settingline != null) {
-            return _Settingline!!
+        if (_setting != null) {
+            return _setting!!
         }
-        _Settingline = ImageVector.Builder(
-            name = "Settingline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _setting = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(19.2264f, 8.73077f)
                 curveTo(19.4169f, 9.1949f, 19.8683f, 9.4985f, 20.37f, 9.5f)
@@ -116,7 +104,7 @@ public val Settingline: ImageVector
                 curveTo(10.6954f, 9.81f, 9.8f, 10.7054f, 9.8f, 11.81f)
                 close()
             }
-        }.build()
-        return _Settingline!!
+        }
+        return _setting!!
     }
 

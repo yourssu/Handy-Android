@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _folder: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Folderline, null)
-}
-
-private var _Folderline: ImageVector? = null
-
-public val Folderline: ImageVector
+public val HandyIcons.Line.Folder: ImageVector
     get() {
-        if (_Folderline != null) {
-            return _Folderline!!
+        if (_folder != null) {
+            return _folder!!
         }
-        _Folderline = ImageVector.Builder(
-            name = "Folderline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _folder = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(6.40099f, 2.00001f)
                 horizontalLineTo(10.3716f)
@@ -56,7 +44,7 @@ public val Folderline: ImageVector
                 curveTo(12.7395f, 7.1474f, 11.9951f, 6.3462f, 11.9951f, 5.3579f)
                 close()
             }
-        }.build()
-        return _Folderline!!
+        }
+        return _folder!!
     }
 

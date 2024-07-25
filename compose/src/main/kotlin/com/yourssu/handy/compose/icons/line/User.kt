@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _user: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Userline, null)
-}
-
-private var _Userline: ImageVector? = null
-
-public val Userline: ImageVector
+public val HandyIcons.Line.User: ImageVector
     get() {
-        if (_Userline != null) {
-            return _Userline!!
+        if (_user != null) {
+            return _user!!
         }
-        _Userline = ImageVector.Builder(
-            name = "Userline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _user = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(19.5796f, 16.71f)
                 lineTo(19.8196f, 17.85f)
@@ -78,7 +66,7 @@ public val Userline: ImageVector
                 horizontalLineTo(10.8596f)
                 close()
             }
-        }.build()
-        return _Userline!!
+        }
+        return _user!!
     }
 

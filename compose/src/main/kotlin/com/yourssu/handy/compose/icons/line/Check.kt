@@ -1,30 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Checkline, null)
-}
+private var _check: ImageVector? = null
 
-private var _Checkline: ImageVector? = null
-
-public val Checkline: ImageVector
+public val HandyIcons.Line.Check: ImageVector
     get() {
-        if (_Checkline != null) {
-            return _Checkline!!
+        if (_check != null) {
+            return _check!!
         }
-        _Checkline = ImageVector.Builder(
-            name = "Checkline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _check = handyIcon {
             handyPath {
                 moveTo(9.20948f, 17.5602f)
                 curveTo(9.0416f, 17.5676f, 8.876f, 17.5183f, 8.7395f, 17.4202f)
@@ -39,7 +28,6 @@ public val Checkline: ImageVector
                 curveTo(9.5803f, 17.488f, 9.3984f, 17.5593f, 9.2095f, 17.5602f)
                 close()
             }
-        }.build()
-        return _Checkline!!
+        }
+        return _check!!
     }
-

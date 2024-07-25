@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _notification: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Notificationline, null)
-}
-
-private var _Notificationline: ImageVector? = null
-
-public val Notificationline: ImageVector
+public val HandyIcons.Line.Notification: ImageVector
     get() {
-        if (_Notificationline != null) {
-            return _Notificationline!!
+        if (_notification != null) {
+            return _notification!!
         }
-        _Notificationline = ImageVector.Builder(
-            name = "Notificationline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _notification = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(21.1066f, 15.48f)
                 curveTo(20.6623f, 15.1f, 20.4065f, 14.5446f, 20.4066f, 13.96f)
@@ -60,7 +48,7 @@ public val Notificationline: ImageVector
                 horizontalLineTo(19.4166f)
                 close()
             }
-        }.build()
-        return _Notificationline!!
+        }
+        return _notification!!
     }
 

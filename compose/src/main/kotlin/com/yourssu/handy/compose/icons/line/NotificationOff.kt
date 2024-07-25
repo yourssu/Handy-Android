@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _notificationOff: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Notificationoffline, null)
-}
-
-private var _Notificationoffline: ImageVector? = null
-
-public val Notificationoffline: ImageVector
+public val HandyIcons.Line.NotificationOff: ImageVector
     get() {
-        if (_Notificationoffline != null) {
-            return _Notificationoffline!!
+        if (_notificationOff != null) {
+            return _notificationOff!!
         }
-        _Notificationoffline = ImageVector.Builder(
-            name = "Notificationoffline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _notificationOff = handyIcon {
             handyPath {
                 moveTo(8.17873f, 4.33873f)
                 curveTo(9.1882f, 3.8241f, 10.3056f, 3.5567f, 11.4387f, 3.5587f)
@@ -81,7 +69,7 @@ public val Notificationoffline: ImageVector
                 curveTo(3.5949f, 15.6892f, 3.4657f, 16.1897f, 3.6387f, 16.6287f)
                 close()
             }
-        }.build()
-        return _Notificationoffline!!
+        }
+        return _notificationOff!!
     }
 

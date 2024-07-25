@@ -1,30 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _retryRefresh: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Retryrefreshline, null)
-}
-
-private var _Retryrefreshline: ImageVector? = null
-
-public val Retryrefreshline: ImageVector
+public val HandyIcons.Line.RetryRefresh: ImageVector
     get() {
-        if (_Retryrefreshline != null) {
-            return _Retryrefreshline!!
+        if (_retryRefresh != null) {
+            return _retryRefresh!!
         }
-        _Retryrefreshline = ImageVector.Builder(
-            name = "Retryrefreshline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _retryRefresh = handyIcon {
             handyPath {
                 moveTo(12.5122f, 4.02129f)
                 lineTo(13.2722f, 3.26129f)
@@ -49,7 +38,7 @@ public val Retryrefreshline: ImageVector
                 horizontalLineTo(12.5122f)
                 close()
             }
-        }.build()
-        return _Retryrefreshline!!
+        }
+        return _retryRefresh!!
     }
 

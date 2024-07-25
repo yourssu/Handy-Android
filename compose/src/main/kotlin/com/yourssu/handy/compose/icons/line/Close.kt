@@ -1,30 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Closeline, null)
-}
+private var _close: ImageVector? = null
 
-private var _Closeline: ImageVector? = null
-
-public val Closeline: ImageVector
+public val HandyIcons.Line.Close: ImageVector
     get() {
-        if (_Closeline != null) {
-            return _Closeline!!
+        if (_close != null) {
+            return _close!!
         }
-        _Closeline = ImageVector.Builder(
-            name = "Closeline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _close = handyIcon {
             handyPath {
                 moveTo(13.1665f, 12.008f)
                 lineTo(20.762f, 4.43822f)
@@ -48,7 +37,6 @@ public val Closeline: ImageVector
                 lineTo(13.1665f, 12.008f)
                 close()
             }
-        }.build()
-        return _Closeline!!
+        }
+        return _close!!
     }
-

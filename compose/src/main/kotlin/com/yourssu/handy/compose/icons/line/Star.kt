@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _star: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Starline, null)
-}
-
-private var _Starline: ImageVector? = null
-
-public val Starline: ImageVector
+public val HandyIcons.Line.Star: ImageVector
     get() {
-        if (_Starline != null) {
-            return _Starline!!
+        if (_star != null) {
+            return _star!!
         }
-        _Starline = ImageVector.Builder(
-            name = "Starline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _star = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(10.1244f, 4.55018f)
                 curveTo(10.4124f, 3.6186f, 11.2793f, 2.9877f, 12.2544f, 3.0002f)
@@ -86,7 +74,7 @@ public val Starline: ImageVector
                 lineTo(12.7844f, 5.07018f)
                 close()
             }
-        }.build()
-        return _Starline!!
+        }
+        return _star!!
     }
 

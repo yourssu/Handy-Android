@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _subtract: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Subtractline, null)
-}
-
-private var _Subtractline: ImageVector? = null
-
-public val Subtractline: ImageVector
+public val HandyIcons.Line.Subtract: ImageVector
     get() {
-        if (_Subtractline != null) {
-            return _Subtractline!!
+        if (_subtract != null) {
+            return _subtract!!
         }
-        _Subtractline = ImageVector.Builder(
-            name = "Subtractline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _subtract = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
@@ -58,7 +46,7 @@ public val Subtractline: ImageVector
                 curveTo(16.75f, 11.5858f, 16.4142f, 11.25f, 16f, 11.25f)
                 close()
             }
-        }.build()
-        return _Subtractline!!
+        }
+        return _subtract!!
     }
 

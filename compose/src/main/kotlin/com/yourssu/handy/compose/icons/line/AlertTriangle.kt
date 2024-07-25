@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _alertTriangle: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Alerttriangleline, null)
-}
-
-private var _Alerttriangleline: ImageVector? = null
-
-public val Alerttriangleline: ImageVector
+public val HandyIcons.Line.AlertTriangle: ImageVector
     get() {
-        if (_Alerttriangleline != null) {
-            return _Alerttriangleline!!
+        if (_alertTriangle != null) {
+            return _alertTriangle!!
         }
-        _Alerttriangleline = ImageVector.Builder(
-            name = "Alerttriangleline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _alertTriangle = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(8.19093f, 5.08011f)
                 curveTo(8.8779f, 3.7974f, 10.2158f, 2.9977f, 11.6709f, 3.0001f)
@@ -71,7 +59,6 @@ public val Alerttriangleline: ImageVector
                 curveTo(12.4209f, 13.2944f, 12.0851f, 13.6302f, 11.6709f, 13.6302f)
                 close()
             }
-        }.build()
-        return _Alerttriangleline!!
+        }
+        return _alertTriangle!!
     }
-

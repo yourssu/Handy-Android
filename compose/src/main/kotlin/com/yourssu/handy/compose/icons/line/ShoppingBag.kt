@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _shoppingBag: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Shoppingbagline, null)
-}
-
-private var _Shoppingbagline: ImageVector? = null
-
-public val Shoppingbagline: ImageVector
+public val HandyIcons.Line.ShoppingBag: ImageVector
     get() {
-        if (_Shoppingbagline != null) {
-            return _Shoppingbagline!!
+        if (_shoppingBag != null) {
+            return _shoppingBag!!
         }
-        _Shoppingbagline = ImageVector.Builder(
-            name = "Shoppingbagline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _shoppingBag = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(20.7404f, 6.85986f)
                 lineTo(22.0004f, 15.1999f)
@@ -63,7 +51,7 @@ public val Shoppingbagline: ImageVector
                 curveTo(15.895f, 7.3979f, 15.5623f, 7.0652f, 15.1504f, 7.0599f)
                 close()
             }
-        }.build()
-        return _Shoppingbagline!!
+        }
+        return _shoppingBag!!
     }
 

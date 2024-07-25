@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _clock: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Clockline, null)
-}
-
-private var _Clockline: ImageVector? = null
-
-public val Clockline: ImageVector
+public val HandyIcons.Line.Clock: ImageVector
     get() {
-        if (_Clockline != null) {
-            return _Clockline!!
+        if (_clock != null) {
+            return _clock!!
         }
-        _Clockline = ImageVector.Builder(
-            name = "Clockline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _clock = handyIcon {
             handyPath {
                 moveTo(8.65f, 7.59f)
                 curveTo(8.3545f, 7.3146f, 7.894f, 7.3228f, 7.6084f, 7.6084f)
@@ -62,7 +50,6 @@ public val Clockline: ImageVector
                 horizontalLineTo(14.24f)
                 close()
             }
-        }.build()
-        return _Clockline!!
+        }
+        return _clock!!
     }
-

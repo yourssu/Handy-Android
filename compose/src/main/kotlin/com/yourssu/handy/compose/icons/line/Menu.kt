@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _menu: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Menuline, null)
-}
-
-private var _Menuline: ImageVector? = null
-
-public val Menuline: ImageVector
+public val HandyIcons.Line.Menu: ImageVector
     get() {
-        if (_Menuline != null) {
-            return _Menuline!!
+        if (_menu != null) {
+            return _menu!!
         }
-        _Menuline = ImageVector.Builder(
-            name = "Menuline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _menu = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4f, 7.5f)
                 curveTo(4f, 5.567f, 5.567f, 4f, 7.5f, 4f)
@@ -82,7 +70,7 @@ public val Menuline: ImageVector
                 curveTo(18.6046f, 19.5f, 19.5f, 18.6046f, 19.5f, 17.5f)
                 close()
             }
-        }.build()
-        return _Menuline!!
+        }
+        return _menu!!
     }
 

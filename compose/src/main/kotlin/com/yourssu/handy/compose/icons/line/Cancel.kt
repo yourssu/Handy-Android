@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _cancel: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Cancelline, null)
-}
-
-private var _Cancelline: ImageVector? = null
-
-public val Cancelline: ImageVector
+public val HandyIcons.Line.Cancel: ImageVector
     get() {
-        if (_Cancelline != null) {
-            return _Cancelline!!
+        if (_cancel != null) {
+            return _cancel!!
         }
-        _Cancelline = ImageVector.Builder(
-            name = "Cancelline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _cancel = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(4.53251f, 5.32491f)
                 lineTo(5.32447f, 4.53295f)
@@ -68,7 +56,6 @@ public val Cancelline: ImageVector
                 curveTo(15.0654f, 8.3483f, 14.5905f, 8.3483f, 14.2977f, 8.6412f)
                 close()
             }
-        }.build()
-        return _Cancelline!!
+        }
+        return _cancel!!
     }
-

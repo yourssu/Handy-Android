@@ -1,30 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _crop: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Cropline, null)
-}
-
-private var _Cropline: ImageVector? = null
-
-public val Cropline: ImageVector
+public val HandyIcons.Line.Crop: ImageVector
     get() {
-        if (_Cropline != null) {
-            return _Cropline!!
+        if (_crop != null) {
+            return _crop!!
         }
-        _Cropline = ImageVector.Builder(
-            name = "Cropline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _crop = handyIcon {
             handyPath {
                 moveTo(14.6999f, 6.66988f)
                 curveTo(15.3974f, 6.6699f, 16.0664f, 6.947f, 16.5596f, 7.4402f)
@@ -67,7 +56,7 @@ public val Cropline: ImageVector
                 horizontalLineTo(21.1199f)
                 close()
             }
-        }.build()
-        return _Cropline!!
+        }
+        return _crop!!
     }
 

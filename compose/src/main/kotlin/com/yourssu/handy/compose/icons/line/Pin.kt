@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _pin: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Pinline, null)
-}
-
-private var _Pinline: ImageVector? = null
-
-public val Pinline: ImageVector
+public val HandyIcons.Line.Pin: ImageVector
     get() {
-        if (_Pinline != null) {
-            return _Pinline!!
+        if (_pin != null) {
+            return _pin!!
         }
-        _Pinline = ImageVector.Builder(
-            name = "Pinline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _pin = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14.7936f, 4.60971f)
                 lineTo(19.3436f, 9.15971f)
@@ -68,7 +56,7 @@ public val Pinline: ImageVector
                 curveTo(14.8998f, 14.4598f, 15.1363f, 14.1219f, 15.4236f, 13.8297f)
                 close()
             }
-        }.build()
-        return _Pinline!!
+        }
+        return _pin!!
     }
 

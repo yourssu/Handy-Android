@@ -1,49 +1,21 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.group
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _meatball: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(MeatballLine, null)
-}
-
-private var _MeatballLine: ImageVector? = null
-
-public val MeatballLine: ImageVector
+public val HandyIcons.Line.Meatball: ImageVector
     get() {
-        if (_MeatballLine != null) {
-            return _MeatballLine!!
+        if (_meatball != null) {
+            return _meatball!!
         }
-        _MeatballLine = ImageVector.Builder(
-            name = "MeatballLine",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _meatball = handyIcon {
             group {
-                path(
-                    fill = SolidColor(Color(0xFF1C1B1F)),
-                    fillAlpha = 1.0f,
-                    stroke = null,
-                    strokeAlpha = 1.0f,
-                    strokeLineWidth = 1.0f,
-                    strokeLineCap = StrokeCap.Butt,
-                    strokeLineJoin = StrokeJoin.Miter,
-                    strokeLineMiter = 1.0f,
-                    pathFillType = PathFillType.NonZero
-                ) {
+                handyPath {
                     moveTo(6.46191f, 13f)
                     curveTo(6.1869f, 13f, 5.9515f, 12.9021f, 5.7557f, 12.7063f)
                     curveTo(5.5598f, 12.5104f, 5.4619f, 12.275f, 5.4619f, 12f)
@@ -76,7 +48,7 @@ public val MeatballLine: ImageVector
                     close()
                 }
             }
-        }.build()
-        return _MeatballLine!!
+        }
+        return _meatball!!
     }
 

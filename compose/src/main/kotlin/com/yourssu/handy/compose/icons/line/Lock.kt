@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _lock: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Lockline, null)
-}
-
-private var _Lockline: ImageVector? = null
-
-public val Lockline: ImageVector
+public val HandyIcons.Line.Lock: ImageVector
     get() {
-        if (_Lockline != null) {
-            return _Lockline!!
+        if (_lock != null) {
+            return _lock!!
         }
-        _Lockline = ImageVector.Builder(
-            name = "Lockline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _lock = handyIcon {
             handyPath {
                 moveTo(13.4626f, 13.902f)
                 curveTo(13.4626f, 12.9852f, 12.7194f, 12.242f, 11.8026f, 12.242f)
@@ -81,7 +69,7 @@ public val Lockline: ImageVector
                 curveTo(15.2009f, 20.9845f, 16.4926f, 19.9884f, 16.8026f, 18.562f)
                 close()
             }
-        }.build()
-        return _Lockline!!
+        }
+        return _lock!!
     }
 

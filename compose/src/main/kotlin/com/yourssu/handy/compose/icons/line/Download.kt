@@ -1,30 +1,18 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _download: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Downloadline, null)
-}
-
-private var _Downloadline: ImageVector? = null
-
-public val Downloadline: ImageVector
+public val HandyIcons.Line.Download: ImageVector
     get() {
-        if (_Downloadline != null) {
-            return _Downloadline!!
+        if (_download != null) {
+            return _download!!
         }
-        _Downloadline = ImageVector.Builder(
-            name = "Downloadline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _download = handyIcon {
             handyPath {
                 moveTo(11.3104f, 16.54f)
                 lineTo(7.58037f, 12.82f)
@@ -76,7 +64,7 @@ public val Downloadline: ImageVector
                 curveTo(16.2804f, 8.7961f, 16.6565f, 8.42f, 17.1204f, 8.42f)
                 close()
             }
-        }.build()
-        return _Downloadline!!
+        }
+        return _download!!
     }
 

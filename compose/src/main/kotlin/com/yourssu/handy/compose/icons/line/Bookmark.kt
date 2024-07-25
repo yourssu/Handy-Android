@@ -1,31 +1,20 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Bookmarkline, null)
-}
+private var _bookmark: ImageVector? = null
 
-private var _Bookmarkline: ImageVector? = null
-
-public val Bookmarkline: ImageVector
+public val HandyIcons.Line.Bookmark: ImageVector
     get() {
-        if (_Bookmarkline != null) {
-            return _Bookmarkline!!
+        if (_bookmark != null) {
+            return _bookmark!!
         }
-        _Bookmarkline = ImageVector.Builder(
-            name = "Bookmarkline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _bookmark = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(8.37574f, 3.00434f)
                 horizontalLineTo(15.6242f)
@@ -56,7 +45,7 @@ public val Bookmarkline: ImageVector
                 curveTo(11.3115f, 15.5683f, 12.6678f, 15.5683f, 13.6464f, 16.2881f)
                 close()
             }
-        }.build()
-        return _Bookmarkline!!
+        }
+        return _bookmark!!
     }
 

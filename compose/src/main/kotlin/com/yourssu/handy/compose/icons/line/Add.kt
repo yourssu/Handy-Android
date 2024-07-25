@@ -5,12 +5,14 @@ import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _add: ImageVector? = null
+
 public val HandyIcons.Line.Add: ImageVector
     get() {
         if (_add != null) {
             return _add!!
         }
-        _add = handyIcon(name = "Line.Add") {
+        _add = handyIcon {
             handyPath {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
@@ -56,5 +58,3 @@ public val HandyIcons.Line.Add: ImageVector
         }
         return _add!!
     }
-
-private var _add: ImageVector? = null

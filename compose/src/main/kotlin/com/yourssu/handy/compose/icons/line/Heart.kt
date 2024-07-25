@@ -1,30 +1,18 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.line
+
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _heart: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Heartline, null)
-}
-
-private var _Heartline: ImageVector? = null
-
-public val Heartline: ImageVector
+public val HandyIcons.Line.Heart: ImageVector
     get() {
-        if (_Heartline != null) {
-            return _Heartline!!
+        if (_heart != null) {
+            return _heart!!
         }
-        _Heartline = ImageVector.Builder(
-            name = "Heartline",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _heart = handyIcon {
             handyPath {
                 moveTo(12.1f, 20.8f)
                 curveTo(11.6f, 20.8f, 11f, 20.6f, 10.6f, 20.2f)
@@ -60,7 +48,7 @@ public val Heartline: ImageVector
                 lineTo(5.5f, 14f)
                 close()
             }
-        }.build()
-        return _Heartline!!
+        }
+        return _heart!!
     }
 
