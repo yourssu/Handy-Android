@@ -22,6 +22,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.foundation.LocalContentColor
 
 enum class IconSize(internal val value: Dp) {
     XXS(12.dp),
@@ -38,7 +39,7 @@ enum class IconSize(internal val value: Dp) {
 fun Icon(
     imageVector: ImageVector,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Black,
+    tint: Color = LocalContentColor.current,
     iconSize: IconSize = IconSize.M,
     contentDescription: String? = null
 ) {
@@ -56,7 +57,7 @@ fun Icon(
 fun Icon(
     bitmap: ImageBitmap,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Black,
+    tint: Color = LocalContentColor.current,
     iconSize: IconSize = IconSize.M,
     contentDescription: String? = null
 ) {
@@ -74,8 +75,8 @@ fun Icon(
 fun Icon(
     painter: Painter,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Black,      // TODO: ContentColor
-    iconSize: IconSize = IconSize.M,// TODO: ContentIconSize
+    tint: Color = LocalContentColor.current,
+    iconSize: IconSize = IconSize.M,
     contentDescription: String? = null
 ) {
     val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)

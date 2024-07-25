@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.IconSize
 import com.yourssu.handy.compose.icons.HandyIcons
@@ -23,15 +24,17 @@ private val iconSizes = listOf(
 @Preview
 @Composable
 private fun IconSizePreview() {
-    Row(Modifier.background(Color.White)) {
-        Column {
-            iconSizes.forEach { iconSize ->
-                Icon(HandyIcons.Filled.Add, iconSize = iconSize)
+    HandyTheme {
+        Row(Modifier.background(Color.White)) {
+            Column {
+                iconSizes.forEach { iconSize ->
+                    Icon(HandyIcons.Filled.Add, iconSize = iconSize)
+                }
             }
-        }
-        Column {
-            iconSizes.forEach { iconSize ->
-                Icon(HandyIcons.Line.Add, iconSize = iconSize)
+            Column {
+                iconSizes.forEach { iconSize ->
+                    Icon(HandyIcons.Line.Add, iconSize = iconSize)
+                }
             }
         }
     }
@@ -68,15 +71,17 @@ private val filledIcons by lazy {
 @Preview
 @Composable
 private fun IconsPreview() {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(6),
-        modifier = Modifier.background(Color.White)
-    ) {
-        items(lineIcons) { icon ->
-            Icon(icon)
-        }
-        items(filledIcons) { icon ->
-            Icon(icon)
+    HandyTheme {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(6),
+            modifier = Modifier.background(Color.White)
+        ) {
+            items(lineIcons) { icon ->
+                Icon(icon)
+            }
+            items(filledIcons) { icon ->
+                Icon(icon)
+            }
         }
     }
 }
