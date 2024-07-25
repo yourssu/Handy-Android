@@ -1,33 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _notificationOff: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Notificationofffilled, null)
-}
-
-private var _Notificationofffilled: ImageVector? = null
-
-public val Notificationofffilled: ImageVector
+public val HandyIcons.Filled.NotificationOff: ImageVector
     get() {
-        if (_Notificationofffilled != null) {
-            return _Notificationofffilled!!
+        if (_notificationOff != null) {
+            return _notificationOff!!
         }
-        _Notificationofffilled = ImageVector.Builder(
-            name = "Notificationofffilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _notificationOff = handyIcon {
             handyPath {
                 moveTo(18.9986f, 13.9274f)
                 verticalLineTo(9.99735f)
@@ -66,7 +52,7 @@ public val Notificationofffilled: ImageVector
                 horizontalLineTo(9.5486f)
                 close()
             }
-        }.build()
-        return _Notificationofffilled!!
+        }
+        return _notificationOff!!
     }
 

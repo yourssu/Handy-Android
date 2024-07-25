@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _plus: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Plusfilled, null)
-}
-
-private var _Plusfilled: ImageVector? = null
-
-public val Plusfilled: ImageVector
+public val HandyIcons.Filled.Plus: ImageVector
     get() {
-        if (_Plusfilled != null) {
-            return _Plusfilled!!
+        if (_plus != null) {
+            return _plus!!
         }
-        _Plusfilled = ImageVector.Builder(
-            name = "Plusfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _plus = handyIcon {
             handyPath {
                 moveTo(20.5f, 11f)
                 horizontalLineTo(15f)
@@ -51,7 +37,7 @@ public val Plusfilled: ImageVector
                 curveTo(22f, 11.6716f, 21.3284f, 11f, 20.5f, 11f)
                 close()
             }
-        }.build()
-        return _Plusfilled!!
+        }
+        return _plus!!
     }
 

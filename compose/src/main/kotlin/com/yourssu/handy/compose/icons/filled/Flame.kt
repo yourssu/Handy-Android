@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _flame: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Flamefilled, null)
-}
-
-private var _Flamefilled: ImageVector? = null
-
-public val Flamefilled: ImageVector
+public val HandyIcons.Filled.Flame: ImageVector
     get() {
-        if (_Flamefilled != null) {
-            return _Flamefilled!!
+        if (_flame != null) {
+            return _flame!!
         }
-        _Flamefilled = ImageVector.Builder(
-            name = "Flamefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _flame = handyIcon {
             handyPath {
                 moveTo(12.0513f, 2f)
                 lineTo(10.6813f, 4.8f)
@@ -50,7 +36,7 @@ public val Flamefilled: ImageVector
                 curveTo(13.4713f, 3.97f, 12.0513f, 2f, 12.0513f, 2f)
                 close()
             }
-        }.build()
-        return _Flamefilled!!
+        }
+        return _flame!!
     }
 

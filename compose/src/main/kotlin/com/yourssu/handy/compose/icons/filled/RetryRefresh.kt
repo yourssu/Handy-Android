@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _retryRefresh: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Retryrefreshfilled, null)
-}
-
-private var _Retryrefreshfilled: ImageVector? = null
-
-public val Retryrefreshfilled: ImageVector
+public val HandyIcons.Filled.RetryRefresh: ImageVector
     get() {
-        if (_Retryrefreshfilled != null) {
-            return _Retryrefreshfilled!!
+        if (_retryRefresh != null) {
+            return _retryRefresh!!
         }
-        _Retryrefreshfilled = ImageVector.Builder(
-            name = "Retryrefreshfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _retryRefresh = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(7.56f, 2f)
                 horizontalLineTo(16.44f)
@@ -82,7 +48,7 @@ public val Retryrefreshfilled: ImageVector
                 curveTo(5.3696f, 9.6695f, 4.6944f, 12.6157f, 5.7085f, 15.2052f)
                 close()
             }
-        }.build()
-        return _Retryrefreshfilled!!
+        }
+        return _retryRefresh!!
     }
 

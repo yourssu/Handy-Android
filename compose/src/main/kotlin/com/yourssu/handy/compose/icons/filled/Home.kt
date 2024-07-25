@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _home: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Homefilled, null)
-}
-
-private var _Homefilled: ImageVector? = null
-
-public val Homefilled: ImageVector
+public val HandyIcons.Filled.Home: ImageVector
     get() {
-        if (_Homefilled != null) {
-            return _Homefilled!!
+        if (_home != null) {
+            return _home!!
         }
-        _Homefilled = ImageVector.Builder(
-            name = "Homefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _home = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(14.4537f, 3.8032f)
                 lineTo(19.4558f, 7.49793f)
@@ -70,7 +36,7 @@ public val Homefilled: ImageVector
                 curveTo(7.0263f, 16.6535f, 7.3444f, 16.9716f, 7.7368f, 16.9716f)
                 close()
             }
-        }.build()
-        return _Homefilled!!
+        }
+        return _home!!
     }
 

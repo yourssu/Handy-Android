@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
+private var _filter: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Filterfilled, null)
-}
-
-private var _Filterfilled: ImageVector? = null
-
-public val Filterfilled: ImageVector
+public val HandyIcons.Filled.Filter: ImageVector
     get() {
-        if (_Filterfilled != null) {
-            return _Filterfilled!!
+        if (_filter != null) {
+            return _filter!!
         }
-        _Filterfilled = ImageVector.Builder(
-            name = "Filterfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _filter = handyIcon {
             handyPath {
                 moveTo(4.89887f, 2f)
                 horizontalLineTo(19.0789f)
@@ -46,7 +32,7 @@ public val Filterfilled: ImageVector
                 curveTo(2.6694f, 2.7071f, 3.7263f, 2.0005f, 4.8989f, 2f)
                 close()
             }
-        }.build()
-        return _Filterfilled!!
+        }
+        return _filter!!
     }
 

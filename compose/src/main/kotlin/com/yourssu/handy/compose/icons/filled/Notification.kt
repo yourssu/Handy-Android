@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _notification: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Notificationfilled, null)
-}
-
-private var _Notificationfilled: ImageVector? = null
-
-public val Notificationfilled: ImageVector
+public val HandyIcons.Filled.Notification: ImageVector
     get() {
-        if (_Notificationfilled != null) {
-            return _Notificationfilled!!
+        if (_notification != null) {
+            return _notification!!
         }
-        _Notificationfilled = ImageVector.Builder(
-            name = "Notificationfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _notification = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(20.4066f, 13.97f)
                 curveTo(20.4094f, 14.5511f, 20.6649f, 15.1023f, 21.1066f, 15.48f)
@@ -69,7 +35,7 @@ public val Notificationfilled: ImageVector
                 horizontalLineTo(10.8866f)
                 close()
             }
-        }.build()
-        return _Notificationfilled!!
+        }
+        return _notification!!
     }
 

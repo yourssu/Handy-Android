@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _unlock: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Unlockfilled, null)
-}
-
-private var _Unlockfilled: ImageVector? = null
-
-public val Unlockfilled: ImageVector
+public val HandyIcons.Filled.Unlock: ImageVector
     get() {
-        if (_Unlockfilled != null) {
-            return _Unlockfilled!!
+        if (_unlock != null) {
+            return _unlock!!
         }
-        _Unlockfilled = ImageVector.Builder(
-            name = "Unlockfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _unlock = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(8.55151f, 7.78202f)
                 horizontalLineTo(14.6915f)
@@ -87,7 +53,7 @@ public val Unlockfilled: ImageVector
                 curveTo(13.0555f, 17.1464f, 13.1036f, 16.8358f, 13.0115f, 16.552f)
                 close()
             }
-        }.build()
-        return _Unlockfilled!!
+        }
+        return _unlock!!
     }
 

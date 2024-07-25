@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _mail: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Mailfilled, null)
-}
-
-private var _Mailfilled: ImageVector? = null
-
-public val Mailfilled: ImageVector
+public val HandyIcons.Filled.Mail: ImageVector
     get() {
-        if (_Mailfilled != null) {
-            return _Mailfilled!!
+        if (_mail != null) {
+            return _mail!!
         }
-        _Mailfilled = ImageVector.Builder(
-            name = "Mailfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _mail = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(6f, 4f)
                 horizontalLineTo(18f)
@@ -76,7 +42,7 @@ public val Mailfilled: ImageVector
                 curveTo(12.5245f, 14.0899f, 13.0204f, 13.8973f, 13.4f, 13.55f)
                 close()
             }
-        }.build()
-        return _Mailfilled!!
+        }
+        return _mail!!
     }
 

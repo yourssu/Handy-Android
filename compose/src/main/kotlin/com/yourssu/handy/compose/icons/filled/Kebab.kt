@@ -1,49 +1,21 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
+package com.yourssu.handy.compose.icons.filled
+
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.group
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
+import com.yourssu.handy.compose.icons.handyPath
 
+private var _kebab: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(KebabFilled, null)
-}
-
-private var _KebabFilled: ImageVector? = null
-
-public val KebabFilled: ImageVector
+public val HandyIcons.Filled.Kebab: ImageVector
     get() {
-        if (_KebabFilled != null) {
-            return _KebabFilled!!
+        if (_kebab != null) {
+            return _kebab!!
         }
-        _KebabFilled = ImageVector.Builder(
-            name = "KebabFilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _kebab = handyIcon {
             group {
-                path(
-                    fill = SolidColor(Color(0xFF1C1B1F)),
-                    fillAlpha = 1.0f,
-                    stroke = null,
-                    strokeAlpha = 1.0f,
-                    strokeLineWidth = 1.0f,
-                    strokeLineCap = StrokeCap.Butt,
-                    strokeLineJoin = StrokeJoin.Miter,
-                    strokeLineMiter = 1.0f,
-                    pathFillType = PathFillType.NonZero
-                ) {
+                handyPath {
                     moveTo(12f, 19.269f)
                     curveTo(11.5875f, 19.269f, 11.2344f, 19.1221f, 10.9408f, 18.8282f)
                     curveTo(10.6469f, 18.5346f, 10.5f, 18.1815f, 10.5f, 17.769f)
@@ -76,7 +48,7 @@ public val KebabFilled: ImageVector
                     close()
                 }
             }
-        }.build()
-        return _KebabFilled!!
+        }
+        return _kebab!!
     }
 

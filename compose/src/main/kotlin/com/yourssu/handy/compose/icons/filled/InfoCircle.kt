@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _infoCircle: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Infocirclefilled, null)
-}
-
-private var _Infocirclefilled: ImageVector? = null
-
-public val Infocirclefilled: ImageVector
+public val HandyIcons.Filled.InfoCircle: ImageVector
     get() {
-        if (_Infocirclefilled != null) {
-            return _Infocirclefilled!!
+        if (_infoCircle != null) {
+            return _infoCircle!!
         }
-        _Infocirclefilled = ImageVector.Builder(
-            name = "Infocirclefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _infoCircle = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(2f, 11.785f)
                 curveTo(2f, 6.3809f, 6.3809f, 2f, 11.785f, 2f)
@@ -72,7 +38,7 @@ public val Infocirclefilled: ImageVector
                 verticalLineTo(9.24998f)
                 close()
             }
-        }.build()
-        return _Infocirclefilled!!
+        }
+        return _infoCircle!!
     }
 

@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _share: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Sharefilled, null)
-}
-
-private var _Sharefilled: ImageVector? = null
-
-public val Sharefilled: ImageVector
+public val HandyIcons.Filled.Share: ImageVector
     get() {
-        if (_Sharefilled != null) {
-            return _Sharefilled!!
+        if (_share != null) {
+            return _share!!
         }
-        _Sharefilled = ImageVector.Builder(
-            name = "Sharefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _share = handyIcon {
             handyPath {
                 moveTo(16.2385f, 15.5943f)
                 curveTo(15.4946f, 15.131f, 14.5639f, 15.0856f, 13.7785f, 15.4743f)
@@ -50,7 +36,7 @@ public val Sharefilled: ImageVector
                 horizontalLineTo(16.2385f)
                 close()
             }
-        }.build()
-        return _Sharefilled!!
+        }
+        return _share!!
     }
 

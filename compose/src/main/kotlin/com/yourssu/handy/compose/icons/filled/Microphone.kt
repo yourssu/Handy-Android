@@ -1,33 +1,19 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _microphone: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Microphonefilled, null)
-}
-
-private var _Microphonefilled: ImageVector? = null
-
-public val Microphonefilled: ImageVector
+public val HandyIcons.Filled.Microphone: ImageVector
     get() {
-        if (_Microphonefilled != null) {
-            return _Microphonefilled!!
+        if (_microphone != null) {
+            return _microphone!!
         }
-        _Microphonefilled = ImageVector.Builder(
-            name = "Microphonefilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _microphone = handyIcon {
             handyPath {
                 moveTo(19.8413f, 11.4692f)
                 curveTo(19.8899f, 15.5983f, 16.7879f, 19.0859f, 12.6813f, 19.5192f)
@@ -66,7 +52,7 @@ public val Microphonefilled: ImageVector
                 curveTo(12.5542f, 10.9997f, 12.9996f, 10.6496f, 13f, 10.2177f)
                 close()
             }
-        }.build()
-        return _Microphonefilled!!
+        }
+        return _microphone!!
     }
 

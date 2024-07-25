@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _folder: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Folderfilled, null)
-}
-
-private var _Folderfilled: ImageVector? = null
-
-public val Folderfilled: ImageVector
+public val HandyIcons.Filled.Folder: ImageVector
     get() {
-        if (_Folderfilled != null) {
-            return _Folderfilled!!
+        if (_folder != null) {
+            return _folder!!
         }
-        _Folderfilled = ImageVector.Builder(
-            name = "Folderfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _folder = handyIcon {
             handyPath {
                 moveTo(21.9999f, 9.99536f)
                 verticalLineTo(18.2457f)
@@ -43,7 +29,7 @@ public val Folderfilled: ImageVector
                 curveTo(21.6494f, 8.0297f, 22.0084f, 8.9936f, 21.9999f, 9.9954f)
                 close()
             }
-        }.build()
-        return _Folderfilled!!
+        }
+        return _folder!!
     }
 

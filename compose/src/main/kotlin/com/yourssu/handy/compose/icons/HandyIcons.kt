@@ -17,7 +17,7 @@ object HandyIcons {
 }
 
 inline fun handyIcon(
-    name: String,
+    name: String = "",
     block: ImageVector.Builder.() -> Unit
 ): ImageVector = ImageVector.Builder(
     name = name,

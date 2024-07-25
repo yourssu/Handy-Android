@@ -1,44 +1,19 @@
-import androidx.compose.runtime.Composable
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _lock: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Lockfilled, null)
-}
-
-private var _Lockfilled: ImageVector? = null
-
-public val Lockfilled: ImageVector
+public val HandyIcons.Filled.Lock: ImageVector
     get() {
-        if (_Lockfilled != null) {
-            return _Lockfilled!!
+        if (_lock != null) {
+            return _lock!!
         }
-        _Lockfilled = ImageVector.Builder(
-            name = "Lockfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _lock = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(16.5515f, 7.12202f)
                 verticalLineTo(4.00202f)
@@ -81,7 +56,7 @@ public val Lockfilled: ImageVector
                 verticalLineTo(6.78202f)
                 close()
             }
-        }.build()
-        return _Lockfilled!!
+        }
+        return _lock!!
     }
 

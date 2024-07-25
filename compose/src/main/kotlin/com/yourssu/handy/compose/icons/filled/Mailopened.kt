@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _mailOpened: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Mailopenedfilled, null)
-}
-
-private var _Mailopenedfilled: ImageVector? = null
-
-public val Mailopenedfilled: ImageVector
+public val HandyIcons.Filled.MailOpened: ImageVector
     get() {
-        if (_Mailopenedfilled != null) {
-            return _Mailopenedfilled!!
+        if (_mailOpened != null) {
+            return _mailOpened!!
         }
-        _Mailopenedfilled = ImageVector.Builder(
-            name = "Mailopenedfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _mailOpened = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(13.29f, 2.52501f)
                 lineTo(20.14f, 7.33501f)
@@ -80,7 +46,7 @@ public val Mailopenedfilled: ImageVector
                 curveTo(12.4424f, 16.5884f, 12.9753f, 16.3809f, 13.38f, 16.005f)
                 close()
             }
-        }.build()
-        return _Mailopenedfilled!!
+        }
+        return _mailOpened!!
     }
 

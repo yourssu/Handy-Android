@@ -1,31 +1,19 @@
-import androidx.compose.foundation.Image
-import androidx.compose.runtime.Composable
+package com.yourssu.handy.compose.icons.filled
+
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _search: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(SearchFilled, null)
-}
-
-private var _SearchFilled: ImageVector? = null
-
-public val SearchFilled: ImageVector
+public val HandyIcons.Filled.Search: ImageVector
     get() {
-        if (_SearchFilled != null) {
-            return _SearchFilled!!
+        if (_search != null) {
+            return _search!!
         }
-        _SearchFilled = ImageVector.Builder(
-            name = "SearchFilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _search = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(19.9382f, 7.66937f)
                 curveTo(18.512f, 4.2447f, 15.1704f, 2.0101f, 11.4607f, 2.0002f)
@@ -46,7 +34,7 @@ public val SearchFilled: ImageVector
                 curveTo(9.2512f, 6.7846f, 9.384f, 7.458f, 9.14f, 8.0418f)
                 close()
             }
-        }.build()
-        return _SearchFilled!!
+        }
+        return _search!!
     }
 

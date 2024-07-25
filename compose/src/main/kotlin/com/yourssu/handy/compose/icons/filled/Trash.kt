@@ -1,44 +1,19 @@
-import androidx.compose.runtime.Composable
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _trash: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Trashfilled, null)
-}
-
-private var _Trashfilled: ImageVector? = null
-
-public val Trashfilled: ImageVector
+public val HandyIcons.Filled.Trash: ImageVector
     get() {
-        if (_Trashfilled != null) {
-            return _Trashfilled!!
+        if (_trash != null) {
+            return _trash!!
         }
-        _Trashfilled = ImageVector.Builder(
-            name = "Trashfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _trash = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(18.75f, 5f)
                 horizontalLineTo(16.08f)
@@ -100,7 +75,7 @@ public val Trashfilled: ImageVector
                 verticalLineTo(13.05f)
                 close()
             }
-        }.build()
-        return _Trashfilled!!
+        }
+        return _trash!!
     }
 

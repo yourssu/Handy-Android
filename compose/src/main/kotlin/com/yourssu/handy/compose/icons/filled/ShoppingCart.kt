@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _shoppingCart: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Shoppingcartfilled, null)
-}
-
-private var _Shoppingcartfilled: ImageVector? = null
-
-public val Shoppingcartfilled: ImageVector
+public val HandyIcons.Filled.ShoppingCart: ImageVector
     get() {
-        if (_Shoppingcartfilled != null) {
-            return _Shoppingcartfilled!!
+        if (_shoppingCart != null) {
+            return _shoppingCart!!
         }
-        _Shoppingcartfilled = ImageVector.Builder(
-            name = "Shoppingcartfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _shoppingCart = handyIcon {
             handyPath {
                 moveTo(20.6797f, 14.4001f)
                 lineTo(21.2797f, 10.2601f)
@@ -63,7 +49,7 @@ public val Shoppingcartfilled: ImageVector
                 curveTo(18.4297f, 18.8278f, 17.982f, 18.3801f, 17.4297f, 18.3801f)
                 close()
             }
-        }.build()
-        return _Shoppingcartfilled!!
+        }
+        return _shoppingCart!!
     }
 

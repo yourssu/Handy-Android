@@ -1,53 +1,19 @@
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-
 package com.yourssu.handy.compose.icons.filled
 
+import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.yourssu.handy.compose.icons.handyPath
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
 
-import com.yourssu.handy.compose.icons.handyPath
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.tooling.preview.Preview
+private var _subtract: ImageVector? = null
 
-
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Subtractfilled, null)
-}
-
-private var _Subtractfilled: ImageVector? = null
-
-public val Subtractfilled: ImageVector
+public val HandyIcons.Filled.Subtract: ImageVector
     get() {
-        if (_Subtractfilled != null) {
-            return _Subtractfilled!!
+        if (_subtract != null) {
+            return _subtract!!
         }
-        _Subtractfilled = ImageVector.Builder(
-            name = "Subtractfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _subtract = handyIcon {
             handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(11.44f, 2f)
                 horizontalLineTo(12.56f)
@@ -68,7 +34,7 @@ public val Subtractfilled: ImageVector
                 curveTo(7.25f, 12.4142f, 7.5858f, 12.75f, 8f, 12.75f)
                 close()
             }
-        }.build()
-        return _Subtractfilled!!
+        }
+        return _subtract!!
     }
 

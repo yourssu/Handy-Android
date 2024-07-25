@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _menu: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Menufilled, null)
-}
-
-private var _Menufilled: ImageVector? = null
-
-public val Menufilled: ImageVector
+public val HandyIcons.Filled.Menu: ImageVector
     get() {
-        if (_Menufilled != null) {
-            return _Menufilled!!
+        if (_menu != null) {
+            return _menu!!
         }
-        _Menufilled = ImageVector.Builder(
-            name = "Menufilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _menu = handyIcon {
             handyPath {
                 moveTo(11f, 7.5f)
                 curveTo(11f, 9.433f, 9.433f, 11f, 7.5f, 11f)
@@ -59,7 +45,7 @@ public val Menufilled: ImageVector
                 curveTo(19.433f, 14f, 21f, 15.567f, 21f, 17.5f)
                 close()
             }
-        }.build()
-        return _Menufilled!!
+        }
+        return _menu!!
     }
 

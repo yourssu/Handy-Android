@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _heart: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Heartfilled, null)
-}
-
-private var _Heartfilled: ImageVector? = null
-
-public val Heartfilled: ImageVector
+public val HandyIcons.Filled.Heart: ImageVector
     get() {
-        if (_Heartfilled != null) {
-            return _Heartfilled!!
+        if (_heart != null) {
+            return _heart!!
         }
-        _Heartfilled = ImageVector.Builder(
-            name = "Heartfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _heart = handyIcon {
             handyPath {
                 moveTo(22.1f, 9.1f)
                 curveTo(22f, 5.7f, 19.3f, 3f, 15.9f, 3f)
@@ -45,7 +31,7 @@ public val Heartfilled: ImageVector
                 verticalLineTo(9.1f)
                 close()
             }
-        }.build()
-        return _Heartfilled!!
+        }
+        return _heart!!
     }
 

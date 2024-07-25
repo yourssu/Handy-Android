@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _pin: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Pinfilled, null)
-}
-
-private var _Pinfilled: ImageVector? = null
-
-public val Pinfilled: ImageVector
+public val HandyIcons.Filled.Pin: ImageVector
     get() {
-        if (_Pinfilled != null) {
-            return _Pinfilled!!
+        if (_pin != null) {
+            return _pin!!
         }
-        _Pinfilled = ImageVector.Builder(
-            name = "Pinfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _pin = handyIcon {
             handyPath {
                 moveTo(19.3493f, 9.1637f)
                 lineTo(14.7993f, 4.6137f)
@@ -51,7 +37,7 @@ public val Pinfilled: ImageVector
                 curveTo(20.1808f, 11.3487f, 20.1808f, 9.9987f, 19.3493f, 9.1637f)
                 close()
             }
-        }.build()
-        return _Pinfilled!!
+        }
+        return _pin!!
     }
 

@@ -1,32 +1,18 @@
 package com.yourssu.handy.compose.icons.filled
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.icons.handyPath
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.handyIcon
 
+private var _star: ImageVector? = null
 
-@Preview
-@Composable
-private fun VectorPreview() {
-    Image(Starfilled, null)
-}
-
-private var _Starfilled: ImageVector? = null
-
-public val Starfilled: ImageVector
+public val HandyIcons.Filled.Star: ImageVector
     get() {
-        if (_Starfilled != null) {
-            return _Starfilled!!
+        if (_star != null) {
+            return _star!!
         }
-        _Starfilled = ImageVector.Builder(
-            name = "Starfilled",
-            defaultWidth = 24.dp,
-            defaultHeight = 24.dp,
-            viewportWidth = 24f,
-            viewportHeight = 24f
-        ).apply {
+        _star = handyIcon {
             handyPath {
                 moveTo(14.4399f, 4.53675f)
                 lineTo(15.0999f, 6.53675f)
@@ -56,7 +42,7 @@ public val Starfilled: ImageVector
                 curveTo(13.2727f, 2.9955f, 14.1354f, 3.6158f, 14.4399f, 4.5367f)
                 close()
             }
-        }.build()
-        return _Starfilled!!
+        }
+        return _star!!
     }
 
