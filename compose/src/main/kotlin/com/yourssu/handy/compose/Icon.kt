@@ -71,7 +71,6 @@ fun Icon(
 }
 
 @Composable
-@NonRestartableComposable
 fun Icon(
     painter: Painter,
     modifier: Modifier = Modifier,
