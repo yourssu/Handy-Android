@@ -16,8 +16,8 @@ import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.filled.CheckCircleSelected
-import com.yourssu.handy.compose.icons.line.CheckCircleUnselected
+import com.yourssu.handy.compose.icons.button.CheckCircleSelected
+import com.yourssu.handy.compose.icons.button.CheckCircleUnselected
 
 sealed class CheckBoxSize(
     val typo: HandyTextStyle,

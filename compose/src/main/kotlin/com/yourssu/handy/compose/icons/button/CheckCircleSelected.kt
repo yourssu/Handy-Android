@@ -1,4 +1,4 @@
-package com.yourssu.handy.compose.icons.line
+package com.yourssu.handy.compose.icons.button
 
 import androidx.compose.ui.graphics.PathFillType
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -6,31 +6,21 @@ import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.handyIcon
 import com.yourssu.handy.compose.icons.handyPath
 
-private var _checkCircleUnselected: ImageVector? = null
+private var _checkCircleSelected: ImageVector? = null
 
-public val HandyIcons.Line.CheckCircleUnselected: ImageVector
+public val HandyIcons.Filled.CheckCircleSelected: ImageVector
     get() {
-        if (_checkCircleUnselected != null) {
-            return _checkCircleUnselected!!
+        if (_checkCircleSelected != null) {
+            return _checkCircleSelected!!
         }
-        _checkCircleUnselected = handyIcon {
-            handyPath(
-                pathFillType = PathFillType.EvenOdd
-            ) {
+        _checkCircleSelected = handyIcon {
+            handyPath(pathFillType = PathFillType.EvenOdd) {
                 moveTo(12f, 0f)
                 arcTo(12f, 12f, 0f, false, true, 24f, 12f)
                 arcTo(12f, 12f, 0f, false, true, 12f, 24f)
                 arcTo(12f, 12f, 0f, false, true, 0f, 12f)
                 arcTo(12f, 12f, 0f, false, true, 12f, 0f)
                 close()
-                moveTo(12f, 1.5f)
-                arcTo(10.5f, 10.5f, 0f, true, false, 12f, 22.5f)
-                arcTo(10.5f, 10.5f, 0f, true, false, 12f, 1.5f)
-                close()
-            }
-            handyPath(
-                pathFillType = PathFillType.NonZero
-            ) {
                 moveTo(9.964f, 16.156f)
                 curveTo(9.733f, 16.156f, 9.509f, 16.076f, 9.331f, 15.93f)
                 lineTo(6.344f, 13.483f)
@@ -46,5 +36,5 @@ public val HandyIcons.Line.CheckCircleUnselected: ImageVector
                 close()
             }
         }
-        return _checkCircleUnselected!!
+        return _checkCircleSelected!!
     }
