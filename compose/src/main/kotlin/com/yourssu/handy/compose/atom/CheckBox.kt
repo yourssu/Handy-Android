@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,45 +13,27 @@ import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.IconSize
 import com.yourssu.handy.compose.Text
+import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.CheckCircleSelected
 import com.yourssu.handy.compose.icons.line.CheckCircleUnselected
-import com.yourssu.handy.compose.states.ButtonSizeState
 
-enum class CheckBoxSize {
-    SMALL, MEDIUM, LARGE
-}
-
-@Stable
-private fun checkBoxSizeStateBySize(
-    size: CheckBoxSize
-): ButtonSizeState = when (size) {
-    CheckBoxSize.SMALL -> ButtonSizeState(
-        typo = HandyTypography.B5Rg12,
-        iconSize = IconSize.XS,
-        betweenSpace = 8.dp
-    )
-
-    CheckBoxSize.MEDIUM -> ButtonSizeState(
-        typo = HandyTypography.B3Rg14,
-        iconSize = IconSize.S,
-        betweenSpace = 8.dp
-    )
-
-    CheckBoxSize.LARGE -> ButtonSizeState(
-        typo = HandyTypography.B1Rg16,
-        iconSize = IconSize.M,
-        betweenSpace = 8.dp
-    )
+sealed class CheckBoxSize(
+    val typo: HandyTextStyle,
+    val iconSize: IconSize,
+) {
+    data object Small : CheckBoxSize(typo = HandyTypography.B5Rg12, iconSize = IconSize.XS)
+    data object Medium : CheckBoxSize(typo = HandyTypography.B3Rg14, iconSize = IconSize.S)
+    data object Large : CheckBoxSize(typo = HandyTypography.B1Rg16, iconSize = IconSize.M)
 }
 
 @Composable
 fun CheckBox(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
-    sizeType: CheckBoxSize,
     modifier: Modifier = Modifier,
+    sizeType: CheckBoxSize = CheckBoxSize.Medium,
     text: String = "",
     isDisabled: Boolean = false,
     contentColor: Color = HandyTheme.colors.checkBoxSelected
@@ -69,10 +50,8 @@ fun CheckBox(
         else -> HandyTheme.colors.lineBasicMedium
     }
 
-    val sizeState = checkBoxSizeStateBySize(size = sizeType)
-    val iconSize = sizeState.iconSize
-    val typo = sizeState.typo
-    val betweenSpace = sizeState.betweenSpace
+    val iconSize = sizeType.iconSize
+    val typo = sizeType.typo
 
     Row(
         modifier = modifier
@@ -84,7 +63,7 @@ fun CheckBox(
             iconSize = iconSize,
             tint = iconColor
         )
-        Spacer(modifier = Modifier.width(betweenSpace))
+        if(text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
         Text(
             text = text,
             style = typo
