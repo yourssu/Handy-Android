@@ -20,6 +20,7 @@ import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.CheckCircleSelected
+import com.yourssu.handy.compose.icons.line.CheckCircleUnselected
 import com.yourssu.handy.compose.states.ButtonSizeState
 
 enum class CheckBoxSize {
@@ -59,7 +60,7 @@ private fun checkBoxColor(
 ): Color = when {
     checked -> contentColor
     isDisabled -> HandyTheme.colors.checkBoxDisabled
-    else -> HandyTheme.colors.checkBoxUnselected
+    else -> Color.Red
 }
 
 @Composable
@@ -75,7 +76,7 @@ fun CheckBox(
     val icon = when {
         checked -> HandyIcons.Filled.CheckCircleSelected
         isDisabled -> HandyIcons.Filled.CheckCircleSelected
-        else -> HandyIcons.Filled.CheckCircleSelected
+        else -> HandyIcons.Line.CheckCircleUnselected
     }
 
     val iconColor = checkBoxColor(
@@ -98,7 +99,7 @@ fun CheckBox(
         Icon(
             imageVector = icon,
             iconSize = iconSize,
-            tint = iconColor
+            tint = Color.Unspecified
         )
         Spacer(modifier = Modifier.width(betweenSpace))
         Text(

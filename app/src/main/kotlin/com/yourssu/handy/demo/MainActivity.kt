@@ -21,6 +21,8 @@ class MainActivity : ComponentActivity() {
             Column {
                 Spacer(modifier = Modifier.padding(100.dp))
                 CheckBox(checked = true, onCheckedChange = {}, sizeType = CheckBoxSize.MEDIUM, text = "selected")
+                CheckBox(checked = false, onCheckedChange = {}, sizeType = CheckBoxSize.MEDIUM, text = "unselected")
+                CheckBox(checked = false, isDisabled = true, onCheckedChange = {}, sizeType = CheckBoxSize.MEDIUM, text = "disabled")
             }
         }
     }
