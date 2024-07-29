@@ -28,7 +28,6 @@ enum class CheckBoxSize {
 }
 
 @Stable
-@Composable
 private fun checkBoxSizeStateBySize(
     size: CheckBoxSize
 ): ButtonSizeState = when (size) {
@@ -92,8 +91,7 @@ fun CheckBox(
 
     Row(
         modifier = modifier
-            .wrapContentWidth()
-            .padding(bottom = 16.dp),
+            .wrapContentWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -106,33 +104,5 @@ fun CheckBox(
             text = text,
             style = typo
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun CheckBoxPreview() {
-    HandyTheme {
-        Column {
-            CheckBox(
-                checked = true,
-                onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
-                text = "selected"
-            )
-            CheckBox(
-                checked = false,
-                onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
-                text = "unselected"
-            )
-            CheckBox(
-                checked = false,
-                isDisabled = true,
-                onCheckedChange = {},
-                sizeType = CheckBoxSize.MEDIUM,
-                text = "disabled"
-            )
-        }
     }
 }
