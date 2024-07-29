@@ -1,9 +1,7 @@
 package com.yourssu.handy.compose.atom
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
@@ -11,7 +9,6 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
@@ -50,18 +47,6 @@ private fun checkBoxSizeStateBySize(
     )
 }
 
-@Stable
-@Composable
-private fun checkBoxColor(
-    contentColor: Color,
-    checked: Boolean,
-    isDisabled: Boolean
-): Color = when {
-    checked -> contentColor
-    isDisabled -> HandyTheme.colors.checkBoxDisabled
-    else -> Color.Red
-}
-
 @Composable
 fun CheckBox(
     checked: Boolean,
@@ -78,11 +63,11 @@ fun CheckBox(
         else -> HandyIcons.Line.CheckCircleUnselected
     }
 
-    val iconColor = checkBoxColor(
-        contentColor = contentColor,
-        checked = checked,
-        isDisabled = isDisabled
-    )
+    val iconColor = when {
+        checked -> contentColor
+        isDisabled -> HandyTheme.colors.checkBoxDisabled
+        else -> HandyTheme.colors.lineBasicMedium
+    }
 
     val sizeState = checkBoxSizeStateBySize(size = sizeType)
     val iconSize = sizeState.iconSize
@@ -97,7 +82,7 @@ fun CheckBox(
         Icon(
             imageVector = icon,
             iconSize = iconSize,
-            tint = Color.Unspecified
+            tint = iconColor
         )
         Spacer(modifier = Modifier.width(betweenSpace))
         Text(
