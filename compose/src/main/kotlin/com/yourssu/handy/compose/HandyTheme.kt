@@ -21,7 +21,7 @@ fun HandyTheme(
     }
     CompositionLocalProvider(
         LocalColorScheme provides colors,
-       LocalContentColor provides colors.textBasicPrimary,
+        LocalContentColor provides colors.textBasicPrimary,
     ) {
         content()
     }
