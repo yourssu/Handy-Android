@@ -98,7 +98,6 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
@@ -112,8 +111,6 @@ fun Surface(
                     border = border,
                 )
                 .clickable(
-                    interactionSource = interactionSource,
-                    indication = null,
                     enabled = enabled,
                     onClick = onClick,
                 ),
@@ -137,7 +134,6 @@ fun Surface(
  * @param backgroundColor Surface 배경 색상. 기본값 : bgBasicDefault(#0xFFFFFFFF)
  * @param contentColor Surface 내부 content 색상
  * @param border Surface 테두리 굵기
- * @param interactionSource Surface 상호작용 소스
  * @param content Surface 내부 content
  **/
 @Composable
@@ -152,7 +148,6 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -170,8 +165,6 @@ fun Surface(
                     selected = selected,
                     onClick = onClick,
                     enabled = enabled,
-                    interactionSource = interactionSource,
-                    indication = null
                 ),
             propagateMinConstraints = true
         ) {
@@ -193,7 +186,6 @@ fun Surface(
  * @param backgroundColor : Surface 배경 색상. 기본값 : bgBasicDefault(#0xFFFFFFFF)
  * @param contentColor : Surface 내부 content 색상
  * @param border : Surface 테두리 굵기
- * @param interactionSource : Surface 상호작용 소스
  * @param content : Surface 내부 content
  **/
 
@@ -209,7 +201,6 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -225,8 +216,6 @@ fun Surface(
                 )
                 .toggleable(
                     value = checked,
-                    interactionSource = interactionSource,
-                    indication = null,
                     enabled = enabled,
                     onValueChange = onCheckedChange
                 ),
