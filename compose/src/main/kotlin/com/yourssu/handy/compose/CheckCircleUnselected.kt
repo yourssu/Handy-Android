@@ -1,4 +1,4 @@
-package com.yourssu.handy.compose.atom
+package com.yourssu.handy.compose
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType

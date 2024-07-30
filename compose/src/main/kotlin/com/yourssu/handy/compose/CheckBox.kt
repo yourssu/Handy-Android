@@ -1,4 +1,4 @@
-package com.yourssu.handy.compose.atom
+package com.yourssu.handy.compose
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,10 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.yourssu.handy.compose.HandyTheme
-import com.yourssu.handy.compose.Icon
-import com.yourssu.handy.compose.IconSize
-import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
 

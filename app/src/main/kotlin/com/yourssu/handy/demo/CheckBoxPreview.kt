@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.yourssu.handy.compose.HandyTheme
-import com.yourssu.handy.compose.atom.CheckBox
-import com.yourssu.handy.compose.atom.CheckBoxSize
+import com.yourssu.handy.compose.CheckBox
+import com.yourssu.handy.compose.CheckBoxSize
 
 @Preview(showBackground = true)
 @Composable
