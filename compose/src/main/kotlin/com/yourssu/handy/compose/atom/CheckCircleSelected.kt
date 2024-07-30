@@ -1,20 +1,31 @@
-package com.yourssu.handy.compose.icons.button
+package com.yourssu.handy.compose.atom
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.handyIcon
-import com.yourssu.handy.compose.icons.handyPath
+import androidx.compose.ui.graphics.vector.ImageVector.Builder
+import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.unit.dp
 
 private var _checkCircleSelected: ImageVector? = null
 
-public val HandyIcons.Filled.CheckCircleSelected: ImageVector
+public val CheckCircleSelected: ImageVector
     get() {
         if (_checkCircleSelected != null) {
             return _checkCircleSelected!!
         }
-        _checkCircleSelected = handyIcon {
-            handyPath(pathFillType = PathFillType.EvenOdd) {
+        _checkCircleSelected = Builder(
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        ).apply {
+
+            path(
+                fill = SolidColor(Color.Black),
+                pathFillType = PathFillType.EvenOdd
+            ) {
                 moveTo(12f, 0f)
                 arcTo(12f, 12f, 0f, false, true, 24f, 12f)
                 arcTo(12f, 12f, 0f, false, true, 12f, 24f)
@@ -35,6 +46,6 @@ public val HandyIcons.Filled.CheckCircleSelected: ImageVector
                 curveTo(10.46f, 16.062f, 10.217f, 16.158f, 9.964f, 16.156f)
                 close()
             }
-        }
+        }.build()
         return _checkCircleSelected!!
     }

@@ -15,9 +15,6 @@ import com.yourssu.handy.compose.IconSize
 import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
-import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.button.CheckCircleSelected
-import com.yourssu.handy.compose.icons.button.CheckCircleUnselected
 
 sealed class CheckBoxSize(
     val typo: HandyTextStyle,
@@ -39,9 +36,9 @@ fun CheckBox(
     contentColor: Color = HandyTheme.colors.checkBoxSelected
 ) {
     val icon = when {
-        checked -> HandyIcons.Filled.CheckCircleSelected
-        isDisabled -> HandyIcons.Filled.CheckCircleSelected
-        else -> HandyIcons.Line.CheckCircleUnselected
+        checked -> CheckCircleSelected
+        isDisabled -> CheckCircleSelected
+        else -> CheckCircleUnselected
     }
 
     val iconColor = when {
@@ -63,7 +60,7 @@ fun CheckBox(
             iconSize = iconSize,
             tint = iconColor
         )
-        if(text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
+        if (text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
         Text(
             text = text,
             style = typo
