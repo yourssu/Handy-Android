@@ -46,20 +46,25 @@ fun CheckBox(
     val iconSize = sizeType.iconSize
     val typo = sizeType.typo
 
-    Row(
-        modifier = modifier
-            .wrapContentWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            iconSize = iconSize,
-            tint = iconColor
-        )
-        if (text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = text,
-            style = typo
-        )
+    Surface(
+        checked = checked,
+        onCheckedChange = onCheckedChange,
+        modifier = modifier,
+        enabled = !isDisabled,
+    ){
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Icon(
+                imageVector = icon,
+                iconSize = iconSize,
+                tint = iconColor
+            )
+            if (text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = text,
+                style = typo
+            )
+        }
     }
 }

@@ -54,7 +54,6 @@ public val CheckCircleUnselected: ImageVector
                 curveTo(10.46f, 16.062f, 10.217f, 16.158f, 9.964f, 16.156f)
                 close()
             }
-
         }.build()
         return _checkCircleUnselected!!
     }

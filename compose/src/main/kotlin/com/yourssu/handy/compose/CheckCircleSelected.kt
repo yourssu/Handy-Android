@@ -21,7 +21,6 @@ public val CheckCircleSelected: ImageVector
             viewportWidth = 24f,
             viewportHeight = 24f
         ).apply {
-
             path(
                 fill = SolidColor(Color.Black),
                 pathFillType = PathFillType.EvenOdd
