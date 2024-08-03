@@ -28,11 +28,11 @@ fun CheckBox(
     modifier: Modifier = Modifier,
     sizeType: CheckBoxSize = CheckBoxSize.Medium,
     text: String = "",
-    isDisabled: Boolean = false,
+    enabled: Boolean = true,
 ) {
     val icon = when {
         checked -> R.drawable.ic_checkcircle_filled
-        isDisabled -> R.drawable.ic_checkcircle_disabled
+        !enabled -> R.drawable.ic_checkcircle_disabled
         else -> R.drawable.ic_checkcircle_line
     }
 
@@ -43,7 +43,7 @@ fun CheckBox(
         checked = checked,
         onCheckedChange = onCheckedChange,
         modifier = modifier,
-        enabled = !isDisabled,
+        enabled = enabled,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically

@@ -25,7 +25,7 @@ private fun CheckBoxPreview() {
             )
             CheckBox(
                 checked = false,
-                isDisabled = true,
+                enabled = false,
                 onCheckedChange = {},
                 sizeType = CheckBoxSize.Large,
                 text = "disabled"
