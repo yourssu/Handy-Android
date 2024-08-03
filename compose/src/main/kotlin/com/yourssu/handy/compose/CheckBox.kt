@@ -29,11 +29,18 @@ fun CheckBox(
     sizeType: CheckBoxSize = CheckBoxSize.Medium,
     text: String = "",
     enabled: Boolean = true,
+    contentColor: Color = HandyTheme.colors.checkBoxSelected
 ) {
     val icon = when {
         checked -> R.drawable.ic_checkcircle_filled
         !enabled -> R.drawable.ic_checkcircle_disabled
         else -> R.drawable.ic_checkcircle_line
+    }
+
+    val iconColor = when {
+        checked -> contentColor
+        !enabled -> HandyTheme.colors.checkBoxDisabled
+        else -> HandyTheme.colors.lineBasicMedium
     }
 
     val iconSize = sizeType.iconSize
@@ -50,14 +57,16 @@ fun CheckBox(
         ) {
             Icon(
                 painter = painterResource(id = icon),
-                tint = Color.Unspecified,
+                tint = iconColor,
                 iconSize = iconSize,
             )
-            if (text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = text,
-                style = typo
-            )
+            if (text.isNotEmpty()) {
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = text,
+                    style = typo
+                )
+            }
         }
     }
 }
