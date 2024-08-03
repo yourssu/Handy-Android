@@ -3,11 +3,11 @@ package com.yourssu.handy.compose
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.HandyTextStyle
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -29,18 +29,11 @@ fun CheckBox(
     sizeType: CheckBoxSize = CheckBoxSize.Medium,
     text: String = "",
     isDisabled: Boolean = false,
-    contentColor: Color = HandyTheme.colors.checkBoxSelected
 ) {
     val icon = when {
-        checked -> CheckCircleSelected
-        isDisabled -> CheckCircleSelected
-        else -> CheckCircleUnselected
-    }
-
-    val iconColor = when {
-        checked -> contentColor
-        isDisabled -> HandyTheme.colors.checkBoxDisabled
-        else -> HandyTheme.colors.lineBasicMedium
+        checked -> R.drawable.ic_checkcircle_filled
+        isDisabled -> R.drawable.ic_checkcircle_disabled
+        else -> R.drawable.ic_checkcircle_line
     }
 
     val iconSize = sizeType.iconSize
@@ -51,14 +44,14 @@ fun CheckBox(
         onCheckedChange = onCheckedChange,
         modifier = modifier,
         enabled = !isDisabled,
-    ){
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
             Icon(
-                imageVector = icon,
+                painter = painterResource(id = icon),
+                tint = Color.Unspecified,
                 iconSize = iconSize,
-                tint = iconColor
             )
             if (text.isNotEmpty()) Spacer(modifier = Modifier.width(8.dp))
             Text(
