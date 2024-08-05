@@ -1,7 +1,6 @@
 package com.yourssu.handy.compose
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -28,16 +26,48 @@ import com.yourssu.handy.compose.foundation.HandyTypography
  *
  */
 
+@Composable
+fun Tab(
+    tabs: List<String>,
+    selectedTabIndex: Int,
+    onTabSelected: (index: Int) -> Unit,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
+    unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary
+) {
+    if (tabs.size <= 3) {
+        FixedTab(
+            selectedTabIndex = selectedTabIndex,
+            backgroundColor = backgroundColor,
+            contentColor = selectedContentColor
+        ) {
+            tabs.forEachIndexed { index, title ->
+                TabTitle(
+                    text = title,
+                    selected = index == selectedTabIndex,
+                    onClick = {
+                        onTabSelected(index)
+                    },
+                    selectedContentColor = selectedContentColor,
+                    unselectedContentColor = unselectedContentColor
+                )
+            }
+        }
+    } else {
+        //TODO : ScrollableTab
+    }
+}
+
 private val tabHeight = 48.dp
 
 @Composable
-fun Tab(
+fun TabTitle(
     selected: Boolean,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     text: String,
-    selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
-    unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary
+    selectedContentColor: Color,
+    unselectedContentColor: Color,
+    modifier: Modifier = Modifier,
 ) {
     val color = if (selected) selectedContentColor else unselectedContentColor
 
@@ -45,7 +75,7 @@ fun Tab(
         selected = selected,
         onClick = onClick,
         modifier = modifier.height(tabHeight),
-        enabled = true
+        enabled = true,
     ) {
         Box(
             contentAlignment = Alignment.Center
@@ -62,9 +92,9 @@ fun Tab(
 @Composable
 fun FixedTab(
     selectedTabIndex: Int,
+    backgroundColor: Color,
+    contentColor: Color,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
-    contentColor: Color = HandyTheme.colors.bgBasicBlack,
     tabs: @Composable () -> Unit
 ) {
     Surface(
@@ -82,14 +112,17 @@ fun FixedTab(
                 )
                 val tabCount = measurableTabs.size
 
-                require(tabCount in 2..4) {
-                    "Tab count should be between 2 and 4"
+                require(tabCount in 2..3) {
+                    "Tab count should be between 2 and 3"
                 }
 
                 val tabWidth = (tabBarWidth / tabCount)
                 val placeableTabs = measurableTabs.map {
                     it.measure(
-                        constraints.copy(minWidth = tabWidth, maxWidth = tabWidth)
+                        constraints.copy(
+                            minWidth = tabWidth,
+                            maxWidth = tabWidth
+                        )
                     )
                 }
                 val tabBarHeight = placeableTabs.first().height
@@ -113,16 +146,19 @@ fun FixedTab(
                         slotId = TabSlots.Divider,
                         content = {
                             TabBarDefaults.Indicator(
-                                Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex])
+                                color = contentColor,
+                                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex])
                             )
                         }
                     ).forEach {
                         val placeableIndicator = it.measure(
                             Constraints.fixed(tabBarWidth, tabBarHeight)
                         )
-                        placeableIndicator.placeRelative(x = 0, y = 0)
+                        placeableIndicator.placeRelative(
+                            x = 0,
+                            y = 0
+                        )
                     }
-
                 }
             }
         )
@@ -130,7 +166,9 @@ fun FixedTab(
 }
 
 @Composable
-fun ScrollableTab() {
+fun ScrollableTab(
+
+) {
 
 }
 
@@ -166,31 +204,31 @@ class TabPosition internal constructor(val left: Dp, val width: Dp) {
 }
 
 object TabBarDefaults {
-    /**
-     * Default [Divider], which will be positioned at the bottom of the TabBar, underneath the
-     * indicator.
-     *
-     * @param direction direction of the divider
-     * @param thickness thickness of the divider
-     */
-    @Composable
-    fun Divider(
-        direction: Direction = Direction.Horizontal,
-        thickness: Thickness = Thickness.Thin,
-        color: Color = HandyTheme.colors.bgBasicBlack
-    ) {
-        if (direction == Direction.Horizontal) {
-            CustomHorizontalDivider(
-                thickness = if (thickness == Thickness.Thin) 1.dp else 2.dp,
-                color = color
-            )
-        } else {
-            CustomVerticalDivider(
-                thickness = if (thickness == Thickness.Thin) 1.dp else 2.dp,
-                color = color
-            )
-        }
-    }
+//    /**
+//     * Default [Divider], which will be positioned at the bottom of the TabBar, underneath the
+//     * indicator.
+//     *
+//     * @param direction direction of the divider
+//     * @param thickness thickness of the divider
+//     */
+//    @Composable
+//    fun Divider(
+//        direction: Direction = Direction.Horizontal,
+//        thickness: Thickness = Thickness.Thin,
+//        color: Color = HandyTheme.colors.bgBasicBlack
+//    ) {
+//        if (direction == Direction.Horizontal) {
+//            CustomHorizontalDivider(
+//                thickness = if (thickness == Thickness.Thin) 1.dp else 2.dp,
+//                color = color
+//            )
+//        } else {
+//            CustomVerticalDivider(
+//                thickness = if (thickness == Thickness.Thin) 1.dp else 2.dp,
+//                color = color
+//            )
+//        }
+//    }
 
     /**
      * Default indicator, which will be positioned at the bottom of the TabBar, on top of the
