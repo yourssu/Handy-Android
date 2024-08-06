@@ -29,6 +29,9 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import com.yourssu.handy.compose.TabBarDefaults.fixedTabIndicatorPadding
+import com.yourssu.handy.compose.TabBarDefaults.scrollableTabIndicatorPadding
+import com.yourssu.handy.compose.TabBarDefaults.tabHeight
 import com.yourssu.handy.compose.TabBarDefaults.tabIndicatorOffset
 import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.CoroutineScope
@@ -95,8 +98,6 @@ fun Tab(
         }
     }
 }
-
-private val tabHeight = 48.dp
 
 @Composable
 fun TabItem(
@@ -219,7 +220,7 @@ fun FixedTab(
                                 color = contentColor,
                                 modifier = Modifier.tabIndicatorOffset(
                                     currentTabPosition = tabPositions[selectedTabIndex],
-                                    tabMargin = 28.dp
+                                    tabMargin = fixedTabIndicatorPadding
                                 )
                             )
                         }
@@ -279,8 +280,8 @@ fun ScrollableTab(
                 .selectableGroup()
                 .clipToBounds()
         ) { constraints ->
-            val minTabWidth = TabBarDefaults.ScrollableTabWidth.roundToPx()
-            val edgePadding = TabBarDefaults.ScrollableTabPadding.roundToPx()
+            val minTabWidth = TabBarDefaults.scrollableTabWidth.roundToPx()
+            val edgePadding = TabBarDefaults.scrollableTabPadding.roundToPx()
             val tabConstraints = constraints.copy(minWidth = minTabWidth)
 
             val placeableTabs = subcompose(
@@ -340,7 +341,7 @@ fun ScrollableTab(
                             color = contentColor,
                             modifier = Modifier.tabIndicatorOffset(
                                 currentTabPosition = tabPositions[selectedTabIndex],
-                                tabMargin = 18.dp
+                                tabMargin = scrollableTabIndicatorPadding
                             )
                         )
                     }
@@ -512,7 +513,11 @@ object TabBarDefaults {
             .width(indicatorWidth)
     }
 
-    val ScrollableTabPadding: Dp = 16.dp
+    val tabHeight = 48.dp
 
-    val ScrollableTabWidth: Dp = 88.dp
+    val fixedTabIndicatorPadding: Dp = 28.dp
+    val scrollableTabIndicatorPadding: Dp = 18.dp
+
+    val scrollableTabPadding: Dp = 16.dp
+    val scrollableTabWidth: Dp = 88.dp
 }
