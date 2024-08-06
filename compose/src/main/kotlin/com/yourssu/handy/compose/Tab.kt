@@ -78,7 +78,7 @@ fun Tab(
                 )
             }
         }
-    } else if (tabs.size <= 4) {
+    } else if (tabs.size >= 4) {
         ScrollableTab(
             selectedTabIndex = selectedTabIndex,
             backgroundColor = backgroundColor,
