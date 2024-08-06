@@ -241,7 +241,7 @@ fun FixedTab(
 /**
  * [ScrollableTab]에는 [TabItem] 행이 포함되어 있으며 현재 탭 아래에 인디케이터가 표시됩니다.
  *
- * 스크롤됩니다. 각 탭의 너비는 88로 고정되어 있습니다.
+ * 스크롤됩니다.
  * 최소 4개, 최대 탭 수에는 제한이 없습니다.
  * 모바일 기기의 경우 첫 번째 탭 왼쪽 및 마지막 탭의 오른쪽에 16의 여백이 있습니다.
  *
@@ -491,20 +491,13 @@ object TabBarDefaults {
     }
 
     /**
-     * Tab 내부의 사용 가능한 모든 너비를 차지한 다음, [currentTabPosition]에 따라
-     * 적용되는 인디케이터의 오프셋을 애니메이션하는 [Modifier]
+     * 인디케이터의 오프셋과 너비를 조정합니다.
+     * 각 탭의 양옆에 tabMargin.dp 마진을 두고, 인디케이터가 해당 마진을 고려하여 조정됩니다.
      *
      * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
+     * @param tabMargin 인디케이터의 양옆에 적용할 마진
      * 이 수정자가 적용되는 인디케이터의 오프셋과 너비를 계산하는 데 사용됩니다.
-     */
-
-    /**
-     * Tab의 인디케이터를 현재 탭 위치에 맞게 오프셋하고, 인디케이터가 탭의 전체 너비를 차지하도록 설정합니다.
-     * 고정된 탭(Tab)에서 사용되며, 탭의 너비에 따라 인디케이터의 위치를 조정합니다.
-     *
-     * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
-     * 이 수정자가 적용되는 인디케이터의 오프셋과 너비를 계산하는 데 사용됩니다.
-     * 인디케이터는 탭의 전체 너비와 동일한 너비를 가지며, 선택된 탭의 시작 위치에 맞춰서 배치됩니다.
+     * 인디케이터는 선택된 탭의 위치에 맞춰서 배치되며, 탭의 너비에서 양옆의 마진을 제외한 너비를 가집니다.
      */
     fun Modifier.tabIndicatorOffset(
         currentTabPosition: TabPosition,
@@ -519,13 +512,7 @@ object TabBarDefaults {
             .width(indicatorWidth)
     }
 
-    /**
-     * [ScrollableTab]에서 탭 앞의 시작 가장자리로부터의 기본 여백
-     */
     val ScrollableTabPadding: Dp = 16.dp
 
-    /**
-     * [ScrollableTab]에서 탭의 기본 너비
-     */
     val ScrollableTabWidth: Dp = 88.dp
 }

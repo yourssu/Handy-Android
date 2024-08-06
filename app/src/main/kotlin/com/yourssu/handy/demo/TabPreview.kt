@@ -19,7 +19,7 @@ import com.yourssu.handy.compose.Tab
 private fun TabPreview() {
     var tabIndex by remember { mutableIntStateOf(0) }
     val fixedTabs = listOf("Tab1", "Tab2")
-    val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4", "Tab5")
+    val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4")
     HandyTheme {
         Column {
             Tab(
