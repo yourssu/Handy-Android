@@ -135,8 +135,6 @@ fun TabItem(
  * 스크롤되지 않습니다. 각 탭의 너비는 전체 너비의 1/n입니다.
  * 최소 2개, 최대 3개 탭을 사용해주세요.
  *
- * 기기에 따른 변화는 없습니다.
- *
  * @param selectedTabIndex 현재 선택된 탭의 인덱스
  * @param backgroundColor Tab의 배경색
  * @param contentColor Tab의 콘텐츠 색상
@@ -244,7 +242,7 @@ fun FixedTab(
  *
  * 스크롤됩니다.
  * 최소 4개, 최대 탭 수에는 제한이 없습니다.
- * 모바일 기기의 경우 첫 번째 탭 왼쪽 및 마지막 탭의 오른쪽에 16의 여백이 있습니다.
+ * 첫 번째 탭 왼쪽 및 마지막 탭의 오른쪽에 16의 여백이 있습니다.
  *
  * @param selectedTabIndex 현재 선택된 탭의 인덱스
  * @param backgroundColor ScrollableTab의 배경색
@@ -512,9 +510,9 @@ object TabBarDefaults {
 
     val tabHeight = 48.dp
 
-    val fixedTabIndicatorPadding: Dp = 28.dp
-    val scrollableTabIndicatorPadding: Dp = 18.dp
+    val fixedTabIndicatorPadding = 28.dp
+    val scrollableTabIndicatorPadding = 18.dp
 
-    val scrollableTabPadding: Dp = 16.dp
-    val scrollableTabWidth: Dp = 88.dp
+    val scrollableTabPadding = 16.dp
+    val scrollableTabWidth = 88.dp
 }
