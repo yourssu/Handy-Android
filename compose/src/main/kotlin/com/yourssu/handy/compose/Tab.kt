@@ -464,7 +464,6 @@ object TabBarDefaults {
     /**
      * 기본 [Indicator]로, 구분선 위에 있는 탭의 하단에 배치됩니다.
      *
-     * @param modifier 인디케이터의 레이아웃에 대한 수정자
      * @param height 인디케이터의 높이
      * @param color 인디케이터의 색상
      */
