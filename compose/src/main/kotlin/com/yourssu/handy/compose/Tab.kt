@@ -40,7 +40,7 @@ import kotlinx.coroutines.launch
 /**
  * [Tab]은 고정 또는 스크롤 가능한 탭 행을 렌더링합니다.
  *
- * 탭의 수에 따라 3개 이하의 경우 고정된 탭 행을,
+ * 탭의 수에 따라 2개 ~ 3개의 경우 고정된 탭 행을,
  * 4개 이상의 경우 스크롤 가능한 탭 행을 생성합니다.
  * 각 탭은 선택 시 지정된 인덱스를 기반으로 인디케이터를 업데이트합니다.
  *
@@ -60,7 +60,7 @@ fun Tab(
     selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
     unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary
 ) {
-    if (tabs.size <= 3) {
+    if (tabs.size in 2..3) {
         FixedTab(
             selectedTabIndex = selectedTabIndex,
             backgroundColor = backgroundColor,
@@ -78,7 +78,7 @@ fun Tab(
                 )
             }
         }
-    } else {
+    } else if (tabs.size <= 4) {
         ScrollableTab(
             selectedTabIndex = selectedTabIndex,
             backgroundColor = backgroundColor,
@@ -483,12 +483,11 @@ object TabBarDefaults {
 
     /**
      * 인디케이터의 오프셋과 너비를 조정합니다.
-     * 각 탭의 양옆에 tabMargin.dp 마진을 두고, 인디케이터가 해당 마진을 고려하여 조정됩니다.
+     * 각 탭의 양옆에 tabMargin만큼의 마진을 두고, 인디케이터가 해당 마진을 고려하여 조정됩니다.
+     * 인디케이터는 선택된 탭의 위치에 맞춰서 배치되며, 탭의 너비에서 양옆의 마진을 제외한 너비를 가집니다.
      *
      * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
      * @param tabMargin 인디케이터의 양옆에 적용할 마진
-     * 이 수정자가 적용되는 인디케이터의 오프셋과 너비를 계산하는 데 사용됩니다.
-     * 인디케이터는 선택된 탭의 위치에 맞춰서 배치되며, 탭의 너비에서 양옆의 마진을 제외한 너비를 가집니다.
      */
     fun Modifier.tabIndicatorOffset(
         currentTabPosition: TabPosition,
