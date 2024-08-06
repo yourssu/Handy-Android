@@ -127,7 +127,7 @@ fun TabItem(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = if (text.length > 6) text.take(6) else text,
+                text = text,
                 color = color,
                 style = HandyTypography.B1Sb16
             )
@@ -158,7 +158,7 @@ fun FixedTab(
     Surface(
         modifier = modifier.selectableGroup(),
         backgroundColor = backgroundColor,
-        contentColor = contentColor
+//        contentColor = contentColor
     ) {
         SubcomposeLayout(
             modifier = modifier.fillMaxWidth(),
@@ -263,7 +263,7 @@ fun ScrollableTab(
     Surface(
         modifier = modifier,
         backgroundColor = backgroundColor,
-        contentColor = contentColor
+//        contentColor = contentColor
     ) {
         val scrollState = rememberScrollState()
         val coroutineScope = rememberCoroutineScope()
@@ -364,7 +364,6 @@ fun ScrollableTab(
                 )
             }
         }
-
     }
 }
 
