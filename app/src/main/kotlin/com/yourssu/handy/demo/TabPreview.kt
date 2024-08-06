@@ -29,7 +29,7 @@ private fun FixedTabPreview() {
 @Composable
 private fun ScrollableTabPreview() {
     var tabIndex by remember { mutableIntStateOf(0) }
-    val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4")
+    val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4", "Tab5", "Tab6")
     HandyTheme {
         Tab(
             tabs = scrollableTabs,

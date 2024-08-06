@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
@@ -113,7 +114,9 @@ fun TabItem(
     Surface(
         selected = selected,
         onClick = onClick,
-        modifier = modifier.height(tabHeight),
+        modifier = modifier
+            .padding(horizontal = TabBarDefaults.tabHorizontalPadding)
+            .height(tabHeight),
         enabled = true,
     ) {
         Box(
@@ -503,10 +506,11 @@ object TabBarDefaults {
     }
 
     val tabHeight = 48.dp
+    val tabHorizontalPadding = 16.dp
 
     val fixedTabIndicatorPadding = 28.dp
     val scrollableTabIndicatorPadding = 18.dp
 
     val scrollableTabPadding = 16.dp
-    val scrollableTabWidth = 88.dp
+    val scrollableTabWidth = 56.dp
 }
