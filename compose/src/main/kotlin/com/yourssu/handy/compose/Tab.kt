@@ -158,7 +158,6 @@ fun FixedTab(
     Surface(
         modifier = modifier.selectableGroup(),
         backgroundColor = backgroundColor,
-//        contentColor = contentColor
     ) {
         SubcomposeLayout(
             modifier = modifier.fillMaxWidth(),
@@ -263,7 +262,6 @@ fun ScrollableTab(
     Surface(
         modifier = modifier,
         backgroundColor = backgroundColor,
-//        contentColor = contentColor
     ) {
         val scrollState = rememberScrollState()
         val coroutineScope = rememberCoroutineScope()
