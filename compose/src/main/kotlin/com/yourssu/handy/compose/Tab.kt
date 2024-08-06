@@ -274,7 +274,7 @@ fun ScrollableTab(
         SubcomposeLayout(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentSize(align = Alignment.CenterStart)
+                .wrapContentSize(align = Alignment.Center)
                 .horizontalScroll(scrollState)
                 .selectableGroup()
                 .clipToBounds()
