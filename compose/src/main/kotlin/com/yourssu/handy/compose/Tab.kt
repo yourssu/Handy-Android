@@ -429,14 +429,12 @@ private enum class TabSlots {
 class TabPosition internal constructor(val left: Dp, val width: Dp) {
     val right: Dp get() = left + width
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is TabPosition) return false
-
-        if (left != other.left) return false
-        if (width != other.width) return false
-
-        return true
+    override fun equals(other: Any?): Boolean = when {
+        this === other -> true
+        other !is TabPosition -> false
+        left != other.left -> false
+        width != other.width -> false
+        else -> true
     }
 
     override fun hashCode(): Int {
@@ -445,14 +443,13 @@ class TabPosition internal constructor(val left: Dp, val width: Dp) {
         return result
     }
 
-    override fun toString(): String {
-        return "TabPosition(left=$left, right=$right, width=$width)"
-    }
+    override fun toString(): String = "TabPosition(left=$left, right=$right, width=$width)"
+
 }
 
 object TabBarDefaults {
     /**
-     * 기본 [Divider]로, 인디케이터 아래에 있는 탭의 하단에 배치됩니다.
+     * 기본 [Divider]로, 인디케이터 아래에 있는 탭의 하단에 수평으로 배치됩니다.
      *
      * @param thickness 구분선의 두께
      * @param color 구분선의 색상
@@ -471,7 +468,7 @@ object TabBarDefaults {
     }
 
     /**
-     * 기본 인디케이터로, 구분선 위에 있는 탭의 하단에 배치됩니다.
+     * 기본 [Indicator]로, 구분선 위에 있는 탭의 하단에 배치됩니다.
      *
      * @param modifier 인디케이터의 레이아웃에 대한 수정자
      * @param height 인디케이터의 높이
