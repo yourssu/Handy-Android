@@ -120,7 +120,7 @@ fun TabItem(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = text,
+                text = if (text.length > 6) text.take(6) else text,
                 color = color,
                 style = HandyTypography.B1Sb16
             )
