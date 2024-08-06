@@ -47,6 +47,8 @@ import kotlinx.coroutines.launch
  * 4개 이상의 경우 스크롤 가능한 탭 행을 생성합니다.
  * 각 탭은 선택 시 지정된 인덱스를 기반으로 인디케이터를 업데이트합니다.
  *
+ * 텍스트의 글자수는 공백포함 6자를 넘기지 않아야 합니다.
+ *
  * @param tabs 탭에 표시할 문자열 목록
  * @param selectedTabIndex 현재 선택된 탭의 인덱스
  * @param onTabSelected 사용자가 탭을 선택할 때 호출되는 콜백, 선택된 탭의 인덱스를 반환
