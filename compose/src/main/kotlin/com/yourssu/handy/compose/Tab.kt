@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import com.yourssu.handy.compose.TabBarDefaults.tabIndicatorOffset
 import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.CoroutineScope
@@ -42,7 +43,7 @@ import kotlinx.coroutines.launch
  *
  * @param tabs 탭에 표시할 문자열 목록
  * @param selectedTabIndex 현재 선택된 탭의 인덱스
- * @param onTabSelected 사용자가 탭을 선택할 때 호출되는 콜백, 선택된 탭의 인덱스를 반환합니다.
+ * @param onTabSelected 사용자가 탭을 선택할 때 호출되는 콜백, 선택된 탭의 인덱스를 반환
  * @param backgroundColor 탭 바의 배경색
  * @param selectedContentColor 선택된 탭의 텍스트 색상, 인디케이터 색상
  * @param unselectedContentColor 선택되지 않은 탭의 텍스트 색상
@@ -139,7 +140,6 @@ fun TabItem(
  * @param backgroundColor Tab의 배경색
  * @param contentColor Tab의 콘텐츠 색상
  * @param tabs 이 Tab 내부의 탭
- * 이 람다 내부에서는 측정되어 Tab 전체에 균등하게 배치됩니다. 각 항목은 동일한 크기를 차지합니다.
  */
 @Composable
 fun FixedTab(
@@ -217,7 +217,10 @@ fun FixedTab(
                         content = {
                             TabBarDefaults.Indicator(
                                 color = contentColor,
-                                modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex])
+                                modifier = Modifier.tabIndicatorOffset(
+                                    currentTabPosition = tabPositions[selectedTabIndex],
+                                    tabMargin = 28.dp
+                                )
                             )
                         }
                     ).forEach {
@@ -299,7 +302,10 @@ fun ScrollableTab(
                 var left = edgePadding
 
                 placeableTabs.forEach {
-                    it.placeRelative(left, 0)
+                    it.placeRelative(
+                        x = left,
+                        y = 0
+                    )
                     tabPositions.add(
                         TabPosition(
                             left = left.toDp(),
@@ -332,7 +338,10 @@ fun ScrollableTab(
                     content = {
                         TabBarDefaults.Indicator(
                             color = contentColor,
-                            modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex])
+                            modifier = Modifier.tabIndicatorOffset(
+                                currentTabPosition = tabPositions[selectedTabIndex],
+                                tabMargin = 18.dp
+                            )
                         )
                     }
                 ).forEach {
@@ -483,21 +492,31 @@ object TabBarDefaults {
 
     /**
      * Tab 내부의 사용 가능한 모든 너비를 차지한 다음, [currentTabPosition]에 따라
-     * 적용되는 인디케이터의 오프셋을 애니메이션하는 [Modifier].
+     * 적용되는 인디케이터의 오프셋을 애니메이션하는 [Modifier]
      *
-     * @param currentTabPosition 현재 선택된 탭의 [TabPosition].
+     * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
      * 이 수정자가 적용되는 인디케이터의 오프셋과 너비를 계산하는 데 사용됩니다.
      */
+
+    /**
+     * Tab의 인디케이터를 현재 탭 위치에 맞게 오프셋하고, 인디케이터가 탭의 전체 너비를 차지하도록 설정합니다.
+     * 고정된 탭(Tab)에서 사용되며, 탭의 너비에 따라 인디케이터의 위치를 조정합니다.
+     *
+     * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
+     * 이 수정자가 적용되는 인디케이터의 오프셋과 너비를 계산하는 데 사용됩니다.
+     * 인디케이터는 탭의 전체 너비와 동일한 너비를 가지며, 선택된 탭의 시작 위치에 맞춰서 배치됩니다.
+     */
     fun Modifier.tabIndicatorOffset(
-        currentTabPosition: TabPosition
+        currentTabPosition: TabPosition,
+        tabMargin: Dp
     ): Modifier = composed {
-        val currentTabWidth = currentTabPosition.width
-        val indicatorOffset = currentTabPosition.left
+        val indicatorWidth = currentTabPosition.width - (2 * tabMargin)
+        val indicatorOffset = currentTabPosition.left + tabMargin
 
         fillMaxWidth()
             .wrapContentSize(Alignment.BottomStart)
             .offset(x = indicatorOffset)
-            .width(currentTabWidth)
+            .width(indicatorWidth)
     }
 
     /**
