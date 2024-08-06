@@ -163,10 +163,6 @@ fun FixedTab(
                 )
                 val tabCount = measurableTabs.size
 
-                require(tabCount in 2..3) {
-                    "Tab count should be between 2 and 3"
-                }
-
                 val tabWidth = (tabBarWidth / tabCount)
                 val placeableTabs = measurableTabs.map {
                     it.measure(
