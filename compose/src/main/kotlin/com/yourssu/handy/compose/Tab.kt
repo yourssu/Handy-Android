@@ -2,6 +2,7 @@ package com.yourssu.handy.compose
 
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
@@ -18,6 +19,7 @@ import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -498,8 +500,8 @@ fun Modifier.tabIndicatorOffset(
     currentTabPosition: TabPosition,
     tabMargin: Dp
 ): Modifier = composed {
-    val indicatorWidth = currentTabPosition.width - (2 * tabMargin)
-    val indicatorOffset = currentTabPosition.left + tabMargin
+    val indicatorWidth by animateDpAsState(targetValue = currentTabPosition.width - (2 * tabMargin))
+    val indicatorOffset by animateDpAsState(targetValue = currentTabPosition.left + tabMargin)
 
     fillMaxWidth()
         .wrapContentSize(Alignment.BottomStart)
