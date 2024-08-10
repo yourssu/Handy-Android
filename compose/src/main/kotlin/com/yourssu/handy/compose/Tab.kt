@@ -61,6 +61,7 @@ fun Tab(
     tabs: List<String>,
     selectedTabIndex: Int,
     onTabSelected: (index: Int) -> Unit,
+    modifier: Modifier = Modifier,
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
     unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary
