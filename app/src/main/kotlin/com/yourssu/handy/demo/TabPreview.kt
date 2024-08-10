@@ -20,7 +20,6 @@ private fun FixedTabPreview() {
     val fixedTabs = listOf("Tab1", "Tab2")
     HandyTheme {
         Column {
-
             Tab(
                 tabs = fixedTabs,
                 selectedTabIndex = tabIndex,
@@ -42,7 +41,6 @@ private fun FixedTabPreview() {
                     )
                 }
             }
-
         }
     }
 }
@@ -54,7 +52,6 @@ private fun ScrollableTabPreview() {
     val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4", "Tab5", "Tab6")
     HandyTheme {
         Column {
-
             Tab(
                 tabs = scrollableTabs,
                 selectedTabIndex = tabIndex,
@@ -76,7 +73,6 @@ private fun ScrollableTabPreview() {
                     )
                 }
             }
-
         }
     }
 }

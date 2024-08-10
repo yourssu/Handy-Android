@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.times
 import com.yourssu.handy.compose.TabBarDefaults.fixedTabIndicatorPadding
 import com.yourssu.handy.compose.TabBarDefaults.scrollableTabIndicatorPadding
 import com.yourssu.handy.compose.TabBarDefaults.tabHeight
-import com.yourssu.handy.compose.TabBarDefaults.tabIndicatorOffset
 import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -201,7 +200,7 @@ fun FixedTab(
                     subcompose(
                         slotId = TabSlots.Divider,
                         content = {
-                            TabBarDefaults.Divider()
+                            Divider()
                         }
                     ).forEach {
                         val placeableDivider = it.measure(
@@ -219,7 +218,7 @@ fun FixedTab(
                     subcompose(
                         slotId = TabSlots.Indicator,
                         content = {
-                            TabBarDefaults.Indicator(
+                            Indicator(
                                 color = contentColor,
                                 modifier = Modifier.tabIndicatorOffset(
                                     currentTabPosition = tabPositions[selectedTabIndex],
@@ -321,7 +320,7 @@ fun ScrollableTab(
                 subcompose(
                     slotId = TabSlots.Divider,
                     content = {
-                        TabBarDefaults.Divider()
+                        Divider()
                     }
                 ).forEach {
                     val placeableDivider = it.measure(
@@ -339,7 +338,7 @@ fun ScrollableTab(
                 subcompose(
                     slotId = TabSlots.Indicator,
                     content = {
-                        TabBarDefaults.Indicator(
+                        Indicator(
                             color = contentColor,
                             modifier = Modifier.tabIndicatorOffset(
                                 currentTabPosition = tabPositions[selectedTabIndex],
@@ -448,68 +447,68 @@ class TabPosition internal constructor(val left: Dp, val width: Dp) {
 
 }
 
+/**
+ * 기본 [Divider]로, 인디케이터 아래에 있는 탭의 하단에 수평으로 배치됩니다.
+ *
+ * @param thickness 구분선의 두께
+ * @param color 구분선의 색상
+ */
+@Composable
+fun Divider(
+    thickness: Dp = 1.dp,
+    color: Color = HandyTheme.colors.lineBasicLight
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(thickness)
+            .background(color)
+    )
+}
+
+/**
+ * 기본 [Indicator]로, 구분선 위에 있는 탭의 하단에 배치됩니다.
+ *
+ * @param height 인디케이터의 높이
+ * @param color 인디케이터의 색상
+ */
+@Composable
+fun Indicator(
+    modifier: Modifier = Modifier,
+    height: Dp = 2.dp,
+    color: Color = HandyTheme.colors.bgBasicBlack
+) {
+    Box(
+        modifier
+            .fillMaxWidth()
+            .height(height)
+            .background(color = color)
+    )
+}
+
+/**
+ * 인디케이터의 오프셋과 너비를 조정합니다.
+ * 각 탭의 양옆에 tabMargin만큼의 마진을 두고, 인디케이터가 해당 마진을 고려하여 조정됩니다.
+ * 인디케이터는 선택된 탭의 위치에 맞춰서 배치되며, 탭의 너비에서 양옆의 마진을 제외한 너비를 가집니다.
+ *
+ * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
+ * @param tabMargin 인디케이터의 양옆에 적용할 마진
+ */
+fun Modifier.tabIndicatorOffset(
+    currentTabPosition: TabPosition,
+    tabMargin: Dp
+): Modifier = composed {
+    val indicatorWidth = currentTabPosition.width - (2 * tabMargin)
+    val indicatorOffset = currentTabPosition.left + tabMargin
+
+    fillMaxWidth()
+        .wrapContentSize(Alignment.BottomStart)
+        .offset(x = indicatorOffset)
+        .width(indicatorWidth)
+        .clip(RoundedCornerShape(100.dp))
+}
+
 object TabBarDefaults {
-    /**
-     * 기본 [Divider]로, 인디케이터 아래에 있는 탭의 하단에 수평으로 배치됩니다.
-     *
-     * @param thickness 구분선의 두께
-     * @param color 구분선의 색상
-     */
-    @Composable
-    fun Divider(
-        thickness: Dp = 1.dp,
-        color: Color = HandyTheme.colors.lineBasicLight
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(thickness)
-                .background(color)
-        )
-    }
-
-    /**
-     * 기본 [Indicator]로, 구분선 위에 있는 탭의 하단에 배치됩니다.
-     *
-     * @param height 인디케이터의 높이
-     * @param color 인디케이터의 색상
-     */
-    @Composable
-    fun Indicator(
-        modifier: Modifier = Modifier,
-        height: Dp = 2.dp,
-        color: Color = HandyTheme.colors.bgBasicBlack
-    ) {
-        Box(
-            modifier
-                .fillMaxWidth()
-                .height(height)
-                .background(color = color)
-        )
-    }
-
-    /**
-     * 인디케이터의 오프셋과 너비를 조정합니다.
-     * 각 탭의 양옆에 tabMargin만큼의 마진을 두고, 인디케이터가 해당 마진을 고려하여 조정됩니다.
-     * 인디케이터는 선택된 탭의 위치에 맞춰서 배치되며, 탭의 너비에서 양옆의 마진을 제외한 너비를 가집니다.
-     *
-     * @param currentTabPosition 현재 선택된 탭의 [TabPosition]
-     * @param tabMargin 인디케이터의 양옆에 적용할 마진
-     */
-    fun Modifier.tabIndicatorOffset(
-        currentTabPosition: TabPosition,
-        tabMargin: Dp
-    ): Modifier = composed {
-        val indicatorWidth = currentTabPosition.width - (2 * tabMargin)
-        val indicatorOffset = currentTabPosition.left + tabMargin
-
-        fillMaxWidth()
-            .wrapContentSize(Alignment.BottomStart)
-            .offset(x = indicatorOffset)
-            .width(indicatorWidth)
-            .clip(RoundedCornerShape(100.dp))
-    }
-
     val tabHeight = 48.dp
     val tabHorizontalPadding = 16.dp
 
