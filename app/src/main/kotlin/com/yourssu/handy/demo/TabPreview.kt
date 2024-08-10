@@ -1,13 +1,17 @@
 package com.yourssu.handy.demo
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.yourssu.handy.compose.FixedTab
 import com.yourssu.handy.compose.HandyTheme
+import com.yourssu.handy.compose.ScrollableTab
 import com.yourssu.handy.compose.Tab
+import com.yourssu.handy.compose.TabItem
 
 @Preview(showBackground = true)
 @Composable
@@ -15,13 +19,31 @@ private fun FixedTabPreview() {
     var tabIndex by remember { mutableIntStateOf(0) }
     val fixedTabs = listOf("Tab1", "Tab2")
     HandyTheme {
-        Tab(
-            tabs = fixedTabs,
-            selectedTabIndex = tabIndex,
-            onTabSelected = { index ->
-                tabIndex = index
+        Column {
+
+            Tab(
+                tabs = fixedTabs,
+                selectedTabIndex = tabIndex,
+                onTabSelected = { index ->
+                    tabIndex = index
+                }
+            )
+
+            FixedTab(
+                selectedTabIndex = tabIndex,
+            ) {
+                fixedTabs.forEachIndexed { index, title ->
+                    TabItem(
+                        text = title,
+                        selected = index == tabIndex,
+                        onClick = {
+                            tabIndex = index
+                        },
+                    )
+                }
             }
-        )
+
+        }
     }
 }
 
@@ -31,12 +53,30 @@ private fun ScrollableTabPreview() {
     var tabIndex by remember { mutableIntStateOf(0) }
     val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4", "Tab5", "Tab6")
     HandyTheme {
-        Tab(
-            tabs = scrollableTabs,
-            selectedTabIndex = tabIndex,
-            onTabSelected = { index ->
-                tabIndex = index
+        Column {
+
+            Tab(
+                tabs = scrollableTabs,
+                selectedTabIndex = tabIndex,
+                onTabSelected = { index ->
+                    tabIndex = index
+                }
+            )
+
+            ScrollableTab(
+                selectedTabIndex = tabIndex
+            ) {
+                scrollableTabs.forEachIndexed { index, title ->
+                    TabItem(
+                        text = title,
+                        selected = index == tabIndex,
+                        onClick = {
+                            tabIndex = index
+                        }
+                    )
+                }
             }
-        )
+
+        }
     }
 }

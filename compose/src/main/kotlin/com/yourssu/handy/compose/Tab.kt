@@ -70,7 +70,8 @@ fun Tab(
         FixedTab(
             selectedTabIndex = selectedTabIndex,
             backgroundColor = backgroundColor,
-            contentColor = selectedContentColor
+            contentColor = selectedContentColor,
+            modifier = modifier
         ) {
             tabs.forEachIndexed { index, title ->
                 TabItem(
@@ -88,7 +89,8 @@ fun Tab(
         ScrollableTab(
             selectedTabIndex = selectedTabIndex,
             backgroundColor = backgroundColor,
-            contentColor = selectedContentColor
+            contentColor = selectedContentColor,
+            modifier = modifier
         ) {
             tabs.forEachIndexed { index, title ->
                 TabItem(
@@ -110,9 +112,9 @@ fun TabItem(
     selected: Boolean,
     onClick: () -> Unit,
     text: String,
-    selectedContentColor: Color,
-    unselectedContentColor: Color,
     modifier: Modifier = Modifier,
+    selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
+    unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary,
 ) {
     val color = if (selected) selectedContentColor else unselectedContentColor
 
@@ -151,9 +153,9 @@ fun TabItem(
 @Composable
 fun FixedTab(
     selectedTabIndex: Int,
-    backgroundColor: Color,
-    contentColor: Color,
     modifier: Modifier = Modifier,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    contentColor: Color = HandyTheme.colors.textBasicPrimary,
     tabs: @Composable () -> Unit
 ) {
     Surface(
@@ -255,9 +257,9 @@ fun FixedTab(
 @Composable
 fun ScrollableTab(
     selectedTabIndex: Int,
-    backgroundColor: Color,
-    contentColor: Color,
     modifier: Modifier = Modifier,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    contentColor: Color = HandyTheme.colors.textBasicPrimary,
     tabs: @Composable () -> Unit
 ) {
     Surface(
