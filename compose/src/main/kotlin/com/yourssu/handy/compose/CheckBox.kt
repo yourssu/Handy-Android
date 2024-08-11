@@ -22,6 +22,17 @@ sealed class CheckBoxSize(
     data object Large : CheckBoxSize(typo = HandyTypography.B1Rg16, iconSize = IconSize.M)
 }
 
+/**
+ * 선택, 비선택, 비활성화 상태를 나타낼 수 있는 [CheckBox]입니다.
+ *
+ * @param checked CheckBox의 선택 유무
+ * @param onCheckedChange CheckBox의 선택 상태가 변경될 때 호출되는 함수
+ * @param modifier CheckBox에 대한 선택적 Modifier
+ * @param sizeType CheckBox의 크기에 따른 텍스트의 타이포, 아이콘 사이즈 설정. 기본값은 Medium
+ * @param text CheckBox 옆에 표시되는 텍스트
+ * @param enabled CheckBox의 활성화 유무
+ * @param contentColor CheckBox의 아이콘 색상
+ */
 @Composable
 fun CheckBox(
     checked: Boolean,
