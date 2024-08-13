@@ -1,7 +1,9 @@
 package com.yourssu.handy.demo
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.yourssu.handy.compose.CheckBox
 import com.yourssu.handy.compose.CheckBoxSize
@@ -12,30 +14,96 @@ import com.yourssu.handy.compose.HandyTheme
 private fun CheckBoxPreview() {
     HandyTheme {
         Column {
-            CheckBox(
-                checked = true,
-                onCheckedChange = {},
-                sizeType = CheckBoxSize.Small,
-                text = "selected"
-            )
-            CheckBox(
-                checked = true,
-                onCheckedChange = {},
-                text = "selected",
-                contentColor = HandyTheme.colors.buttonFabPrimaryPressed
-            )
-            CheckBox(
-                checked = false,
-                onCheckedChange = {},
-                text = "unselected"
-            )
-            CheckBox(
-                checked = false,
-                enabled = false,
-                onCheckedChange = {},
-                sizeType = CheckBoxSize.Large,
-                text = "disabled"
-            )
+            Row {
+                Column {
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Small,
+                        text = "selected"
+                    )
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Medium,
+                        text = "selected"
+                    )
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Large,
+                        text = "selected"
+                    )
+                }
+                Column {
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Small,
+                        text = "selected"
+                    )
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Medium,
+                        text = "selected"
+                    )
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Large,
+                        text = "selected"
+                    )
+                }
+            }
+            Row {
+                Column {
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Small,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Medium,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                    CheckBox(
+                        checked = true,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Large,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                }
+                Column {
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Small,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Medium,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                    CheckBox(
+                        checked = false,
+                        onCheckedChange = {},
+                        sizeType = CheckBoxSize.Large,
+                        text = "selected",
+                        contentColor = Color.Red
+                    )
+                }
+            }
         }
     }
 }
