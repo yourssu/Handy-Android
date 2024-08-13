@@ -10,7 +10,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.yourssu.handy.compose.FixedTab
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.ScrollableTab
-import com.yourssu.handy.compose.Tab
 import com.yourssu.handy.compose.TabItem
 
 @Preview(showBackground = true)
@@ -20,14 +19,6 @@ private fun FixedTabPreview() {
     val fixedTabs = listOf("Tab1", "Tab2")
     HandyTheme {
         Column {
-            Tab(
-                tabs = fixedTabs,
-                selectedTabIndex = tabIndex,
-                onTabSelected = { index ->
-                    tabIndex = index
-                }
-            )
-
             FixedTab(
                 selectedTabIndex = tabIndex,
             ) {
@@ -49,17 +40,9 @@ private fun FixedTabPreview() {
 @Composable
 private fun ScrollableTabPreview() {
     var tabIndex by remember { mutableIntStateOf(0) }
-    val scrollableTabs = listOf("Tab1", "Tab2", "Tab3", "Tab4", "Tab5", "Tab6")
+    val scrollableTabs = listOf("안드로이드", "Tab2", "Tab3", "Tab4", "Tab5", "Tab6")
     HandyTheme {
         Column {
-            Tab(
-                tabs = scrollableTabs,
-                selectedTabIndex = tabIndex,
-                onTabSelected = { index ->
-                    tabIndex = index
-                }
-            )
-
             ScrollableTab(
                 selectedTabIndex = tabIndex
             ) {

@@ -41,73 +41,6 @@ import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-/**
- * [Tab]은 고정 또는 스크롤 가능한 탭 행을 렌더링합니다.
- *
- * 탭의 수에 따라 2개 ~ 3개의 경우 고정된 탭 행을,
- * 4개 이상의 경우 스크롤 가능한 탭 행을 생성합니다.
- * 각 탭은 선택 시 지정된 인덱스를 기반으로 인디케이터를 업데이트합니다.
- *
- * 텍스트의 글자수는 공백포함 6자를 넘기지 않아야 합니다.
- *
- * @param tabs 탭에 표시할 문자열 목록
- * @param selectedTabIndex 현재 선택된 탭의 인덱스
- * @param onTabSelected 사용자가 탭을 선택할 때 호출되는 콜백, 선택된 탭의 인덱스를 반환
- * @param backgroundColor 탭 바의 배경색
- * @param selectedContentColor 선택된 탭의 텍스트 색상, 인디케이터 색상
- * @param unselectedContentColor 선택되지 않은 탭의 텍스트 색상
- */
-@Composable
-fun Tab(
-    tabs: List<String>,
-    selectedTabIndex: Int,
-    onTabSelected: (index: Int) -> Unit,
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
-    selectedContentColor: Color = HandyTheme.colors.textBasicPrimary,
-    unselectedContentColor: Color = HandyTheme.colors.textBasicTertiary
-) {
-    if (tabs.size in 2..3) {
-        FixedTab(
-            selectedTabIndex = selectedTabIndex,
-            backgroundColor = backgroundColor,
-            contentColor = selectedContentColor,
-            modifier = modifier
-        ) {
-            tabs.forEachIndexed { index, title ->
-                TabItem(
-                    text = title,
-                    selected = index == selectedTabIndex,
-                    onClick = {
-                        onTabSelected(index)
-                    },
-                    selectedContentColor = selectedContentColor,
-                    unselectedContentColor = unselectedContentColor
-                )
-            }
-        }
-    } else if (tabs.size >= 4) {
-        ScrollableTab(
-            selectedTabIndex = selectedTabIndex,
-            backgroundColor = backgroundColor,
-            contentColor = selectedContentColor,
-            modifier = modifier
-        ) {
-            tabs.forEachIndexed { index, title ->
-                TabItem(
-                    text = title,
-                    selected = index == selectedTabIndex,
-                    onClick = {
-                        onTabSelected(index)
-                    },
-                    selectedContentColor = selectedContentColor,
-                    unselectedContentColor = unselectedContentColor
-                )
-            }
-        }
-    }
-}
-
 @Composable
 fun TabItem(
     selected: Boolean,
@@ -142,6 +75,8 @@ fun TabItem(
 /**
  * [FixedTab]에는 [TabItem] 행이 포함되어 있으며 현재 선택된 탭 아래에 인디케이터가 표시됩니다.
  * [FixedTab]은 전체 행을 따라 균등한 간격으로 탭을 배치하며 각 탭은 동일한 공간을 차지합니다.
+ *
+ * 텍스트의 글자수는 공백포함 6자를 넘기지 않아야 합니다.
  *
  * 스크롤되지 않습니다. 각 탭의 너비는 전체 너비의 1/n입니다.
  * 최소 2개, 최대 3개 탭을 사용해주세요.
@@ -249,6 +184,8 @@ fun FixedTab(
  * 스크롤됩니다.
  * 최소 4개, 최대 탭 수에는 제한이 없습니다.
  * 첫 번째 탭 왼쪽 및 마지막 탭의 오른쪽에 16의 여백이 있습니다.
+ *
+ * 텍스트의 글자수는 공백포함 6자를 넘기지 않아야 합니다.
  *
  * @param selectedTabIndex 현재 선택된 탭의 인덱스
  * @param backgroundColor ScrollableTab의 배경색
