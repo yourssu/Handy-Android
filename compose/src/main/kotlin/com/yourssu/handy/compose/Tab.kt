@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.times
 import com.yourssu.handy.compose.TabBarDefaults.fixedTabIndicatorPadding
 import com.yourssu.handy.compose.TabBarDefaults.scrollableTabIndicatorPadding
 import com.yourssu.handy.compose.TabBarDefaults.tabHeight
+import com.yourssu.handy.compose.TabBarDefaults.tabHorizontalPadding
 import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -56,7 +57,7 @@ fun TabItem(
         selected = selected,
         onClick = onClick,
         modifier = modifier
-            .padding(horizontal = TabBarDefaults.tabHorizontalPadding)
+            .padding(horizontal = tabHorizontalPadding)
             .height(tabHeight),
         enabled = true,
     ) {
