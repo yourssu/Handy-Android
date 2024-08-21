@@ -67,18 +67,3 @@ data class ButtonSizeState(
     val betweenSpace: Dp = 0.dp,
     val round: Dp = 0.dp,
 )
-
-enum class BoxButtonSize {
-    XXS,
-    XS,
-    S,
-    M,
-    L,
-    XL;
-}
-
-enum class TextButtonSize {
-    S,
-    M,
-    L;
-}

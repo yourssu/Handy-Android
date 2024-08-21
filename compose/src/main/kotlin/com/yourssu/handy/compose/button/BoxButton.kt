@@ -20,8 +20,89 @@ import com.yourssu.handy.compose.foundation.HandyTypography
 enum class BoxButtonType {
     Primary,
     Secondary,
-    Tertiary,
+    Tertiary;
 }
+
+enum class BoxButtonSize {
+    XXS,
+    XS,
+    S,
+    M,
+    L,
+    XL;
+}
+
+/**
+ * BaseButton : ripple 효과가 없는 Composable 함수 입니다.
+ *
+ * BoxButton, TextButton의 베이스가 됩니다.
+ *
+ * @param onClick Button 클릭 시 실행되는 함수
+ * @param text Button 내부 text
+ * @param leftIcon Button 왼쪽에 표시되는 Icon
+ * @param rightIcon Button 오른쪽에 표시되는 Icon
+ * @param isDisabled Button 비활성화 여부
+ * @param sizeType Button 사이즈
+ * @param buttonType Button 타입 (Primary, Secondary, Tertiary)
+ * @param interactionSource Button 상호작용 소스
+ * @param horizontalPadding Button 내부 content padding
+ **/
+
+@Composable
+fun BoxButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    text: String,
+    leftIcon: ImageVector? = null,
+    rightIcon: ImageVector? = null,
+    isDisabled: Boolean = false,
+    sizeType: BoxButtonSize = BoxButtonSize.M,
+    buttonType: BoxButtonType = BoxButtonType.Primary,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding,
+) {
+    val roundingDp = boxButtonSizeStateBySize(size = sizeType).round
+    val (typo, iconSize, height) = boxButtonSizeStateBySize(size = sizeType)
+
+    BaseButton(
+        onClick = onClick,
+        colors = boxButtonColorByType(
+            type = buttonType,
+        ),
+        modifier = Modifier
+            .then(modifier)
+            .height(height),
+        enabled = !isDisabled,
+        showBorder = (buttonType == BoxButtonType.Tertiary),
+        interactionSource = interactionSource,
+        rounding = roundingDp,
+        contentPadding = PaddingValues(
+            horizontal = horizontalPadding,
+        ),
+    ) {
+        leftIcon?.let {
+            Icon(
+                imageVector = leftIcon,
+                iconSize = iconSize,
+                modifier = Modifier.padding(end = 4.dp)
+            )
+        }
+
+        Text(
+            text = text,
+            style = typo,
+        )
+
+        rightIcon?.let {
+            Icon(
+                imageVector = rightIcon,
+                iconSize = iconSize,
+                modifier = Modifier.padding(start = 4.dp)
+            )
+        }
+    }
+}
+
 
 @Composable
 private fun boxButtonColorByType(
@@ -100,59 +181,4 @@ private fun boxButtonSizeStateBySize(
         horizontalPadding = 8.dp,
         round = 8.dp
     )
-}
-
-@Composable
-fun BoxButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    text: String,
-    leftIcon: ImageVector? = null,
-    rightIcon: ImageVector? = null,
-    isDisabled: Boolean = false,
-    sizeType: BoxButtonSize = BoxButtonSize.M,
-    buttonType: BoxButtonType = BoxButtonType.Primary,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding,
-) {
-    val roundingDp = boxButtonSizeStateBySize(size = sizeType).round
-    val (typo, iconSize, height) = boxButtonSizeStateBySize(size = sizeType)
-
-    BaseButton(
-        onClick = onClick,
-        colors = boxButtonColorByType(
-            type = buttonType,
-        ),
-        modifier = Modifier
-            .then(modifier)
-            .height(height),
-        enabled = !isDisabled,
-        showBorder = (buttonType == BoxButtonType.Tertiary),
-        interactionSource = interactionSource,
-        rounding = roundingDp,
-        contentPadding = PaddingValues(
-            horizontal = horizontalPadding,
-        ),
-    ) {
-        leftIcon?.let {
-            Icon(
-                imageVector = leftIcon,
-                iconSize = iconSize,
-                modifier = Modifier.padding(end = 4.dp)
-            )
-        }
-
-        Text(
-            text = text,
-            style = typo,
-        )
-
-        rightIcon?.let {
-            Icon(
-                imageVector = rightIcon,
-                iconSize = iconSize,
-                modifier = Modifier.padding(start = 4.dp)
-            )
-        }
-    }
 }

@@ -19,6 +19,22 @@ import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Surface
 
+/**
+ * BaseButton : ripple 효과가 없는 Composable 함수 입니다.
+ *
+ * BoxButton, TextButton의 베이스가 됩니다.
+ *
+ * @param onClick Button 클릭 시 실행되는 함수
+ * @param colors Button 색상 상태
+ * @param enabled Surface 클릭 가능 여부
+ * @param showBorder Button 테두리 표시 여부
+ * @param rounding Button 모서리의 둥글기
+ * @param contentPadding Button 내부 content padding
+ * @param interactionSource Button 상호작용 소스
+ * @param minWidth Button 최소 너비
+ * @param minHeight Button 최소 높이
+ * @param content Button 내부 content
+ **/
 @Composable
 internal fun BaseButton(
     onClick: () -> Unit,

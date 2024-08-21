@@ -17,59 +17,29 @@ import com.yourssu.handy.compose.foundation.HandyTypography
 
 enum class TextButtonType {
     Primary,
-    Secondary,
+    Secondary;
 }
 
-@Composable
-private fun textButtonColorByType(
-    type: TextButtonType,
-): ButtonColorState = when (type) {
-    TextButtonType.Primary -> ButtonColorState(
-        bgColor = HandyTheme.colors.buttonTextPrimaryEnabled,
-        contentColor = HandyTheme.colors.textBrandPrimary,
-        disabledBgColor = HandyTheme.colors.buttonTextPrimaryEnabled,
-        disabledContentColor = HandyTheme.colors.textBasicDisabled,
-    )
-
-    TextButtonType.Secondary -> ButtonColorState(
-        bgColor = HandyTheme.colors.buttonTextSecondaryEnabled,
-        contentColor = HandyTheme.colors.textBasicTertiary,
-        disabledBgColor = HandyTheme.colors.buttonTextSecondaryDisabled,
-        disabledContentColor = HandyTheme.colors.textBasicDisabled,
-    )
+enum class TextButtonSize {
+    S,
+    M,
+    L;
 }
 
-
-@Composable
-private fun textButtonSizeStateBySize(
-    size: TextButtonSize,
-): ButtonSizeState = when (size) {
-    TextButtonSize.L -> ButtonSizeState(
-        typo = HandyTypography.B3Sb14,
-        iconSize = IconSize.S,
-        height = 36.dp,
-        horizontalPadding = 8.dp,
-        round = 8.dp
-    )
-
-    TextButtonSize.M -> ButtonSizeState(
-        typo = HandyTypography.B3Sb14,
-        iconSize = IconSize.XS,
-        height = 32.dp,
-        horizontalPadding = 8.dp,
-        round = 8.dp
-    )
-
-    TextButtonSize.S -> ButtonSizeState(
-        typo = HandyTypography.B5Sb12,
-        iconSize = IconSize.XXS,
-        height = 24.dp,
-        horizontalPadding = 6.dp,
-        round = 8.dp
-    )
-
-}
-
+/**
+ * BaseButton : ripple 효과가 없는 Composable 함수 입니다.
+ *
+ * BoxButton, TextButton의 베이스가 됩니다.
+ *
+ * @param onClick Button 클릭 시 실행되는 함수
+ * @param text Button 내부 text
+ * @param leftIcon Button 왼쪽에 표시되는 Icon
+ * @param rightIcon Button 오른쪽에 표시되는 Icon
+ * @param isDisabled Button 비활성화 여부
+ * @param sizeType Button 사이즈
+ * @param buttonType Button 타입 (Primary, Secondary)
+ * @param interactionSource Button 상호작용 소스
+ **/
 @Composable
 fun TextButton(
     onClick: () -> Unit,
@@ -121,4 +91,55 @@ fun TextButton(
             )
         }
     }
+}
+
+
+@Composable
+private fun textButtonColorByType(
+    type: TextButtonType,
+): ButtonColorState = when (type) {
+    TextButtonType.Primary -> ButtonColorState(
+        bgColor = HandyTheme.colors.buttonTextPrimaryEnabled,
+        contentColor = HandyTheme.colors.textBrandPrimary,
+        disabledBgColor = HandyTheme.colors.buttonTextPrimaryEnabled,
+        disabledContentColor = HandyTheme.colors.textBasicDisabled,
+    )
+
+    TextButtonType.Secondary -> ButtonColorState(
+        bgColor = HandyTheme.colors.buttonTextSecondaryEnabled,
+        contentColor = HandyTheme.colors.textBasicTertiary,
+        disabledBgColor = HandyTheme.colors.buttonTextSecondaryDisabled,
+        disabledContentColor = HandyTheme.colors.textBasicDisabled,
+    )
+}
+
+
+@Composable
+private fun textButtonSizeStateBySize(
+    size: TextButtonSize,
+): ButtonSizeState = when (size) {
+    TextButtonSize.L -> ButtonSizeState(
+        typo = HandyTypography.B3Sb14,
+        iconSize = IconSize.S,
+        height = 36.dp,
+        horizontalPadding = 8.dp,
+        round = 8.dp
+    )
+
+    TextButtonSize.M -> ButtonSizeState(
+        typo = HandyTypography.B3Sb14,
+        iconSize = IconSize.XS,
+        height = 32.dp,
+        horizontalPadding = 8.dp,
+        round = 8.dp
+    )
+
+    TextButtonSize.S -> ButtonSizeState(
+        typo = HandyTypography.B5Sb12,
+        iconSize = IconSize.XXS,
+        height = 24.dp,
+        horizontalPadding = 6.dp,
+        round = 8.dp
+    )
+
 }
