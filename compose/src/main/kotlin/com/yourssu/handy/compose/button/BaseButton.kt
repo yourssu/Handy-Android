@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Surface
 
 @Composable
@@ -41,7 +42,7 @@ internal fun BaseButton(
         modifier = modifier,
         enabled = enabled,
         rounding = rounding,
-        border = if (showBorder) BorderStroke(1.dp, contentColor) else null,
+        border = if (showBorder) BorderStroke(1.dp, HandyTheme.colors.lineBasicMedium) else null,
         backgroundColor = buttonColors.backgroundColor(enabled).value,
         contentColor = contentColor,
         interactionSource = interactionSource,

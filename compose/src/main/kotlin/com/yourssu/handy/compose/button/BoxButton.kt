@@ -1,17 +1,13 @@
 package com.yourssu.handy.compose.button
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
@@ -19,8 +15,6 @@ import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.IconSize
 import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
-import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.line.Add
 
 
 enum class BoxButtonType {
@@ -119,7 +113,7 @@ fun BoxButton(
     sizeType: ButtonSize = ButtonSize.M,
     buttonType: BoxButtonType = BoxButtonType.Primary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding
+    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding,
 ) {
     val roundingDp = boxButtonSizeStateBySize(size = sizeType).round
     val (typo, iconSize, height) = boxButtonSizeStateBySize(size = sizeType)

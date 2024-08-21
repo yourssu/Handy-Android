@@ -2,7 +2,6 @@ package com.yourssu.handy.compose.button
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -53,6 +52,8 @@ private fun pressedColorFor(color: Color): Color {
         HandyTheme.colors.buttonBoxPrimaryEnabled -> HandyTheme.colors.buttonBoxPrimaryPressed
         HandyTheme.colors.buttonBoxSecondaryEnabled -> HandyTheme.colors.buttonBoxSecondaryPressed
         HandyTheme.colors.buttonBoxTertiaryEnabled -> HandyTheme.colors.buttonBoxTertiaryPressed
+        HandyTheme.colors.buttonTextPrimaryEnabled -> HandyTheme.colors.buttonTextPrimaryPressed
+        HandyTheme.colors.buttonTextSecondaryEnabled -> HandyTheme.colors.buttonTextSecondaryPressed
         else -> color
     }
 }
@@ -67,7 +68,7 @@ data class ButtonSizeState(
     val round: Dp = 0.dp,
 )
 
-enum class ButtonSize (internal val value: Dp) {
+enum class ButtonSize(internal val value: Dp) {
     XXS(12.dp),
     XS(16.dp),
     S(20.dp),

@@ -1,5 +1,6 @@
 package com.yourssu.handy.demo
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
@@ -21,9 +23,19 @@ import com.yourssu.handy.compose.icons.line.Add
 @Composable
 private fun BoxButtonPreview() {
     HandyTheme {
-        Column {
+        Column(modifier = Modifier.background(White)) {
             Row {
                 Column {
+
+                    BoxButton(
+                        onClick = {},
+                        text = "isDisabled",
+                        isDisabled = true,
+                        sizeType = ButtonSize.XL,
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     BoxButton(
                         onClick = {},
                         text = "XL Button",
@@ -62,17 +74,25 @@ private fun BoxButtonPreview() {
                         sizeType = ButtonSize.XS,
                     )
 
-                    // XXS
                     Spacer(modifier = Modifier.height(8.dp))
 
                     BoxButton(
                         onClick = {},
                         text = "XXS Button",
-                        buttonType = BoxButtonType.Secondary,
                         sizeType = ButtonSize.XXS,
                     )
                 }
                 Column {
+                    BoxButton(
+                        onClick = {},
+                        buttonType = BoxButtonType.Secondary,
+                        text = "isDisabled",
+                        isDisabled = true,
+                        sizeType = ButtonSize.XL,
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     BoxButton(
                         onClick = {},
                         text = "XL Button",
@@ -126,6 +146,16 @@ private fun BoxButtonPreview() {
                     )
                 }
                 Column {
+                    BoxButton(
+                        onClick = {},
+                        buttonType = BoxButtonType.Tertiary,
+                        text = "isDisabled",
+                        isDisabled = true,
+                        sizeType = ButtonSize.XL,
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
                     BoxButton(
                         onClick = {},
                         text = "XL Button",
