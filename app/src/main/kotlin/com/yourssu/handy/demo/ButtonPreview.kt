@@ -14,9 +14,14 @@ import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.button.BoxButton
 import com.yourssu.handy.compose.button.BoxButtonType
-import com.yourssu.handy.compose.button.ButtonSize
+import com.yourssu.handy.compose.button.BoxButtonSize
+import com.yourssu.handy.compose.button.TextButton
+import com.yourssu.handy.compose.button.TextButtonSize
+import com.yourssu.handy.compose.button.TextButtonType
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.line.Add
+import com.yourssu.handy.compose.icons.line.ArrowsChevronLeft
+import com.yourssu.handy.compose.icons.line.ExternalLink
 
 
 @Preview
@@ -31,7 +36,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "isDisabled",
                         isDisabled = true,
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -39,7 +44,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "XL Button",
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -47,7 +52,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "L Button",
-                        sizeType = ButtonSize.L,
+                        sizeType = BoxButtonSize.L,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -55,7 +60,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "M Button",
-                        sizeType = ButtonSize.M,
+                        sizeType = BoxButtonSize.M,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -63,7 +68,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "S Button",
-                        sizeType = ButtonSize.S,
+                        sizeType = BoxButtonSize.S,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -71,7 +76,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "XS Button",
-                        sizeType = ButtonSize.XS,
+                        sizeType = BoxButtonSize.XS,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -79,7 +84,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "XXS Button",
-                        sizeType = ButtonSize.XXS,
+                        sizeType = BoxButtonSize.XXS,
                     )
                 }
                 Column {
@@ -88,7 +93,7 @@ private fun BoxButtonPreview() {
                         buttonType = BoxButtonType.Secondary,
                         text = "isDisabled",
                         isDisabled = true,
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -97,7 +102,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XL Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -106,7 +111,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "L Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.L,
+                        sizeType = BoxButtonSize.L,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -115,7 +120,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "M Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.M,
+                        sizeType = BoxButtonSize.M,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -124,7 +129,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "S Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.S,
+                        sizeType = BoxButtonSize.S,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -133,7 +138,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XS Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.XS,
+                        sizeType = BoxButtonSize.XS,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -142,7 +147,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XXS Button",
                         buttonType = BoxButtonType.Secondary,
-                        sizeType = ButtonSize.XXS,
+                        sizeType = BoxButtonSize.XXS,
                     )
                 }
                 Column {
@@ -151,7 +156,7 @@ private fun BoxButtonPreview() {
                         buttonType = BoxButtonType.Tertiary,
                         text = "isDisabled",
                         isDisabled = true,
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -160,7 +165,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XL Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.XL,
+                        sizeType = BoxButtonSize.XL,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -169,7 +174,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "L Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.L,
+                        sizeType = BoxButtonSize.L,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -178,7 +183,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "M Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.M,
+                        sizeType = BoxButtonSize.M,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -187,7 +192,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "S Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.S,
+                        sizeType = BoxButtonSize.S,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -196,7 +201,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XS Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.XS,
+                        sizeType = BoxButtonSize.XS,
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -205,7 +210,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         text = "XXS Button",
                         buttonType = BoxButtonType.Tertiary,
-                        sizeType = ButtonSize.XXS,
+                        sizeType = BoxButtonSize.XXS,
                     )
                 }
             }
@@ -214,7 +219,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                 )
 
@@ -222,14 +227,14 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     rightIcon = HandyIcons.Line.Add,
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -239,7 +244,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Secondary,
                     leftIcon = HandyIcons.Line.Add,
                 )
@@ -248,7 +253,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Secondary,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -256,7 +261,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Secondary,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
@@ -267,7 +272,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Tertiary,
                     leftIcon = HandyIcons.Line.Add,
                 )
@@ -276,7 +281,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Tertiary,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -284,7 +289,7 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.S,
+                    sizeType = BoxButtonSize.S,
                     buttonType = BoxButtonType.Tertiary,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
@@ -295,11 +300,152 @@ private fun BoxButtonPreview() {
                 BoxButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = ButtonSize.M,
+                    sizeType = BoxButtonSize.M,
                     leftIcon = HandyIcons.Line.Add,
                     horizontalPadding = 100.dp
                 )
             }
         }
+    }
+}
+
+@Composable
+@Preview
+fun TextButtonPreview() {
+    HandyTheme {
+        Column {
+            Row {
+                Column {
+                    TextButton(
+                        onClick = {},
+                        text = "L Button",
+                        isDisabled = true,
+                        sizeType = TextButtonSize.L,
+                        buttonType = TextButtonType.Primary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "L Button",
+                        sizeType = TextButtonSize.L,
+                        buttonType = TextButtonType.Primary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "M Button",
+                        sizeType = TextButtonSize.M,
+                        buttonType = TextButtonType.Primary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "S Button",
+                        sizeType = TextButtonSize.S,
+                        buttonType = TextButtonType.Primary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                }
+                Column {
+                    TextButton(
+                        onClick = {},
+                        text = "L Button",
+                        isDisabled = true,
+                        sizeType = TextButtonSize.L,
+                        buttonType = TextButtonType.Secondary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "L Button",
+                        sizeType = TextButtonSize.L,
+                        buttonType = TextButtonType.Secondary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "M Button",
+                        sizeType = TextButtonSize.M,
+                        buttonType = TextButtonType.Secondary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                    TextButton(
+                        onClick = {},
+                        text = "S Button",
+                        sizeType = TextButtonSize.S,
+                        buttonType = TextButtonType.Secondary,
+                        leftIcon = HandyIcons.Line.ExternalLink,
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            Row {
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Primary,
+                )
+                
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Primary,
+                    leftIcon = HandyIcons.Line.ExternalLink,
+                )
+
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Primary,
+                    rightIcon = HandyIcons.Line.ExternalLink,
+                )
+
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Primary,
+                    leftIcon = HandyIcons.Line.ExternalLink,
+                    rightIcon = HandyIcons.Line.ExternalLink,
+                )
+            }
+            Row {
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Secondary,
+                )
+
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Secondary,
+                    leftIcon = HandyIcons.Line.ExternalLink,
+                )
+
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Secondary,
+                    rightIcon = HandyIcons.Line.ExternalLink,
+                )
+
+                TextButton(
+                    onClick = {},
+                    text = "M Button",
+                    sizeType = TextButtonSize.M,
+                    buttonType = TextButtonType.Secondary,
+                    leftIcon = HandyIcons.Line.ExternalLink,
+                    rightIcon = HandyIcons.Line.ExternalLink,
+                )
+            }
+        }
+
     }
 }
