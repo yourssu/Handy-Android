@@ -68,11 +68,17 @@ data class ButtonSizeState(
     val round: Dp = 0.dp,
 )
 
-enum class ButtonSize(internal val value: Dp) {
-    XXS(12.dp),
-    XS(16.dp),
-    S(20.dp),
-    M(24.dp),
-    L(28.dp),
-    XL(32.dp);
+enum class BoxButtonSize {
+    XXS,
+    XS,
+    S,
+    M,
+    L,
+    XL;
+}
+
+enum class TextButtonSize {
+    S,
+    M,
+    L;
 }
