@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
@@ -116,10 +118,11 @@ fun BoxButton(
     isDisabled: Boolean = false,
     sizeType: ButtonSize = ButtonSize.M,
     buttonType: BoxButtonType = BoxButtonType.Primary,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding
 ) {
     val roundingDp = boxButtonSizeStateBySize(size = sizeType).round
-    val (typo, iconSize, height, horizontalPadding) = boxButtonSizeStateBySize(size = sizeType)
+    val (typo, iconSize, height) = boxButtonSizeStateBySize(size = sizeType)
 
     BaseButton(
         onClick = onClick,
