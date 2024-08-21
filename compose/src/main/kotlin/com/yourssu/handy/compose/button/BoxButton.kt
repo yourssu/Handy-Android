@@ -51,9 +51,9 @@ private fun boxButtonColorByType(
 
 @Composable
 private fun boxButtonSizeStateBySize(
-    size: ButtonSize,
+    size: BoxButtonSize,
 ): ButtonSizeState = when (size) {
-    ButtonSize.XL -> ButtonSizeState(
+    BoxButtonSize.XL -> ButtonSizeState(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 56.dp,
@@ -61,7 +61,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    ButtonSize.L -> ButtonSizeState(
+    BoxButtonSize.L -> ButtonSizeState(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 52.dp,
@@ -69,7 +69,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    ButtonSize.M -> ButtonSizeState(
+    BoxButtonSize.M -> ButtonSizeState(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 48.dp,
@@ -77,7 +77,7 @@ private fun boxButtonSizeStateBySize(
         round = 14.dp
     )
 
-    ButtonSize.S -> ButtonSizeState(
+    BoxButtonSize.S -> ButtonSizeState(
         typo = HandyTypography.B3Sb14,
         iconSize = IconSize.XS,
         height = 40.dp,
@@ -85,7 +85,7 @@ private fun boxButtonSizeStateBySize(
         round = 12.dp
     )
 
-    ButtonSize.XS -> ButtonSizeState(
+    BoxButtonSize.XS -> ButtonSizeState(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 32.dp,
@@ -93,7 +93,7 @@ private fun boxButtonSizeStateBySize(
         round = 10.dp
     )
 
-    ButtonSize.XXS -> ButtonSizeState(
+    BoxButtonSize.XXS -> ButtonSizeState(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 24.dp,
@@ -110,7 +110,7 @@ fun BoxButton(
     leftIcon: ImageVector? = null,
     rightIcon: ImageVector? = null,
     isDisabled: Boolean = false,
-    sizeType: ButtonSize = ButtonSize.M,
+    sizeType: BoxButtonSize = BoxButtonSize.M,
     buttonType: BoxButtonType = BoxButtonType.Primary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding,
