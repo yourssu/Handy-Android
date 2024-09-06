@@ -35,7 +35,7 @@ enum class TextButtonSize {
  * @param text Button 내부 text
  * @param leftIcon Button 왼쪽에 표시되는 Icon
  * @param rightIcon Button 오른쪽에 표시되는 Icon
- * @param isDisabled Button 비활성화 여부
+ * @param enabled Button 활성화 여부 default true
  * @param sizeType Button 사이즈
  * @param buttonType Button 타입 (Primary, Secondary)
  * @param interactionSource Button 상호작용 소스
@@ -48,7 +48,7 @@ fun TextButton(
     leftIcon: ImageVector? = null,
     rightIcon: ImageVector? = null,
     sizeType: TextButtonSize = TextButtonSize.M,
-    isDisabled: Boolean = false,
+    enabled: Boolean = false,
     buttonType: TextButtonType = TextButtonType.Primary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
@@ -63,7 +63,7 @@ fun TextButton(
         modifier = Modifier
             .then(modifier)
             .height(height),
-        enabled = !isDisabled,
+        enabled = enabled,
         interactionSource = interactionSource,
         rounding = roundingDp,
         contentPadding = PaddingValues(
@@ -117,8 +117,8 @@ private fun textButtonColorByType(
 @Composable
 private fun textButtonSizeStateBySize(
     size: TextButtonSize,
-): ButtonSizeState = when (size) {
-    TextButtonSize.L -> ButtonSizeState(
+): ButtonStyleProperties = when (size) {
+    TextButtonSize.L -> ButtonStyleProperties(
         typo = HandyTypography.B3Sb14,
         iconSize = IconSize.S,
         height = 36.dp,
@@ -126,7 +126,7 @@ private fun textButtonSizeStateBySize(
         round = 8.dp
     )
 
-    TextButtonSize.M -> ButtonSizeState(
+    TextButtonSize.M -> ButtonStyleProperties(
         typo = HandyTypography.B3Sb14,
         iconSize = IconSize.XS,
         height = 32.dp,
@@ -134,7 +134,7 @@ private fun textButtonSizeStateBySize(
         round = 8.dp
     )
 
-    TextButtonSize.S -> ButtonSizeState(
+    TextButtonSize.S -> ButtonStyleProperties(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 24.dp,

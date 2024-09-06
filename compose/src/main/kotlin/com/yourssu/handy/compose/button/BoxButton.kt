@@ -41,7 +41,7 @@ enum class BoxButtonSize {
  * @param text Button 내부 text
  * @param leftIcon Button 왼쪽에 표시되는 Icon
  * @param rightIcon Button 오른쪽에 표시되는 Icon
- * @param isDisabled Button 비활성화 여부
+ * @param enabled Button 활성화 여부, default true
  * @param sizeType Button 사이즈
  * @param buttonType Button 타입 (Primary, Secondary, Tertiary)
  * @param interactionSource Button 상호작용 소스
@@ -55,7 +55,7 @@ fun BoxButton(
     text: String,
     leftIcon: ImageVector? = null,
     rightIcon: ImageVector? = null,
-    isDisabled: Boolean = false,
+    enabled: Boolean = true,
     sizeType: BoxButtonSize = BoxButtonSize.M,
     buttonType: BoxButtonType = BoxButtonType.Primary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -70,7 +70,7 @@ fun BoxButton(
             type = buttonType,
         ),
         modifier = Modifier.height(height),
-        enabled = !isDisabled,
+        enabled = enabled,
         showBorder = (buttonType == BoxButtonType.Tertiary),
         interactionSource = interactionSource,
         rounding = roundingDp,
@@ -130,8 +130,8 @@ private fun boxButtonColorByType(
 
 private fun boxButtonSizeStateBySize(
     size: BoxButtonSize,
-): ButtonSizeState = when (size) {
-    BoxButtonSize.XL -> ButtonSizeState(
+): ButtonStyleProperties = when (size) {
+    BoxButtonSize.XL -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 56.dp,
@@ -139,7 +139,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    BoxButtonSize.L -> ButtonSizeState(
+    BoxButtonSize.L -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 52.dp,
@@ -147,7 +147,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    BoxButtonSize.M -> ButtonSizeState(
+    BoxButtonSize.M -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 48.dp,
@@ -155,7 +155,7 @@ private fun boxButtonSizeStateBySize(
         round = 14.dp
     )
 
-    BoxButtonSize.S -> ButtonSizeState(
+    BoxButtonSize.S -> ButtonStyleProperties(
         typo = HandyTypography.B3Sb14,
         iconSize = IconSize.XS,
         height = 40.dp,
@@ -163,7 +163,7 @@ private fun boxButtonSizeStateBySize(
         round = 12.dp
     )
 
-    BoxButtonSize.XS -> ButtonSizeState(
+    BoxButtonSize.XS -> ButtonStyleProperties(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 32.dp,
@@ -171,7 +171,7 @@ private fun boxButtonSizeStateBySize(
         round = 10.dp
     )
 
-    BoxButtonSize.XXS -> ButtonSizeState(
+    BoxButtonSize.XXS -> ButtonStyleProperties(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 24.dp,

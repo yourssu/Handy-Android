@@ -41,7 +41,7 @@ private fun BoxButtonPreview() {
                     BoxButton(
                         onClick = {},
                         text = "isDisabled",
-                        isDisabled = true,
+                        enabled = false,
                         sizeType = BoxButtonSize.XL,
                     )
 
@@ -89,7 +89,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         buttonType = BoxButtonType.Secondary,
                         text = "isDisabled",
-                        isDisabled = true,
+                        enabled = false,
                         sizeType = BoxButtonSize.XL,
                     )
 
@@ -142,7 +142,7 @@ private fun BoxButtonPreview() {
                         onClick = {},
                         buttonType = BoxButtonType.Tertiary,
                         text = "isDisabled",
-                        isDisabled = true,
+                        enabled = false,
                         sizeType = BoxButtonSize.XL,
                     )
 
@@ -197,7 +197,7 @@ private fun BoxButtonPreview() {
                     text = "M Button",
                     sizeType = BoxButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
-                    isDisabled = true,
+                    enabled = false,
                 )
 
                 BoxButton(
@@ -205,7 +205,7 @@ private fun BoxButtonPreview() {
                     text = "M Button",
                     sizeType = BoxButtonSize.S,
                     rightIcon = HandyIcons.Line.Add,
-                    isDisabled = true,
+                    enabled = false,
                 )
                 BoxButton(
                     onClick = {},
@@ -213,7 +213,7 @@ private fun BoxButtonPreview() {
                     sizeType = BoxButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
-                    isDisabled = true,
+                    enabled = false,
                 )
             }
             Row(
@@ -326,7 +326,7 @@ fun TextButtonPreview() {
                     TextButton(
                         onClick = {},
                         text = "L Button",
-                        isDisabled = true,
+                        enabled = false,
                         sizeType = TextButtonSize.L,
                         buttonType = TextButtonType.Primary,
                         leftIcon = HandyIcons.Line.ExternalLink,
@@ -359,7 +359,7 @@ fun TextButtonPreview() {
                     TextButton(
                         onClick = {},
                         text = "L Button",
-                        isDisabled = true,
+                        enabled = false,
                         sizeType = TextButtonSize.L,
                         buttonType = TextButtonType.Secondary,
                         leftIcon = HandyIcons.Line.ExternalLink,
