@@ -71,7 +71,7 @@ private fun pressedColorFor(color: Color): Color {
 }
 
 @Immutable
-data class ButtonSizeState(
+data class ButtonStyleProperties(
     val typo: HandyTextStyle = HandyTextStyle.Default,
     val iconSize: IconSize = IconSize.S,
     val height: Dp = 0.dp,
