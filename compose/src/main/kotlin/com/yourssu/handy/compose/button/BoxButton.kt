@@ -69,9 +69,7 @@ fun BoxButton(
         colors = boxButtonColorByType(
             type = buttonType,
         ),
-        modifier = Modifier
-            .then(modifier)
-            .height(height),
+        modifier = Modifier.height(height),
         enabled = !isDisabled,
         showBorder = (buttonType == BoxButtonType.Tertiary),
         interactionSource = interactionSource,
@@ -130,7 +128,6 @@ private fun boxButtonColorByType(
     )
 }
 
-@Composable
 private fun boxButtonSizeStateBySize(
     size: BoxButtonSize,
 ): ButtonSizeState = when (size) {
