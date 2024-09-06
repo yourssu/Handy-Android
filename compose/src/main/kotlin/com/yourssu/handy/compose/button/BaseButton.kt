@@ -45,8 +45,6 @@ internal fun BaseButton(
     rounding: Dp = 8.dp,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    minWidth: Dp = ButtonDefaults.MinWidth,
-    minHeight: Dp = ButtonDefaults.MinHeight,
     content: @Composable RowScope.() -> Unit,
 ) {
     val localPressed by interactionSource.collectIsPressedAsState()
@@ -64,12 +62,7 @@ internal fun BaseButton(
         interactionSource = interactionSource,
     ) {
         Row(
-            modifier = Modifier
-                .defaultMinSize(
-                    minWidth = minWidth,
-                    minHeight = minHeight,
-                )
-                .padding(contentPadding),
+            modifier = Modifier.padding(contentPadding),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
             content = content,
@@ -79,13 +72,10 @@ internal fun BaseButton(
 
 object ButtonDefaults {
     private val ButtonHorizontalPadding = 20.dp
-    private val ButtonVerticalPadding = 16.dp
+    private val ButtonVerticalPadding = 14.dp
 
     val ContentPadding = PaddingValues(
         horizontal = ButtonHorizontalPadding,
         vertical = ButtonVerticalPadding,
     )
-
-    val MinWidth = 64.dp
-    val MinHeight = 36.dp
 }
