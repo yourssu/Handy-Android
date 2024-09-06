@@ -1,6 +1,7 @@
 package com.yourssu.handy.compose
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -97,6 +98,7 @@ fun Surface(
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource()},
+    indication: Indication? = null,
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
@@ -111,7 +113,7 @@ fun Surface(
                 )
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = null,
+                    indication = indication,
                     enabled = enabled,
                     onClick = onClick,
                 ),
@@ -135,6 +137,7 @@ fun Surface(
     shadowColor: Color = Color.Transparent,
     shadowElevation: Dp = 0.dp,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = null,
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
@@ -156,7 +159,7 @@ fun Surface(
                 )
                 .clickable(
                     interactionSource = interactionSource,
-                    indication = null,
+                    indication = indication,
                     enabled = enabled,
                     onClick = onClick,
                 ),
@@ -195,6 +198,7 @@ fun Surface(
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource()},
+    indication: Indication? = null,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -210,7 +214,7 @@ fun Surface(
                 )
                 .selectable(
                     interactionSource = interactionSource,
-                    indication = null,
+                    indication = indication,
                     selected = selected,
                     onClick = onClick,
                     enabled = enabled,
@@ -251,6 +255,7 @@ fun Surface(
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = null,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -266,7 +271,7 @@ fun Surface(
                 )
                 .toggleable(
                     interactionSource = interactionSource,
-                    indication = null,
+                    indication = indication,
                     value = checked,
                     enabled = enabled,
                     onValueChange = onCheckedChange
