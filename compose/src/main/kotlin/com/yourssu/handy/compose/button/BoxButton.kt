@@ -33,9 +33,9 @@ enum class BoxButtonSize {
 }
 
 /**
- * BaseButton : ripple 효과가 없는 Composable 함수 입니다.
- *
- * BoxButton, TextButton의 베이스가 됩니다.
+ * BoxButton : Box 형태의 Button 입니다.
+ * type : Primary, Secondary, Tertiary
+ * size : XXS, XS, S, M, L, XL
  *
  * @param onClick Button 클릭 시 실행되는 함수
  * @param text Button 내부 text
