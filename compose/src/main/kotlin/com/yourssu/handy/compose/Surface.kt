@@ -170,6 +170,51 @@ fun Surface(
     }
 }
 
+@Composable
+fun Surface(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    rounding: Dp? = null,
+    shape: Shape = rounding?.let { RoundedCornerShape(it) } ?: RectangleShape,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    contentColor: Color = LocalContentColor.current,
+    border: BorderStroke? = null,
+    shadowColor: Color = Color.Transparent,
+    shadowElevation: Dp = 0.dp,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalContentColor provides contentColor,
+    ) {
+        Box(
+            modifier = modifier
+                .shadow(
+                    elevation = shadowElevation,
+                    shape = shape,
+                    clip = false,
+                    ambientColor = shadowColor,
+                    spotColor = shadowColor
+                )
+                .surface(
+                    shape = shape,
+                    backgroundColor = backgroundColor,
+                    border = border,
+                )
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    enabled = enabled,
+                    onClick = onClick,
+                ),
+            propagateMinConstraints = true,
+        ) {
+            content()
+        }
+    }
+}
+
 /**
  * Selectable Surface : 선택이 가능한 Surface 입니다.
  *
