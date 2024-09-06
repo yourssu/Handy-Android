@@ -15,6 +15,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
@@ -22,6 +23,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.isContainer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.LocalContentColor
 
 
@@ -102,6 +104,51 @@ fun Surface(
     ) {
         Box(
             modifier = modifier
+                .surface(
+                    shape = shape,
+                    backgroundColor = backgroundColor,
+                    border = border,
+                )
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    enabled = enabled,
+                    onClick = onClick,
+                ),
+            propagateMinConstraints = true,
+        ) {
+            content()
+        }
+    }
+}
+
+@Composable
+fun Surface(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    rounding: Dp? = null,
+    shape: Shape = rounding?.let { RoundedCornerShape(it) } ?: RectangleShape,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    contentColor: Color = LocalContentColor.current,
+    border: BorderStroke? = null,
+    shadowColor: Color = Color.Transparent,
+    shadowElevation: Dp = 0.dp,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalContentColor provides contentColor,
+    ) {
+        Box(
+            modifier = modifier
+                .shadow(
+                    elevation = shadowElevation,
+                    shape = shape,
+                    clip = false,
+                    ambientColor = shadowColor,
+                    spotColor = shadowColor
+                )
                 .surface(
                     shape = shape,
                     backgroundColor = backgroundColor,

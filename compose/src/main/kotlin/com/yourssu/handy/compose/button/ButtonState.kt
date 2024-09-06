@@ -20,6 +20,7 @@ class ButtonColorState(
     val disabledContentColor: Color = Color.Unspecified,
     val bgColor: Color = Color.Transparent,
     val disabledBgColor: Color = Color.Transparent,
+    val shadowColor: Color = Color.Transparent,
     pressed: Boolean = false,
 ) {
     var pressed by mutableStateOf(pressed)
@@ -44,6 +45,15 @@ class ButtonColorState(
                 else -> bgColor
             }
         )
+
+    @Composable
+    fun shadowColor(enabled: Boolean): State<Color> =
+        rememberUpdatedState(
+            when {
+                !enabled -> Color.Transparent
+                else -> shadowColor
+            }
+        )
 }
 
 @Composable
@@ -54,6 +64,8 @@ private fun pressedColorFor(color: Color): Color {
         HandyTheme.colors.buttonBoxTertiaryEnabled -> HandyTheme.colors.buttonBoxTertiaryPressed
         HandyTheme.colors.buttonTextPrimaryEnabled -> HandyTheme.colors.buttonTextPrimaryPressed
         HandyTheme.colors.buttonTextSecondaryEnabled -> HandyTheme.colors.buttonTextSecondaryPressed
+        HandyTheme.colors.buttonFabPrimaryEnabled -> HandyTheme.colors.buttonFabPrimaryPressed
+        HandyTheme.colors.buttonFabSecondaryEnabled -> HandyTheme.colors.buttonFabSecondaryPressed
         else -> color
     }
 }
