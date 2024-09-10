@@ -33,7 +33,7 @@ jobs:
         name: Deploy Documentation to GitHub Pages
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            BRANCH: github-pages
-            FOLDER: compose/build/dokka/html
-            TARGET_FOLDER: docs/0.x/
+            token: ${{ secrets.GITHUB_TOKEN }}
+            branch: github-pages
+            folder: compose/build/dokka/html
+            target-folder: docs/0.x/
