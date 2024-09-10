@@ -1,14 +1,10 @@
-# 파일 경로명
 name: release
 
-# 언제 실행될 것인지
 on:
-  push
+  push:
+    branches:
+      - main
 
-#  push:
-#    branches: [ main ]
-
-# 실행할 job
 jobs:
   release:
     runs-on: ubuntu-latest
