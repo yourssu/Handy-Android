@@ -1,9 +1,9 @@
 name: release
 
 on:
-  push:
-    branches:
-      - main
+  push
+#    branches:
+#      - main
 
 jobs:
   release:
@@ -30,6 +30,6 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
             token: ${{ secrets.GITHUB_TOKEN }}
-            branch: github-pages
+            branch: gh-pages
             folder: compose/build/dokka/html
             target-folder: docs/0.x/
