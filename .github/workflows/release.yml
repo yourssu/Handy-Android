@@ -3,13 +3,15 @@ name: release
 
 # 언제 실행될 것인지
 on:
+  push
 
 #  push:
 #    branches: [ main ]
 
 # 실행할 job
 jobs:
-  runs-on: ubuntu-latest
+  release:
+    runs-on: ubuntu-latest
 
-  steps:
-    - run: ./gradlew dokkaHtml
+    steps:
+      - run: ./gradlew dokkaHtml
