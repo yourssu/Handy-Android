@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.yourssu.handy.compose.foundation</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../index.html">
+                            compose
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":compose:dokkaHtml/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="compose::com.yourssu.handy.compose.foundation////PointingToDeclaration//901554290">
+  <div class="breadcrumbs"><a href="../../index.html">compose</a><span class="delimiter">/</span><span class="current">com.yourssu.handy.compose.foundation</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1430878900%2FClasslikes%2F901554290" anchor-label="ColorScheme" id="-1430878900%2FClasslikes%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-color-scheme/index.html"><span>Color</span><wbr></wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1430878900%2FClasslikes%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Immutable.html"><span class="token annotation builtin">Immutable</span></a></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-color-scheme/index.html">ColorScheme</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>bgBasicDefault<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgBasicLight<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgBasicStrong<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgBasicBlack<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralBlack<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgBrandPrimary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgBrandSecondary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgStatusNegative<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorStatusRedMain<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bgStatusPositive<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBasicPrimary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralBlack<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBasicSecondary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray700<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBasicTertiary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBasicDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray300<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBasicWhite<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBrandPrimary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textBrandSecondary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet600<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textStatusNegative<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorStatusRedMain<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>textStatusPositive<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lineBasicLight<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lineBasicMedium<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray200<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lineBasicStrong<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray300<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lineStatusNegative<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorStatusRedMain<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lineStatusPositive<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxPrimaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxPrimaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet700<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxPrimaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxSecondaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxSecondaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet200<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxSecondaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxTertiaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxTertiaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonBoxTertiaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextPrimaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextPrimaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextPrimaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextSecondaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextSecondaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonTextSecondaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralTransparent<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonRadioSelected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonRadioUnselected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray200<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonRadioDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabPrimaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabPrimaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet700<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabPrimaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabSecondaryEnabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabSecondaryPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>buttonFabSecondaryDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBasicPrimary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralBlack<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBasicSecondary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray700<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBasicTertiary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBasicDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray200<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBasicWhite<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBrandPrimary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iconBrandSecondary<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet600<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>checkBoxSelected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet500<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>checkBoxUnselected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralWhite<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>checkBoxDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray200<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>chipSelected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>chipUnselected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray100<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>chipDisabled<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>paginationBrandPressed<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorViolet50<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>paginationBasicSelected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorNeutralBlack<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>paginationBasicUnselected<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator"> = </span>ColorGray500</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="694619604%2FClasslikes%2F901554290" anchor-label="HandyTextStyle" id="694619604%2FClasslikes%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-handy-text-style/index.html"><span>Handy</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Style</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="694619604%2FClasslikes%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Immutable.html"><span class="token annotation builtin">Immutable</span></a></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="-handy-text-style/index.html">HandyTextStyle</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="532539132%2FClasslikes%2F901554290" anchor-label="Radius" id="532539132%2FClasslikes%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-radius/index.html"><span><span>Radius</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="532539132%2FClasslikes%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-radius/index.html">Radius</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-radius/index.html">Radius</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1669004673%2FClasslikes%2F901554290" anchor-label="Typography" id="-1669004673%2FClasslikes%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-typography/index.html"><span><span>Typography</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1669004673%2FClasslikes%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/Immutable.html"><span class="token annotation builtin">Immutable</span></a></div></div><span class="token keyword">class </span><a href="-typography/index.html">Typography</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-191399785%2FProperties%2F901554290" anchor-label="darkColorScheme" id="-191399785%2FProperties%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dark-color-scheme.html"><span>dark</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-191399785%2FProperties%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="dark-color-scheme.html">darkColorScheme</a><span class="token operator">: </span><a href="-color-scheme/index.html">ColorScheme</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1201007771%2FProperties%2F901554290" anchor-label="fonts" id="-1201007771%2FProperties%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fonts.html"><span><span>fonts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1201007771%2FProperties%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="fonts.html">fonts</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/text/font/FontFamily.html">FontFamily</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-179539600%2FProperties%2F901554290" anchor-label="HandyTypography" id="-179539600%2FProperties%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-handy-typography.html"><span>Handy</span><wbr></wbr><span><span>Typography</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-179539600%2FProperties%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-handy-typography.html">HandyTypography</a><span class="token operator">: </span><a href="-typography/index.html">Typography</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-260047009%2FProperties%2F901554290" anchor-label="lightColorScheme" id="-260047009%2FProperties%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="light-color-scheme.html"><span>light</span><wbr></wbr><span>Color</span><wbr></wbr><span><span>Scheme</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-260047009%2FProperties%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="light-color-scheme.html">lightColorScheme</a><span class="token operator">: </span><a href="-color-scheme/index.html">ColorScheme</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="544490292%2FProperties%2F901554290" anchor-label="LocalContentColor" id="544490292%2FProperties%2F901554290" data-filterable-set=":compose:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":compose:dokkaHtml/release" data-filterable-set=":compose:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-local-content-color.html"><span>Local</span><wbr></wbr><span>Content</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="544490292%2FProperties%2F901554290"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":compose:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="-local-content-color.html">LocalContentColor</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/compose/runtime/ProvidableCompositionLocal.html">ProvidableCompositionLocal</a><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html">Color</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
