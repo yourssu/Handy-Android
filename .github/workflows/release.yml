@@ -37,4 +37,3 @@ jobs:
             branch: github-pages
             folder: compose/build/dokka/html
             target-folder: docs/0.x/
-            clean: true
