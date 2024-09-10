@@ -14,5 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo "Starting Release"
+
+        name: checkout
       - uses: actions/checkout@v4
-      - run: ./gradlew dokkaHtml
+
+      - name: permissions
+        run: chmod +x gradlew
+
+      - name: Build Documentation
+        run: ./gradlew dokkaHtml
+
+      - name: Deploy Documentation to GitHub Pages
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BRANCH: github-pages
+            FOLDER: compose/build/dokka/html
+            TARGET_FOLDER: docs/0.x/
