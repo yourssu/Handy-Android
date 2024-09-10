@@ -19,13 +19,13 @@ jobs:
         name: checkout
       - uses: actions/checkout@v4
 
-      - name: permissions
-        run: chmod +x gradlew
+        name: permissions
+      - run: chmod +x gradlew
 
-      - name: Build Documentation
-        run: ./gradlew dokkaHtml
+        name: Build Documentation
+      - run: ./gradlew dokkaHtml
 
-      - name: Deploy Documentation to GitHub Pages
+        name: Deploy Documentation to GitHub Pages
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
