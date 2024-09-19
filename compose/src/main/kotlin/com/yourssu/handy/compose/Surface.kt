@@ -1,9 +1,11 @@
 package com.yourssu.handy.compose
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.toggleable
@@ -11,8 +13,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
@@ -20,6 +24,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.isContainer
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.LocalContentColor
 
 
@@ -92,6 +97,8 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource()},
+    indication: Indication? = null,
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
@@ -105,6 +112,54 @@ fun Surface(
                     border = border,
                 )
                 .clickable(
+                    interactionSource = interactionSource,
+                    indication = indication,
+                    enabled = enabled,
+                    onClick = onClick,
+                ),
+            propagateMinConstraints = true,
+        ) {
+            content()
+        }
+    }
+}
+
+@Composable
+fun Surface(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    rounding: Dp? = null,
+    shape: Shape = rounding?.let { RoundedCornerShape(it) } ?: RectangleShape,
+    backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
+    contentColor: Color = LocalContentColor.current,
+    border: BorderStroke? = null,
+    shadowColor: Color = Color.Transparent,
+    shadowElevation: Dp = 0.dp,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = null,
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        LocalContentColor provides contentColor,
+    ) {
+        Box(
+            modifier = modifier
+                .shadow(
+                    elevation = shadowElevation,
+                    shape = shape,
+                    clip = false,
+                    ambientColor = shadowColor,
+                    spotColor = shadowColor
+                )
+                .surface(
+                    shape = shape,
+                    backgroundColor = backgroundColor,
+                    border = border,
+                )
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = indication,
                     enabled = enabled,
                     onClick = onClick,
                 ),
@@ -128,6 +183,7 @@ fun Surface(
  * @param backgroundColor Surface 배경 색상. 기본값 : bgBasicDefault(#0xFFFFFFFF)
  * @param contentColor Surface 내부 content 색상
  * @param border Surface 테두리 굵기
+ * @param interactionSource Surface 상호작용 소스
  * @param content Surface 내부 content
  **/
 @Composable
@@ -141,6 +197,8 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource()},
+    indication: Indication? = null,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -155,6 +213,8 @@ fun Surface(
                     border = border,
                 )
                 .selectable(
+                    interactionSource = interactionSource,
+                    indication = indication,
                     selected = selected,
                     onClick = onClick,
                     enabled = enabled,
@@ -179,6 +239,7 @@ fun Surface(
  * @param backgroundColor : Surface 배경 색상. 기본값 : bgBasicDefault(#0xFFFFFFFF)
  * @param contentColor : Surface 내부 content 색상
  * @param border : Surface 테두리 굵기
+ * @param interactionSource : Surface 상호작용 소스
  * @param content : Surface 내부 content
  **/
 
@@ -193,6 +254,8 @@ fun Surface(
     backgroundColor: Color = HandyTheme.colors.bgBasicDefault,
     contentColor: Color = LocalContentColor.current,
     border: BorderStroke? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = null,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
@@ -207,6 +270,8 @@ fun Surface(
                     border = border,
                 )
                 .toggleable(
+                    interactionSource = interactionSource,
+                    indication = indication,
                     value = checked,
                     enabled = enabled,
                     onValueChange = onCheckedChange
