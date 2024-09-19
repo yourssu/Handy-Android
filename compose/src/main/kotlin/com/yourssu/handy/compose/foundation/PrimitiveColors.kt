@@ -38,3 +38,8 @@ internal val ColorNeutralTransparent = Color(0x00FFFFFF)
 // Status
 internal val ColorStatusRedMain = Color(0xFFFF5C5C)
 internal val ColorStatusRedSub = Color(0xFFFFEBEB)
+
+
+
+internal val ColorFabPrimaryShadow = Color(0x6E768740).copy(alpha = 0.25f)
+internal val ColorFabSecondaryShadow = Color(0xB5B9C440).copy(alpha = 0.25f)
