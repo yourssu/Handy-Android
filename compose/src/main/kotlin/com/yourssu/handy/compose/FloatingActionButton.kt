@@ -86,9 +86,7 @@ fun FloatingActionButton(
     }
 }
 
-// TODO : To Reviewer, FAB는 버튼의 일종이긴 하지만, 버튼에 비해 스타일에 대한 변경될 값들이 많지 않습니다. 사이즈도 다양하지 않고, 아이콘의 크기, 색, 등이 거의 고정 값이에요.
-// 그런데 containerSize 하나 때문에 해당 데이터 클래스를 사용하는게 맞는지 고민이네요.. 가독성을 위해 도입한 클래스이나, 하나의 변수만 가지고 있기에 가독성이 높아질지 아닐지에 대한 고민이 있습니다
-// 해당 데이터 클래스를 쓰지 않는다면 FloatingActionButton 안에서 직접적으로 if- else나 when문으로 분기처리만 해도 되어서요.. 리뷰 부탁드립니다
+
 @Immutable
 data class FloatingActionButtonSizeState(
     val containerSize: FloatingActionButtonSize = FloatingActionButtonSize.S,
