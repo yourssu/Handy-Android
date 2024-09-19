@@ -45,15 +45,6 @@ class ButtonColorState(
                 else -> bgColor
             }
         )
-
-    @Composable
-    fun shadowColor(enabled: Boolean): State<Color> =
-        rememberUpdatedState(
-            when {
-                !enabled -> Color.Transparent
-                else -> shadowColor
-            }
-        )
 }
 
 @Composable
@@ -64,8 +55,6 @@ private fun pressedColorFor(color: Color): Color {
         HandyTheme.colors.buttonBoxTertiaryEnabled -> HandyTheme.colors.buttonBoxTertiaryPressed
         HandyTheme.colors.buttonTextPrimaryEnabled -> HandyTheme.colors.buttonTextPrimaryPressed
         HandyTheme.colors.buttonTextSecondaryEnabled -> HandyTheme.colors.buttonTextSecondaryPressed
-        HandyTheme.colors.buttonFabPrimaryEnabled -> HandyTheme.colors.buttonFabPrimaryPressed
-        HandyTheme.colors.buttonFabSecondaryEnabled -> HandyTheme.colors.buttonFabSecondaryPressed
         else -> color
     }
 }
