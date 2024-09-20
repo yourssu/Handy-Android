@@ -1,5 +1,12 @@
 package com.yourssu.handy.compose
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,13 +16,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.foundation.ColorGray800
 import com.yourssu.handy.compose.foundation.ColorStatusRedSub
 import com.yourssu.handy.compose.foundation.HandyTypography
+import kotlinx.coroutines.delay
 
 @Composable
 fun InfoSnackBar(
@@ -38,6 +53,48 @@ fun InfoSnackBar(
         )
     }
 }
+
+@Composable
+fun AutoInfoSnackBar(
+    text: String,
+    delay: Long = 5000,
+    onDismiss: () -> Unit
+) {
+    var visible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        visible = true
+        delay(delay)
+        visible = false
+        delay(300)
+        onDismiss()
+    }
+
+    Popup(
+        alignment = Alignment.BottomCenter
+    ) {
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn(
+                animationSpec = tween(durationMillis = 500)
+            ) + expandVertically(
+                expandFrom = Alignment.Top
+            ),
+            exit = fadeOut(
+                animationSpec = tween(durationMillis = 300)
+            ) + shrinkVertically(
+                shrinkTowards = Alignment.Bottom
+            ) + slideOutVertically(
+                targetOffsetY = { fullHeight -> fullHeight }
+            )
+        ) {
+            InfoSnackBar(
+                text = text,
+            )
+        }
+    }
+}
+
 
 @Composable
 fun ErrorSnackBar(
