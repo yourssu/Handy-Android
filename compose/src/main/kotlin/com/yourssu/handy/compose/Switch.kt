@@ -46,6 +46,10 @@ sealed class SwitchState {
 
 /**
  * Switch를 그리는 함수입니다.
+ *
+ * 스위치는 특정 기능을 활성 또는 비활성의 상태로 만들 수 있도록 도와주는 요소입니다.
+ * 내부적으로 Track과 Thumb으로 구성되어 있습니다.
+ *
  * @param switchState Switch의 상태. [SwitchState.Unselected], [SwitchState.Selected], [SwitchState.Disabled] 중 하나를 가질 수 있습니다.
  * @param onToggle Switch의 상태를 변경하는 함수. [SwitchState]를 인자로 가집니다.
  * @param switchSize Switch의 크기. [SwitchSize.Large], [SwitchSize.Medium], [SwitchSize.Small] 중 하나를 가질 수 있습니다.
