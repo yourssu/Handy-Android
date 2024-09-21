@@ -151,3 +151,73 @@ fun Switch(
         }
     }
 }
+
+data class SwitchPreviewParameter(
+    val switchState: SwitchState,
+    val switchSize: SwitchSize
+)
+
+class SwitchPreviewParameterProvider : PreviewParameterProvider<SwitchPreviewParameter> {
+    override val values = getAllCombinations()
+
+    private fun getAllCombinations(): Sequence<SwitchPreviewParameter> {
+        val samples = mutableListOf<SwitchPreviewParameter>()
+
+        // SwitchState와 SwitchSize의 모든 조합 생성
+        val switchStates =
+            listOf(SwitchState.Unselected, SwitchState.Selected, SwitchState.Disabled)
+        val switchSizes = listOf(SwitchSize.Large, SwitchSize.Medium, SwitchSize.Small)
+
+        switchStates.forEach { state ->
+            switchSizes.forEach { size ->
+                samples.add(
+                    SwitchPreviewParameter(
+                        switchState = state,
+                        switchSize = size
+                    )
+                )
+            }
+        }
+        return samples.asSequence()
+    }
+}
+
+@Preview
+@Composable
+private fun Preview1() {
+    var switchState by remember { mutableStateOf<SwitchState>(SwitchState.Unselected) }
+
+    Column {
+        Text(text = "Size:Large State:$switchState")
+        Switch(
+            switchState = switchState,
+            switchSize = SwitchSize.Large,
+            onToggle = { switchState = it }
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewThumb() {
+    Column {
+        SwitchThumb(switchSize = SwitchSize.Large, modifier = Modifier)
+        SwitchThumb(switchSize = SwitchSize.Medium, modifier = Modifier)
+        SwitchThumb(switchSize = SwitchSize.Small, modifier = Modifier)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview(
+    @PreviewParameter(SwitchPreviewParameterProvider::class) parameter: SwitchPreviewParameter,
+) {
+    Column {
+        Text(text = "Size:${parameter.switchSize} State:${parameter.switchState}")
+        Switch(
+            switchState = parameter.switchState,
+            switchSize = parameter.switchSize,
+            onToggle = { Log.d("Switch", "onToggle: $it") }
+        )
+    }
+}
