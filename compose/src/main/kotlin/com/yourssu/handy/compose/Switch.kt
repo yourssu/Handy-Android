@@ -2,7 +2,11 @@ package com.yourssu.handy.compose
 
 import android.util.Log
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.CubicBezierEasing
+import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -122,22 +126,44 @@ fun Switch(
     switchSize: SwitchSize = SwitchSize.Large,
     modifier: Modifier = Modifier
 ) {
+    val switchTrackWidth = remember(switchSize) { switchTrackWidth(switchSize) }
+    val switchTrackHeight = remember(switchSize) { switchTrackHeight(switchSize) }
+    val switchThumbSize = remember(switchSize) { switchThumbSize(switchSize) }
+    val switchPadding = remember(switchSize) { switchPadding(switchSize) }
+
     val trackColor: Color by animateColorAsState(switchTrackColor(switchState))
-    val thumbOffset: Dp by animateDpAsState(
-        if (switchState == SwitchState.Selected) {
-            switchTrackWidth(switchSize) - switchThumbSize(switchSize) - switchPadding(switchSize)
+
+    val easeIn = CubicBezierEasing(0.25f, 0.1f, 0.25f, 1f)
+    val easeOut = CubicBezierEasing(0.25f, 0.1f, 0.25f, 1f)
+
+    val transition = updateTransition(targetState = switchState, label = "SwitchStateTransition")
+
+    val thumbOffset: Dp by transition.animateDp(
+        transitionSpec = {
+            when {
+                SwitchState.Selected isTransitioningTo SwitchState.Unselected ->
+                    tween(durationMillis = 150, easing = easeOut)
+
+                else ->
+                    tween(durationMillis = 150, easing = easeIn)
+            }
+        },
+        label = "ThumbOffset"
+    ) { state ->
+        if (state == SwitchState.Selected) {
+            switchTrackWidth - switchThumbSize - switchPadding
         } else {
-            switchPadding(switchSize)
+            switchPadding
         }
-    )
+    }
 
     Surface(
         checked = switchState == SwitchState.Selected,
-        onCheckedChange = { onToggle(if (it) SwitchState.Selected else SwitchState.Unselected) },
+        onCheckedChange = { onToggle(if (switchState == SwitchState.Selected) SwitchState.Unselected else SwitchState.Selected) },
         modifier = modifier
-            .padding(switchPadding(switchSize))
-            .width(switchTrackWidth(switchSize))
-            .height(switchTrackHeight(switchSize)),
+            .padding(switchPadding)
+            .width(switchTrackWidth)
+            .height(switchTrackHeight),
         enabled = switchState != SwitchState.Disabled,
         shape = RoundedCornerShape(size = 999.dp),
         backgroundColor = trackColor,
