@@ -1,0 +1,153 @@
+package com.yourssu.handy.compose
+
+import android.util.Log
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+
+/**
+ * Switch의 크기를 나타내는 Sealed Class입니다.
+ * [SwitchSize.Large], [SwitchSize.Medium], [SwitchSize.Small] 중 하나를 가질 수 있습니다.
+ */
+sealed class SwitchSize {
+    data object Large : SwitchSize()
+    data object Medium : SwitchSize()
+    data object Small : SwitchSize()
+}
+
+/**
+ * Switch의 상태를 나타내는 Sealed Class입니다.
+ * [SwitchState.Unselected], [SwitchState.Selected], [SwitchState.Disabled] 중 하나를 가질 수 있습니다.
+ */
+sealed class SwitchState {
+    data object Unselected : SwitchState()
+    data object Selected : SwitchState()
+    data object Disabled : SwitchState()
+}
+
+/**
+ * Switch의 Track의 색상을 반환하는 함수입니다.
+ * @param switchState Switch의 상태
+ */
+@Composable
+private fun switchTrackColor(switchState: SwitchState): Color = when (switchState) {
+    SwitchState.Unselected -> HandyTheme.colors.switchUnselected
+    SwitchState.Selected -> HandyTheme.colors.switchSelected
+    SwitchState.Disabled -> HandyTheme.colors.switchDisabled
+}
+
+/**
+ * Switch의 Track의 높이를 반환하는 함수입니다.
+ * @param switchSize Switch의 크기
+ */
+private fun switchTrackHeight(switchSize: SwitchSize): Dp = when (switchSize) {
+    SwitchSize.Large -> 30.dp
+    SwitchSize.Medium -> 20.dp
+    SwitchSize.Small -> 16.dp
+}
+
+/**
+ * Switch의 Track의 너비를 반환하는 함수입니다.
+ * @param switchSize Switch의 크기
+ */
+private fun switchTrackWidth(switchSize: SwitchSize): Dp = when (switchSize) {
+    SwitchSize.Large -> 48.dp
+    SwitchSize.Medium -> 32.dp
+    SwitchSize.Small -> 24.dp
+}
+
+/**
+ * Switch의 Padding을 반환하는 함수입니다.
+ * @param switchSize Switch의 크기
+ */
+fun switchPadding(switchSize: SwitchSize): Dp = when (switchSize) {
+    SwitchSize.Large -> 2.5.dp
+    SwitchSize.Medium -> 2.dp
+    SwitchSize.Small -> 1.5.dp
+}
+
+/**
+ * Switch의 Thumb의 크기를 반환하는 함수입니다.
+ * @param switchSize Switch의 크기
+ */
+private fun switchThumbSize(switchSize: SwitchSize): Dp = when (switchSize) {
+    SwitchSize.Large -> 25.dp
+    SwitchSize.Medium -> 16.dp
+    SwitchSize.Small -> 13.dp
+}
+
+/**
+ * Switch의 Thumb을 그리는 함수입니다.
+ * @param switchSize Switch의 크기
+ */
+@Composable
+private fun SwitchThumb(switchSize: SwitchSize, modifier: Modifier) {
+    Surface(
+        modifier = modifier
+            .clip(CircleShape)
+            .size(switchThumbSize(switchSize)),
+        contentColor = HandyTheme.colors.switchThumb,
+    ) {}
+}
+
+
+@Composable
+fun Switch(
+    switchState: SwitchState = SwitchState.Unselected,
+    onToggle: (SwitchState) -> Unit,
+    switchSize: SwitchSize = SwitchSize.Large,
+    modifier: Modifier = Modifier
+) {
+    val trackColor: Color by animateColorAsState(switchTrackColor(switchState))
+    val thumbOffset: Dp by animateDpAsState(
+        if (switchState == SwitchState.Selected) {
+            switchTrackWidth(switchSize) - switchThumbSize(switchSize) - switchPadding(switchSize)
+        } else {
+            switchPadding(switchSize)
+        }
+    )
+
+    Surface(
+        checked = switchState == SwitchState.Selected,
+        onCheckedChange = { onToggle(if (it) SwitchState.Selected else SwitchState.Unselected) },
+        modifier = modifier
+            .padding(switchPadding(switchSize))
+            .width(switchTrackWidth(switchSize))
+            .height(switchTrackHeight(switchSize)),
+        enabled = switchState != SwitchState.Disabled,
+        shape = RoundedCornerShape(size = 999.dp),
+        backgroundColor = trackColor,
+    ) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
+            SwitchThumb(
+                switchSize = switchSize,
+                modifier = Modifier
+                    .offset(x = thumbOffset)
+            )
+        }
+    }
+}
