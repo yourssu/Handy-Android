@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,7 +58,7 @@ fun InfoSnackBar(
 @Composable
 fun AutoInfoSnackBar(
     text: String,
-    delay: Long = 5000,
+    delay: Long = DURATION,
     onDismiss: () -> Unit
 ) {
     var visible by remember { mutableStateOf(false) }
@@ -66,7 +67,7 @@ fun AutoInfoSnackBar(
         visible = true
         delay(delay)
         visible = false
-        delay(300)
+        delay(FADE_OUT_DURATION)
         onDismiss()
     }
 
@@ -95,11 +96,11 @@ fun AutoInfoSnackBar(
     }
 }
 
-
 @Composable
 fun ErrorSnackBar(
     text: String,
     modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -108,7 +109,8 @@ fun ErrorSnackBar(
             .clip(RoundedCornerShape(12.dp))
             .background(ColorStatusRedSub)
             .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             painter = painterResource(id = R.drawable.ic_alert_triangle),
@@ -124,6 +126,56 @@ fun ErrorSnackBar(
         Icon(
             painter = painterResource(id = R.drawable.ic_cancel),
             tint = HandyTheme.colors.textBasicTertiary,
+            modifier = Modifier
+                .clickable(onClick = onClick)
+                .align(Alignment.Top)
         )
     }
 }
+
+@Composable
+fun AutoErrorSnackBar(
+    text: String,
+    onDismiss: () -> Unit
+) {
+    var visible by remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
+        visible = true
+    }
+
+    LaunchedEffect(visible) {
+        if (!visible) {
+            delay(FADE_OUT_DURATION)
+            onDismiss()
+        }
+    }
+
+    Popup(
+        alignment = Alignment.BottomCenter
+    ) {
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn(
+                animationSpec = tween(durationMillis = 500)
+            ) + expandVertically(
+                expandFrom = Alignment.Top
+            ),
+            exit = fadeOut(
+                animationSpec = tween(durationMillis = 300)
+            ) + shrinkVertically(
+                shrinkTowards = Alignment.Bottom
+            ) + slideOutVertically(
+                targetOffsetY = { fullHeight -> fullHeight }
+            )
+        ) {
+            ErrorSnackBar(
+                text = text,
+                onClick = { visible = false }
+            )
+        }
+    }
+}
+
+private const val DURATION = 5000L
+private const val FADE_OUT_DURATION = 300L

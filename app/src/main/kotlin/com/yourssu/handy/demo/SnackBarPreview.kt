@@ -38,11 +38,13 @@ fun ErrorSnackBarPreview() {
             modifier = Modifier.padding(10.dp)
         ) {
             ErrorSnackBar(
-                text = "에러 메세지가 들어갑니다"
+                text = "에러 메세지가 들어갑니다",
+                onClick = {}
             )
             Spacer(modifier = Modifier.height(10.dp))
             ErrorSnackBar(
-                text = "두 줄 이상의 에러 메세지가 들어갈 경우\n 아이콘은 모두 위로 정렬해주세요."
+                text = "두 줄 이상의 에러 메세지가 들어갈 경우\n 아이콘은 모두 위로 정렬해주세요.",
+                onClick = {}
             )
         }
     }
