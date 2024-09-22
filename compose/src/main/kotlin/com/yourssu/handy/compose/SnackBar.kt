@@ -34,7 +34,7 @@ import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.delay
 
 @Composable
-fun InfoSnackBar(
+fun InfoSnackBarItem(
     text: String,
     modifier: Modifier = Modifier,
 ) {
@@ -56,7 +56,7 @@ fun InfoSnackBar(
 }
 
 @Composable
-fun AutoInfoSnackBar(
+fun InfoSnackBar(
     text: String,
     delay: Long = DURATION,
     onDismiss: () -> Unit
@@ -89,7 +89,7 @@ fun AutoInfoSnackBar(
                 targetOffsetY = { fullHeight -> fullHeight }
             )
         ) {
-            InfoSnackBar(
+            InfoSnackBarItem(
                 text = text,
             )
         }
@@ -97,7 +97,7 @@ fun AutoInfoSnackBar(
 }
 
 @Composable
-fun ErrorSnackBar(
+fun ErrorSnackBarItem(
     text: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
@@ -134,7 +134,7 @@ fun ErrorSnackBar(
 }
 
 @Composable
-fun AutoErrorSnackBar(
+fun ErrorSnackBar(
     text: String,
     onDismiss: () -> Unit
 ) {
@@ -169,7 +169,7 @@ fun AutoErrorSnackBar(
                 targetOffsetY = { fullHeight -> fullHeight }
             )
         ) {
-            ErrorSnackBar(
+            ErrorSnackBarItem(
                 text = text,
                 onClick = { visible = false }
             )
