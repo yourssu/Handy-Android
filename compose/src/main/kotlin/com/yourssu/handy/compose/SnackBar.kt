@@ -58,21 +58,21 @@ fun InfoSnackBarItem(
 @Composable
 fun InfoSnackBar(
     text: String,
-    delay: Long = DURATION,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    duration: Long = SNACK_BAR_DURATION,
 ) {
     var visible by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         visible = true
-        delay(delay)
+        delay(duration)
         visible = false
         delay(FADE_OUT_DURATION)
         onDismiss()
     }
 
     Popup(
-        alignment = Alignment.BottomCenter
+        alignment = Alignment.BottomCenter,
     ) {
         AnimatedVisibility(
             visible = visible,
@@ -83,10 +83,8 @@ fun InfoSnackBar(
             ),
             exit = fadeOut(
                 animationSpec = tween(durationMillis = 300)
-            ) + shrinkVertically(
-                shrinkTowards = Alignment.Bottom
             ) + slideOutVertically(
-                targetOffsetY = { fullHeight -> fullHeight }
+                targetOffsetY = { fullHeight -> fullHeight },
             )
         ) {
             InfoSnackBarItem(
@@ -99,8 +97,8 @@ fun InfoSnackBar(
 @Composable
 fun ErrorSnackBarItem(
     text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -161,10 +159,9 @@ fun ErrorSnackBar(
             ) + expandVertically(
                 expandFrom = Alignment.Top
             ),
-            exit = fadeOut(
+            exit = shrinkVertically(
+                shrinkTowards = Alignment.Bottom,
                 animationSpec = tween(durationMillis = 300)
-            ) + shrinkVertically(
-                shrinkTowards = Alignment.Bottom
             ) + slideOutVertically(
                 targetOffsetY = { fullHeight -> fullHeight }
             )
@@ -177,5 +174,5 @@ fun ErrorSnackBar(
     }
 }
 
-private const val DURATION = 5000L
+private const val SNACK_BAR_DURATION = 5000L
 private const val FADE_OUT_DURATION = 300L
