@@ -33,6 +33,12 @@ import com.yourssu.handy.compose.foundation.ColorStatusRedSub
 import com.yourssu.handy.compose.foundation.HandyTypography
 import kotlinx.coroutines.delay
 
+/**
+ * 정보성 스낵바의 UI를 그린 함수입니다.
+ *
+ * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
+ * @param modifier Modifier
+ */
 @Composable
 fun InfoSnackBarItem(
     text: String,
@@ -55,6 +61,16 @@ fun InfoSnackBarItem(
     }
 }
 
+/**
+ * 정보성 스낵바를 구현한 함수입니다.
+ *
+ * 유저의 행동에 대한 단순 결과를 나타낼 때 사용합니다.
+ * 특정 시간 노출 후에 사라집니다.
+ *
+ * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
+ * @param onDismiss 스낵바가 사라질 때 호출되는 함수
+ * @param duration 스낵바가 지속되어 있는 시간 (기본값은 5초)
+ */
 @Composable
 fun InfoSnackBar(
     text: String,
