@@ -135,7 +135,8 @@ fun ErrorSnackBarItem(
     ) {
         Icon(
             painter = painterResource(id = R.drawable.ic_alert_triangle),
-            tint = HandyTheme.colors.bgStatusNegative
+            tint = HandyTheme.colors.bgStatusNegative,
+            modifier = Modifier.align(Alignment.Top)
         )
         Text(
             text = text,
