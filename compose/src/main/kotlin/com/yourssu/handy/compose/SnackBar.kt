@@ -83,7 +83,7 @@ fun InfoSnackBar(
         visible = true
         delay(duration)
         visible = false
-        delay(FADE_OUT_DURATION)
+        delay(FADE_OUT_DELAY)
         onDismiss()
     }
 
@@ -93,12 +93,12 @@ fun InfoSnackBar(
         AnimatedVisibility(
             visible = visible,
             enter = fadeIn(
-                animationSpec = tween(durationMillis = 500)
+                animationSpec = tween(durationMillis = FADE_IN_DURATION)
             ) + expandVertically(
                 expandFrom = Alignment.Top
             ),
             exit = fadeOut(
-                animationSpec = tween(durationMillis = 300)
+                animationSpec = tween(durationMillis = FADE_OUT_DURATION)
             ) + slideOutVertically(
                 targetOffsetY = { fullHeight -> fullHeight },
             )
@@ -179,7 +179,7 @@ fun ErrorSnackBar(
 
     LaunchedEffect(visible) {
         if (!visible) {
-            delay(FADE_OUT_DURATION)
+            delay(FADE_OUT_DELAY)
             onDismiss()
         }
     }
@@ -190,13 +190,13 @@ fun ErrorSnackBar(
         AnimatedVisibility(
             visible = visible,
             enter = fadeIn(
-                animationSpec = tween(durationMillis = 500)
+                animationSpec = tween(durationMillis = FADE_IN_DURATION)
             ) + expandVertically(
                 expandFrom = Alignment.Top
             ),
             exit = shrinkVertically(
                 shrinkTowards = Alignment.Bottom,
-                animationSpec = tween(durationMillis = 300)
+                animationSpec = tween(durationMillis = FADE_OUT_DURATION)
             ) + slideOutVertically(
                 targetOffsetY = { fullHeight -> fullHeight }
             )
@@ -210,4 +210,6 @@ fun ErrorSnackBar(
 }
 
 private const val SNACK_BAR_DURATION = 5000L
-private const val FADE_OUT_DURATION = 300L
+private const val FADE_OUT_DELAY = 300L
+private const val FADE_IN_DURATION = 500
+private const val FADE_OUT_DURATION = 300
