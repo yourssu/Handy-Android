@@ -110,6 +110,13 @@ fun InfoSnackBar(
     }
 }
 
+/**
+ * 에러 스낵바의 UI를 그린 함수입니다.
+ *
+ * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
+ * @param onClick 스낵바의 X 버튼을 눌렀을 때 호출되는 함수
+ * @param modifier Modifier
+ */
 @Composable
 fun ErrorSnackBarItem(
     text: String,
@@ -147,6 +154,17 @@ fun ErrorSnackBarItem(
     }
 }
 
+/**
+ * 에러 스낵바를 구현한 함수입니다.
+ *
+ * 사용자의 수행 과정에 부정적인 결과가 발생하거나
+ * 정보성 스낵바보다 강조해야 할 메시지를 담아야 할 때 사용합니다.
+ *
+ * X 버튼을 눌러야만 사라집니다.
+ *
+ * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
+ * @param onDismiss 스낵바가 사라질 때 호출되는 함수
+ */
 @Composable
 fun ErrorSnackBar(
     text: String,
