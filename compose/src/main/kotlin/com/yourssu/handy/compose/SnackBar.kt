@@ -49,7 +49,7 @@ fun InfoSnackBarItem(
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(ColorGray800)
+            .background(HandyTheme.colors.snackBarInfo)
             .padding(16.dp)
     ) {
         Text(
@@ -128,7 +128,7 @@ fun ErrorSnackBarItem(
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(ColorStatusRedSub)
+            .background(HandyTheme.colors.snackBarError)
             .padding(16.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
