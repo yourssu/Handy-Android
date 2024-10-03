@@ -25,12 +25,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
-import com.yourssu.handy.compose.foundation.ColorGray800
-import com.yourssu.handy.compose.foundation.ColorStatusRedSub
 import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.icons.HandyIcons
+import com.yourssu.handy.compose.icons.filled.AlertTriangle
+import com.yourssu.handy.compose.icons.line.Close
 import kotlinx.coroutines.delay
 
 /**
@@ -134,7 +134,7 @@ fun ErrorSnackBarItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_alert_triangle),
+            imageVector = HandyIcons.Filled.AlertTriangle,
             tint = HandyTheme.colors.bgStatusNegative,
             modifier = Modifier.align(Alignment.Top)
         )
@@ -146,7 +146,7 @@ fun ErrorSnackBarItem(
         )
         Spacer(modifier = Modifier.weight(1f))
         Icon(
-            painter = painterResource(id = R.drawable.ic_cancel),
+            imageVector =  HandyIcons.Line.Close,
             tint = HandyTheme.colors.textBasicTertiary,
             modifier = Modifier
                 .clickable(onClick = onClick)
