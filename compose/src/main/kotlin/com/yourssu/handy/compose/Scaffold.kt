@@ -18,13 +18,25 @@ import com.yourssu.handy.compose.ScaffoldSpacingValues.SnackBarBottomSpacing
 import com.yourssu.handy.compose.ScaffoldSpacingValues.SnackBarHorizontalSpacing
 import com.yourssu.handy.compose.foundation.LocalContentColor
 
+/**
+ *  layout을 구성하기 위한 Scaffold입니다.
+ *
+ *  @param modifier : Modifier
+ *  @param topBar : 상단 바
+ *  @param snackbarHost : Snackbar
+ *  @param floatingActionButton : Floating Action Button
+ *  @param bottomBar : 하단 네비게이션 바
+ *  @param containerColor : Scaffold의 배경색
+ *  @param contentColor : Scaffold의 content 색상
+ *  @param content : Scaffold의 content
+ */
 @Composable
 fun Scaffold(
     modifier: Modifier = Modifier,
     topBar: @Composable () -> Unit = {},
-    bottomBar: @Composable () -> Unit = {},
     snackbarHost: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
+    bottomBar: @Composable () -> Unit = {},
     containerColor: Color = Color.Unspecified,
     contentColor: Color = LocalContentColor.current,
     content: @Composable (PaddingValues) -> Unit
@@ -44,6 +56,14 @@ fun Scaffold(
     }
 }
 
+/**
+ *  ScaffoldLayout을 구성하는 함수입니다.
+ *  @param topBar : 상단 바
+ *  @param content : Scaffold의 content
+ *  @param snackbar : Snackbar
+ *  @param fab : Floating Action Button
+ *  @param bottomBar : 하단 네비게이션 바
+ */
 @Composable
 private fun ScaffoldLayout(
     topBar: @Composable () -> Unit,
