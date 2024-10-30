@@ -18,12 +18,18 @@ import kotlin.coroutines.resume
 
 interface SnackBarData {
     val message: String
+    val type: SnackBarType
 
     fun dismiss()
 }
 
 enum class SnackBarResult {
     Dismissed,
+}
+
+enum class SnackBarType {
+    Info,
+    Error,
 }
 
 @Stable
@@ -33,12 +39,17 @@ class SnackBarHostState {
     internal var currentSnackBarData by mutableStateOf<SnackBarData?>(null)
         private set
 
-    suspend fun showToast(
+    suspend fun showSnackBar(
         message: String,
+        type: SnackBarType
     ): SnackBarResult = mutex.withLock {
         try {
             return suspendCancellableCoroutine { continuation ->
-                currentSnackBarData = SnackBarDataImpl(message, continuation)
+                currentSnackBarData = SnackBarDataImpl(
+                    message = message,
+                    type = type,
+                    continuation = continuation
+                )
             }
         } finally {
             currentSnackBarData = null
@@ -52,6 +63,7 @@ fun rememberSnackBarHostState(): SnackBarHostState = remember { SnackBarHostStat
 @Stable
 private class SnackBarDataImpl(
     override val message: String,
+    override val type: SnackBarType,
     private val continuation: CancellableContinuation<SnackBarResult>
 ) : SnackBarData {
 
@@ -66,19 +78,28 @@ private class SnackBarDataImpl(
 fun SnackBarHost(
     snackBarHostState: SnackBarHostState,
     modifier: Modifier = Modifier,
-    snackBar: @Composable (SnackBarData) -> Unit = {
-        InfoSnackBar(
-            text = snackBarHostState.currentSnackBarData?.message ?: ""
-        )
-    }
+    snackBar: @Composable (SnackBarData) -> Unit = { snackBarData ->
+        when (snackBarData.type) {
+            SnackBarType.Info -> InfoSnackBar(
+                text = snackBarHostState.currentSnackBarData?.message.orEmpty()
+            )
+
+            SnackBarType.Error -> ErrorSnackBar(
+                text = snackBarHostState.currentSnackBarData?.message.orEmpty(),
+                onClick = snackBarData::dismiss
+            )
+        }
+    },
 ) {
     val currentSnackBarData = snackBarHostState.currentSnackBarData
-    LaunchedEffect(currentSnackBarData) {
-        if (currentSnackBarData != null) {
+
+    if (currentSnackBarData?.type == SnackBarType.Info) {
+        LaunchedEffect(currentSnackBarData) {
             delay(SNACK_BAR_DURATION)
             currentSnackBarData.dismiss()
         }
     }
+
     FadeInFadeOut(
         newSnackBarData = snackBarHostState.currentSnackBarData,
         modifier = modifier,
