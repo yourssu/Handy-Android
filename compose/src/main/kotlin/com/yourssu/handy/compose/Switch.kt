@@ -57,10 +57,10 @@ sealed class SwitchState {
  */
 @Composable
 fun Switch(
-    switchState: SwitchState = SwitchState.Unselected,
     onToggle: (SwitchState) -> Unit,
-    switchSize: SwitchSize = SwitchSize.Large,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    switchState: SwitchState = SwitchState.Unselected,
+    switchSize: SwitchSize = SwitchSize.Large
 ) {
     val switchTrackWidth = remember(switchSize) { switchTrackWidth(switchSize) }
     val switchTrackHeight = remember(switchSize) { switchTrackHeight(switchSize) }
