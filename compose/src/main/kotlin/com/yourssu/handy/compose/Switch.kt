@@ -108,7 +108,7 @@ fun Switch(
             .width(switchTrackWidth)
             .height(switchTrackHeight),
         enabled = switchState != SwitchState.Disabled,
-        shape = RoundedCornerShape(size = SwitchTrackRoundedCorner.dp),
+        shape = CircleShape,
         backgroundColor = trackColor,
     ) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
@@ -124,9 +124,6 @@ fun Switch(
 
 // Switch의 상태가 변경될 때 애니메이션을 적용하기 위한 상수입니다.(ms)
 private const val SwitchAnimationDuration = 150
-
-// Switch의 Track의 모서리를 둥글게 만들기 위한 상수입니다.
-private const val SwitchTrackRoundedCorner = 999
 
 // Switch의 애니메이션 Easing입니다.
 private val SwitchAnimationEasing = CubicBezierEasing(0.25f, 0.1f, 0.25f, 1f)
