@@ -5,6 +5,7 @@ import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.animateDp
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -134,12 +135,12 @@ private val SwitchAnimationEasing = CubicBezierEasing(0.25f, 0.1f, 0.25f, 1f)
  */
 @Composable
 private fun SwitchThumb(switchSize: SwitchSize, modifier: Modifier) {
-    Surface(
+    Box(
         modifier = modifier
+            .background(HandyTheme.colors.switchThumb, CircleShape)
             .clip(CircleShape)
             .size(switchThumbSize(switchSize)),
-        contentColor = HandyTheme.colors.switchThumb,
-    ) {}
+    )
 }
 
 /**
