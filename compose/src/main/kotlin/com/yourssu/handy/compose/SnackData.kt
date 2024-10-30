@@ -101,7 +101,7 @@ fun SnackBarHost(
     }
 
     FadeInFadeOut(
-        newSnackBarData = snackBarHostState.currentSnackBarData,
+        newSnackBarData = currentSnackBarData,
         modifier = modifier,
         snackBar = snackBar
     )
