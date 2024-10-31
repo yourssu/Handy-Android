@@ -20,11 +20,13 @@ fun InfoSnackBarPreview() {
             modifier = Modifier.padding(10.dp)
         ) {
             InfoSnackBar(
-                text = "한 줄짜리 정보성 메세지가 들어갑니다."
+                text = "한 줄짜리 정보성 메세지가 들어갑니다.",
+                onDismiss = {}
             )
             Spacer(modifier = Modifier.height(10.dp))
             InfoSnackBar(
-                text = "줄 수가 두 줄 이상이 되는 스낵바 메시지입니다.\n좌측 정렬을 해주세요."
+                text = "줄 수가 두 줄 이상이 되는 스낵바 메시지입니다.\n좌측 정렬을 해주세요.",
+                onDismiss = {}
             )
         }
     }

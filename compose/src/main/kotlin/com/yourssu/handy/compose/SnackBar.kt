@@ -1,23 +1,39 @@
 package com.yourssu.handy.compose
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.AnchoredDraggableState
+import androidx.compose.foundation.gestures.DraggableAnchors
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.AlertTriangle
 import com.yourssu.handy.compose.icons.line.Close
+import kotlin.math.roundToInt
+
+enum class DragValue {
+    Start, End
+}
 
 /**
  * 정보성 스낵바의 UI를 그린 함수입니다.
@@ -28,18 +44,51 @@ import com.yourssu.handy.compose.icons.line.Close
  * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
  * @param modifier Modifier
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun InfoSnackBar(
     text: String,
+    onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val density = LocalDensity.current
+    val state = remember {
+        AnchoredDraggableState(
+            initialValue = DragValue.Start,
+            anchors = DraggableAnchors {
+                with(density) {
+                    DragValue.Start at 0f
+                    DragValue.End at 20.dp.toPx()
+                }
+            },
+            positionalThreshold = { distance: Float -> distance * 0.5f },
+            velocityThreshold = { with(density) { 50.dp.toPx() } },
+            animationSpec = tween(),
+        )
+    }
+    val offsetY = remember { Animatable(0f) }
+
+    if (state.currentValue == DragValue.End) {
+        onDismiss()
+    }
+
     Column(
         modifier = modifier
+            .offset {
+                IntOffset(
+                    x = 0,
+                    y = offsetY.value.roundToInt()
+                )
+            }
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
             .background(HandyTheme.colors.snackBarInfo)
             .padding(16.dp)
+            .anchoredDraggable(
+                state = state,
+                orientation = Orientation.Vertical,
+            )
     ) {
         Text(
             text = text,

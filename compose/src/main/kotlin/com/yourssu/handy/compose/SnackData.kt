@@ -81,7 +81,8 @@ fun SnackBarHost(
     snackBar: @Composable (SnackBarData) -> Unit = { snackBarData ->
         when (snackBarData.type) {
             SnackBarType.Info -> InfoSnackBar(
-                text = snackBarHostState.currentSnackBarData?.message.orEmpty()
+                text = snackBarHostState.currentSnackBarData?.message.orEmpty(),
+                onDismiss = snackBarData::dismiss
             )
 
             SnackBarType.Error -> ErrorSnackBar(
