@@ -112,7 +112,13 @@ data class ColorScheme(
 
     // Pagination / Basic
     val paginationBasicSelected: Color = ColorNeutralBlack,
-    val paginationBasicUnselected: Color = ColorGray500
+    val paginationBasicUnselected: Color = ColorGray500,
+
+
+    // SnackBar
+    val snackBarInfo: Color = ColorGray800,
+    val snackBarError: Color = ColorStatusRedSub
+
 )
 
 val lightColorScheme = ColorScheme()
