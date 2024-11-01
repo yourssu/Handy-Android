@@ -74,6 +74,14 @@ private class SnackBarDataImpl(
     }
 }
 
+/**
+ * SnackBar를 보여주기 위해선 SnackBarHost를 통해 상태를 관리해야 합니다.
+ * 스낵바의 타입에 따라 정보성 스낵바또는 에러 스낵바를 표시합니다.
+ *
+ * @param snackBarHostState 스낵바 상태 관리 객체
+ * @param modifier Modifier
+ * @param snackBar 스낵바 UI의 컴포저블 함수
+ */
 @Composable
 fun SnackBarHost(
     snackBarHostState: SnackBarHostState,

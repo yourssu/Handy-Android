@@ -30,6 +30,13 @@ data class SnackBarTransitionItem(
 
 typealias OpacityTransition = @Composable (snackBar: @Composable () -> Unit) -> Unit
 
+/**
+ * 스낵바에 애니메이션을 적용합니다.
+ *
+ * @param newSnackBarData 새로운 스낵바 데이터
+ * @param modifier Modifier
+ * @param snackBar 스낵바 UI의 컴포저블 함수
+ */
 @Composable
 fun FadeInFadeOut(
     newSnackBarData: SnackBarData?,
@@ -95,6 +102,14 @@ fun FadeInFadeOut(
     }
 }
 
+/**
+ * 투명도 애니메이션을 위한 함수입니다.
+ *
+ * @param visible 애니메이션의 시작 여부
+ * @param animateInSpec 애니메이션이 시작될 때 적용되는 스펙
+ * @param animateOutSpec 애니메이션이 종료될 때 적용되는 스펙
+ * @return 현재 투명도 상태
+ */
 @Composable
 private fun animatedOpacity(
     visible: Boolean,
@@ -112,6 +127,14 @@ private fun animatedOpacity(
     return alpha.asState()
 }
 
+/**
+ * Y축 오프셋 애니메이션을 위한 함수입니다.
+ *
+ * @param visible 애니메이션 시작 여부
+ * @param animateInSpec 애니메이션이 시작될 때 적용되는 스펙
+ * @param animateOutSpec 애니메이션이 종료될 때 적용되는 스펙
+ * @return 현재 오프셋 상태
+ */
 @Composable
 private fun animatedOffset(
     visible: Boolean,

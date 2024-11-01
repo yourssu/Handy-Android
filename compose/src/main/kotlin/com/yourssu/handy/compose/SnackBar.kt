@@ -31,6 +31,10 @@ import com.yourssu.handy.compose.icons.filled.AlertTriangle
 import com.yourssu.handy.compose.icons.line.Close
 import kotlin.math.roundToInt
 
+/**
+ * 드래그 위치를 나타냅니다.
+ * Start는 초기 위치, End는 스낵바가 사라질 위치를 나타냅니다.
+ */
 enum class DragValue {
     Start, End
 }
@@ -39,7 +43,9 @@ enum class DragValue {
  * 정보성 스낵바의 UI를 그린 함수입니다.
  *
  * 유저의 행동에 대한 단순 결과를 나타낼 때 사용합니다.
- * 특정 시간 노출 후에 사라집니다.
+ *
+ * 특정 시간(기본 5초) 노출 후에 자동으로 사라집니다.
+ * 아래로 스와이프 할 경우에도 사라집니다.
  *
  * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
  * @param modifier Modifier
