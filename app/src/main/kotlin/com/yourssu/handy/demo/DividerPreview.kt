@@ -8,13 +8,15 @@ import com.yourssu.handy.compose.Divider
 import com.yourssu.handy.compose.DividerSize
 import com.yourssu.handy.compose.Text
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun DividerExample() {
     Column {
         Text("Section 1")
         Divider(dividerSize = DividerSize.TWO, width = 100.dp)
         Text("Section 2")
+        Divider(dividerSize = DividerSize.FOUR, width = 200.dp)
+        Text("Section 3")
         Divider(dividerSize = DividerSize.EIGHT)
     }
 }
