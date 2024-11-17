@@ -51,8 +51,8 @@ enum class BoxButtonSize {
 @Composable
 fun BoxButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     leftIcon: ImageVector? = null,
     rightIcon: ImageVector? = null,
     enabled: Boolean = true,
@@ -69,7 +69,7 @@ fun BoxButton(
         colors = boxButtonColorByType(
             type = buttonType,
         ),
-        modifier = Modifier.height(height),
+        modifier = modifier.height(height),
         enabled = enabled,
         showBorder = (buttonType == BoxButtonType.Tertiary),
         interactionSource = interactionSource,
@@ -82,7 +82,7 @@ fun BoxButton(
             Icon(
                 imageVector = leftIcon,
                 iconSize = iconSize,
-                modifier = Modifier.padding(end = 4.dp)
+                modifier = modifier.padding(end = 4.dp)
             )
         }
 
@@ -95,7 +95,7 @@ fun BoxButton(
             Icon(
                 imageVector = rightIcon,
                 iconSize = iconSize,
-                modifier = Modifier.padding(start = 4.dp)
+                modifier = modifier.padding(start = 4.dp)
             )
         }
     }
