@@ -90,6 +90,7 @@ data class ColorScheme(
     val iconBasicPrimary: Color = ColorNeutralBlack,
     val iconBasicSecondary: Color = ColorGray700,
     val iconBasicTertiary: Color = ColorGray500,
+    val iconBasicDisabledStrong: Color = ColorGray300,
     val iconBasicDisabled: Color = ColorGray200,
     val iconBasicWhite: Color = ColorNeutralWhite,
 
