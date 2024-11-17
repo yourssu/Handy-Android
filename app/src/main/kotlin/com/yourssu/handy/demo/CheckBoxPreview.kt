@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.yourssu.handy.compose.CheckBox
-import com.yourssu.handy.compose.CheckBoxSize
-import com.yourssu.handy.compose.HandyTheme
+import com.yourssu.handy.compose.checkbox.CheckBox
+import com.yourssu.handy.compose.checkbox.CheckBoxSize
+import com.yourssu.handy.compose.theme.HandyTheme
 
 @Preview(showBackground = true)
 @Composable

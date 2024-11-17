@@ -7,10 +7,10 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.yourssu.handy.compose.FixedTab
-import com.yourssu.handy.compose.HandyTheme
-import com.yourssu.handy.compose.ScrollableTab
-import com.yourssu.handy.compose.TabItem
+import com.yourssu.handy.compose.component.tab.FixedTab
+import com.yourssu.handy.compose.theme.HandyTheme
+import com.yourssu.handy.compose.component.tab.ScrollableTab
+import com.yourssu.handy.compose.component.tab.TabItem
 
 @Preview(showBackground = true)
 @Composable

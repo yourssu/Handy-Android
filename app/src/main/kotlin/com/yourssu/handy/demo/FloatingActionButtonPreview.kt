@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
@@ -12,10 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.yourssu.handy.compose.FloatingActionButton
-import com.yourssu.handy.compose.FloatingActionButtonSize
-import com.yourssu.handy.compose.FloatingActionButtonType
-import com.yourssu.handy.compose.HandyTheme
+import com.yourssu.handy.compose.component.fab.FloatingActionButton
+import com.yourssu.handy.compose.component.fab.FloatingActionButtonSize
+import com.yourssu.handy.compose.component.fab.FloatingActionButtonType
+import com.yourssu.handy.compose.theme.HandyTheme
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.line.ArrowsChevronUp
 import com.yourssu.handy.compose.icons.line.ExternalLink

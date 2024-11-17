@@ -5,14 +5,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.yourssu.handy.compose.HandyTheme
-import com.yourssu.handy.compose.Icon
-import com.yourssu.handy.compose.IconSize
+import com.yourssu.handy.compose.theme.HandyTheme
+import com.yourssu.handy.compose.icons.Icon
+import com.yourssu.handy.compose.icons.IconSize
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.*
 import com.yourssu.handy.compose.icons.line.*

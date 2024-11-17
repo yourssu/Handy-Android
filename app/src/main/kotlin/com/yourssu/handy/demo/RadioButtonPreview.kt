@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.yourssu.handy.compose.RadioButton
-import com.yourssu.handy.compose.RadioButtonSize
+import com.yourssu.handy.compose.radiobutton.RadioButton
+import com.yourssu.handy.compose.radiobutton.RadioButtonSize
 
 @Preview(showBackground = true)
 @Composable
