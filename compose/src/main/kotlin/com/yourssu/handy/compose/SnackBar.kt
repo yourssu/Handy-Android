@@ -12,7 +12,6 @@ import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -23,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -100,7 +100,14 @@ fun InfoSnackBar(
             text = text,
             color = HandyTheme.colors.textBasicWhite,
             maxLines = 2,
-            style = HandyTypography.B3Sb14
+            style = HandyTypography.B3Sb14.copy(
+                lineBreak = LineBreak
+                    (
+                    strategy = LineBreak.Strategy.Simple,
+                    strictness = LineBreak.Strictness.Strict,
+                    wordBreak = LineBreak.WordBreak.Default
+                )
+            ),
         )
     }
 }
@@ -139,12 +146,18 @@ fun ErrorSnackBar(
             modifier = Modifier.align(Alignment.Top)
         )
         Text(
+            modifier = Modifier.weight(1f),
             text = text,
             color = HandyTheme.colors.textStatusNegative,
             maxLines = 2,
-            style = HandyTypography.B3Sb14
+            style = HandyTypography.B3Sb14.copy(
+                lineBreak = LineBreak(
+                    strategy = LineBreak.Strategy.Simple,
+                    strictness = LineBreak.Strictness.Strict,
+                    wordBreak = LineBreak.WordBreak.Phrase
+                )
+            )
         )
-        Spacer(modifier = Modifier.weight(1f))
         Icon(
             imageVector = HandyIcons.Line.Close,
             tint = HandyTheme.colors.textBasicTertiary,

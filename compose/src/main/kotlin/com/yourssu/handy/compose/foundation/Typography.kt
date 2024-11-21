@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
@@ -44,7 +45,8 @@ data class HandyTextStyle internal constructor(
     val fontWeight: FontWeight? = FontWeight.Normal,
     val letterSpacing: TextUnit = (-0.02).em,
     val lineHeight: Dp = Dp.Unspecified,
-    val textAlign: TextAlign = TextAlign.Start
+    val textAlign: TextAlign = TextAlign.Start,
+    val lineBreak: LineBreak = LineBreak.Unspecified
 ) {
     private val fontFamily = fonts
 
@@ -70,7 +72,8 @@ data class HandyTextStyle internal constructor(
         lineHeightStyle = LineHeightStyle(
             alignment = LineHeightStyle.Alignment.Center,
             trim = LineHeightStyle.Trim.None
-        )
+        ),
+        lineBreak = lineBreak
     )
 
     /**
@@ -87,7 +90,8 @@ data class HandyTextStyle internal constructor(
             fontWeight = other.fontWeight ?: fontWeight,
             letterSpacing = other.letterSpacing.takeOrElse { letterSpacing },
             lineHeight = other.lineHeight.takeOrElse { lineHeight },
-            textAlign = if (other.textAlign == TextAlign.Unspecified) textAlign else other.textAlign
+            textAlign = if (other.textAlign == TextAlign.Unspecified) textAlign else other.textAlign,
+            lineBreak = if (other.lineBreak == LineBreak.Unspecified) lineBreak else other.lineBreak
         )
     }
 
