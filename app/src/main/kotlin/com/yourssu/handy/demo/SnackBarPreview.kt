@@ -25,7 +25,7 @@ fun InfoSnackBarPreview() {
             )
             Spacer(modifier = Modifier.height(10.dp))
             InfoSnackBar(
-                text = "줄 수가 두 줄 이상이 되는 스낵바 메시지입니다.\n좌측 정렬을 해주세요.",
+                text = "줄 수가 두 줄 이상이 되는 스낵바 메시지입니다. 좌측 정렬을 해주세요.",
                 onDismiss = {}
             )
         }
@@ -45,7 +45,7 @@ fun ErrorSnackBarPreview() {
             )
             Spacer(modifier = Modifier.height(10.dp))
             ErrorSnackBar(
-                text = "두 줄 이상의 에러 메세지가 들어갈 경우\n 아이콘은 모두 위로 정렬해주세요.",
+                text = "두 줄 이상의 에러 메세지가 들어갈 경우 아이콘은 모두 위로 정렬해주세요.",
                 onClick = {}
             )
         }
