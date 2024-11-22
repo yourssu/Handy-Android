@@ -2,6 +2,7 @@ package com.yourssu.handy.compose
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -47,11 +49,16 @@ private fun BottomNavItem(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-    val color = if (isSelected) HandyTheme.colors.textBasicPrimary else HandyTheme.colors.textBasicDisabled
+    val color =
+        if (isSelected) HandyTheme.colors.textBasicPrimary else HandyTheme.colors.textBasicDisabled
 
     Column(
         modifier = modifier
-            .clickable(onClick = onClick),
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
