@@ -97,25 +97,21 @@ fun InfoSnackBar(
                 orientation = Orientation.Vertical,
             )
     ) {
-        Column {
-            text.split("\n").forEach { line ->
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    line.split(" ").forEachIndexed { index, word ->
+        text.split("\n").forEach { line ->
+            FlowRow {
+                line.split(" ").forEachIndexed { index, word ->
+                    Text(
+                        text = word,
+                        color = HandyTheme.colors.textBasicWhite,
+                        maxLines = 2,
+                        style = HandyTypography.B3Sb14
+                    )
+                    if (index != line.split(" ").lastIndex) {
                         Text(
-                            text = word,
+                            text = " ",
                             color = HandyTheme.colors.textBasicWhite,
-                            maxLines = 2,
                             style = HandyTypography.B3Sb14
                         )
-                        if (index != line.split(" ").lastIndex) {
-                            Text(
-                                text = " ",
-                                color = HandyTheme.colors.textBasicWhite,
-                                style = HandyTypography.B3Sb14
-                            )
-                        }
                     }
                 }
             }
@@ -157,27 +153,21 @@ fun ErrorSnackBar(
             tint = HandyTheme.colors.bgStatusNegative,
             modifier = Modifier.align(Alignment.Top)
         )
-        Column(
-            modifier = Modifier.weight(1f)
-        ) {
-            text.split("\n").forEach { line ->
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    line.split(" ").forEachIndexed { index, word ->
+        text.split("\n").forEach { line ->
+            FlowRow(modifier = Modifier.weight(1f)) {
+                line.split(" ").forEachIndexed { index, word ->
+                    Text(
+                        text = word,
+                        color = HandyTheme.colors.textStatusNegative,
+                        maxLines = 2,
+                        style = HandyTypography.B3Sb14
+                    )
+                    if (index != line.split(" ").lastIndex) {
                         Text(
-                            text = word,
+                            text = " ",
                             color = HandyTheme.colors.textStatusNegative,
-                            maxLines = 2,
                             style = HandyTypography.B3Sb14
                         )
-                        if (index != line.split(" ").lastIndex) {
-                            Text(
-                                text = " ",
-                                color = HandyTheme.colors.textStatusNegative,
-                                style = HandyTypography.B3Sb14
-                            )
-                        }
                     }
                 }
             }
