@@ -24,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -136,6 +135,7 @@ fun InfoSnackBar(
  * @param onClick 스낵바의 X 버튼을 눌렀을 때 호출되는 함수
  * @param modifier Modifier
  */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ErrorSnackBar(
     text: String,
@@ -157,19 +157,31 @@ fun ErrorSnackBar(
             tint = HandyTheme.colors.bgStatusNegative,
             modifier = Modifier.align(Alignment.Top)
         )
-        Text(
-            modifier = Modifier.weight(1f),
-            text = text,
-            color = HandyTheme.colors.textStatusNegative,
-            maxLines = 2,
-            style = HandyTypography.B3Sb14.copy(
-                lineBreak = LineBreak(
-                    strategy = LineBreak.Strategy.Simple,
-                    strictness = LineBreak.Strictness.Strict,
-                    wordBreak = LineBreak.WordBreak.Phrase
-                )
-            )
-        )
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            text.split("\n").forEach { line ->
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    line.split(" ").forEachIndexed { index, word ->
+                        Text(
+                            text = word,
+                            color = HandyTheme.colors.textStatusNegative,
+                            maxLines = 2,
+                            style = HandyTypography.B3Sb14
+                        )
+                        if (index != line.split(" ").lastIndex) {
+                            Text(
+                                text = " ",
+                                color = HandyTheme.colors.textStatusNegative,
+                                style = HandyTypography.B3Sb14
+                            )
+                        }
+                    }
+                }
+            }
+        }
         Icon(
             imageVector = HandyIcons.Line.Close,
             tint = HandyTheme.colors.textBasicTertiary,
