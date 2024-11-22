@@ -13,19 +13,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 /**
  * BottomNavItem : 하단 네비게이션 바의 아이템을 정의하는 데이터 클래스 입니다.
  *
- * @param selectedIcon 선택되었을 때의 아이콘
- * @param unselectedIcon 선택되지 않았을 때의 아이콘
+ * @param icon 아이템의 아이콘
  * @param label 아이템의 라벨
  */
 data class BottomNavItem(
-    val selectedIcon: Int,
-    val unselectedIcon: Int,
-    val label: String? = null
+    val icon: Int,
+    val label: String
 )
 
 /**
@@ -43,26 +47,29 @@ private fun BottomNavItem(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
+    val color = if (isSelected) HandyTheme.colors.textBasicPrimary else HandyTheme.colors.textBasicDisabled
+
     Column(
         modifier = modifier
             .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painter = painterResource(
-                id = if (isSelected) item.selectedIcon else item.unselectedIcon
-            ),
+        Icon(
+            painter = painterResource(id = item.icon),
             contentDescription = item.label,
+            tint = color,
             modifier = Modifier.size(24.dp)
         )
 
-        if (item.label != null) {
-            Text(
-                text = item.label,
-                fontSize = 12.dp
-            )
-        }
+        Text(
+            text = item.label,
+            fontSize = 11.dp,
+            lineHeight = 16.dp,
+            fontWeight = FontWeight(400),
+            color = color,
+            textAlign = TextAlign.Center
+        )
     }
 }
 

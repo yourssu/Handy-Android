@@ -11,26 +11,24 @@ import com.yourssu.handy.compose.R
 fun NavigationPreview() {
     val items = listOf(
         BottomNavItem(
-            selectedIcon = R.drawable.home_selected,
-            unselectedIcon = R.drawable.home,
-            label = "홈"
-        ),BottomNavItem(
-            selectedIcon = R.drawable.home_selected,
-            unselectedIcon = R.drawable.home,
-            label = "홈"
-        ),BottomNavItem(
-            selectedIcon = R.drawable.home_selected,
-            unselectedIcon = R.drawable.home,
-            label = "홈"
-        ),BottomNavItem(
-            selectedIcon = R.drawable.home_selected,
-            unselectedIcon = R.drawable.home,
-            label = "홈"
+            icon = R.drawable.home,
+            label = "Label"
         ),
         BottomNavItem(
-            selectedIcon = R.drawable.home_selected,
-            unselectedIcon = R.drawable.home,
-            label = "홈"
+            icon = R.drawable.home,
+            label = "Label"
+        ),
+        BottomNavItem(
+            icon = R.drawable.home,
+            label = "Label"
+        ),
+        BottomNavItem(
+            icon = R.drawable.home,
+            label = "Label"
+        ),
+        BottomNavItem(
+            icon = R.drawable.home,
+            label = "Label"
         ),
     )
 
