@@ -11,6 +11,8 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -50,7 +52,7 @@ enum class DragValue {
  * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
  * @param modifier Modifier
  */
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun InfoSnackBar(
     text: String,
@@ -96,19 +98,29 @@ fun InfoSnackBar(
                 orientation = Orientation.Vertical,
             )
     ) {
-        Text(
-            text = text,
-            color = HandyTheme.colors.textBasicWhite,
-            maxLines = 2,
-            style = HandyTypography.B3Sb14.copy(
-                lineBreak = LineBreak
-                    (
-                    strategy = LineBreak.Strategy.Simple,
-                    strictness = LineBreak.Strictness.Strict,
-                    wordBreak = LineBreak.WordBreak.Default
-                )
-            ),
-        )
+        Column {
+            text.split("\n").forEach { line ->
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    line.split(" ").forEachIndexed { index, word ->
+                        Text(
+                            text = word,
+                            color = HandyTheme.colors.textBasicWhite,
+                            maxLines = 2,
+                            style = HandyTypography.B3Sb14
+                        )
+                        if (index != line.split(" ").lastIndex) {
+                            Text(
+                                text = " ",
+                                color = HandyTheme.colors.textBasicWhite,
+                                style = HandyTypography.B3Sb14
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
