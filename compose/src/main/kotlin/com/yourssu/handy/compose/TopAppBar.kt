@@ -176,6 +176,7 @@ fun CenterAlignedTopAppBarPreview() {
             actions = {
                 Text(
                     text = "Share",
+                    color = HandyTheme.colors.textBrandPrimary,
                     modifier = Modifier.clickable { Log.d("TopBarPreview", "Share clicked") })
             }
         )
