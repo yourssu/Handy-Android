@@ -20,21 +20,30 @@ import com.yourssu.handy.compose.TopBarDefaults.topBarHeight
 import com.yourssu.handy.compose.TopBarDefaults.topBarHorizontalPadding
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.Add
+import com.yourssu.handy.compose.icons.filled.List
+import com.yourssu.handy.compose.icons.filled.Menu
+
+sealed interface NavIcon {
+    data object None : NavIcon
+    data class Back(val onClick: () -> Unit) : NavIcon
+    data class Menu(val onClick: () -> Unit) : NavIcon
+}
 
 /**
- * Center-Aligned : 클릭 가능한 Surface 입니다.
+ * Center-Aligned Top BAr
  *
  * 타이틀이 좌측에 위치한 탑앱바입니다.
  * 기능의 첫 페이지에 사용되는 탑앱바로, 현재 페이지의 제목을 나타낼 때 사용합니다.
  * 아이콘으로 기능을 명확하게 표현하지 못하거나 확실하게 기능을 설명하고 싶을 때 아이콘 대신 Text를 사용할 수 있습니다.
  *
  * @param title headline or Logo 최대 9자(공백 포함)
- * @param button Trailing Button (icon or text)
+ * @param navIcon 왼쪽 아이콘 (None, Menu, Back)
+ * @param actions Trailing Button (icon or text)
  **/
 @Composable
 fun CenterAlignedTopBar(
     title: String,
-    onBackButtonClicked: (() -> Unit)? = null,
+    navIcon: NavIcon,
     actions: @Composable (RowScope.() -> Unit)? = null
 ) {
     Box(
@@ -44,6 +53,7 @@ fun CenterAlignedTopBar(
             .height(topBarHeight),
         contentAlignment = Alignment.Center
     ) {
+        // 타이틀
         Row(
             modifier = Modifier
                 .fillMaxSize()
@@ -64,14 +74,18 @@ fun CenterAlignedTopBar(
             actions?.invoke(this)
         }
 
+        // 왼쪽 아이콘
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = topBarHorizontalPadding),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-
-            Icon(HandyIcons.Filled.Add, iconSize = IconSize.M)
+            when (navIcon) {
+                is NavIcon.Back -> Icon(HandyIcons.Filled.List, iconSize = IconSize.M)
+                is NavIcon.Menu -> Icon(HandyIcons.Filled.Menu, iconSize = IconSize.M)
+                NavIcon.None -> {}
+            }
 
             Spacer(modifier = Modifier.weight(1f)) // 오른쪽 공간 확보
 
@@ -79,6 +93,8 @@ fun CenterAlignedTopBar(
             actions?.invoke(this)
         }
 
+
+        // 오른쪽 액션
         Row(
             modifier = Modifier
                 .fillMaxSize()
@@ -105,36 +121,34 @@ fun TopBarPreview() {
     Column {
         CenterAlignedTopBar(
             title = "My TopBar",
-            onBackButtonClicked = { /* 뒤로가기 버튼 클릭 처리 */ },
+            navIcon = NavIcon.Back(onClick = {}),
             actions = {
-//                    Text(
-//                        text = "Action",
-//                        color = Color.Black,
-//                        modifier = Modifier
-//                            .padding(8.dp)
-//                            .clickable { /* 액션 버튼 클릭 처리 */ }
-//                    )
+
             }
         )
-        // 본문 내용
-//            Text(
-//                text = "Hello, Compose!",
-//                modifier = Modifier.padding(16.dp)
-//            )
+
+        CenterAlignedTopBar(
+            title = "My TopBar",
+            navIcon = NavIcon.None,
+            actions = {
+
+            }
+        )
+
+        CenterAlignedTopBar(
+            title = "My TopBar",
+            navIcon = NavIcon.Menu(onClick = {}),
+            actions = {
+            }
+        )
+
     }
 
 
 }
 
+
 object TopBarDefaults {
     val topBarHeight = 56.dp
     val topBarHorizontalPadding = 16.dp
-
-//    val tabHorizontalPadding = 16.dp
-//
-//    val fixedTabIndicatorPadding = 28.dp
-//    val scrollableTabIndicatorPadding = 18.dp
-//
-//    val scrollableTabPadding = 16.dp
-//    val scrollableTabWidth = 56.dp
 }
