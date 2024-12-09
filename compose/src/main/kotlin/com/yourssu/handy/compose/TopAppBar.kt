@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.TopBarDefaults.topBarHeight
 import com.yourssu.handy.compose.TopBarDefaults.topBarHorizontalPadding
-import com.yourssu.handy.compose.button.TextButton
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.Add
@@ -44,25 +43,25 @@ sealed interface NavIcon {
  * 이때, 텍스트의 사용은 한 개까지만 가능하며, 텍스트가 공백 포함 5자일 경우 우측에 아이콘을 같이 쓸 수 없습니다.
  *
  *
- * @param headline headline or Logo 최대 9자(공백 포함)
+ * @param title headline or Logo 최대 9자(공백 포함)
  * @param navIcon 왼쪽 아이콘 NavIcon.None, NavIcon.Menu, NavIcon.Back
- * @param trailingButton 오른쪽 아이콘 or 텍스트 (아이콘은 임의로 변경할 수 있으며 Center-aligned의 우측엔 최대 2개의 아이콘 버튼)
+ * @param actions 오른쪽 아이콘 or 텍스트 (아이콘은 임의로 변경할 수 있으며 Center-aligned의 우측엔 최대 2개의 아이콘 버튼)
  **/
 @Composable
 fun CenterAlignedTopAppBar(
-    headline: String,
+    title: String,
     navIcon: NavIcon,
-    trailingButton: @Composable (RowScope.() -> Unit)? = null
+    actions: @Composable (RowScope.() -> Unit)? = null
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .background(color = HandyTheme.colors.bgBasicDefault)
-            .height(topBarHeight),
+            .height(topBarHeight), //Top App Bar의 높이값을 임의로 변경하지 않습니다.
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = headline,
+            text = title,
             color = HandyTheme.colors.textBasicPrimary,
             style = HandyTypography.T2Sb18,
             textAlign = TextAlign.Center,
@@ -71,7 +70,7 @@ fun CenterAlignedTopAppBar(
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = topBarHorizontalPadding), //Top App Bar의 높이값을 임의로 변경하지 않습니다.
+                .padding(horizontal = topBarHorizontalPadding),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Left Icon
@@ -80,12 +79,12 @@ fun CenterAlignedTopAppBar(
             Spacer(modifier = Modifier.weight(1f))
 
             // Actions
-            if (trailingButton != null) {
+            if (actions != null) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxHeight()
                 ) {
-                    trailingButton()
+                    actions()
                 }
             }
         }
@@ -152,8 +151,7 @@ fun LeftAlignedTopAppBar(
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(8.dp)
+                        .padding(10.dp)
                 ) {
                     actions()
                 }
@@ -167,23 +165,25 @@ fun LeftAlignedTopAppBar(
 fun CenterAlignedTopAppBarPreview() {
     Column {
         CenterAlignedTopAppBar(
-            headline = "Centered",
+            title = "Centered",
             navIcon = NavIcon.None,
-            trailingButton = {}
+            actions = {}
         )
 
         CenterAlignedTopAppBar(
-            headline = "Back Example",
+            title = "Back Example",
             navIcon = NavIcon.Back(onClick = { Log.d("TopBarPreview", "Back clicked") }),
-            trailingButton = {
-                TextButton(text = "Share", onClick = { Log.d("TopBarPreview", "Share clicked") })
+            actions = {
+                Text(
+                    text = "Share",
+                    modifier = Modifier.clickable { Log.d("TopBarPreview", "Share clicked") })
             }
         )
 
         CenterAlignedTopAppBar(
-            headline = "Menu Example",
+            title = "Menu Example",
             navIcon = NavIcon.Menu(onClick = { Log.d("TopBarPreview", "Menu clicked") }),
-            trailingButton = {
+            actions = {
                 Icon(
                     imageVector = HandyIcons.Filled.Add,
                     contentDescription = "Add",
@@ -248,8 +248,6 @@ fun LeftAlignedTopBarPreview() {
                 )
             }
         )
-
-
     }
 }
 
