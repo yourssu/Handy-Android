@@ -1,6 +1,8 @@
 package com.yourssu.handy.compose
 
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,10 +20,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.TopBarDefaults.topBarHeight
 import com.yourssu.handy.compose.TopBarDefaults.topBarHorizontalPadding
+import com.yourssu.handy.compose.button.TextButton
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.Add
+import com.yourssu.handy.compose.icons.filled.ArrowsChevronLeft
 import com.yourssu.handy.compose.icons.filled.List
-import com.yourssu.handy.compose.icons.filled.Menu
 
 sealed interface NavIcon {
     data object None : NavIcon
@@ -38,10 +41,10 @@ sealed interface NavIcon {
  *
  * @param title headline or Logo 최대 9자(공백 포함)
  * @param navIcon 왼쪽 아이콘 (None, Menu, Back)
- * @param actions Trailing Button (icon or text)
+ * @param actions 오른쪽 Trailing Button (icon or text)
  **/
 @Composable
-fun CenterAlignedTopBar(
+fun CenterAlignedTopAppBar(
     title: String,
     navIcon: NavIcon,
     actions: @Composable (RowScope.() -> Unit)? = null
@@ -60,52 +63,30 @@ fun CenterAlignedTopBar(
                 .padding(horizontal = topBarHorizontalPadding),
             verticalAlignment = Alignment.CenterVertically
         ) {
-
-            // 중앙 제목
             Text(
                 text = title,
                 color = HandyTheme.colors.textBasicPrimary,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.weight(2f) // 텍스트가 중앙에 위치하도록 weight 추가
             )
-
-
-            // 오른쪽 액션 버튼들
-            actions?.invoke(this)
         }
 
-        // 왼쪽 아이콘
+
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = topBarHorizontalPadding),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+
+            // 왼쪽 아이콘 navIcon
             when (navIcon) {
-                is NavIcon.Back -> Icon(HandyIcons.Filled.List, iconSize = IconSize.M)
-                is NavIcon.Menu -> Icon(HandyIcons.Filled.Menu, iconSize = IconSize.M)
+                is NavIcon.Back -> Icon(HandyIcons.Filled.ArrowsChevronLeft)
+                is NavIcon.Menu -> Icon(HandyIcons.Filled.List)
                 NavIcon.None -> {}
             }
 
-            Spacer(modifier = Modifier.weight(1f)) // 오른쪽 공간 확보
-
-            // 오른쪽 액션 버튼들
-            actions?.invoke(this)
-        }
-
-
-        // 오른쪽 액션
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = topBarHorizontalPadding),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-
-            Spacer(modifier = Modifier.weight(1f)) // 오른쪽 공간 확보
-
-            Icon(HandyIcons.Filled.Add, iconSize = IconSize.M)
-            Icon(HandyIcons.Filled.Add, iconSize = IconSize.M)
+            Spacer(modifier = Modifier.weight(1f)) // 가운데 공간 확보
 
             // 오른쪽 액션 버튼들
             actions?.invoke(this)
@@ -119,32 +100,34 @@ fun CenterAlignedTopBar(
 fun TopBarPreview() {
 
     Column {
-        CenterAlignedTopBar(
-            title = "My TopBar",
-            navIcon = NavIcon.Back(onClick = {}),
-            actions = {
-
-            }
-        )
-
-        CenterAlignedTopBar(
-            title = "My TopBar",
+        CenterAlignedTopAppBar(
+            title = "title",
             navIcon = NavIcon.None,
             actions = {
 
             }
         )
 
-        CenterAlignedTopBar(
-            title = "My TopBar",
-            navIcon = NavIcon.Menu(onClick = {}),
+        CenterAlignedTopAppBar(
+            title = "제목을 입력해주세요",
+            navIcon = NavIcon.Back(onClick = {}),
             actions = {
+                Icon(HandyIcons.Filled.Add, iconSize = IconSize.M)
+                TextButton(text = "공유하기", onClick = {})
             }
         )
 
+        CenterAlignedTopAppBar(
+            title = "유어슈 최고",
+            navIcon = NavIcon.Menu(onClick = {}),
+            actions = {
+                Icon(
+                    HandyIcons.Filled.Add,
+                    modifier = Modifier.clickable { Log.d("TAG", "TopBarPreview: 클릭") })
+                Icon(HandyIcons.Filled.Add)
+            }
+        )
     }
-
-
 }
 
 
