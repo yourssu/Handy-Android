@@ -35,6 +35,25 @@ sealed interface NavIcon {
     data class Menu(val onClick: () -> Unit) : NavIcon
 }
 
+@Composable
+private fun RowScope.IconButton(navIcon: NavIcon) {
+    when (navIcon) {
+        is NavIcon.Back -> Icon(
+            imageVector = HandyIcons.Filled.ArrowsChevronLeft,
+            contentDescription = "Back",
+            modifier = Modifier.clickable(onClick = navIcon.onClick)
+        )
+
+        is NavIcon.Menu -> Icon(
+            imageVector = HandyIcons.Filled.List,
+            contentDescription = "Menu",
+            modifier = Modifier.clickable(onClick = navIcon.onClick)
+        )
+
+        NavIcon.None -> Spacer(modifier = Modifier.width(24.dp)) // 여백 확보
+    }
+}
+
 /**
  * Center-Aligned Top App Bar
  *
@@ -91,24 +110,7 @@ fun CenterAlignedTopAppBar(
     }
 }
 
-@Composable
-private fun RowScope.IconButton(navIcon: NavIcon) {
-    when (navIcon) {
-        is NavIcon.Back -> Icon(
-            imageVector = HandyIcons.Filled.ArrowsChevronLeft,
-            contentDescription = "Back",
-            modifier = Modifier.clickable(onClick = navIcon.onClick)
-        )
 
-        is NavIcon.Menu -> Icon(
-            imageVector = HandyIcons.Filled.List,
-            contentDescription = "Menu",
-            modifier = Modifier.clickable(onClick = navIcon.onClick)
-        )
-
-        NavIcon.None -> Spacer(modifier = Modifier.width(24.dp)) // 여백 확보
-    }
-}
 
 /**
  * Left-aligned
