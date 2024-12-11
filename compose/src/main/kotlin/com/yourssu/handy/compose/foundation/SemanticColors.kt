@@ -90,6 +90,7 @@ data class ColorScheme(
     val iconBasicPrimary: Color = ColorNeutralBlack,
     val iconBasicSecondary: Color = ColorGray700,
     val iconBasicTertiary: Color = ColorGray500,
+    val iconBasicDisabledStrong: Color = ColorGray300,
     val iconBasicDisabled: Color = ColorGray200,
     val iconBasicWhite: Color = ColorNeutralWhite,
 
@@ -112,7 +113,13 @@ data class ColorScheme(
 
     // Pagination / Basic
     val paginationBasicSelected: Color = ColorNeutralBlack,
-    val paginationBasicUnselected: Color = ColorGray500
+    val paginationBasicUnselected: Color = ColorGray500,
+
+    // List
+    val listEnabled: Color = ColorNeutralWhite,
+    val listPressed: Color = ColorGray50,
+    val listDisabled: Color = ColorNeutralWhite,
+
 )
 
 val lightColorScheme = ColorScheme()
