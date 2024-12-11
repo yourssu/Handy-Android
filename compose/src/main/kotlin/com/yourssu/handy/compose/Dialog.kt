@@ -87,10 +87,11 @@ fun OneButtonDialog(
 
             if (content != null) {
                 Box(
-                    modifier.align(Alignment.CenterHorizontally)
+                    modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = dialogPadding)
                 ) {
                     content()
-                    Spacer(modifier = modifier.height(dialogPadding))
                 }
             }
 
@@ -160,10 +161,11 @@ fun TwoButtonDialog(
 
             if (content != null) {
                 Box(
-                    modifier.align(Alignment.CenterHorizontally)
+                    modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = dialogPadding)
                 ) {
                     content()
-                    Spacer(modifier = modifier.height(dialogPadding))
                 }
             }
 
