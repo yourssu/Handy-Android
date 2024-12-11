@@ -16,9 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.DialogDefaults.dialogButtonSpacing
 import com.yourssu.handy.compose.DialogDefaults.dialogInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogPadding
-import com.yourssu.handy.compose.DialogDefaults.dialogTwoButtonInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogWidth
 import com.yourssu.handy.compose.button.BoxButton
 import com.yourssu.handy.compose.button.BoxButtonSize
@@ -174,7 +174,7 @@ fun TwoButtonDialog(
                     buttonType = BoxButtonType.Secondary
                 )
 
-                Spacer(modifier = modifier.width(dialogTwoButtonInsidePadding))
+                Spacer(modifier = modifier.width(dialogButtonSpacing))
 
                 BoxButton(
                     modifier = modifier.weight(1f), // 버튼이 균등한 너비를 차지하도록 설정
@@ -191,5 +191,5 @@ object DialogDefaults {
     val dialogWidth = 296.dp
     val dialogPadding = 20.dp
     val dialogInsidePadding = 16.dp
-    val dialogTwoButtonInsidePadding = 8.dp
+    val dialogButtonSpacing = 8.dp
 }
