@@ -37,6 +37,16 @@ private fun OneButtonDialogPreview() {
             Spacer(modifier = Modifier.height(10.dp))
 
             OneButtonDialog(
+                title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
+                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+                positiveText = "버튼",
+                onPositiveClick = {},
+                onDismiss = { showDialog = false } // 다이얼로그 닫기
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            OneButtonDialog(
                 title = "제목이 들어갑니다",
                 description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
                 positiveText = "버튼",
@@ -59,10 +69,22 @@ private fun TwoButtonDialogPreview() {
             TwoButtonDialog(
                 title = "제목이 들어갑니다",
                 description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼",
+                positiveText = "버튼2",
                 onPositiveClick = {},
                 onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                negativeText = "버튼",
+                negativeText = "버튼1",
+                onNegativeClick = {},
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            TwoButtonDialog(
+                title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
+                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+                positiveText = "버튼2",
+                onPositiveClick = {},
+                onDismiss = { showDialog = false }, // 다이얼로그 닫기
+                negativeText = "버튼1",
                 onNegativeClick = {},
             )
 
@@ -71,10 +93,10 @@ private fun TwoButtonDialogPreview() {
             TwoButtonDialog(
                 title = "제목이 들어갑니다",
                 description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼",
+                positiveText = "버튼2",
                 onPositiveClick = {},
                 onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                negativeText = "버튼",
+                negativeText = "버튼1",
                 onNegativeClick = {},
                 content = { Icon(HandyIcons.Filled.Add) }
             )

@@ -2,7 +2,6 @@ package com.yourssu.handy.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -59,20 +58,25 @@ fun OneButtonDialog(
     ) {
         Column {
             Row(
-                modifier = modifier.fillMaxWidth(), // Row가 부모의 가로 너비를 가득 채움
-                horizontalArrangement = Arrangement.Center // 가로축 가운데 정렬
+                modifier = modifier.fillMaxWidth(),
             ) {
                 Text(
                     text = title,
                     style = HandyTypography.T1Sb20,
-                    color = HandyTheme.colors.textBasicPrimary
+                    color = HandyTheme.colors.textBasicPrimary,
+                    maxLines = 3,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = dialogButtonSpacing)
                 )
 
-                Spacer(modifier = modifier.weight(1f))
-
-                Icon(HandyIcons.Filled.Close, modifier.clickable { onDismiss() })
-
+                Icon(
+                    imageVector = HandyIcons.Filled.Close,
+                    contentDescription = "Close",
+                    modifier = modifier.clickable { onDismiss() }
+                )
             }
+
             Spacer(modifier = modifier.height(dialogInsidePadding))
 
             Text(text = description)
@@ -133,20 +137,25 @@ fun TwoButtonDialog(
     ) {
         Column {
             Row(
-                modifier = modifier.fillMaxWidth(), // Row가 부모의 가로 너비를 가득 채움
-                horizontalArrangement = Arrangement.Center // 가로축 가운데 정렬
+                modifier = modifier.fillMaxWidth(),
             ) {
                 Text(
                     text = title,
                     style = HandyTypography.T1Sb20,
-                    color = HandyTheme.colors.textBasicPrimary
+                    color = HandyTheme.colors.textBasicPrimary,
+                    maxLines = 3,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = dialogButtonSpacing)
                 )
 
-                Spacer(modifier = modifier.weight(1f))
-
-                Icon(HandyIcons.Filled.Close, modifier.clickable { onDismiss })
-
+                Icon(
+                    imageVector = HandyIcons.Filled.Close,
+                    contentDescription = "Close",
+                    modifier = modifier.clickable { onDismiss() }
+                )
             }
+
             Spacer(modifier = modifier.height(dialogInsidePadding))
 
             Text(text = description)
@@ -167,9 +176,9 @@ fun TwoButtonDialog(
                 modifier = modifier.align(Alignment.CenterHorizontally)
             ) {
                 BoxButton(
-                    modifier = modifier.weight(1f), // 버튼이 균등한 너비를 차지하도록 설정
-                    text = positiveText,
-                    onClick = onPositiveClick,
+                    modifier = modifier.weight(1f),
+                    text = negativeText,
+                    onClick = onNegativeClick,
                     sizeType = BoxButtonSize.L,
                     buttonType = BoxButtonType.Secondary
                 )
@@ -177,9 +186,9 @@ fun TwoButtonDialog(
                 Spacer(modifier = modifier.width(dialogButtonSpacing))
 
                 BoxButton(
-                    modifier = modifier.weight(1f), // 버튼이 균등한 너비를 차지하도록 설정
-                    text = negativeText,
-                    onClick = onNegativeClick,
+                    modifier = modifier.weight(1f),
+                    text = positiveText,
+                    onClick = onPositiveClick,
                     sizeType = BoxButtonSize.L,
                 )
             }
