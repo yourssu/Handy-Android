@@ -111,7 +111,7 @@ private fun TwoButtonDialogPreview() {
 
 @Preview
 @Composable
-private fun OneButtonDialogOnScreenPreview() {
+private fun DialogOnScreenPreview() {
 
     var showOneButtonDialog by remember { mutableStateOf(false) }
     var showTwoButtonDialog by remember { mutableStateOf(false) }
