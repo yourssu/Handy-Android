@@ -21,6 +21,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.TopBarDefaults.iconTouchSize
+import com.yourssu.handy.compose.TopBarDefaults.itemPadding
 import com.yourssu.handy.compose.TopBarDefaults.topBarHeight
 import com.yourssu.handy.compose.TopBarDefaults.topBarHorizontalPadding
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -43,8 +45,8 @@ private fun IconButton(navIcon: NavIcon) {
             imageVector = HandyIcons.Filled.ArrowsChevronLeft,
             contentDescription = "Back",
             modifier = Modifier
-                .size(48.dp) // 터치 영역 48x48
-                .padding(12.dp) // 실제 아이콘 크기 유지
+                .size(iconTouchSize) // 터치 영역 48x48
+                .padding(itemPadding) // 실제 아이콘 크기 유지
                 .clickable(onClick = navIcon.onClick)
         )
 
@@ -52,8 +54,9 @@ private fun IconButton(navIcon: NavIcon) {
             imageVector = HandyIcons.Filled.List,
             contentDescription = "Menu",
             modifier = Modifier
-                .size(48.dp) // 터치 영역 48x48
-                .padding(12.dp) // 실제 아이콘 크기 유지clickable(onClick = navIcon.onClick)
+                .size(iconTouchSize) // 터치 영역 48x48
+                .padding(itemPadding) // 실제 아이콘 크기 유지
+                .clickable(onClick = navIcon.onClick)
         )
 
         NavIcon.None -> Spacer(modifier = Modifier.width(24.dp)) // 여백 확보
@@ -75,7 +78,7 @@ private fun ActionItemButton(actionItem: ActionItem) {
     when (actionItem) {
         is ActionItem.Icon -> Box(
             modifier = Modifier
-                .size(48.dp) // 터치 영역
+                .size(iconTouchSize) // 터치 영역
                 .clickable(onClick = actionItem.onClick),
             contentAlignment = Alignment.Center
         ) {
@@ -88,7 +91,7 @@ private fun ActionItemButton(actionItem: ActionItem) {
 
         is ActionItem.Text -> Box(
             modifier = Modifier
-                .padding(horizontal = 12.dp)
+                .padding(horizontal = itemPadding)
                 .clickable(onClick = actionItem.onClick),
             contentAlignment = Alignment.Center
         ) {
@@ -146,15 +149,12 @@ fun CenterAlignedTopAppBar(
             Spacer(modifier = Modifier.weight(1f))
 
             // Actions
-            if (actions != null) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxHeight()
-                ) {
-                    actions.forEachIndexed { index, action ->
-                        ActionItemButton(action)
-//                        if (index != actions.lastIndex) Spacer(modifier = Modifier.width(24.dp)) // 아이템 간 패딩
-                    }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxHeight()
+            ) {
+                actions.forEachIndexed { index, action ->
+                    ActionItemButton(action)
                 }
             }
         }
@@ -199,16 +199,12 @@ fun LeftAlignedTopAppBar(
             Spacer(modifier = Modifier.weight(1f))
 
             // Actions
-            if (actions != null) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-//                        .padding(30.dp)
-                ) {
-                    actions.forEachIndexed { index, action ->
-                        ActionItemButton(action)
-//                        if (index != actions.lastIndex) Spacer(modifier = Modifier.width(24.dp)) // 아이템 간 패딩
-                    }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+            ) {
+                actions.forEachIndexed { index, action ->
+                    ActionItemButton(action)
                 }
             }
         }
@@ -329,4 +325,7 @@ fun LeftAlignedTopBarPreview() {
 object TopBarDefaults {
     val topBarHeight = 56.dp
     val topBarHorizontalPadding = 16.dp
+
+    val iconTouchSize = 48.dp
+    val itemPadding = 12.dp
 }
