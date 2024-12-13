@@ -30,6 +30,9 @@ internal val ColorGray800 = Color(0xFF3F434D)
 internal val ColorGray900 = Color(0xFF373A43)
 internal val ColorGray950 = Color(0xFF25262C)
 
+// Opacity/gray/070
+internal val ColorGray070 = Color(0xFF25262C).copy(alpha = 0.65f)
+
 // Neutral
 internal val ColorNeutralBlack = Color(0xFF25262C)
 internal val ColorNeutralWhite = Color(0xFFFFFFFF)
