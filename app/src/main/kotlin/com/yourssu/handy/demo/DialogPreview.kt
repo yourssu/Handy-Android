@@ -32,7 +32,7 @@ private fun OneButtonDialogPreview1() {
             description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
             positiveText = "버튼",
             onPositiveClick = {},
-            onDismiss = { }
+            onDismiss = {}
         )
     }
 }
@@ -46,7 +46,7 @@ private fun OneButtonDialogPreview2() {
             description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
             positiveText = "버튼",
             onPositiveClick = {},
-            onDismiss = { }
+            onDismiss = {}
         )
     }
 }
@@ -60,7 +60,7 @@ private fun OneButtonDialogPreview3() {
             description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
             positiveText = "버튼",
             onPositiveClick = {},
-            onDismiss = { },
+            onDismiss = {},
             content = { Icon(HandyIcons.Filled.Add) }
         )
     }
@@ -75,7 +75,7 @@ private fun TwoButtonDialogPreview1() {
             description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
             positiveText = "버튼2",
             onPositiveClick = {},
-            onDismiss = { },
+            onDismiss = {},
             negativeText = "버튼1",
             onNegativeClick = {},
         )
@@ -91,7 +91,7 @@ private fun TwoButtonDialogPreview2() {
             description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
             positiveText = "버튼2",
             onPositiveClick = {},
-            onDismiss = { },
+            onDismiss = {},
             negativeText = "버튼1",
             onNegativeClick = {},
         )
