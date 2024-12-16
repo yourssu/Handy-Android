@@ -27,6 +27,7 @@ import com.yourssu.handy.compose.button.BoxButtonSize
 import com.yourssu.handy.compose.button.BoxButtonType
 import com.yourssu.handy.compose.foundation.ColorGray070
 import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.foundation.Radius
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.Close
 
@@ -67,8 +68,8 @@ fun OneButtonDialog(
             modifier = modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
-                    shape = RoundedCornerShape(16.dp)
-                ) //todo Radius.XL 어떻게 활용하는지 모르겠음
+                    shape = RoundedCornerShape(Radius.XL.dp)
+                )
                 .width(dialogWidth)
                 .padding(dialogPadding),
         ) {
@@ -162,8 +163,8 @@ fun TwoButtonDialog(
             modifier = modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
-                    shape = RoundedCornerShape(16.dp)
-                ) //todo Radius.XL 어떻게 활용하는지 모르겠음
+                    shape = RoundedCornerShape(Radius.XL.dp)
+                )
                 .width(dialogWidth)
                 .padding(dialogPadding),
         ) {
