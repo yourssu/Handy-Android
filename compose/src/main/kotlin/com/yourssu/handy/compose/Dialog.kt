@@ -54,7 +54,7 @@ fun OneButtonDialog(
 ) {
     // Scrim
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = ColorGray070)
             .clickable(
@@ -65,7 +65,7 @@ fun OneButtonDialog(
         contentAlignment = Alignment.Center // 중앙 정렬
     ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
                     shape = RoundedCornerShape(Radius.XL.dp)
@@ -149,7 +149,7 @@ fun TwoButtonDialog(
 ) {
     // Scrim
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(color = ColorGray070)
             .clickable(
@@ -160,7 +160,7 @@ fun TwoButtonDialog(
         contentAlignment = Alignment.Center // 중앙 정렬
     ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
                     shape = RoundedCornerShape(Radius.XL.dp)
@@ -170,7 +170,7 @@ fun TwoButtonDialog(
         ) {
             Column {
                 Row(
-                    modifier = modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                 ) {
                     Text(
                         text = title,
@@ -185,19 +185,19 @@ fun TwoButtonDialog(
                     Icon(
                         imageVector = HandyIcons.Filled.Close,
                         contentDescription = "Close",
-                        modifier = modifier.clickable { onDismiss() }
+                        modifier = Modifier.clickable { onDismiss() }
                     )
                 }
 
-                Spacer(modifier = modifier.height(dialogInsidePadding))
+                Spacer(modifier = Modifier.height(dialogInsidePadding))
 
                 Text(text = description)
 
-                Spacer(modifier = modifier.height(dialogPadding))
+                Spacer(modifier = Modifier.height(dialogPadding))
 
                 if (content != null) {
                     Box(
-                        modifier
+                        Modifier
                             .align(Alignment.CenterHorizontally)
                             .padding(bottom = dialogPadding)
                     ) {
@@ -206,20 +206,20 @@ fun TwoButtonDialog(
                 }
 
                 Row(
-                    modifier = modifier.align(Alignment.CenterHorizontally)
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
                 ) {
                     BoxButton(
-                        modifier = modifier.weight(1f),
+                        modifier = Modifier.weight(1f),
                         text = negativeText,
                         onClick = { onNegativeClick() },
                         sizeType = BoxButtonSize.L,
                         buttonType = BoxButtonType.Secondary
                     )
 
-                    Spacer(modifier = modifier.width(dialogButtonSpacing))
+                    Spacer(modifier = Modifier.width(dialogButtonSpacing))
 
                     BoxButton(
-                        modifier = modifier.weight(1f),
+                        modifier = Modifier.weight(1f),
                         text = positiveText,
                         onClick = { onPositiveClick() },
                         sizeType = BoxButtonSize.L,
