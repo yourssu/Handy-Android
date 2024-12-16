@@ -25,87 +25,93 @@ import com.yourssu.handy.compose.icons.filled.Add
 
 @Preview
 @Composable
-private fun OneButtonDialogPreview() {
-
-    var showDialog by remember { mutableStateOf(true) }
-
+private fun OneButtonDialogPreview1() {
     HandyTheme {
-        Column {
-            OneButtonDialog(
-                title = "제목이 들어갑니다",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false } // 다이얼로그 닫기
-            )
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            OneButtonDialog(
-                title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false } // 다이얼로그 닫기
-            )
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            OneButtonDialog(
-                title = "제목이 들어갑니다",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                content = { Icon(HandyIcons.Filled.Add) }
-            )
-        }
+        OneButtonDialog(
+            title = "제목이 들어갑니다",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼",
+            onPositiveClick = {},
+            onDismiss = { }
+        )
     }
 }
 
 @Preview
 @Composable
-private fun TwoButtonDialogPreview() {
-
-    var showDialog by remember { mutableStateOf(true) }
-
+private fun OneButtonDialogPreview2() {
     HandyTheme {
-        Column {
-            TwoButtonDialog(
-                title = "제목이 들어갑니다",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼2",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                negativeText = "버튼1",
-                onNegativeClick = {},
-            )
+        OneButtonDialog(
+            title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼",
+            onPositiveClick = {},
+            onDismiss = { }
+        )
+    }
+}
 
-            Spacer(modifier = Modifier.height(10.dp))
+@Preview
+@Composable
+private fun OneButtonDialogPreview3() {
+    HandyTheme {
+        OneButtonDialog(
+            title = "제목이 들어갑니다",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼",
+            onPositiveClick = {},
+            onDismiss = { },
+            content = { Icon(HandyIcons.Filled.Add) }
+        )
+    }
+}
 
-            TwoButtonDialog(
-                title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼2",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                negativeText = "버튼1",
-                onNegativeClick = {},
-            )
+@Preview
+@Composable
+private fun TwoButtonDialogPreview1() {
+    HandyTheme {
+        TwoButtonDialog(
+            title = "제목이 들어갑니다",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼2",
+            onPositiveClick = {},
+            onDismiss = { },
+            negativeText = "버튼1",
+            onNegativeClick = {},
+        )
+    }
+}
 
-            Spacer(modifier = Modifier.height(10.dp))
+@Preview
+@Composable
+private fun TwoButtonDialogPreview2() {
+    HandyTheme {
+        TwoButtonDialog(
+            title = "보다 더 정확하게 분석하기 위해 다음 질문에 대해 대답해주세요.",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼2",
+            onPositiveClick = {},
+            onDismiss = { },
+            negativeText = "버튼1",
+            onNegativeClick = {},
+        )
+    }
+}
 
-            TwoButtonDialog(
-                title = "제목이 들어갑니다",
-                description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
-                positiveText = "버튼2",
-                onPositiveClick = {},
-                onDismiss = { showDialog = false }, // 다이얼로그 닫기
-                negativeText = "버튼1",
-                onNegativeClick = {},
-                content = { Icon(HandyIcons.Filled.Add) }
-            )
-        }
+@Preview
+@Composable
+private fun TwoButtonDialogPreview3() {
+    HandyTheme {
+        TwoButtonDialog(
+            title = "제목이 들어갑니다",
+            description = "내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다 내용이 들어갑니다",
+            positiveText = "버튼2",
+            onPositiveClick = {},
+            onDismiss = {},
+            negativeText = "버튼1",
+            onNegativeClick = {},
+            content = { Icon(HandyIcons.Filled.Add) }
+        )
     }
 }
 
