@@ -69,7 +69,7 @@ fun BoxButton(
         colors = boxButtonColorByType(
             type = buttonType,
         ),
-        modifier = Modifier.height(height),
+        modifier = modifier.height(height),
         enabled = enabled,
         showBorder = (buttonType == BoxButtonType.Tertiary),
         interactionSource = interactionSource,
