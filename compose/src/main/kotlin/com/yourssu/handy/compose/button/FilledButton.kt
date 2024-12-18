@@ -17,13 +17,13 @@ import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
 
 
-enum class BoxButtonType {
+enum class FilledButtonType {
     Primary,
     Secondary,
-    Tertiary;
+    Outlined;
 }
 
-enum class BoxButtonSize {
+enum class FilledButtonSize {
     XXS,
     XS,
     S,
@@ -33,8 +33,8 @@ enum class BoxButtonSize {
 }
 
 /**
- * BoxButton : Box 형태의 Button 입니다.
- * type : Primary, Secondary, Tertiary
+ * FilledButton : Box(Filled) 형태의 Button 입니다.
+ * type : Primary, Secondary, Outlined
  * size : XXS, XS, S, M, L, XL
  *
  * @param onClick Button 클릭 시 실행되는 함수
@@ -43,35 +43,35 @@ enum class BoxButtonSize {
  * @param rightIcon Button 오른쪽에 표시되는 Icon
  * @param enabled Button 활성화 여부, default true
  * @param sizeType Button 사이즈
- * @param buttonType Button 타입 (Primary, Secondary, Tertiary)
+ * @param buttonType Button 타입 (Primary, Secondary, Outlined)
  * @param interactionSource Button 상호작용 소스
  * @param horizontalPadding Button 내부 content padding
  **/
 
 @Composable
-fun BoxButton(
+fun FilledButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     text: String,
     leftIcon: ImageVector? = null,
     rightIcon: ImageVector? = null,
     enabled: Boolean = true,
-    sizeType: BoxButtonSize = BoxButtonSize.M,
-    buttonType: BoxButtonType = BoxButtonType.Primary,
+    sizeType: FilledButtonSize = FilledButtonSize.M,
+    buttonType: FilledButtonType = FilledButtonType.Primary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    horizontalPadding: Dp = boxButtonSizeStateBySize(size = sizeType).horizontalPadding,
+    horizontalPadding: Dp = filledButtonSizeStateBySize(size = sizeType).horizontalPadding,
 ) {
-    val roundingDp = boxButtonSizeStateBySize(size = sizeType).round
-    val (typo, iconSize, height) = boxButtonSizeStateBySize(size = sizeType)
+    val roundingDp = filledButtonSizeStateBySize(size = sizeType).round
+    val (typo, iconSize, height) = filledButtonSizeStateBySize(size = sizeType)
 
     BaseButton(
         onClick = onClick,
-        colors = boxButtonColorByType(
+        colors = filledButtonColorByType(
             type = buttonType,
         ),
         modifier = modifier.height(height),
         enabled = enabled,
-        showBorder = (buttonType == BoxButtonType.Tertiary),
+        showBorder = (buttonType == FilledButtonType.Outlined),
         interactionSource = interactionSource,
         rounding = roundingDp,
         contentPadding = PaddingValues(
@@ -103,35 +103,35 @@ fun BoxButton(
 
 
 @Composable
-private fun boxButtonColorByType(
-    type: BoxButtonType,
+private fun filledButtonColorByType(
+    type: FilledButtonType,
 ): ButtonColorState = when (type) {
-    BoxButtonType.Primary -> ButtonColorState(
+    FilledButtonType.Primary -> ButtonColorState(
         contentColor = HandyTheme.colors.textBasicWhite,
         disabledContentColor = HandyTheme.colors.textBasicDisabled,
-        bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled,
-        disabledBgColor = HandyTheme.colors.buttonBoxPrimaryDisabled,
+        bgColor = HandyTheme.colors.buttonFilledPrimaryEnabled,
+        disabledBgColor = HandyTheme.colors.buttonFilledPrimaryDisabled,
     )
 
-    BoxButtonType.Secondary -> ButtonColorState(
+    FilledButtonType.Secondary -> ButtonColorState(
         contentColor = HandyTheme.colors.textBrandSecondary,
         disabledContentColor = HandyTheme.colors.textBasicDisabled,
-        bgColor = HandyTheme.colors.buttonBoxSecondaryEnabled,
-        disabledBgColor = HandyTheme.colors.buttonBoxSecondaryDisabled,
+        bgColor = HandyTheme.colors.buttonFilledSecondaryEnabled,
+        disabledBgColor = HandyTheme.colors.buttonFilledSecondaryDisabled,
     )
 
-    BoxButtonType.Tertiary -> ButtonColorState(
-        bgColor = HandyTheme.colors.buttonBoxTertiaryEnabled,
+    FilledButtonType.Outlined -> ButtonColorState(
+        bgColor = HandyTheme.colors.buttonOutlinedEnabled,
         contentColor = HandyTheme.colors.textBasicPrimary,
-        disabledBgColor = HandyTheme.colors.buttonBoxTertiaryDisabled,
+        disabledBgColor = HandyTheme.colors.buttonOutlinedDisabled,
         disabledContentColor = HandyTheme.colors.textBasicDisabled,
     )
 }
 
-private fun boxButtonSizeStateBySize(
-    size: BoxButtonSize,
+private fun filledButtonSizeStateBySize(
+    size: FilledButtonSize,
 ): ButtonStyleProperties = when (size) {
-    BoxButtonSize.XL -> ButtonStyleProperties(
+    FilledButtonSize.XL -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 56.dp,
@@ -139,7 +139,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    BoxButtonSize.L -> ButtonStyleProperties(
+    FilledButtonSize.L -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 52.dp,
@@ -147,7 +147,7 @@ private fun boxButtonSizeStateBySize(
         round = 16.dp
     )
 
-    BoxButtonSize.M -> ButtonStyleProperties(
+    FilledButtonSize.M -> ButtonStyleProperties(
         typo = HandyTypography.B1Sb16,
         iconSize = IconSize.S,
         height = 48.dp,
@@ -155,7 +155,7 @@ private fun boxButtonSizeStateBySize(
         round = 14.dp
     )
 
-    BoxButtonSize.S -> ButtonStyleProperties(
+    FilledButtonSize.S -> ButtonStyleProperties(
         typo = HandyTypography.B3Sb14,
         iconSize = IconSize.XS,
         height = 40.dp,
@@ -163,7 +163,7 @@ private fun boxButtonSizeStateBySize(
         round = 12.dp
     )
 
-    BoxButtonSize.XS -> ButtonStyleProperties(
+    FilledButtonSize.XS -> ButtonStyleProperties(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 32.dp,
@@ -171,7 +171,7 @@ private fun boxButtonSizeStateBySize(
         round = 10.dp
     )
 
-    BoxButtonSize.XXS -> ButtonStyleProperties(
+    FilledButtonSize.XXS -> ButtonStyleProperties(
         typo = HandyTypography.B5Sb12,
         iconSize = IconSize.XXS,
         height = 24.dp,

@@ -29,7 +29,7 @@ enum class TextButtonSize {
 /**
  * BaseButton : ripple 효과가 없는 Composable 함수 입니다.
  *
- * BoxButton, TextButton의 베이스가 됩니다.
+ * FilledButton, TextButton의 베이스가 됩니다.
  *
  * @param onClick Button 클릭 시 실행되는 함수
  * @param text Button 내부 text

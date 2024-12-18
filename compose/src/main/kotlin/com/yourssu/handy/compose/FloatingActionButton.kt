@@ -56,7 +56,7 @@ fun FloatingActionButton(
     val contentColor by containerColor.contentColor(enabled)
     val borderColor = containerColor.borderColor()
 
-    val containerSize = boxButtonSizeStateBySize(size = sizeType)
+    val containerSize = floatingButtonSizeStateBySize(size = sizeType)
 
     Surface(
         onClick = onClick,
@@ -93,7 +93,7 @@ data class FloatingActionButtonSizeState(
 )
 
 
-private fun boxButtonSizeStateBySize(
+private fun floatingButtonSizeStateBySize(
     size: FloatingActionButtonSize,
 ): FloatingActionButtonSizeState = when (size) {
     FloatingActionButtonSize.S -> FloatingActionButtonSizeState(
