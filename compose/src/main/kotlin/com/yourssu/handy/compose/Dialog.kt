@@ -19,8 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.DialogDefaults.dialogButtonSpacing
-import com.yourssu.handy.compose.DialogDefaults.dialogInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogPadding
+import com.yourssu.handy.compose.DialogDefaults.dialogTextInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogWidth
 import com.yourssu.handy.compose.button.BoxButton
 import com.yourssu.handy.compose.button.BoxButtonSize
@@ -49,7 +49,7 @@ fun OneButtonDialog(
     onPositiveClick: () -> Unit,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    description: String = "",
+    description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
     // Scrim
@@ -94,9 +94,11 @@ fun OneButtonDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(dialogInsidePadding))
+                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
 
-                Text(text = description)
+                if (description != null) {
+                    Text(text = description)
+                }
 
                 Spacer(modifier = Modifier.height(dialogPadding))
 
@@ -144,7 +146,7 @@ fun TwoButtonDialog(
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    description: String = "",
+    description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
     // Scrim
@@ -189,9 +191,11 @@ fun TwoButtonDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(dialogInsidePadding))
+                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
 
-                Text(text = description)
+                if (description != null) {
+                    Text(text = description)
+                }
 
                 Spacer(modifier = Modifier.height(dialogPadding))
 
@@ -233,6 +237,6 @@ fun TwoButtonDialog(
 object DialogDefaults {
     val dialogWidth = 296.dp
     val dialogPadding = 20.dp
-    val dialogInsidePadding = 16.dp
+    val dialogTextInsidePadding = 16.dp
     val dialogButtonSpacing = 8.dp
 }
