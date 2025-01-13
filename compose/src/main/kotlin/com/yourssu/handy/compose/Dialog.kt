@@ -48,63 +48,62 @@ fun OneButtonDialog(
     description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
-        Box(
-            modifier = modifier
-                .background(
-                    color = HandyTheme.colors.bgBasicDefault,
-                    shape = RoundedCornerShape(Radius.XL.dp)
+    Box(
+        modifier = modifier
+            .background(
+                color = HandyTheme.colors.bgBasicDefault,
+                shape = RoundedCornerShape(Radius.XL.dp)
+            )
+            .width(dialogWidth)
+            .padding(dialogPadding),
+    ) {
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    text = title,
+                    style = HandyTypography.T1Sb20,
+                    color = HandyTheme.colors.textBasicPrimary,
+                    maxLines = 3,
+                    modifier = Modifier
+                        .weight(1f)
                 )
-                .width(dialogWidth)
-                .padding(dialogPadding),
-        ) {
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(
-                        text = title,
-                        style = HandyTypography.T1Sb20,
-                        color = HandyTheme.colors.textBasicPrimary,
-                        maxLines = 3,
-                        modifier = Modifier
-                            .weight(1f)
-                    )
 
-                    Icon(
-                        imageVector = HandyIcons.Filled.Close,
-                        contentDescription = "Close",
-                        modifier = Modifier.clickable { onDismiss() }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
-
-                if (description != null) {
-                    Text(text = description)
-                }
-
-                Spacer(modifier = Modifier.height(dialogPadding))
-
-                if (content != null) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(bottom = dialogPadding)
-                    ) {
-                        content()
-                    }
-                }
-
-                BoxButton(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = positiveText,
-                    onClick = { onPositiveClick() },
-                    sizeType = BoxButtonSize.L,
+                Icon(
+                    imageVector = HandyIcons.Filled.Close,
+                    contentDescription = "Close",
+                    modifier = Modifier.clickable { onDismiss() }
                 )
             }
+
+            Spacer(modifier = Modifier.height(dialogTextInsidePadding))
+
+            if (description != null) {
+                Text(text = description)
+            }
+
+            Spacer(modifier = Modifier.height(dialogPadding))
+
+            if (content != null) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = dialogPadding)
+                ) {
+                    content()
+                }
+            }
+
+            BoxButton(
+                modifier = Modifier.fillMaxWidth(),
+                text = positiveText,
+                onClick = { onPositiveClick() },
+                sizeType = BoxButtonSize.L,
+            )
+        }
     }
 }
-
 
 
 /**
@@ -131,75 +130,75 @@ fun TwoButtonDialog(
     description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
-        Box(
-            modifier = modifier
-                .background(
-                    color = HandyTheme.colors.bgBasicDefault,
-                    shape = RoundedCornerShape(Radius.XL.dp)
+    Box(
+        modifier = modifier
+            .background(
+                color = HandyTheme.colors.bgBasicDefault,
+                shape = RoundedCornerShape(Radius.XL.dp)
+            )
+            .width(dialogWidth)
+            .padding(dialogPadding),
+    ) {
+        Column {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    text = title,
+                    style = HandyTypography.T1Sb20,
+                    color = HandyTheme.colors.textBasicPrimary,
+                    maxLines = 3,
+                    modifier = Modifier
+                        .weight(1f)
                 )
-                .width(dialogWidth)
-                .padding(dialogPadding),
-        ) {
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
+
+                Icon(
+                    imageVector = HandyIcons.Filled.Close,
+                    contentDescription = "Close",
+                    modifier = Modifier.clickable { onDismiss() }
+                )
+            }
+
+            Spacer(modifier = Modifier.height(dialogTextInsidePadding))
+
+            if (description != null) {
+                Text(text = description)
+            }
+
+            Spacer(modifier = Modifier.height(dialogPadding))
+
+            if (content != null) {
+                Box(
+                    Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(bottom = dialogPadding)
                 ) {
-                    Text(
-                        text = title,
-                        style = HandyTypography.T1Sb20,
-                        color = HandyTheme.colors.textBasicPrimary,
-                        maxLines = 3,
-                        modifier = Modifier
-                            .weight(1f)
-                    )
-
-                    Icon(
-                        imageVector = HandyIcons.Filled.Close,
-                        contentDescription = "Close",
-                        modifier = Modifier.clickable { onDismiss() }
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
-
-                if (description != null) {
-                    Text(text = description)
-                }
-
-                Spacer(modifier = Modifier.height(dialogPadding))
-
-                if (content != null) {
-                    Box(
-                        Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(bottom = dialogPadding)
-                    ) {
-                        content()
-                    }
-                }
-
-                Row(
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                ) {
-                    BoxButton(
-                        modifier = Modifier.weight(1f),
-                        text = negativeText,
-                        onClick = { onNegativeClick() },
-                        sizeType = BoxButtonSize.L,
-                        buttonType = BoxButtonType.Secondary
-                    )
-
-                    Spacer(modifier = Modifier.width(dialogButtonSpacing))
-
-                    BoxButton(
-                        modifier = Modifier.weight(1f),
-                        text = positiveText,
-                        onClick = { onPositiveClick() },
-                        sizeType = BoxButtonSize.L,
-                    )
+                    content()
                 }
             }
+
+            Row(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                BoxButton(
+                    modifier = Modifier.weight(1f),
+                    text = negativeText,
+                    onClick = { onNegativeClick() },
+                    sizeType = BoxButtonSize.L,
+                    buttonType = BoxButtonType.Secondary
+                )
+
+                Spacer(modifier = Modifier.width(dialogButtonSpacing))
+
+                BoxButton(
+                    modifier = Modifier.weight(1f),
+                    text = positiveText,
+                    onClick = { onPositiveClick() },
+                    sizeType = BoxButtonSize.L,
+                )
+            }
         }
+    }
 
 }
 
