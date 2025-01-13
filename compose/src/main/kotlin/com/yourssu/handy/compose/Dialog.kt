@@ -2,30 +2,26 @@ package com.yourssu.handy.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.DialogDefaults.dialogButtonSpacing
-import com.yourssu.handy.compose.DialogDefaults.dialogInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogPadding
+import com.yourssu.handy.compose.DialogDefaults.dialogTextInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogWidth
 import com.yourssu.handy.compose.button.BoxButton
 import com.yourssu.handy.compose.button.BoxButtonSize
 import com.yourssu.handy.compose.button.BoxButtonType
-import com.yourssu.handy.compose.foundation.ColorGray070
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
 import com.yourssu.handy.compose.icons.HandyIcons
@@ -49,23 +45,11 @@ fun OneButtonDialog(
     onPositiveClick: () -> Unit,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    description: String = "",
+    description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
-    // Scrim
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = ColorGray070)
-            .clickable(
-                onClick = onDismiss,
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() }
-            ), // 배경 클릭 시 닫기 처리
-        contentAlignment = Alignment.Center // 중앙 정렬
-    ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
                     shape = RoundedCornerShape(Radius.XL.dp)
@@ -84,7 +68,6 @@ fun OneButtonDialog(
                         maxLines = 3,
                         modifier = Modifier
                             .weight(1f)
-                            .padding(end = dialogButtonSpacing)
                     )
 
                     Icon(
@@ -94,9 +77,11 @@ fun OneButtonDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(dialogInsidePadding))
+                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
 
-                Text(text = description)
+                if (description != null) {
+                    Text(text = description)
+                }
 
                 Spacer(modifier = Modifier.height(dialogPadding))
 
@@ -117,7 +102,6 @@ fun OneButtonDialog(
                     sizeType = BoxButtonSize.L,
                 )
             }
-        }
     }
 }
 
@@ -144,23 +128,11 @@ fun TwoButtonDialog(
     onNegativeClick: () -> Unit,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    description: String = "",
+    description: String?,
     content: @Composable (() -> Unit)? = null,
 ) {
-    // Scrim
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = ColorGray070)
-            .clickable(
-                onClick = onDismiss,
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() }
-            ), // 배경 클릭 시 닫기 처리
-        contentAlignment = Alignment.Center // 중앙 정렬
-    ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .background(
                     color = HandyTheme.colors.bgBasicDefault,
                     shape = RoundedCornerShape(Radius.XL.dp)
@@ -179,7 +151,6 @@ fun TwoButtonDialog(
                         maxLines = 3,
                         modifier = Modifier
                             .weight(1f)
-                            .padding(end = dialogButtonSpacing)
                     )
 
                     Icon(
@@ -189,9 +160,11 @@ fun TwoButtonDialog(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(dialogInsidePadding))
+                Spacer(modifier = Modifier.height(dialogTextInsidePadding))
 
-                Text(text = description)
+                if (description != null) {
+                    Text(text = description)
+                }
 
                 Spacer(modifier = Modifier.height(dialogPadding))
 
@@ -227,12 +200,12 @@ fun TwoButtonDialog(
                 }
             }
         }
-    }
+
 }
 
 object DialogDefaults {
     val dialogWidth = 296.dp
     val dialogPadding = 20.dp
-    val dialogInsidePadding = 16.dp
+    val dialogTextInsidePadding = 16.dp
     val dialogButtonSpacing = 8.dp
 }
