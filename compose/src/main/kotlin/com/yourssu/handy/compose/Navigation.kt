@@ -1,6 +1,5 @@
 package com.yourssu.handy.compose
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -9,19 +8,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.yourssu.handy.compose.foundation.HandyTypography
 
 /**
  * BottomNavItem : 하단 네비게이션 바의 아이템을 정의하는 데이터 클래스 입니다.
@@ -30,8 +23,8 @@ import androidx.compose.ui.unit.sp
  * @param label 아이템의 라벨
  */
 data class BottomNavItem(
-    val icon: Int,
-    val label: String
+    val icon: ImageVector,
+    val label: String?
 )
 
 /**
@@ -39,15 +32,15 @@ data class BottomNavItem(
  *
  * @param item 하단 네비게이션 바의 아이템
  * @param isSelected 선택되었는지 여부
- * @param modifier Modifier
  * @param onClick 클릭 시 실행되는 함수
+ * @param modifier Modifier
  */
 @Composable
 private fun BottomNavItem(
     item: BottomNavItem,
     isSelected: Boolean,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val color =
         if (isSelected) HandyTheme.colors.textBasicPrimary else HandyTheme.colors.textBasicDisabled
@@ -63,20 +56,17 @@ private fun BottomNavItem(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
-            painter = painterResource(id = item.icon),
-            contentDescription = item.label,
-            tint = color,
-            modifier = Modifier.size(24.dp)
+            item.icon,
+            iconSize = IconSize.M,
         )
 
-        Text(
-            text = item.label,
-            fontSize = 11.dp,
-            lineHeight = 16.dp,
-            fontWeight = FontWeight(400),
-            color = color,
-            textAlign = TextAlign.Center
-        )
+        if (item.label != null) {
+            Text(
+                text = item.label,
+                style = HandyTypography.C1Rg11,
+                color = color
+            )
+        }
     }
 }
 
