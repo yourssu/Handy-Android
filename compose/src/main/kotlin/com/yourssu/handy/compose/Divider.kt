@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 /**
  * Divider의 두께를 정의하는 enum class
  */
-enum class DividerSize(
+enum class DividerThickness(
     val size: Dp
 ) {
     ONE(1.dp),
@@ -27,11 +27,11 @@ enum class DividerSize(
  * width를 지정할 수 있는 Divider
  * @param width Divider의 너비
  * @param color Divider의 색상
- * @param dividerSize Divider의 두께
+ * @param dividerThickness Divider의 두께
  */
 @Composable
 fun Divider(
-    dividerSize: DividerSize,
+    dividerThickness: DividerThickness,
     modifier: Modifier = Modifier,
     width: Dp = 0.dp,
     color: Color = HandyTheme.colors.bgBasicStrong,
@@ -39,7 +39,7 @@ fun Divider(
     Box(
         modifier = modifier
             .width(width)
-            .height(dividerSize.size)
+            .height(dividerThickness.size)
             .background(color)
     )
 }
@@ -48,18 +48,18 @@ fun Divider(
  * width를 지정할 수 없는 Divider
  * 기본적으로 fillMaxWidth를 사용
  * @param color Divider의 색상
- * @param dividerSize Divider의 두께
+ * @param dividerThickness Divider의 두께
  */
 @Composable
 fun Divider(
-    dividerSize: DividerSize,
+    dividerThickness: DividerThickness,
     modifier: Modifier = Modifier,
     color: Color = HandyTheme.colors.bgBasicStrong,
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(dividerSize.size)
+            .height(dividerThickness.size)
             .background(color)
     )
 }
