@@ -61,25 +61,25 @@ fun ChipPreview() {
                 ) {
                     Chip(
                         onCheckedChange = {},
-                        text = "Label",
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        text = "안녕하세요 칩 테스트 입니다. 이래도 안 줄어?",
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         checked = false
                     )
 
                     Chip(
                         onCheckedChange = {},
                         text = "Label",
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         checked = true
                     )
 
                     Chip(
                         onCheckedChange = {},
                         text = "Label",
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         enabled = false
                     )
                 }
@@ -120,8 +120,8 @@ fun ChipPreview() {
                         onCheckedChange = {},
                         text = "Label",
                         sizeType = ChipSize.Small,
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         checked = false
                     )
 
@@ -129,8 +129,8 @@ fun ChipPreview() {
                         onCheckedChange = {},
                         text = "Label",
                         sizeType = ChipSize.Small,
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         checked = true
                     )
 
@@ -138,8 +138,8 @@ fun ChipPreview() {
                         onCheckedChange = {},
                         text = "Label",
                         sizeType = ChipSize.Small,
-                        leftIcon = HandyIcons.Line.InfoCircle,
-                        rightIcon = HandyIcons.Line.Close,
+                        leadingIcon = HandyIcons.Line.InfoCircle,
+                        trailingIcon = HandyIcons.Line.Close,
                         enabled = false
                     )
                 }
