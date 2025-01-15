@@ -61,7 +61,7 @@ fun ChipPreview() {
                 ) {
                     Chip(
                         onCheckedChange = {},
-                        text = "안녕하세요 칩 테스트 입니다. 이래도 안 줄어?",
+                        text = "Label",
                         leadingIcon = HandyIcons.Line.InfoCircle,
                         trailingIcon = HandyIcons.Line.Close,
                         checked = false

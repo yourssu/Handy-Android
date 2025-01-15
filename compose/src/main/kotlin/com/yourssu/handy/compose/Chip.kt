@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.foundation.HandyTextStyle
@@ -52,22 +52,9 @@ fun Chip(
     val horizontalPadding = ChipDefaults.horizontalPadding
     val round = ChipDefaults.round
 
-    val typo = when {
-        checked -> HandyTypography.B3Sb14
-        else -> HandyTypography.B3Rg14
-    }
-
-    val backgroundColor = when {
-        checked -> HandyTheme.colors.chipSelected
-        !enabled -> HandyTheme.colors.chipDisabled
-        else -> HandyTheme.colors.chipUnselected
-    }
-
-    val contentColor = when {
-        checked -> HandyTheme.colors.textBrandPrimary
-        !enabled -> HandyTheme.colors.textBasicDisabled
-        else -> HandyTheme.colors.textBasicSecondary
-    }
+    val typo = ChipStyles.getTypography(checked)
+    val backgroundColor = ChipStyles.getBackgroundColor(checked, enabled)
+    val contentColor = ChipStyles.getContentColor(checked, enabled)
 
     Surface(
         checked = checked,
@@ -98,10 +85,8 @@ fun Chip(
             }
 
             Text(
-                text = text,
-                style = typo,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                text = if (text.length < 10) text else text.take(9) + "...",
+                style = typo
             )
 
             trailingIcon?.let {
@@ -151,17 +136,10 @@ fun Chip(
     val iconSize = ChipDefaults.iconSize
     val horizontalPadding = ChipDefaults.horizontalPadding
     val round = ChipDefaults.round
-    val typo = HandyTypography.B3Rg14
 
-    val backgroundColor = when {
-        !enabled -> HandyTheme.colors.chipDisabled
-        else -> HandyTheme.colors.chipUnselected
-    }
-
-    val contentColor = when {
-        !enabled -> HandyTheme.colors.textBasicDisabled
-        else -> HandyTheme.colors.textBasicSecondary
-    }
+    val typo = ChipStyles.getTypography(false)
+    val backgroundColor = ChipStyles.getBackgroundColor(false, enabled)
+    val contentColor = ChipStyles.getContentColor(false, enabled)
 
     Surface(
         onClick = onClick,
@@ -191,10 +169,8 @@ fun Chip(
             }
 
             Text(
-                text = text,
-                style = typo,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                text = if (text.length < 10) text else text.take(9) + "...",
+                style = typo
             )
 
             trailingIcon?.let {
@@ -219,4 +195,24 @@ object ChipDefaults {
     val iconSize = IconSize.XS
     val horizontalPadding = 12.dp
     val round = 40.dp
+}
+
+object ChipStyles {
+    fun getTypography(checked: Boolean): HandyTextStyle {
+        return if (checked) HandyTypography.B3Sb14 else HandyTypography.B3Rg14
+    }
+
+    @Composable
+    fun getBackgroundColor(checked: Boolean, enabled: Boolean): Color = when {
+        checked -> HandyTheme.colors.chipSelected
+        !enabled -> HandyTheme.colors.chipDisabled
+        else -> HandyTheme.colors.chipUnselected
+    }
+
+    @Composable
+    fun getContentColor(checked: Boolean, enabled: Boolean): Color = when {
+        checked -> HandyTheme.colors.textBrandPrimary
+        !enabled -> HandyTheme.colors.textBasicDisabled
+        else -> HandyTheme.colors.textBasicSecondary
+    }
 }
