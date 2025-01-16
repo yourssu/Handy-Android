@@ -92,11 +92,10 @@ fun Chip(
             }
 
             Text(
-                text = text,
+                text = if (text.length < 10) text else text.take(9) + "...",
                 color = textColor,
-                style = textStyle,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                fontSize = 14.dp,
+                style = textStyle
             )
 
             trailingIcon?.let {
