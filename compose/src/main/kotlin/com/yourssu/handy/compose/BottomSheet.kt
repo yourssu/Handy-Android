@@ -20,16 +20,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-enum class BottomSheetSize {
-    SMALL, MEDIUM, LARGE
+enum class BottomSheetType {
+    NO_BUTTON, ONE_BUTTON, TWO_BUTTON
 }
 
 @Composable
 fun BottomSheet(
     modifier: Modifier = Modifier,
     onDismiss: () -> Unit,
-    bottomSheetSize: BottomSheetSize = BottomSheetSize.SMALL,
-    handleBarVisibility: Boolean = true,
+    buttonSheetType: BottomSheetType = BottomSheetType.ONE_BUTTON,
     content: @Composable () -> Unit = {}
 ) {
     // todo: Scrim 삭제
@@ -44,24 +43,21 @@ fun BottomSheet(
                 .padding(horizontal = 16.dp)
                 .padding(bottom = 34.dp)
                 .fillMaxWidth()
-                // todo: Handy Radius로 바꾸기
-                .clip(RoundedCornerShape(24.dp))
+                .clip(RoundedCornerShape(24.dp))  // todo: Handy Radius로 바꾸기
                 .background(HandyTheme.colors.bgBasicDefault)
                 .align(Alignment.BottomCenter)
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if (handleBarVisibility) {
-                // TODO: Divider 컴포넌트 머지되면 적용하기
-                Divider(
-                    modifier = Modifier
-                        .width(32.dp)
-                        .clip(CircleShape),
-                    dividerSize = DividerSize.FOUR,
-                    color = Color(0xFFB5B9C4)
-                )
-                Spacer(modifier = Modifier.height(32.dp))
-            }
+            // TODO: Divider 컴포넌트 머지되면 적용하기
+            Divider(
+                modifier = Modifier
+                    .width(32.dp)
+                    .clip(CircleShape),
+                dividerSize = DividerSize.FOUR,
+                color = Color(0xFFB5B9C4)
+            )
+            Spacer(modifier = Modifier.height(32.dp))
             content()
         }
     }
@@ -72,7 +68,6 @@ fun BottomSheet(
 fun TempBottomSheetPreview() {
     HandyTheme {
         BottomSheet(
-            handleBarVisibility = true,
             onDismiss = {},
         ) {
             Text("hi")
