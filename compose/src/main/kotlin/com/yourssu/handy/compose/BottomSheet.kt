@@ -19,20 +19,32 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.button.BaseButton
+import com.yourssu.handy.compose.button.ButtonColorState
 
-enum class BottomSheetType {
-    NO_BUTTON, ONE_BUTTON, TWO_BUTTON
+sealed class BottomSheetType {
+    data object NoButton : BottomSheetType()
+
+    data class OneButton(
+        val buttonText: String
+    ) : BottomSheetType()
+
+    data class TwoButton(
+        val primaryButtonText: String,
+        val secondaryButtonText: String
+    ) : BottomSheetType()
 }
 
+// TODO: 주석 작성
 @Composable
 fun BottomSheet(
     modifier: Modifier = Modifier,
     onDismiss: () -> Unit,
-    buttonSheetType: BottomSheetType = BottomSheetType.ONE_BUTTON,
+    bottomSheetType: BottomSheetType = BottomSheetType.NoButton,
     content: @Composable () -> Unit = {}
 ) {
-    // todo: Scrim 삭제
     Box(
+        // todo: Scrim 삭제
         modifier = modifier
             .fillMaxSize()
             .background(color = Color(0xFF25262C).copy(alpha = 0.65f))
@@ -59,16 +71,58 @@ fun BottomSheet(
             )
             Spacer(modifier = Modifier.height(32.dp))
             content()
+
+            when (bottomSheetType) {
+                is BottomSheetType.NoButton -> {}
+
+                is BottomSheetType.OneButton -> {
+                    OneButtonBottomSheet(buttonText = bottomSheetType.buttonText)
+                }
+
+                is BottomSheetType.TwoButton -> {
+                    TwoButtonBottomSheet(
+                        primaryButtonText = bottomSheetType.primaryButtonText,
+                        secondaryButtonText = bottomSheetType.secondaryButtonText
+                    )
+                }
+            }
+
         }
     }
 }
 
-@Preview
 @Composable
-fun TempBottomSheetPreview() {
+private fun OneButtonBottomSheet(
+    modifier: Modifier = Modifier,
+    buttonText: String
+) {
+    BaseButton( // TODO: 고민.. 버튼의 어디까지 열어둬야 하나?
+        onClick = {},
+        colors = ButtonColorState(
+            bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled
+        ),
+        modifier = modifier
+    ) {
+        Text(text = buttonText)
+    }
+}
+
+@Composable
+private fun TwoButtonBottomSheet(
+    primaryButtonText: String,
+    secondaryButtonText: String,
+    modifier: Modifier = Modifier
+) {
+
+}
+
+@Preview // todo : delete preview
+@Composable
+private fun TempBottomSheetPreview() {
     HandyTheme {
         BottomSheet(
             onDismiss = {},
+            bottomSheetType = BottomSheetType.OneButton(buttonText = "TEXT")
         ) {
             Text("hi")
         }
