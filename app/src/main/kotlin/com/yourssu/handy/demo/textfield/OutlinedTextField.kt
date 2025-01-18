@@ -104,8 +104,6 @@ fun OutlinedTextField(
             }
         )
 
-        Spacer(modifier = Modifier.width(12.dp))
-
         trailingIcon?.let {
             Icon(
                 imageVector = trailingIcon,
@@ -115,7 +113,7 @@ fun OutlinedTextField(
                     indication = null,
                     interactionSource = interactionSource,
                     onClick = onClickTrailingIcon
-                )
+                ).padding(start = 12.dp)
             )
         }
     }
@@ -149,6 +147,13 @@ fun OutlinedTextFieldPreview() {
                 value = text,
                 placeholder = "placeholder",
                 trailingIcon = HandyIcons.Filled.Cancel,
+                enabled = false,
+                onValueChange = onValueChange,
+            )
+
+            OutlinedTextField(
+                value = text,
+                placeholder = "placeholder",
                 enabled = false,
                 onValueChange = onValueChange,
             )
