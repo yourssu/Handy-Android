@@ -37,29 +37,29 @@ data class ColorScheme(
     val textStatusNegative: Color = ColorStatusRedMain,
     val textStatusPositive: Color = ColorViolet500,
 
-    // Tertiary / Basic
+    // Outlined / Basic
     val lineBasicLight: Color = ColorGray100,
     val lineBasicMedium: Color = ColorGray200,
     val lineBasicStrong: Color = ColorGray300,
 
-    // Tertiary / Status
+    // Outlined / Status
     val lineStatusNegative: Color = ColorStatusRedMain,
     val lineStatusPositive: Color = ColorViolet500,
 
-    // Button / Box / Primary
-    val buttonBoxPrimaryEnabled: Color = ColorViolet500,
-    val buttonBoxPrimaryPressed: Color = ColorViolet700,
-    val buttonBoxPrimaryDisabled: Color = ColorGray100,
+    // Button / Filled / Primary
+    val buttonFilledPrimaryEnabled: Color = ColorViolet500,
+    val buttonFilledPrimaryPressed: Color = ColorViolet700,
+    val buttonFilledPrimaryDisabled: Color = ColorGray100,
 
-    // Button / Box / Secondary
-    val buttonBoxSecondaryEnabled: Color = ColorViolet50,
-    val buttonBoxSecondaryPressed: Color = ColorViolet200,
-    val buttonBoxSecondaryDisabled: Color = ColorGray100,
+    // Button / Filled / Secondary
+    val buttonFilledSecondaryEnabled: Color = ColorViolet50,
+    val buttonFilledSecondaryPressed: Color = ColorViolet200,
+    val buttonFilledSecondaryDisabled: Color = ColorGray100,
 
-    // Button / Box / Tertiary
-    val buttonBoxTertiaryEnabled: Color = ColorNeutralTransparent,
-    val buttonBoxTertiaryPressed: Color = ColorGray100,
-    val buttonBoxTertiaryDisabled: Color = ColorNeutralTransparent,
+    // Button / Outlined
+    val buttonOutlinedEnabled: Color = ColorNeutralTransparent,
+    val buttonOutlinedPressed: Color = ColorGray100,
+    val buttonOutlinedDisabled: Color = ColorNeutralTransparent,
 
     // Button / Text / Primary
     val buttonTextPrimaryEnabled: Color = ColorNeutralTransparent,
@@ -114,11 +114,15 @@ data class ColorScheme(
     val paginationBasicSelected: Color = ColorNeutralBlack,
     val paginationBasicUnselected: Color = ColorGray500,
 
-
     // SnackBar
     val snackBarInfo: Color = ColorGray800,
-    val snackBarError: Color = ColorStatusRedSub
+    val snackBarError: Color = ColorStatusRedSub,
 
+    // Switch
+    val switchUnselected: Color = ColorGray300,
+    val switchSelected: Color = ColorViolet500,
+    val switchDisabled: Color = ColorGray200,
+    val switchThumb: Color = ColorNeutralWhite,
 )
 
 val lightColorScheme = ColorScheme()
