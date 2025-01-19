@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.Divider
 import com.yourssu.handy.compose.foundation.HandyTypography
 
 /**
@@ -90,7 +91,7 @@ fun Navigation(
             .fillMaxWidth()
             .height(56.dp),
     ) {
-//        Divider(thickness = Thickness.Thin) // Divider 추후 추가
+        Divider(dividerThickness = DividerThickness.ONE)
         Row(
             modifier = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceBetween,

@@ -1,6 +1,10 @@
 package com.yourssu.handy.demo
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.yourssu.handy.compose.BottomNavItem
 import com.yourssu.handy.compose.Navigation
@@ -13,7 +17,7 @@ fun NavigationPreview() {
     val items = listOf(
         BottomNavItem(
             icon = HandyIcons.Filled.Home,
-            label = null
+            label = "Label"
         ),
         BottomNavItem(
             icon = HandyIcons.Filled.Home,
@@ -33,9 +37,12 @@ fun NavigationPreview() {
         ),
     )
 
-    Navigation(
-        items = items,
-        selectedIndex = 0,
-        onItemSelected = {}
-    )
+    Column {
+        Spacer(modifier = Modifier.weight(1f))
+        Navigation(
+            items = items,
+            selectedIndex = 0,
+            onItemSelected = {}
+        )
+    }
 }
