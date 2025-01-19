@@ -12,7 +12,7 @@ import com.yourssu.handy.compose.Text
 fun NoBottomSheetPreview() {
     HandyTheme {
         BottomSheet(
-            onDismiss = {}
+            onDismissRequest = {}
         ) {
             Text("no button")
         }
@@ -24,7 +24,7 @@ fun NoBottomSheetPreview() {
 fun OneBottomSheetPreview() {
     HandyTheme {
         BottomSheet(
-            onDismiss = {},
+            onDismissRequest = {},
             bottomSheetType = BottomSheetType.OneButton(
                 buttonText = "TEXT"
             )
@@ -39,7 +39,7 @@ fun OneBottomSheetPreview() {
 fun TwoBottomSheetPreview() {
     HandyTheme {
         BottomSheet(
-            onDismiss = {},
+            onDismissRequest = {},
             bottomSheetType = BottomSheetType.TwoButton(
                 firstButtonText = "LEFT",
                 secondaryButtonText = "RIGHT"
