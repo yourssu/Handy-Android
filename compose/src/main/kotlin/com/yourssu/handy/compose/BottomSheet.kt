@@ -2,8 +2,10 @@ package com.yourssu.handy.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
+import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.foundation.Radius
 
 sealed class BottomSheetType {
     data object NoButton : BottomSheetType()
@@ -30,7 +34,7 @@ sealed class BottomSheetType {
     ) : BottomSheetType()
 
     data class TwoButton(
-        val primaryButtonText: String,
+        val firstButtonText: String,
         val secondaryButtonText: String
     ) : BottomSheetType()
 }
@@ -40,6 +44,9 @@ sealed class BottomSheetType {
 fun BottomSheet(
     modifier: Modifier = Modifier,
     onDismiss: () -> Unit,
+    onOneButtonClick: () -> Unit = {}, // todo: 한번에 관리하고싶다.
+    onFirstButtonClick: () -> Unit = {},
+    onSecondButtonClick: () -> Unit = {},
     bottomSheetType: BottomSheetType = BottomSheetType.NoButton,
     content: @Composable () -> Unit = {}
 ) {
@@ -55,7 +62,7 @@ fun BottomSheet(
                 .padding(horizontal = 16.dp)
                 .padding(bottom = 34.dp)
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(24.dp))  // todo: Handy Radius로 바꾸기
+                .clip(RoundedCornerShape(24.dp))
                 .background(HandyTheme.colors.bgBasicDefault)
                 .align(Alignment.BottomCenter)
                 .padding(16.dp),
@@ -71,18 +78,24 @@ fun BottomSheet(
             )
             Spacer(modifier = Modifier.height(32.dp))
             content()
+            Spacer(modifier = Modifier.height(16.dp))
 
             when (bottomSheetType) {
                 is BottomSheetType.NoButton -> {}
 
                 is BottomSheetType.OneButton -> {
-                    OneButtonBottomSheet(buttonText = bottomSheetType.buttonText)
+                    OneButtonBottomSheet(
+                        buttonText = bottomSheetType.buttonText,
+                        onClick = onOneButtonClick
+                    )
                 }
 
                 is BottomSheetType.TwoButton -> {
                     TwoButtonBottomSheet(
-                        primaryButtonText = bottomSheetType.primaryButtonText,
-                        secondaryButtonText = bottomSheetType.secondaryButtonText
+                        firstButtonText = bottomSheetType.firstButtonText,
+                        secondaryButtonText = bottomSheetType.secondaryButtonText,
+                        onFirstButtonClick = onFirstButtonClick,
+                        onSecondButtonClick = onSecondButtonClick
                     )
                 }
             }
@@ -93,38 +106,85 @@ fun BottomSheet(
 
 @Composable
 private fun OneButtonBottomSheet(
+    buttonText: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    buttonText: String
 ) {
-    BaseButton( // TODO: 고민.. 버튼의 어디까지 열어둬야 하나?
-        onClick = {},
+    BaseButton( // todo: 고민.. 버튼의 어디까지 열어둬야 하나?
+        onClick = onClick,
         colors = ButtonColorState(
             bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled
         ),
-        modifier = modifier
+        modifier = modifier.fillMaxWidth(),
+        rounding = Radius.XL.dp
     ) {
-        Text(text = buttonText)
+        Text(
+            text = buttonText,
+            style = HandyTypography.B1Sb16,
+            color = HandyTheme.colors.textBasicWhite
+        )
     }
 }
 
 @Composable
 private fun TwoButtonBottomSheet(
-    primaryButtonText: String,
+    firstButtonText: String,
     secondaryButtonText: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onFirstButtonClick: () -> Unit,
+    onSecondButtonClick: () -> Unit
 ) {
-
+    Row(
+        modifier = Modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        BaseButton(
+            onClick = onFirstButtonClick,
+            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonBoxSecondaryEnabled),
+            modifier = Modifier.weight(1f),
+            rounding = Radius.XL.dp
+        ) {
+            Text(
+                text = firstButtonText,
+                style = HandyTypography.B1Sb16,
+                color = HandyTheme.colors.textBrandSecondary
+            )
+        }
+        BaseButton(
+            onClick = onSecondButtonClick,
+            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled),
+            modifier = Modifier.weight(1f),
+            rounding = Radius.XL.dp
+        ) {
+            Text(
+                text = secondaryButtonText,
+                style = HandyTypography.B1Sb16,
+                color = HandyTheme.colors.textBasicWhite
+            )
+        }
+    }
 }
 
 @Preview // todo : delete preview
 @Composable
 private fun TempBottomSheetPreview() {
     HandyTheme {
-        BottomSheet(
-            onDismiss = {},
-            bottomSheetType = BottomSheetType.OneButton(buttonText = "TEXT")
-        ) {
-            Text("hi")
+        Column {
+//            BottomSheet(
+//                onDismiss = {},
+//                bottomSheetType = BottomSheetType.OneButton(buttonText = "TEXT")
+//            ) {
+//                Text("hi")
+//            }
+            BottomSheet(
+                onDismiss = {},
+                bottomSheetType = BottomSheetType.TwoButton(
+                    firstButtonText = "LEFT",
+                    secondaryButtonText = "RIGHT"
+                )
+            ) {
+                Text("hi")
+            }
         }
     }
 }
