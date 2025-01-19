@@ -1,6 +1,5 @@
 package com.yourssu.handy.demo.textfield
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -9,11 +8,8 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -22,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
@@ -49,28 +46,7 @@ fun OutlinedTextField(
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused = interactionSource.collectIsFocusedAsState().value
 
-    val borderColor = when {
-        !enabled -> HandyTheme.colors.bgBasicLight
-        isError -> HandyTheme.colors.lineStatusNegative
-        isFocused -> HandyTheme.colors.lineStatusPositive
-        else -> HandyTheme.colors.bgBasicLight
-    }
-
-    val cursorColor = when {
-        isError && isFocused -> HandyTheme.colors.lineStatusNegative
-        isFocused -> HandyTheme.colors.lineStatusPositive
-        else -> HandyTheme.colors.textBasicPrimary
-    }
-
-    val textColor = when {
-        !enabled -> HandyTheme.colors.textBasicDisabled
-        else -> HandyTheme.colors.textBasicPrimary
-    }
-
-    val placeholderTextColor = when {
-        !enabled -> HandyTheme.colors.textBasicDisabled
-        else -> HandyTheme.colors.textBasicTertiary
-    }
+    val (borderColor, cursorColor, textColor, placeholderTextColor) = getTextFieldStyle(enabled, isError, isFocused)
 
     Row(
         modifier = modifier
@@ -117,6 +93,36 @@ fun OutlinedTextField(
             )
         }
     }
+}
+
+data class TextFieldStyle(
+    val borderColor: Color,
+    val cursorColor: Color,
+    val textColor: Color,
+    val placeholderTextColor: Color
+)
+
+@Composable
+fun getTextFieldStyle(
+    enabled: Boolean,
+    isError: Boolean,
+    isFocused: Boolean
+): TextFieldStyle {
+    return TextFieldStyle(
+        borderColor = when {
+            !enabled -> HandyTheme.colors.bgBasicLight
+            isError -> HandyTheme.colors.lineStatusNegative
+            isFocused -> HandyTheme.colors.lineStatusPositive
+            else -> HandyTheme.colors.bgBasicLight
+        },
+        cursorColor = when {
+            isError && isFocused -> HandyTheme.colors.lineStatusNegative
+            isFocused -> HandyTheme.colors.lineStatusPositive
+            else -> HandyTheme.colors.textBasicPrimary
+        },
+        textColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicPrimary,
+        placeholderTextColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicTertiary
+    )
 }
 
 @Preview
