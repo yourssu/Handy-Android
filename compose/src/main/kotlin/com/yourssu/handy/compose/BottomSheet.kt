@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
@@ -68,8 +67,7 @@ fun BottomSheet(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // TODO: Divider 컴포넌트 머지되면 적용하기
-            Divider(
+            Divider(  // TODO: Divider 컴포넌트 머지되면 적용하기
                 modifier = Modifier
                     .width(32.dp)
                     .clip(CircleShape),
@@ -135,7 +133,7 @@ private fun TwoButtonBottomSheet(
     onSecondButtonClick: () -> Unit
 ) {
     Row(
-        modifier = Modifier,
+        modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         BaseButton(
@@ -164,28 +162,3 @@ private fun TwoButtonBottomSheet(
         }
     }
 }
-
-@Preview // todo : delete preview
-@Composable
-private fun TempBottomSheetPreview() {
-    HandyTheme {
-        Column {
-//            BottomSheet(
-//                onDismiss = {},
-//                bottomSheetType = BottomSheetType.OneButton(buttonText = "TEXT")
-//            ) {
-//                Text("hi")
-//            }
-            BottomSheet(
-                onDismiss = {},
-                bottomSheetType = BottomSheetType.TwoButton(
-                    firstButtonText = "LEFT",
-                    secondaryButtonText = "RIGHT"
-                )
-            ) {
-                Text("hi")
-            }
-        }
-    }
-}
-
