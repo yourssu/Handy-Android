@@ -1,4 +1,4 @@
-package com.yourssu.handy.demo.textfield
+package com.yourssu.handy.compose.textfield
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

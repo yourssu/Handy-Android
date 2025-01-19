@@ -1,4 +1,4 @@
-package com.yourssu.handy.demo.textfield
+package com.yourssu.handy.compose.textfield
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,6 +16,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,7 +47,11 @@ fun OutlinedTextField(
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused = interactionSource.collectIsFocusedAsState().value
 
-    val (borderColor, cursorColor, textColor, placeholderTextColor) = getTextFieldStyle(enabled, isError, isFocused)
+    val (borderColor, cursorColor, textColor, placeholderTextColor) = getTextFieldStyle(
+        enabled,
+        isError,
+        isFocused
+    )
 
     Row(
         modifier = modifier
@@ -85,11 +90,13 @@ fun OutlinedTextField(
                 imageVector = trailingIcon,
                 contentDescription = null,
                 tint = HandyTheme.colors.iconBasicTertiary,
-                modifier = Modifier.clickable(
-                    indication = null,
-                    interactionSource = interactionSource,
-                    onClick = onClickTrailingIcon
-                ).padding(start = 12.dp)
+                modifier = Modifier
+                    .clickable(
+                        indication = null,
+                        interactionSource = interactionSource,
+                        onClick = onClickTrailingIcon
+                    )
+                    .padding(start = 12.dp)
             )
         }
     }
@@ -130,7 +137,9 @@ fun getTextFieldStyle(
 fun OutlinedTextFieldPreview() {
     HandyTheme {
         Column(
-            modifier = Modifier.wrapContentSize().padding(20.dp),
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
             val (text, onValueChange) = remember { androidx.compose.runtime.mutableStateOf("") }
