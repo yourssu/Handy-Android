@@ -5,32 +5,25 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
-import com.yourssu.handy.compose.icons.HandyIcons
-import com.yourssu.handy.compose.icons.filled.Cancel
 
 @Composable
 fun OutlinedTextField(
@@ -130,48 +123,4 @@ fun getTextFieldStyle(
         textColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicPrimary,
         placeholderTextColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicTertiary
     )
-}
-
-@Preview
-@Composable
-fun OutlinedTextFieldPreview() {
-    HandyTheme {
-        Column(
-            modifier = Modifier
-                .wrapContentSize()
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
-        ) {
-            val (text, onValueChange) = remember { androidx.compose.runtime.mutableStateOf("") }
-            OutlinedTextField(
-                value = text,
-                placeholder = "placeholder",
-                trailingIcon = HandyIcons.Filled.Cancel,
-                onValueChange = onValueChange,
-            )
-
-            OutlinedTextField(
-                value = text,
-                placeholder = "placeholder",
-                trailingIcon = HandyIcons.Filled.Cancel,
-                isError = true,
-                onValueChange = onValueChange,
-            )
-
-            OutlinedTextField(
-                value = text,
-                placeholder = "placeholder",
-                trailingIcon = HandyIcons.Filled.Cancel,
-                enabled = false,
-                onValueChange = onValueChange,
-            )
-
-            OutlinedTextField(
-                value = text,
-                placeholder = "placeholder",
-                enabled = false,
-                onValueChange = onValueChange,
-            )
-        }
-    }
 }
