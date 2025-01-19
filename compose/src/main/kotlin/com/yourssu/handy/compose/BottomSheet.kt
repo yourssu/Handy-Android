@@ -1,37 +1,43 @@
 package com.yourssu.handy.compose
 
-import androidx.compose.animation.core.TweenSpec
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.DraggableAnchors
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.isSpecified
-import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
+import com.yourssu.handy.compose.SheetValue.Expanded
+import com.yourssu.handy.compose.SheetValue.Hidden
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
+import kotlinx.coroutines.launch
+import kotlin.math.max
 
 sealed class BottomSheetType {
     data object NoButton : BottomSheetType()
@@ -47,67 +53,106 @@ sealed class BottomSheetType {
 }
 
 // TODO: 주석 작성
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BottomSheet(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
-    dragHandle: @Composable (() -> Unit)? = { DragHandle() },
+    sheetState: SheetState = rememberModalBottomSheetState(),
     onOneButtonClick: () -> Unit = {}, // todo: 한번에 관리하고싶다.
     onFirstButtonClick: () -> Unit = {},
     onSecondButtonClick: () -> Unit = {},
     bottomSheetType: BottomSheetType = BottomSheetType.NoButton,
     content: @Composable () -> Unit = {}
 ) {
-
+    val density = LocalDensity.current
+    SideEffect {
+        sheetState.density = density
+    }
     val scope = rememberCoroutineScope()
-    // Scrim()
+    val animateToDismiss: () -> Unit = {
+        scope.launch { sheetState.hide() }.invokeOnCompletion {
+            if (!sheetState.isVisible) {
+                onDismissRequest()
+            }
+        }
+    }
 
-    Box(
-        // todo: Scrim 삭제
-        modifier = modifier
-            .fillMaxSize()
-            .background(color = Color(0xFF25262C).copy(alpha = 0.65f))
-            .clickable { onDismissRequest() },
+    Popup(
+        onDismissRequest = onDismissRequest
     ) {
-        Column(
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .padding(bottom = 34.dp)
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(24.dp))
-                .background(HandyTheme.colors.bgBasicDefault)
-                // .align(Alignment.BottomCenter)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            if (dragHandle != null) {
-                DragHandle()
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-            content()
-            Spacer(modifier = Modifier.height(16.dp))
-
-            when (bottomSheetType) {
-                is BottomSheetType.NoButton -> {}
-
-                is BottomSheetType.OneButton -> {
-                    OneButtonBottomSheet(
-                        buttonText = bottomSheetType.buttonText,
-                        onClick = onOneButtonClick
+        BoxWithConstraints(Modifier.fillMaxSize()) {
+            val fullHeight = constraints.maxHeight
+            Scrim(
+                color = Color(0xFF25262C).copy(alpha = 0.65f),
+                onDismissRequest = animateToDismiss,
+                visible = sheetState.currentValue == Expanded
+            )
+            Surface(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 34.dp)
+                    .clip(RoundedCornerShape(24.dp))
+                    .offset {
+                        IntOffset(
+                            x = 0,
+                            y = sheetState
+                                .requireOffset()
+                                .toInt()
+                        )
+                    }
+                    .anchoredDraggable(
+                        state = sheetState.anchoredDraggableState,
+                        orientation = Orientation.Vertical,
+                        enabled = true
                     )
-                }
-
-                is BottomSheetType.TwoButton -> {
-                    TwoButtonBottomSheet(
-                        firstButtonText = bottomSheetType.firstButtonText,
-                        secondaryButtonText = bottomSheetType.secondaryButtonText,
-                        onFirstButtonClick = onFirstButtonClick,
-                        onSecondButtonClick = onSecondButtonClick
+                    .modalBottomSheetAnchors(
+                        sheetState = sheetState,
+                        fullHeight = fullHeight.toFloat()
                     )
+            ) {
+                Column(
+                    modifier = Modifier
+                        .background(HandyTheme.colors.bgBasicDefault)
+                        .align(Alignment.BottomCenter)
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                    ) {
+                        DragHandle()
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    content()
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    when (bottomSheetType) {
+                        is BottomSheetType.NoButton -> {}
+
+                        is BottomSheetType.OneButton -> {
+                            OneButtonBottomSheet(
+                                buttonText = bottomSheetType.buttonText,
+                                onClick = onOneButtonClick
+                            )
+                        }
+
+                        is BottomSheetType.TwoButton -> {
+                            TwoButtonBottomSheet(
+                                firstButtonText = bottomSheetType.firstButtonText,
+                                secondaryButtonText = bottomSheetType.secondaryButtonText,
+                                onFirstButtonClick = onFirstButtonClick,
+                                onSecondButtonClick = onSecondButtonClick
+                            )
+                        }
+                    }
+
                 }
             }
-
         }
     }
 }
@@ -173,35 +218,21 @@ private fun TwoButtonBottomSheet(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
+private fun Modifier.modalBottomSheetAnchors(
+    sheetState: SheetState,
+    fullHeight: Float
+) = onSizeChanged { sheetSize ->
 
-@Composable
-private fun Scrim(
-    color: Color,
-    onDismissRequest: () -> Unit,
-    visible: Boolean
-) {
-    if (color.isSpecified) {
-        val alpha by animateFloatAsState(
-            targetValue = if (visible) 1f else 0f,
-            animationSpec = TweenSpec()
-        )
-        val dismissSheet = if (visible) {
-            Modifier
-                .pointerInput(onDismissRequest) {
-                    detectTapGestures {
-                        onDismissRequest()
-                    }
-                }
-                .clearAndSetSemantics {}
-        } else {
-            Modifier
-        }
-        Canvas(
-            Modifier
-                .fillMaxSize()
-                .then(dismissSheet)
-        ) {
-            drawRect(color = color, alpha = alpha)
-        }
+    val newAnchors = DraggableAnchors {
+        Hidden at fullHeight
+        Expanded at max(0f, fullHeight - sheetSize.height)
     }
+
+    val newTarget = when (sheetState.anchoredDraggableState.targetValue) {
+        Hidden -> Hidden
+        Expanded -> Expanded
+    }
+
+    sheetState.anchoredDraggableState.updateAnchors(newAnchors, newTarget)
 }
