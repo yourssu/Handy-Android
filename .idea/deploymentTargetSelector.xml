@@ -5,10 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PreviewRealTouch">
+      <SelectionState runConfigName="Preview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DividerExample">
+      <SelectionState runConfigName="Preview (parameter 3)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
