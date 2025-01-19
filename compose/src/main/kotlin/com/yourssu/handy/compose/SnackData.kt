@@ -95,7 +95,7 @@ fun SnackBarHost(
 
             SnackBarType.Error -> ErrorSnackBar(
                 text = snackBarHostState.currentSnackBarData?.message.orEmpty(),
-                onClick = snackBarData::dismiss
+                onClose = snackBarData::dismiss
             )
         }
     },

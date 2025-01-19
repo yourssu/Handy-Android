@@ -128,14 +128,14 @@ fun InfoSnackBar(
  * X 버튼을 눌러야만 사라집니다.
  *
  * @param text 스낵바의 문구를 나타내는 텍스트, 최대 두 줄까지 입력 가능
- * @param onClick 스낵바의 X 버튼을 눌렀을 때 호출되는 함수
+ * @param onClose 스낵바의 X 버튼을 눌렀을 때 호출되는 함수
  * @param modifier Modifier
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ErrorSnackBar(
     text: String,
-    onClick: () -> Unit,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -176,7 +176,7 @@ fun ErrorSnackBar(
             imageVector = HandyIcons.Line.Close,
             tint = HandyTheme.colors.textBasicTertiary,
             modifier = Modifier
-                .clickable(onClick = onClick)
+                .clickable(onClick = onClose)
                 .align(Alignment.Top)
         )
     }
