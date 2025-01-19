@@ -1,13 +1,7 @@
 package com.yourssu.handy.compose
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,7 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,9 +58,8 @@ fun BottomSheet(
     bottomSheetType: BottomSheetType = BottomSheetType.NoButton,
     content: @Composable () -> Unit = {}
 ) {
-    val transitionState = remember { MutableTransitionState(false) }
-    transitionState.targetState = true
 
+    val scope = rememberCoroutineScope()
     // Scrim()
 
     Box(
@@ -74,57 +67,47 @@ fun BottomSheet(
         modifier = modifier
             .fillMaxSize()
             .background(color = Color(0xFF25262C).copy(alpha = 0.65f))
-            // .clickable { onDismissRequest() },
-            .clickable {
-                transitionState.targetState = false // 애니메이션 종료
-                onDismissRequest()
-            }
+            .clickable { onDismissRequest() },
     ) {
-        AnimatedVisibility(
-            visibleState = transitionState,
-            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(),
-            modifier = Modifier.align(Alignment.BottomCenter)
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .padding(bottom = 34.dp)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(HandyTheme.colors.bgBasicDefault)
+                // .align(Alignment.BottomCenter)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 34.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(24.dp))
-                    .background(HandyTheme.colors.bgBasicDefault)
-                    // .align(Alignment.BottomCenter)
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                if (dragHandle != null) {
-                    DragHandle()
-                }
-                Spacer(modifier = Modifier.height(32.dp))
-                content()
-                Spacer(modifier = Modifier.height(16.dp))
-
-                when (bottomSheetType) {
-                    is BottomSheetType.NoButton -> {}
-
-                    is BottomSheetType.OneButton -> {
-                        OneButtonBottomSheet(
-                            buttonText = bottomSheetType.buttonText,
-                            onClick = onOneButtonClick
-                        )
-                    }
-
-                    is BottomSheetType.TwoButton -> {
-                        TwoButtonBottomSheet(
-                            firstButtonText = bottomSheetType.firstButtonText,
-                            secondaryButtonText = bottomSheetType.secondaryButtonText,
-                            onFirstButtonClick = onFirstButtonClick,
-                            onSecondButtonClick = onSecondButtonClick
-                        )
-                    }
-                }
-
+            if (dragHandle != null) {
+                DragHandle()
             }
+
+            Spacer(modifier = Modifier.height(32.dp))
+            content()
+            Spacer(modifier = Modifier.height(16.dp))
+
+            when (bottomSheetType) {
+                is BottomSheetType.NoButton -> {}
+
+                is BottomSheetType.OneButton -> {
+                    OneButtonBottomSheet(
+                        buttonText = bottomSheetType.buttonText,
+                        onClick = onOneButtonClick
+                    )
+                }
+
+                is BottomSheetType.TwoButton -> {
+                    TwoButtonBottomSheet(
+                        firstButtonText = bottomSheetType.firstButtonText,
+                        secondaryButtonText = bottomSheetType.secondaryButtonText,
+                        onFirstButtonClick = onFirstButtonClick,
+                        onSecondButtonClick = onSecondButtonClick
+                    )
+                }
+            }
+
         }
     }
 }
