@@ -7,7 +7,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.AnchoredDraggableState
 import androidx.compose.foundation.gestures.DraggableAnchors
-import androidx.compose.foundation.gestures.animateTo
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -79,23 +78,18 @@ class SheetState(
     val hasExpandedState: Boolean
         get() = anchoredDraggableState.anchors.hasAnchorFor(Expanded)
 
-    suspend fun show() {
+    fun show() {
         animateTo(Expanded)
     }
 
-    suspend fun hide() {
+    fun hide() {
         animateTo(Hidden)
     }
 
-    private suspend fun animateTo(
+    private fun animateTo(
         targetValue: SheetValue,
-        velocity: Float = anchoredDraggableState.lastVelocity
     ) {
-        anchoredDraggableState.animateTo(targetValue, velocity)
-    }
-
-    internal suspend fun settle(velocity: Float) {
-        anchoredDraggableState.settle(velocity)
+        currentValue = targetValue
     }
 
     internal var anchoredDraggableState = AnchoredDraggableState(

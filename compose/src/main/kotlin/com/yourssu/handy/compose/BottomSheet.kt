@@ -158,7 +158,6 @@ fun BottomSheet(
             sheetState.show()
         }
     }
-//    Log.d("LYB", "sheet = ${sheetState.currentValue}")
 }
 
 @Composable
