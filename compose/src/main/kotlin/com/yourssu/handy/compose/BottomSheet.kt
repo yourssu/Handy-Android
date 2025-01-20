@@ -1,6 +1,5 @@
 package com.yourssu.handy.compose
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
@@ -171,7 +170,7 @@ private fun OneButtonBottomSheet(
     BaseButton( // todo: 고민.. 버튼의 어디까지 열어둬야 하나?
         onClick = onClick,
         colors = ButtonColorState(
-            bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled
+            bgColor = HandyTheme.colors.buttonFilledPrimaryEnabled
         ),
         modifier = modifier.fillMaxWidth(),
         rounding = Radius.XL.dp
@@ -198,7 +197,7 @@ private fun TwoButtonBottomSheet(
     ) {
         BaseButton(
             onClick = onFirstButtonClick,
-            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonBoxSecondaryEnabled),
+            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonFilledSecondaryEnabled),
             modifier = Modifier.weight(1f),
             rounding = Radius.XL.dp
         ) {
@@ -210,7 +209,7 @@ private fun TwoButtonBottomSheet(
         }
         BaseButton(
             onClick = onSecondButtonClick,
-            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonBoxPrimaryEnabled),
+            colors = ButtonColorState(bgColor = HandyTheme.colors.buttonFilledPrimaryEnabled),
             modifier = Modifier.weight(1f),
             rounding = Radius.XL.dp
         ) {
