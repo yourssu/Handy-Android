@@ -35,12 +35,12 @@ import com.yourssu.handy.compose.SheetValue.Hidden
 
 enum class SheetValue {
     /**
-     * The sheet is not visible.
+     * Sheet가 보이지 않는 상태
      */
     Hidden,
 
     /**
-     * The sheet is visible at its current position.
+     * Sheet가 현재 위치에서 보이는 상태
      */
     Expanded,
 }
@@ -71,10 +71,13 @@ class SheetState(
     var currentValue: SheetValue = initialValue
         private set
 
-    val isVisible: Boolean // todo: 이거 필요가 없나?
+    val isVisible: Boolean
         get() = currentValue != Hidden
 
     fun requireOffset() = anchoredDraggableState.requireOffset()
+
+    val hasExpandedState: Boolean
+        get() = anchoredDraggableState.anchors.hasAnchorFor(Expanded)
 
     suspend fun show() {
         animateTo(Expanded)
@@ -122,7 +125,7 @@ class SheetState(
 
 internal object BottomSheetDefaults {
     /**
-     * The visual marker placed on top of a bottom sheet to indicate it may be dragged.
+     * Sheet 위에 놓인 시각적 마커를 드래그하여 표시할 수 있다.
      */
     @Composable
     fun DragHandle(
