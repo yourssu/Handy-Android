@@ -2,7 +2,6 @@ package com.yourssu.handy.compose
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.DraggableAnchors
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,20 +23,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
-import com.yourssu.handy.compose.SheetValue.Expanded
 import com.yourssu.handy.compose.SheetValue.Hidden
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
 import kotlinx.coroutines.launch
-import kotlin.math.max
 
 sealed class BottomSheetType {
     data object NoButton : BottomSheetType()
@@ -79,14 +75,16 @@ fun BottomSheet(
     }
 
     Popup(
-        onDismissRequest = onDismissRequest
+        onDismissRequest = {
+            scope.launch { sheetState.hide() }.invokeOnCompletion { onDismissRequest() }
+        }
     ) {
         BoxWithConstraints(Modifier.fillMaxSize()) {
             val fullHeight = constraints.maxHeight
             Scrim(
                 color = Color(0xFF25262C).copy(alpha = 0.65f),
                 onDismissRequest = animateToDismiss,
-                visible = sheetState.currentValue == Expanded
+                visible = sheetState.currentValue != Hidden
             )
             Surface(
                 modifier = modifier
@@ -106,7 +104,6 @@ fun BottomSheet(
                     .anchoredDraggable(
                         state = sheetState.anchoredDraggableState,
                         orientation = Orientation.Vertical,
-                        enabled = true
                     )
                     .modalBottomSheetAnchors(
                         sheetState = sheetState,
@@ -216,23 +213,4 @@ private fun TwoButtonBottomSheet(
             )
         }
     }
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-private fun Modifier.modalBottomSheetAnchors(
-    sheetState: SheetState,
-    fullHeight: Float
-) = onSizeChanged { sheetSize ->
-
-    val newAnchors = DraggableAnchors {
-        Hidden at fullHeight
-        Expanded at max(0f, fullHeight - sheetSize.height)
-    }
-
-    val newTarget = when (sheetState.anchoredDraggableState.targetValue) {
-        Hidden -> Hidden
-        Expanded -> Expanded
-    }
-
-    sheetState.anchoredDraggableState.updateAnchors(newAnchors, newTarget)
 }

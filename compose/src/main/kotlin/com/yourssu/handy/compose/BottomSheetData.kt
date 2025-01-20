@@ -6,6 +6,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.AnchoredDraggableState
+import androidx.compose.foundation.gestures.DraggableAnchors
 import androidx.compose.foundation.gestures.animateTo
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -23,11 +24,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.SheetValue.Expanded
+import com.yourssu.handy.compose.SheetValue.Hidden
 
 enum class SheetValue {
     /**
@@ -43,12 +47,12 @@ enum class SheetValue {
 
 @Composable
 fun rememberModalBottomSheetState(
-    initialValue: SheetValue = SheetValue.Expanded
+    initialValue: SheetValue = Hidden
 ) = rememberSheetState(initialValue)
 
 @Composable
 internal fun rememberSheetState(
-    initialValue: SheetValue = SheetValue.Expanded,
+    initialValue: SheetValue = Hidden,
 ): SheetState {
     val density = LocalDensity.current
     return rememberSaveable(
@@ -61,23 +65,23 @@ internal fun rememberSheetState(
 @Stable
 @OptIn(ExperimentalFoundationApi::class)
 class SheetState(
-    density: Density,
-    initialValue: SheetValue = SheetValue.Expanded,
+    internal var density: Density,
+    initialValue: SheetValue = Hidden,
 ) {
     var currentValue: SheetValue = initialValue
         private set
 
     val isVisible: Boolean // todo: 이거 필요가 없나?
-        get() = currentValue != SheetValue.Hidden
+        get() = currentValue != Hidden
 
-    fun requireOffset(): Float = anchoredDraggableState.requireOffset()
+    fun requireOffset() = anchoredDraggableState.requireOffset()
 
     suspend fun show() {
-        animateTo(SheetValue.Expanded)
+        animateTo(Expanded)
     }
 
     suspend fun hide() {
-        animateTo(SheetValue.Hidden)
+        animateTo(Hidden)
     }
 
     private suspend fun animateTo(
@@ -95,14 +99,10 @@ class SheetState(
         initialValue = initialValue,
         animationSpec = SpringSpec(),
         positionalThreshold = { with(requireDensity()) { 56.dp.toPx() } },
-        velocityThreshold = { with(requireDensity()) { 125.dp.toPx() } }
+        velocityThreshold = { with(requireDensity()) { 125.dp.toPx() } },
     )
 
-    internal var density: Density? = null
-    private fun requireDensity() = requireNotNull(density) {
-        "SheetState did not have a density attached. Are you using SheetState with " +
-                "BottomSheetScaffold or ModalBottomSheet component?"
-    }
+    private fun requireDensity() = density
 
     companion object {
         /**
@@ -151,6 +151,25 @@ internal object BottomSheetDefaults {
     private val DockedDragHandleWidth = 32.0.dp
     private val DockedDragHandleHeight = 4.0.dp
     private val DragHandleVerticalPadding = 16.dp
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+internal fun Modifier.modalBottomSheetAnchors(
+    sheetState: SheetState,
+    fullHeight: Float
+) = onSizeChanged { sheetSize ->
+
+    val newAnchors = DraggableAnchors {
+        Hidden at 0f
+        Expanded at fullHeight - sheetSize.height
+    }
+
+    val newTarget = when (sheetState.anchoredDraggableState.targetValue) {
+        Hidden -> Hidden
+        Expanded -> Expanded
+    }
+
+    sheetState.anchoredDraggableState.updateAnchors(newAnchors, newTarget)
 }
 
 @Composable
