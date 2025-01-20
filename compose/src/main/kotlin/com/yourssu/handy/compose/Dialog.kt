@@ -19,9 +19,9 @@ import com.yourssu.handy.compose.DialogDefaults.dialogButtonSpacing
 import com.yourssu.handy.compose.DialogDefaults.dialogPadding
 import com.yourssu.handy.compose.DialogDefaults.dialogTextInsidePadding
 import com.yourssu.handy.compose.DialogDefaults.dialogWidth
-import com.yourssu.handy.compose.button.BoxButton
-import com.yourssu.handy.compose.button.BoxButtonSize
-import com.yourssu.handy.compose.button.BoxButtonType
+import com.yourssu.handy.compose.button.FilledButton
+import com.yourssu.handy.compose.button.FilledButtonSize
+import com.yourssu.handy.compose.button.FilledButtonType
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
 import com.yourssu.handy.compose.icons.HandyIcons
@@ -95,11 +95,11 @@ fun OneButtonDialog(
                 }
             }
 
-            BoxButton(
+            FilledButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = positiveText,
                 onClick = { onPositiveClick() },
-                sizeType = BoxButtonSize.L,
+                sizeType = FilledButtonSize.L,
             )
         }
     }
@@ -180,21 +180,21 @@ fun TwoButtonDialog(
             Row(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
-                BoxButton(
+                FilledButton(
                     modifier = Modifier.weight(1f),
                     text = negativeText,
                     onClick = { onNegativeClick() },
-                    sizeType = BoxButtonSize.L,
-                    buttonType = BoxButtonType.Secondary
+                    sizeType = FilledButtonSize.L,
+                    buttonType = FilledButtonType.Secondary
                 )
 
                 Spacer(modifier = Modifier.width(dialogButtonSpacing))
 
-                BoxButton(
+                FilledButton(
                     modifier = Modifier.weight(1f),
                     text = positiveText,
                     onClick = { onPositiveClick() },
-                    sizeType = BoxButtonSize.L,
+                    sizeType = FilledButtonSize.L,
                 )
             }
         }

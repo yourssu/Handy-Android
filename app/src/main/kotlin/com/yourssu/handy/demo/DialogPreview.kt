@@ -19,7 +19,7 @@ import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.OneButtonDialog
 import com.yourssu.handy.compose.TwoButtonDialog
-import com.yourssu.handy.compose.button.BoxButton
+import com.yourssu.handy.compose.button.FilledButton
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.filled.Add
 
@@ -130,9 +130,9 @@ private fun DialogOnScreenPreview() {
                 .fillMaxWidth()
                 .fillMaxHeight()
         ) {
-            BoxButton(text = "원버튼 다이알로그", onClick = { showOneButtonDialog = true })
+            FilledButton(text = "원버튼 다이알로그", onClick = { showOneButtonDialog = true })
             Spacer(modifier = Modifier.height(10.dp))
-            BoxButton(text = "투버튼 다이알로그", onClick = { showTwoButtonDialog = true })
+            FilledButton(text = "투버튼 다이알로그", onClick = { showTwoButtonDialog = true })
         }
 
         if (showOneButtonDialog) {
