@@ -86,11 +86,7 @@ fun BottomSheet(
             }
     }
 
-    Popup(
-        onDismissRequest = {
-            scope.launch { sheetState.hide() }.invokeOnCompletion { onDismissRequest() }
-        }
-    ) {
+    Popup {
         BoxWithConstraints(Modifier.fillMaxSize()) {
             val fullHeight = constraints.maxHeight
             Scrim(
