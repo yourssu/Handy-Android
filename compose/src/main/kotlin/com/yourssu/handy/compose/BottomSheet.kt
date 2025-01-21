@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
 import com.yourssu.handy.compose.BottomSheetDefaults.bottomSheetContentPadding
+import com.yourssu.handy.compose.BottomSheetDefaults.surfaceBottomPadding
+import com.yourssu.handy.compose.BottomSheetDefaults.surfaceHorizontalPadding
 import com.yourssu.handy.compose.BottomSheetType.NoButton
 import com.yourssu.handy.compose.BottomSheetType.OneButton
 import com.yourssu.handy.compose.BottomSheetType.TwoButton
@@ -119,8 +121,8 @@ fun BottomSheet(
                 modifier = modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 34.dp)
+                    .padding(horizontal = surfaceHorizontalPadding)
+                    .padding(bottom = surfaceBottomPadding)
                     .offset {
                         IntOffset(
                             x = 0,
@@ -257,4 +259,3 @@ private fun TwoButtonBottomSheet(
         }
     }
 }
-

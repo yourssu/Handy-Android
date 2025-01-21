@@ -152,6 +152,8 @@ internal object BottomSheetDefaults {
     }
 
     val bottomSheetContentPadding = 16.dp
+    val surfaceHorizontalPadding = 16.dp
+    val surfaceBottomPadding = 34.dp
     private val DockedDragHandleWidth = 32.0.dp
     private val DockedDragHandleHeight = 4.0.dp
     private val DragHandleVerticalPadding = 16.dp
