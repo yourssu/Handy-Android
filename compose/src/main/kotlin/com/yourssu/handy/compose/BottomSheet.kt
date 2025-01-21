@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
+import com.yourssu.handy.compose.SheetValue.Hidden
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -84,7 +85,7 @@ fun BottomSheet(
             Scrim(
                 color = Color(0xFF25262C).copy(alpha = 0.65f),
                 onDismissRequest = animateToDismiss,
-                visible = sheetState.isVisible
+                visible = sheetState.targetValue != Hidden
             )
             Surface(
                 modifier = modifier

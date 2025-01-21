@@ -71,6 +71,8 @@ class SheetState(
 ) {
     val currentValue: SheetValue get() = anchoredDraggableState.currentValue
 
+    val targetValue: SheetValue get() = anchoredDraggableState.targetValue
+
     val isVisible: Boolean
         get() = currentValue != Hidden
 
@@ -98,7 +100,6 @@ class SheetState(
         targetValue: SheetValue,
         velocity: Float = anchoredDraggableState.lastVelocity
     ) {
-        //anchoredDraggableState.currentValue = targetValue
         anchoredDraggableState.animateTo(targetValue, velocity)
     }
 
