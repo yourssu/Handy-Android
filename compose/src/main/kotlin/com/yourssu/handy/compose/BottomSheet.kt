@@ -43,7 +43,7 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 /**
- * BottomSheet의 타입을 나타냈습니다.
+ * BottomSheet의 타입을 나타냅니다.
  *
  * [NoButton] : 버튼 없이 내용만 표시
  * [OneButton] : 하단에 버튼 한 개를 표시
@@ -71,7 +71,7 @@ sealed class BottomSheetType {
  * @param onOneButtonClick [BottomSheetType.OneButton]의 버튼 클릭 시 호출되는 함수
  * @param onFirstButtonClick [BottomSheetType.TwoButton]의 첫 번째 버튼 클릭 시 호출되는 함수
  * @param onSecondButtonClick [BottomSheetType.TwoButton]의 두 번째 버튼 클릭 시 호출되는 함수
- * @param bottomSheetType 바텀시트의 레이아웃 타입을 결정
+ * @param bottomSheetType 바텀시트의 [BottomSheetType] 타입을 결정
  * @param content 바텀시트 내부에 표시될 내용을 결정
  */
 @OptIn(ExperimentalFoundationApi::class)
@@ -188,7 +188,7 @@ fun BottomSheet(
  *
  * @param buttonText 버튼에 표시될 텍스트
  * @param onClick 버튼 클릭 시 호출되는 함수
- * @param modifier Modifier
+ * @param modifier Modifier 수정자
  */
 @Composable
 private fun OneButtonBottomSheet(
@@ -217,6 +217,7 @@ private fun OneButtonBottomSheet(
  * @param secondButtonText 두 번째 버튼에 표시될 텍스트
  * @param onFirstButtonClick 첫 번째 버튼 클릭 시 호출되는 함수
  * @param onSecondButtonClick 두 번째 버튼 클릭 시 호출되는 함수
+ * @param modifier Modifier 수정자
  */
 @Composable
 private fun TwoButtonBottomSheet(

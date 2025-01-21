@@ -42,7 +42,7 @@ fun TwoBottomSheetPreview() {
             onDismissRequest = {},
             bottomSheetType = BottomSheetType.TwoButton(
                 firstButtonText = "LEFT",
-                secondaryButtonText = "RIGHT"
+                secondButtonText = "RIGHT"
             )
         ) {
             Text("two button")

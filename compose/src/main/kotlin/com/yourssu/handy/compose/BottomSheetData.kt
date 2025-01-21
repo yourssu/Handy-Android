@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -36,8 +37,8 @@ import com.yourssu.handy.compose.SheetValue.Hidden
 /**
  * 바텀시트의 상태를 정의하는 Enum 클래스입니다.
  *
- * [Hidden]: 바텀시트가 보이지 않는 상태.
- * [Expanded]: 바텀시트가 보이는 상태.
+ * [Hidden]: 바텀시트가 보이지 않는 상태
+ * [Expanded]: 바텀시트가 보이는 상태
  */
 enum class SheetValue {
     Hidden,
@@ -110,9 +111,6 @@ class SheetState(
     private fun requireDensity() = density
 
     companion object {
-        /**
-         * The default [Saver] implementation for [SheetState].
-         */
         fun Saver(
             density: Density
         ) = Saver<SheetState, SheetValue>(
@@ -134,8 +132,8 @@ internal object BottomSheetDefaults {
         modifier: Modifier = Modifier,
         width: Dp = DockedDragHandleWidth,
         height: Dp = DockedDragHandleHeight,
-        shape: Shape = RoundedCornerShape(28.0.dp),
-        color: Color = Color(0xFFB5B9C4)
+        shape: Shape = CircleShape,
+        color: Color = HandyTheme.colors.bottomSheetHandle,
     ) {
         Surface(
             modifier = modifier
@@ -188,8 +186,8 @@ internal fun Modifier.modalBottomSheetAnchors(
  * 바텀시트가 보일 때 스크림 효과를 추가하는 함수입니다.
  *
  * @param color 스크림의 색상
- * @param onDismissRequest 스크림을 눌렀을 때 호출되는 콜백 함수
- * @param visible 스크림이 보이는지 여부를 결정
+ * @param onDismissRequest 스크림을 눌렀을 때 호출되는 함수
+ * @param visible 스크림의 가시 여부 결정
  */
 @Composable
 internal fun Scrim(
