@@ -110,6 +110,7 @@ fun BottomSheet(
                         fullHeight = fullHeight.toFloat()
                     )
             ) {
+                Log.d("LYB", "sheet POPUP = ${sheetState.currentValue}")
                 Column(
                     modifier = Modifier
                         .background(HandyTheme.colors.bgBasicDefault)
@@ -152,7 +153,6 @@ fun BottomSheet(
             sheetState.show()
         }
     }
-    Log.d("LYB", "sheet = ${sheetState.currentValue}")
 }
 
 @Composable

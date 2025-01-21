@@ -1,5 +1,6 @@
 package com.yourssu.handy.compose
 
+import android.util.Log
 import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
@@ -68,8 +69,7 @@ class SheetState(
     internal var density: Density,
     initialValue: SheetValue = Hidden,
 ) {
-    var currentValue: SheetValue = initialValue
-        private set
+    val currentValue: SheetValue get() = anchoredDraggableState.currentValue
 
     val isVisible: Boolean
         get() = currentValue != Hidden
@@ -98,7 +98,7 @@ class SheetState(
         targetValue: SheetValue,
         velocity: Float = anchoredDraggableState.lastVelocity
     ) {
-        currentValue = targetValue
+        //anchoredDraggableState.currentValue = targetValue
         anchoredDraggableState.animateTo(targetValue, velocity)
     }
 
@@ -122,7 +122,7 @@ class SheetState(
 
 internal object BottomSheetDefaults {
     /**
-     * Sheet 위에 놓인 시각적 마커를 드래그하여 표시할 수 있다.
+     * Sheet 상단에 놓인 시각적 마커를 나타내며 드래그할 수 있습니다.
      */
     @Composable
     fun DragHandle(
@@ -168,7 +168,7 @@ internal fun Modifier.modalBottomSheetAnchors(
         Hidden -> Hidden
         Expanded -> Expanded
     }
-
+    Log.d("LYB", "newAnchors = ${newAnchors}, newTarget = $newTarget")
     sheetState.anchoredDraggableState.updateAnchors(newAnchors, newTarget)
 }
 
