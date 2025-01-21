@@ -22,15 +22,19 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
+import com.yourssu.handy.compose.BottomSheetDefaults.bottomSheetContentPadding
+import com.yourssu.handy.compose.BottomSheetType.NoButton
+import com.yourssu.handy.compose.BottomSheetType.OneButton
+import com.yourssu.handy.compose.BottomSheetType.TwoButton
 import com.yourssu.handy.compose.SheetValue.Hidden
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
+import com.yourssu.handy.compose.foundation.ColorGray080
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -38,6 +42,13 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
+/**
+ * BottomSheet의 타입을 나타냈습니다.
+ *
+ * [NoButton] : 버튼 없이 내용만 표시
+ * [OneButton] : 하단에 버튼 한 개를 표시
+ * [TwoButton] : 하단에 버튼 두 개를 표시
+ */
 sealed class BottomSheetType {
     data object NoButton : BottomSheetType()
 
@@ -47,20 +58,32 @@ sealed class BottomSheetType {
 
     data class TwoButton(
         val firstButtonText: String,
-        val secondaryButtonText: String
+        val secondButtonText: String
     ) : BottomSheetType()
 }
 
+/**
+ * 바텀시트의 UI를 나타내는 함수입니다.
+ *
+ * @param onDismissRequest 바텀시트가 닫힐 때 호출되는 함수
+ * @param modifier Modifier 수정자
+ * @param sheetState 바텀시트의 상태를 나타내는 객체
+ * @param onOneButtonClick [BottomSheetType.OneButton]의 버튼 클릭 시 호출되는 함수
+ * @param onFirstButtonClick [BottomSheetType.TwoButton]의 첫 번째 버튼 클릭 시 호출되는 함수
+ * @param onSecondButtonClick [BottomSheetType.TwoButton]의 두 번째 버튼 클릭 시 호출되는 함수
+ * @param bottomSheetType 바텀시트의 레이아웃 타입을 결정
+ * @param content 바텀시트 내부에 표시될 내용을 결정
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BottomSheet(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
     sheetState: SheetState = rememberModalBottomSheetState(),
-    onOneButtonClick: () -> Unit = {}, // todo: 한번에 관리하고싶다.
+    onOneButtonClick: () -> Unit = {},
     onFirstButtonClick: () -> Unit = {},
     onSecondButtonClick: () -> Unit = {},
-    bottomSheetType: BottomSheetType = BottomSheetType.NoButton,
+    bottomSheetType: BottomSheetType = NoButton,
     content: @Composable () -> Unit = {}
 ) {
     val density = LocalDensity.current
@@ -76,7 +99,7 @@ fun BottomSheet(
 
     LaunchedEffect(sheetState) {
         snapshotFlow { sheetState.currentValue }
-            .drop(1) // 처음 바텀시트를 연 이후 동작을 감지하기 위한 첫 상태 방출 무시
+            .drop(1)
             .distinctUntilChanged()
             .filter { it == Hidden }
             .collect {
@@ -88,7 +111,7 @@ fun BottomSheet(
         BoxWithConstraints(Modifier.fillMaxSize()) {
             val fullHeight = constraints.maxHeight
             Scrim(
-                color = Color(0xFF25262C).copy(alpha = 0.65f),
+                color = ColorGray080,
                 onDismissRequest = animateToDismiss,
                 visible = sheetState.targetValue != Hidden
             )
@@ -120,29 +143,29 @@ fun BottomSheet(
                     modifier = Modifier
                         .background(HandyTheme.colors.bgBasicDefault)
                         .align(Alignment.BottomCenter)
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 16.dp),
+                        .padding(horizontal = bottomSheetContentPadding)
+                        .padding(bottom = bottomSheetContentPadding),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    DragHandle() // todo: box
-                    Spacer(modifier = Modifier.height(16.dp))
+                    DragHandle()
+                    Spacer(modifier = Modifier.height(bottomSheetContentPadding))
                     content()
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(bottomSheetContentPadding))
 
                     when (bottomSheetType) {
-                        is BottomSheetType.NoButton -> {}
+                        is NoButton -> {}
 
-                        is BottomSheetType.OneButton -> {
+                        is OneButton -> {
                             OneButtonBottomSheet(
                                 buttonText = bottomSheetType.buttonText,
                                 onClick = onOneButtonClick
                             )
                         }
 
-                        is BottomSheetType.TwoButton -> {
+                        is TwoButton -> {
                             TwoButtonBottomSheet(
                                 firstButtonText = bottomSheetType.firstButtonText,
-                                secondaryButtonText = bottomSheetType.secondaryButtonText,
+                                secondButtonText = bottomSheetType.secondButtonText,
                                 onFirstButtonClick = onFirstButtonClick,
                                 onSecondButtonClick = onSecondButtonClick
                             )
@@ -160,17 +183,22 @@ fun BottomSheet(
     }
 }
 
+/**
+ * 하단에 버튼이 하나만 표시될 때 사용하는 함수입니다.
+ *
+ * @param buttonText 버튼에 표시될 텍스트
+ * @param onClick 버튼 클릭 시 호출되는 함수
+ * @param modifier Modifier
+ */
 @Composable
 private fun OneButtonBottomSheet(
     buttonText: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    BaseButton( // todo: 고민.. 버튼의 어디까지 열어둬야 하나?
+    BaseButton(
         onClick = onClick,
-        colors = ButtonColorState(
-            bgColor = HandyTheme.colors.buttonFilledPrimaryEnabled
-        ),
+        colors = ButtonColorState(bgColor = HandyTheme.colors.buttonFilledPrimaryEnabled),
         modifier = modifier.fillMaxWidth(),
         rounding = Radius.XL.dp
     ) {
@@ -182,13 +210,21 @@ private fun OneButtonBottomSheet(
     }
 }
 
+/**
+ * 하단에 버튼이 두 개일 때 표시될 때 사용하는 함수입니다.
+ *
+ * @param firstButtonText 첫 번째 버튼에 표시될 텍스트
+ * @param secondButtonText 두 번째 버튼에 표시될 텍스트
+ * @param onFirstButtonClick 첫 번째 버튼 클릭 시 호출되는 함수
+ * @param onSecondButtonClick 두 번째 버튼 클릭 시 호출되는 함수
+ */
 @Composable
 private fun TwoButtonBottomSheet(
     firstButtonText: String,
-    secondaryButtonText: String,
-    modifier: Modifier = Modifier,
+    secondButtonText: String,
     onFirstButtonClick: () -> Unit,
-    onSecondButtonClick: () -> Unit
+    onSecondButtonClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier,
@@ -213,7 +249,7 @@ private fun TwoButtonBottomSheet(
             rounding = Radius.XL.dp
         ) {
             Text(
-                text = secondaryButtonText,
+                text = secondButtonText,
                 style = HandyTypography.B1Sb16,
                 color = HandyTheme.colors.textBasicWhite
             )
