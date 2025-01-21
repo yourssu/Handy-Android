@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
-import com.yourssu.handy.compose.SheetValue.Hidden
 import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
 import com.yourssu.handy.compose.foundation.HandyTypography
@@ -85,7 +84,7 @@ fun BottomSheet(
             Scrim(
                 color = Color(0xFF25262C).copy(alpha = 0.65f),
                 onDismissRequest = animateToDismiss,
-                visible = sheetState.currentValue != Hidden
+                visible = sheetState.isVisible
             )
             Surface(
                 modifier = modifier
@@ -150,9 +149,7 @@ fun BottomSheet(
     }
     if (sheetState.hasExpandedState) {
         LaunchedEffect(sheetState) {
-            if (sheetState.currentValue != SheetValue.Expanded) {
-                sheetState.show()
-            }
+            sheetState.show()
         }
     }
     Log.d("LYB", "sheet = ${sheetState.currentValue}")
