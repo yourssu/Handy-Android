@@ -11,22 +11,6 @@ import com.yourssu.handy.compose.rememberModalBottomSheetState
 
 @Preview(showBackground = true)
 @Composable
-fun NoBottomSheetPreview() {
-    HandyTheme {
-        val sheetState = rememberModalBottomSheetState(
-            initialValue = SheetValue.Expanded
-        )
-        BottomSheet(
-            onDismissRequest = {},
-            sheetState = sheetState
-        ) {
-            Text("no button")
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
 fun OneBottomSheetPreview() {
     HandyTheme {
         val sheetState = rememberModalBottomSheetState(
@@ -39,7 +23,7 @@ fun OneBottomSheetPreview() {
                 buttonText = "TEXT"
             )
         ) {
-            Text("one button\none button\none button")
+            Text("one button\none button")
         }
     }
 }

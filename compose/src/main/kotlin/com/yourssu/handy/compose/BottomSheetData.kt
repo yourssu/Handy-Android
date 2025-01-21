@@ -151,8 +151,7 @@ internal object BottomSheetDefaults {
     }
 
     val contentPadding = 16.dp
-    val contentMinHeight = 260.dp
-    val buttonHeight = 52.dp
+    val contentMinHeight = 208.dp
     val surfaceHorizontalPadding = 16.dp
     val surfaceBottomPadding = 34.dp
     private val DockedDragHandleWidth = 32.dp
