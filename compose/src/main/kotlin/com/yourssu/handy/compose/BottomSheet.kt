@@ -1,11 +1,11 @@
 package com.yourssu.handy.compose
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -119,12 +119,7 @@ fun BottomSheet(
                         .padding(bottom = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                    ) {
-                        DragHandle()
-                    }
+                    DragHandle() // todo: box
                     Spacer(modifier = Modifier.height(16.dp))
                     content()
                     Spacer(modifier = Modifier.height(16.dp))
@@ -155,9 +150,12 @@ fun BottomSheet(
     }
     if (sheetState.hasExpandedState) {
         LaunchedEffect(sheetState) {
-            sheetState.show()
+            if (sheetState.currentValue != SheetValue.Expanded) {
+                sheetState.show()
+            }
         }
     }
+    Log.d("LYB", "sheet = ${sheetState.currentValue}")
 }
 
 @Composable
@@ -220,3 +218,4 @@ private fun TwoButtonBottomSheet(
         }
     }
 }
+

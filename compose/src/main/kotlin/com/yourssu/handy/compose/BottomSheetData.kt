@@ -7,6 +7,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.AnchoredDraggableState
 import androidx.compose.foundation.gestures.DraggableAnchors
+import androidx.compose.foundation.gestures.animateTo
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -78,18 +79,12 @@ class SheetState(
     val hasExpandedState: Boolean
         get() = anchoredDraggableState.anchors.hasAnchorFor(Expanded)
 
-    fun show() {
+    suspend fun show() {
         animateTo(Expanded)
     }
 
-    fun hide() {
+    suspend fun hide() {
         animateTo(Hidden)
-    }
-
-    private fun animateTo(
-        targetValue: SheetValue,
-    ) {
-        currentValue = targetValue
     }
 
     internal var anchoredDraggableState = AnchoredDraggableState(
@@ -98,6 +93,14 @@ class SheetState(
         positionalThreshold = { with(requireDensity()) { 56.dp.toPx() } },
         velocityThreshold = { with(requireDensity()) { 125.dp.toPx() } },
     )
+
+    private suspend fun animateTo(
+        targetValue: SheetValue,
+        velocity: Float = anchoredDraggableState.lastVelocity
+    ) {
+        currentValue = targetValue
+        anchoredDraggableState.animateTo(targetValue, velocity)
+    }
 
     private fun requireDensity() = density
 
@@ -157,8 +160,8 @@ internal fun Modifier.modalBottomSheetAnchors(
 ) = onSizeChanged { sheetSize ->
 
     val newAnchors = DraggableAnchors {
-        Hidden at 0f
-        Expanded at fullHeight - sheetSize.height
+        Hidden at fullHeight - sheetSize.height
+        Expanded at 0f
     }
 
     val newTarget = when (sheetState.anchoredDraggableState.targetValue) {
