@@ -22,7 +22,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
@@ -52,7 +51,6 @@ sealed class BottomSheetType {
     ) : BottomSheetType()
 }
 
-// TODO: 주석 작성
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun BottomSheet(
@@ -100,7 +98,6 @@ fun BottomSheet(
                     .align(Alignment.BottomCenter)
                     .padding(horizontal = 16.dp)
                     .padding(bottom = 34.dp)
-                    .clip(RoundedCornerShape(24.dp))
                     .offset {
                         IntOffset(
                             x = 0,
@@ -116,7 +113,8 @@ fun BottomSheet(
                     .modalBottomSheetAnchors(
                         sheetState = sheetState,
                         fullHeight = fullHeight.toFloat()
-                    )
+                    ),
+                shape = RoundedCornerShape(24.dp)
             ) {
                 Column(
                     modifier = Modifier
