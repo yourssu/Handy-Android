@@ -39,7 +39,7 @@ fun OneBottomSheetPreview() {
                 buttonText = "TEXT"
             )
         ) {
-            Text("one button")
+            Text("one button\none button\none button")
         }
     }
 }
@@ -59,7 +59,7 @@ fun TwoBottomSheetPreview() {
                 secondButtonText = "RIGHT"
             )
         ) {
-            Text("two button")
+            Text("two button\ntwo button\ntwo button\ntwo button\ntwo button\ntwo button\ntwo button\ntwo button")
         }
     }
 }
