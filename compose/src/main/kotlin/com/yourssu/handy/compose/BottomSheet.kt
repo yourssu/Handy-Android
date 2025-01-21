@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,7 +28,9 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import com.yourssu.handy.compose.BottomSheetDefaults.DragHandle
-import com.yourssu.handy.compose.BottomSheetDefaults.bottomSheetContentPadding
+import com.yourssu.handy.compose.BottomSheetDefaults.buttonHeight
+import com.yourssu.handy.compose.BottomSheetDefaults.contentMinHeight
+import com.yourssu.handy.compose.BottomSheetDefaults.contentPadding
 import com.yourssu.handy.compose.BottomSheetDefaults.surfaceBottomPadding
 import com.yourssu.handy.compose.BottomSheetDefaults.surfaceHorizontalPadding
 import com.yourssu.handy.compose.BottomSheetType.NoButton
@@ -145,32 +148,42 @@ fun BottomSheet(
                     modifier = Modifier
                         .background(HandyTheme.colors.bgBasicDefault)
                         .align(Alignment.BottomCenter)
-                        .padding(horizontal = bottomSheetContentPadding)
-                        .padding(bottom = bottomSheetContentPadding),
+                        .padding(horizontal = contentPadding)
+                        .padding(bottom = contentPadding),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    DragHandle()
-                    Spacer(modifier = Modifier.height(bottomSheetContentPadding))
-                    content()
-                    Spacer(modifier = Modifier.height(bottomSheetContentPadding))
+                    Column(
+                        modifier = Modifier
+                            .defaultMinSize(
+                                minHeight = if (bottomSheetType == NoButton) contentMinHeight
+                                else contentMinHeight - buttonHeight
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        DragHandle()
+                        Spacer(modifier = Modifier.height(contentPadding))
+                        content()
+                        Spacer(modifier = Modifier.height(contentPadding))
+                    }
+                    Column {
+                        when (bottomSheetType) {
+                            is NoButton -> {}
 
-                    when (bottomSheetType) {
-                        is NoButton -> {}
+                            is OneButton -> {
+                                OneButtonBottomSheet(
+                                    buttonText = bottomSheetType.buttonText,
+                                    onClick = onOneButtonClick
+                                )
+                            }
 
-                        is OneButton -> {
-                            OneButtonBottomSheet(
-                                buttonText = bottomSheetType.buttonText,
-                                onClick = onOneButtonClick
-                            )
-                        }
-
-                        is TwoButton -> {
-                            TwoButtonBottomSheet(
-                                firstButtonText = bottomSheetType.firstButtonText,
-                                secondButtonText = bottomSheetType.secondButtonText,
-                                onFirstButtonClick = onFirstButtonClick,
-                                onSecondButtonClick = onSecondButtonClick
-                            )
+                            is TwoButton -> {
+                                TwoButtonBottomSheet(
+                                    firstButtonText = bottomSheetType.firstButtonText,
+                                    secondButtonText = bottomSheetType.secondButtonText,
+                                    onFirstButtonClick = onFirstButtonClick,
+                                    onSecondButtonClick = onSecondButtonClick
+                                )
+                            }
                         }
                     }
 

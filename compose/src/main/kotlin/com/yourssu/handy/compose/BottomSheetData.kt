@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
@@ -151,11 +150,13 @@ internal object BottomSheetDefaults {
         }
     }
 
-    val bottomSheetContentPadding = 16.dp
+    val contentPadding = 16.dp
+    val contentMinHeight = 260.dp
+    val buttonHeight = 52.dp
     val surfaceHorizontalPadding = 16.dp
     val surfaceBottomPadding = 34.dp
-    private val DockedDragHandleWidth = 32.0.dp
-    private val DockedDragHandleHeight = 4.0.dp
+    private val DockedDragHandleWidth = 32.dp
+    private val DockedDragHandleHeight = 4.dp
     private val DragHandleVerticalPadding = 16.dp
 }
 
