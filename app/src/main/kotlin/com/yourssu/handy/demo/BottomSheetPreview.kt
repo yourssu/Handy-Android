@@ -11,7 +11,7 @@ import com.yourssu.handy.compose.rememberModalBottomSheetState
 
 @Preview(showBackground = true)
 @Composable
-fun OneBottomSheetPreview() {
+private fun OneShortBottomSheetPreview() {
     HandyTheme {
         val sheetState = rememberModalBottomSheetState(
             initialValue = SheetValue.Expanded
@@ -23,14 +23,53 @@ fun OneBottomSheetPreview() {
                 buttonText = "TEXT"
             )
         ) {
-            Text("one button\none button")
+            Text("one button")
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun TwoBottomSheetPreview() {
+private fun OneLongBottomSheetPreview() {
+    HandyTheme {
+        val sheetState = rememberModalBottomSheetState(
+            initialValue = SheetValue.Expanded
+        )
+        BottomSheet(
+            onDismissRequest = {},
+            sheetState = sheetState,
+            bottomSheetType = BottomSheetType.OneButton(
+                buttonText = "TEXT"
+            )
+        ) {
+            Text("one button\none button\none button\none button\none button\none button\none button\none button")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TwoShortBottomSheetPreview() {
+    HandyTheme {
+        val sheetState = rememberModalBottomSheetState(
+            initialValue = SheetValue.Expanded
+        )
+        BottomSheet(
+            onDismissRequest = {},
+            sheetState = sheetState,
+            bottomSheetType = BottomSheetType.TwoButton(
+                firstButtonText = "LEFT",
+                secondButtonText = "RIGHT"
+            )
+        ) {
+            Text("two button")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TwoLongBottomSheetPreview() {
     HandyTheme {
         val sheetState = rememberModalBottomSheetState(
             initialValue = SheetValue.Expanded
