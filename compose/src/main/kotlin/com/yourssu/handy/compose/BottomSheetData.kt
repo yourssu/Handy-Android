@@ -1,6 +1,5 @@
 package com.yourssu.handy.compose
 
-import android.util.Log
 import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
@@ -169,7 +168,7 @@ internal fun Modifier.modalBottomSheetAnchors(
         Hidden -> Hidden
         Expanded -> Expanded
     }
-    Log.d("LYB", "newAnchors = ${newAnchors}, newTarget = $newTarget")
+
     sheetState.anchoredDraggableState.updateAnchors(newAnchors, newTarget)
 }
 

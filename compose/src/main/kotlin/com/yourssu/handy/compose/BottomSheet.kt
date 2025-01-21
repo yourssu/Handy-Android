@@ -1,6 +1,5 @@
 package com.yourssu.handy.compose
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
@@ -20,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +34,9 @@ import com.yourssu.handy.compose.button.BaseButton
 import com.yourssu.handy.compose.button.ButtonColorState
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 sealed class BottomSheetType {
@@ -69,10 +72,18 @@ fun BottomSheet(
     val scope = rememberCoroutineScope()
     val animateToDismiss: () -> Unit = {
         scope.launch { sheetState.hide() }.invokeOnCompletion {
-            if (!sheetState.isVisible) {
-                onDismissRequest()
-            }
+            if (!sheetState.isVisible) onDismissRequest()
         }
+    }
+
+    LaunchedEffect(sheetState) {
+        snapshotFlow { sheetState.currentValue }
+            .drop(1) // 처음 바텀시트를 연 이후 동작을 감지하기 위한 첫 상태 방출 무시
+            .distinctUntilChanged()
+            .filter { it == Hidden }
+            .collect {
+                scope.launch { sheetState.hide() }.invokeOnCompletion { onDismissRequest() }
+            }
     }
 
     Popup(
@@ -111,7 +122,6 @@ fun BottomSheet(
                         fullHeight = fullHeight.toFloat()
                     )
             ) {
-                Log.d("LYB", "sheet POPUP = ${sheetState.currentValue}")
                 Column(
                     modifier = Modifier
                         .background(HandyTheme.colors.bgBasicDefault)
