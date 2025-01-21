@@ -48,8 +48,8 @@ import kotlinx.coroutines.launch
 /**
  * BottomSheet의 타입을 나타냅니다.
  *
- * [OneButton] : 하단에 버튼 한 개를 표시
- * [TwoButton] : 하단에 버튼 두 개를 표시
+ * [OneButton] : 하단에 버튼 한 개 표시
+ * [TwoButton] : 하단에 버튼 두 개 표시
  */
 sealed class BottomSheetType {
     data class OneButton(
@@ -176,7 +176,6 @@ fun BottomSheet(
                             }
                         }
                     }
-
                 }
             }
         }
