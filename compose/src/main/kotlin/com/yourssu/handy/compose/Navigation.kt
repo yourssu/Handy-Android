@@ -1,5 +1,6 @@
 package com.yourssu.handy.compose
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.yourssu.handy.compose.Divider
 import com.yourssu.handy.compose.foundation.HandyTypography
 
 /**
@@ -25,7 +25,7 @@ import com.yourssu.handy.compose.foundation.HandyTypography
  */
 data class BottomNavItem(
     val icon: ImageVector,
-    val label: String?
+    val label: String? = null
 )
 
 /**
@@ -59,6 +59,7 @@ private fun BottomNavItem(
         Icon(
             item.icon,
             iconSize = IconSize.M,
+            tint = color
         )
 
         if (item.label != null) {
@@ -77,19 +78,23 @@ private fun BottomNavItem(
  * @param items 하단 네비게이션 바의 아이템 리스트
  * @param selectedIndex 선택된 아이템의 인덱스
  * @param onItemSelected 아이템 선택 시 실행되는 함수
+ *
+ * @throws IllegalArgumentException 아이템의 개수가 3개 미만이거나 5개 초과일 때 발생합니다.
  */
 @Composable
 fun Navigation(
     items: List<BottomNavItem>,
     selectedIndex: Int,
-    onItemSelected: (Int) -> Unit
+    onItemSelected: (Int) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     require(items.size in 3..5) { "Items size must be between 3 and 5" }
 
-    Column(
-        modifier = Modifier
+    Surface(
+        modifier = modifier
             .fillMaxWidth()
-            .height(56.dp),
+            .height(56.dp)
+            .background(HandyTheme.colors.bgBasicDefault),
     ) {
         Divider(dividerThickness = DividerThickness.ONE)
         Row(
