@@ -75,11 +75,10 @@ private fun BottomNavItem(
 /**
  * Navigation : 하단 네비게이션 바 Composable 함수 입니다.
  *
- * @param items 하단 네비게이션 바의 아이템 리스트
+ * @param items 하단 네비게이션 바의 아이템 리스트. item의 개수는 3개 이상 5개 이하여야 합니다.
  * @param selectedIndex 선택된 아이템의 인덱스
  * @param onItemSelected 아이템 선택 시 실행되는 함수
  *
- * @throws IllegalArgumentException 아이템의 개수가 3개 미만이거나 5개 초과일 때 발생합니다.
  */
 @Composable
 fun Navigation(
