@@ -84,7 +84,7 @@ fun BottomSheet(
     onOneButtonClick: () -> Unit = {},
     onFirstButtonClick: () -> Unit = {},
     onSecondButtonClick: () -> Unit = {},
-    content: @Composable () -> Unit = {}
+    content: @Composable () -> Unit
 ) {
     val density = LocalDensity.current
     SideEffect {
