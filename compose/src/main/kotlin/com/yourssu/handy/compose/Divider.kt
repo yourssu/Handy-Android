@@ -34,7 +34,7 @@ fun Divider(
     dividerThickness: DividerThickness,
     modifier: Modifier = Modifier,
     width: Dp = 0.dp,
-    color: Color = HandyTheme.colors.bgBasicStrong,
+    color: Color = HandyTheme.colors.lineBasicStrong,
 ) {
     Box(
         modifier = modifier
@@ -54,7 +54,7 @@ fun Divider(
 fun Divider(
     dividerThickness: DividerThickness,
     modifier: Modifier = Modifier,
-    color: Color = HandyTheme.colors.bgBasicStrong,
+    color: Color = HandyTheme.colors.lineBasicStrong,
 ) {
     Box(
         modifier = modifier

@@ -17,15 +17,18 @@ fun DividerExample() {
         Divider(
             dividerThickness = DividerThickness.TWO,
             width = 100.dp,
-            color = HandyTheme.colors.bgBasicBlack
+            color = HandyTheme.colors.lineBasicLight
         )
         Text("Section 2")
         Divider(
             dividerThickness = DividerThickness.FOUR,
             width = 200.dp,
-            color = HandyTheme.colors.bgBasicBlack
+            color = HandyTheme.colors.lineBasicMedium
         )
         Text("Section 3")
-        Divider(dividerThickness = DividerThickness.EIGHT, color = HandyTheme.colors.bgBasicBlack)
+        Divider(
+            dividerThickness = DividerThickness.EIGHT,
+            color = HandyTheme.colors.lineBasicStrong
+        )
     }
 }
