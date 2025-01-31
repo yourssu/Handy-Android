@@ -37,12 +37,15 @@ data class ColorScheme(
     val textStatusNegative: Color = ColorStatusRedMain,
     val textStatusPositive: Color = ColorViolet500,
 
-    // Outlined / Basic
+    // Line / Basic
     val lineBasicLight: Color = ColorGray100,
     val lineBasicMedium: Color = ColorGray200,
     val lineBasicStrong: Color = ColorGray300,
 
-    // Outlined / Status
+    // Line / Brand
+    val lineBrandPrimary: Color = ColorViolet500,
+
+    // Line / Status
     val lineStatusNegative: Color = ColorStatusRedMain,
     val lineStatusPositive: Color = ColorViolet500,
 
