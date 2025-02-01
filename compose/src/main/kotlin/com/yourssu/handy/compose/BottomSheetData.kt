@@ -118,7 +118,6 @@ class SheetState(
                 SheetState(density, savedValue)
             }
         )
-
     }
 }
 
