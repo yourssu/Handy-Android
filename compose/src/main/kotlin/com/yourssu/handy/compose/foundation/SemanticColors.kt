@@ -123,6 +123,9 @@ data class ColorScheme(
     val switchSelected: Color = ColorViolet500,
     val switchDisabled: Color = ColorGray200,
     val switchThumb: Color = ColorNeutralWhite,
+
+    // BottomSheet
+    val bottomSheetHandle: Color = ColorGray300
 )
 
 val lightColorScheme = ColorScheme()
