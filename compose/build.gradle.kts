@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.dokka)
+    id ("maven-publish")
 }
 
 android {
@@ -39,6 +40,27 @@ android {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.yourssu"
+                artifactId = "handy-compose"
+                version = "0.1.0-alpha1"
+            }
+            create<MavenPublication>("debug") {
+                from(components["debug"])
+
+                groupId = "com.github.yourssu"
+                artifactId = "handy-compose-debug"
+                version = "0.1.0-alpha1"
+            }
+        }
+    }
+}
+
 dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
@@ -53,4 +75,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     debugImplementation(libs.androidx.ui.tooling)
+
+    
 }
