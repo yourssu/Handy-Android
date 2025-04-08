@@ -108,7 +108,7 @@ private fun ScaffoldLayout(
 
         val snackBarPlaceable = subcompose(ScaffoldLayoutContent.Snackbar) {
             Box(modifier = Modifier
-                .padding(horizontal = SnackBarHorizontalSpacing) // TODO : SnackBar 컴포넌트 자체에서 margin을 줄지 여기서 주어야 할지?
+                .padding()
                 .semantics {
                     isTraversalGroup = true
                     traversalIndex = 4f
