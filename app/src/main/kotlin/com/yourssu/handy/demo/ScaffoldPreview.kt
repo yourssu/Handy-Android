@@ -16,7 +16,7 @@ import com.yourssu.handy.compose.Scaffold
 
 @Composable
 @Preview
-fun ScaffoldPreview() {
+fun ScaffoldAllExistPreview() {
     HandyTheme {
         Scaffold(
             topBar = {
@@ -33,6 +33,85 @@ fun ScaffoldPreview() {
                         .fillMaxWidth()
                         .height(56.dp)
                         .background(Color.Green)
+                )
+            },
+            snackbarHost = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .background(Color.Red)
+                )
+            },
+            floatingActionButton = {
+                Box(
+                    modifier = Modifier
+                        .size(56.dp)
+                        .background(Color.Yellow)
+                )
+            },
+            content = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Gray)
+                )
+            }
+        )
+    }
+}
+
+@Composable
+@Preview
+fun ScaffoldNonExistFabPreview() {
+    HandyTheme {
+        Scaffold(
+            topBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .background(Color.Blue)
+                )
+            },
+            bottomBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .background(Color.Green)
+                )
+            },
+            snackbarHost = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .background(Color.Red)
+                )
+            },
+            content = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Gray)
+                )
+            }
+        )
+    }
+}
+
+@Composable
+@Preview
+fun ScaffoldNonExistBottomBarPreview() {
+    HandyTheme {
+        Scaffold(
+            topBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .background(Color.Blue)
                 )
             },
             snackbarHost = {
