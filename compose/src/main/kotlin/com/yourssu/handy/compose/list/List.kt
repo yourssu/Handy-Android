@@ -26,26 +26,22 @@ import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.icons.HandyIcons
 import com.yourssu.handy.compose.icons.line.ArrowsChevronRight
 import com.yourssu.handy.compose.icons.line.User
-import org.w3c.dom.Text
 
 @Composable
-fun ListItem(
+fun List(
     headline: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
-    containerColor: Color = HandyTheme.colors.listEnabled,
-    pressedContainerColor: Color = HandyTheme.colors.listPressed,
     headlineColor: Color = HandyTheme.colors.textBasicPrimary,
     leadingIconColor: Color = HandyTheme.colors.iconBasicPrimary,
     tailingIconColor: Color = HandyTheme.colors.iconBasicTertiary,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
 ) {
     val pressed by interactionSource.collectIsPressedAsState()
-
-    val backgroundColor = determineContainerColor(enabled, pressed, containerColor, pressedContainerColor)
+    val backgroundColor = determineContainerColor(enabled, pressed)
 
     Row(
         modifier = modifier
@@ -58,34 +54,35 @@ fun ListItem(
                 indication = null
             )
             .background(backgroundColor),
-        horizontalArrangement = Arrangement.SpaceBetween
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(
-            modifier = modifier.padding(horizontal = 16.dp, vertical = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            leadingIcon?.let {
-                Icon(
-                    imageVector = leadingIcon,
-                    contentDescription = "leadingIcon",
-                    tint = determineContentColor(enabled, leadingIconColor),
-                )
-            }
-
-            Text(
-                text = headline,
-                color = determineContentColor(enabled, headlineColor),
-                modifier = modifier.padding(horizontal = 16.dp),
-                overflow = TextOverflow.Ellipsis,
+        leadingIcon?.let {
+            Icon(
+                imageVector = leadingIcon,
+                contentDescription = "leadingIcon",
+                tint = determineContentColor(enabled, leadingIconColor),
+                modifier = Modifier.padding(start = 16.dp)
             )
         }
+
+        Text(
+            text = headline,
+            color = determineContentColor(enabled, headlineColor),
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .weight(1f),
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1
+        )
 
         trailingIcon?.let {
             Icon(
                 imageVector = trailingIcon,
                 contentDescription = "trailingIcon",
                 tint = determineContentColor(enabled, tailingIconColor),
-                modifier = modifier.padding(end = 16.dp, bottom = 20.dp, top = 20.dp)
+                modifier = Modifier
+                    .padding(end = 16.dp)
+                    .align(Alignment.CenterVertically)
             )
         }
     }
@@ -95,13 +92,11 @@ fun ListItem(
 fun determineContainerColor(
     enabled: Boolean,
     pressed: Boolean,
-    containerColor: Color,
-    pressedContainerColor: Color
 ): Color {
     return when {
         !enabled -> HandyTheme.colors.listDisabled
-        pressed -> pressedContainerColor
-        else -> containerColor
+        pressed -> HandyTheme.colors.listPressed
+        else -> HandyTheme.colors.listEnabled
     }
 }
 
@@ -121,59 +116,34 @@ fun determineContentColor(
 fun ListItemPreview() {
     HandyTheme {
         Column(
-            modifier = Modifier
-                .background(Color.Red)
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            ListItem(
-                headline = "Title",
+            List(
+                headline = "Enable List Title",
                 onClick = {},
                 leadingIcon = HandyIcons.Line.User,
                 trailingIcon = HandyIcons.Line.ArrowsChevronRight,
             )
 
-            ListItem(
-                headline = "Title",
+            List(
+                headline = "Disable List Title",
                 onClick = {},
                 leadingIcon = HandyIcons.Line.User,
                 trailingIcon = HandyIcons.Line.ArrowsChevronRight,
                 enabled = false
             )
 
-            ListItem(
-                headline = "Titleeeeeeeeeeeeeeeeeeeeeeee",
+            List(
+                headline = "Loooooooooong Titleeeeeeeeeeeeeeeeeeeeeeeeeee",
                 onClick = {},
                 leadingIcon = HandyIcons.Line.User,
                 trailingIcon = HandyIcons.Line.ArrowsChevronRight,
-                containerColor = HandyTheme.colors.textBrandPrimary,
-                tailingIconColor = HandyTheme.colors.textStatusNegative,
-                headlineColor = HandyTheme.colors.textBasicWhite,
-                leadingIconColor = HandyTheme.colors.iconBasicTertiary
             )
 
-            ListItem(
-                headline = "Titleeeeeeeeeeeeeeeeeeeeeeee",
+            List(
+                headline = "Default Title",
                 onClick = {},
-                leadingIcon = HandyIcons.Line.User,
-                trailingIcon = HandyIcons.Line.ArrowsChevronRight,
-                containerColor = HandyTheme.colors.textBrandPrimary,
-                tailingIconColor = HandyTheme.colors.textStatusNegative,
-                headlineColor = HandyTheme.colors.textBasicWhite,
-                leadingIconColor = HandyTheme.colors.iconBasicTertiary,
-                pressedContainerColor = HandyTheme.colors.iconBasicTertiary
-            )
-
-            ListItem(
-                headline = "Titleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-                onClick = {},
-                leadingIcon = HandyIcons.Line.User,
-                trailingIcon = HandyIcons.Line.ArrowsChevronRight,
-                containerColor = HandyTheme.colors.textBrandPrimary,
-                tailingIconColor = HandyTheme.colors.textStatusNegative,
-                headlineColor = HandyTheme.colors.textBasicWhite,
-                leadingIconColor = HandyTheme.colors.iconBasicTertiary,
-                pressedContainerColor = HandyTheme.colors.iconBasicTertiary
             )
         }
     }
