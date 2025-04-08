@@ -50,9 +50,9 @@ class ButtonColorState(
 @Composable
 private fun pressedColorFor(color: Color): Color {
     return when (color) {
-        HandyTheme.colors.buttonBoxPrimaryEnabled -> HandyTheme.colors.buttonBoxPrimaryPressed
-        HandyTheme.colors.buttonBoxSecondaryEnabled -> HandyTheme.colors.buttonBoxSecondaryPressed
-        HandyTheme.colors.buttonBoxTertiaryEnabled -> HandyTheme.colors.buttonBoxTertiaryPressed
+        HandyTheme.colors.buttonFilledPrimaryEnabled -> HandyTheme.colors.buttonFilledPrimaryPressed
+        HandyTheme.colors.buttonFilledSecondaryEnabled -> HandyTheme.colors.buttonFilledSecondaryPressed
+        HandyTheme.colors.buttonOutlinedEnabled -> HandyTheme.colors.buttonOutlinedPressed
         HandyTheme.colors.buttonTextPrimaryEnabled -> HandyTheme.colors.buttonTextPrimaryPressed
         HandyTheme.colors.buttonTextSecondaryEnabled -> HandyTheme.colors.buttonTextSecondaryPressed
         else -> color

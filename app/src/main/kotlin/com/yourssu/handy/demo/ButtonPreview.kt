@@ -4,18 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
-import com.yourssu.handy.compose.button.BoxButton
-import com.yourssu.handy.compose.button.BoxButtonSize
-import com.yourssu.handy.compose.button.BoxButtonType
+import com.yourssu.handy.compose.button.FilledButton
+import com.yourssu.handy.compose.button.FilledButtonSize
+import com.yourssu.handy.compose.button.FilledButtonType
 import com.yourssu.handy.compose.button.TextButton
 import com.yourssu.handy.compose.button.TextButtonSize
 import com.yourssu.handy.compose.button.TextButtonType
@@ -25,7 +22,7 @@ import com.yourssu.handy.compose.icons.line.ExternalLink
 
 @Preview
 @Composable
-private fun BoxButtonPreview() {
+private fun FilledButtonPreview() {
     HandyTheme {
         Column(
             modifier = Modifier.background(White),
@@ -38,179 +35,179 @@ private fun BoxButtonPreview() {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "isDisabled",
                         enabled = false,
-                        sizeType = BoxButtonSize.XL,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XL Button",
-                        sizeType = BoxButtonSize.XL,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "L Button",
-                        sizeType = BoxButtonSize.L,
+                        sizeType = FilledButtonSize.L,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "M Button",
-                        sizeType = BoxButtonSize.M,
+                        sizeType = FilledButtonSize.M,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "S Button",
-                        sizeType = BoxButtonSize.S,
+                        sizeType = FilledButtonSize.S,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XS Button",
-                        sizeType = BoxButtonSize.XS,
+                        sizeType = FilledButtonSize.XS,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XXS Button",
-                        sizeType = BoxButtonSize.XXS,
+                        sizeType = FilledButtonSize.XXS,
                     )
                 }
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
 
                 ) {
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
-                        buttonType = BoxButtonType.Secondary,
+                        buttonType = FilledButtonType.Secondary,
                         text = "isDisabled",
                         enabled = false,
-                        sizeType = BoxButtonSize.XL,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XL Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.XL,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "L Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.L,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.L,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "M Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.M,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.M,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "S Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.S,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.S,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XS Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.XS,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.XS,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XXS Button",
-                        buttonType = BoxButtonType.Secondary,
-                        sizeType = BoxButtonSize.XXS,
+                        buttonType = FilledButtonType.Secondary,
+                        sizeType = FilledButtonSize.XXS,
                     )
                 }
                 Column(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
-                        buttonType = BoxButtonType.Tertiary,
+                        buttonType = FilledButtonType.Outlined,
                         text = "isDisabled",
                         enabled = false,
-                        sizeType = BoxButtonSize.XL,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XL Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.XL,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.XL,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "L Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.L,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.L,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "M Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.M,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.M,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "S Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.S,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.S,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XS Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.XS,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.XS,
                     )
 
-                    BoxButton(
+                    FilledButton(
                         onClick = {},
                         text = "XXS Button",
-                        buttonType = BoxButtonType.Tertiary,
-                        sizeType = BoxButtonSize.XXS,
+                        buttonType = FilledButtonType.Outlined,
+                        sizeType = FilledButtonSize.XXS,
                     )
                 }
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                     enabled = false,
                 )
 
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     rightIcon = HandyIcons.Line.Add,
                     enabled = false,
                 )
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
                     enabled = false,
@@ -219,23 +216,23 @@ private fun BoxButtonPreview() {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                 )
 
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     rightIcon = HandyIcons.Line.Add,
                 )
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
+                    sizeType = FilledButtonSize.S,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -243,26 +240,26 @@ private fun BoxButtonPreview() {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Secondary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Secondary,
                     leftIcon = HandyIcons.Line.Add,
                 )
 
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Secondary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Secondary,
                     rightIcon = HandyIcons.Line.Add,
                 )
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Secondary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Secondary,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -270,26 +267,26 @@ private fun BoxButtonPreview() {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ){
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Tertiary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Outlined,
                     leftIcon = HandyIcons.Line.Add,
                 )
 
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Tertiary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Outlined,
                     rightIcon = HandyIcons.Line.Add,
                 )
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.S,
-                    buttonType = BoxButtonType.Tertiary,
+                    sizeType = FilledButtonSize.S,
+                    buttonType = FilledButtonType.Outlined,
                     leftIcon = HandyIcons.Line.Add,
                     rightIcon = HandyIcons.Line.Add,
                 )
@@ -297,10 +294,10 @@ private fun BoxButtonPreview() {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                BoxButton(
+                FilledButton(
                     onClick = {},
                     text = "M Button",
-                    sizeType = BoxButtonSize.M,
+                    sizeType = FilledButtonSize.M,
                     leftIcon = HandyIcons.Line.Add,
                     horizontalPadding = 100.dp
                 )
