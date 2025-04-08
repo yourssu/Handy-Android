@@ -107,7 +107,7 @@ data class TextFieldStyle(
 )
 
 @Composable
-fun getTextFieldStyle(
+private fun getTextFieldStyle(
     enabled: Boolean,
     isError: Boolean,
     isFocused: Boolean
