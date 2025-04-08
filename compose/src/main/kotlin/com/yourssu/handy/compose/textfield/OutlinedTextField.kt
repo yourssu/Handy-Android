@@ -24,6 +24,7 @@ import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
 import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.foundation.Radius
 
 @Composable
 fun OutlinedTextField(
@@ -49,9 +50,9 @@ fun OutlinedTextField(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(Radius.M.dp))
             .background(HandyTheme.colors.bgBasicLight)
-            .border(1.dp, borderColor, RoundedCornerShape(12.dp))
+            .border(1.dp, borderColor, RoundedCornerShape(Radius.M.dp))
             .padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp)
     ) {
         BasicTextField(
