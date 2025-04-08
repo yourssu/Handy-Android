@@ -99,7 +99,7 @@ fun determineContainerColor(
     pressedContainerColor: Color
 ): Color {
     return when {
-        !enabled -> HandyTheme.colors.
+        !enabled -> HandyTheme.colors.listDisabled
         pressed -> pressedContainerColor
         else -> containerColor
     }
