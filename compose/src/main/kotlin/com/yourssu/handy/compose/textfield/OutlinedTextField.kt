@@ -1,20 +1,20 @@
 package com.yourssu.handy.compose.textfield
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.HandyTheme
 import com.yourssu.handy.compose.Icon
+import com.yourssu.handy.compose.Surface
 import com.yourssu.handy.compose.Text
 import com.yourssu.handy.compose.foundation.HandyTypography
 import com.yourssu.handy.compose.foundation.Radius
@@ -47,51 +48,53 @@ fun OutlinedTextField(
         isFocused
     )
 
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(Radius.M.dp))
-            .background(HandyTheme.colors.bgBasicLight)
-            .border(1.dp, borderColor, RoundedCornerShape(Radius.M.dp))
-            .padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp)
+    Surface(
+        rounding = Radius.M.dp,
+        backgroundColor = HandyTheme.colors.bgBasicLight,
+        border = BorderStroke(1.dp, borderColor),
+        modifier = modifier.fillMaxWidth()
     ) {
-        BasicTextField(
-            value = value,
-            onValueChange = onValueChange,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth(),
-            textStyle = HandyTypography.B1Rg16.toTextStyle().copy(color = textColor),
-            enabled = enabled,
-            singleLine = isSingleLine,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            interactionSource = interactionSource,
-            cursorBrush = SolidColor(cursorColor),
-            decorationBox = { innerTextField ->
-                if (value.isEmpty() && placeholder != null) {
-                    Text(
-                        text = placeholder,
-                        style = HandyTypography.B1Rg16,
-                        color = placeholderTextColor
-                    )
+        Row(
+            modifier = Modifier.padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            BasicTextField(
+                value = value,
+                onValueChange = onValueChange,
+                modifier = Modifier.fillMaxWidth().weight(1f),
+                textStyle = HandyTypography.B1Rg16.toTextStyle().copy(color = textColor),
+                enabled = enabled,
+                singleLine = isSingleLine,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                interactionSource = interactionSource,
+                cursorBrush = SolidColor(cursorColor),
+                decorationBox = { innerTextField ->
+                    if (value.isEmpty() && placeholder != null) {
+                        Text(
+                            text = placeholder,
+                            style = HandyTypography.B1Rg16,
+                            color = placeholderTextColor
+                        )
+                    }
+                    innerTextField()
                 }
-                innerTextField()
-            }
-        )
-
-        trailingIcon?.let {
-            Icon(
-                imageVector = trailingIcon,
-                contentDescription = null,
-                tint = HandyTheme.colors.iconBasicTertiary,
-                modifier = Modifier
-                    .clickable(
-                        indication = null,
-                        interactionSource = interactionSource,
-                        onClick = onClickTrailingIcon
-                    )
-                    .padding(start = 12.dp)
             )
+            
+            Spacer(modifier = Modifier.width(12.dp))
+
+            trailingIcon?.let {
+                Icon(
+                    imageVector = it,
+                    contentDescription = null,
+                    tint = HandyTheme.colors.iconBasicTertiary,
+                    modifier = Modifier
+                        .clickable(
+                            indication = null,
+                            interactionSource = interactionSource,
+                            onClick = onClickTrailingIcon
+                        )
+                )
+            }
         }
     }
 }
