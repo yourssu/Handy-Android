@@ -94,17 +94,6 @@ private fun ScaffoldLayout(
             }
         }.first().measure(looseConstraints)
 
-        val mainContentPlaceable = subcompose(ScaffoldLayoutContent.MainContent) {
-            Box(
-                modifier = Modifier.semantics {
-                    isTraversalGroup = true
-                    traversalIndex = 2f
-                }
-            ) {
-                content(PaddingValues(0.dp))
-            }
-        }.first().measure(looseConstraints)
-
         val snackBarPlaceable = subcompose(ScaffoldLayoutContent.Snackbar) {
             Box(modifier = Modifier
                 .padding()
@@ -132,6 +121,22 @@ private fun ScaffoldLayout(
                 traversalIndex = 1f
             }) {
                 bottomBar()
+            }
+        }.first().measure(looseConstraints)
+
+        val mainContentPlaceable = subcompose(ScaffoldLayoutContent.MainContent) {
+            Box(
+                modifier = Modifier.semantics {
+                    isTraversalGroup = true
+                    traversalIndex = 2f
+                }
+            ) {
+                content(
+                    PaddingValues(
+                        top = with(LocalDensity.current) { topBarPlaceable.height.toDp() },
+                        bottom = with(LocalDensity.current) { bottomBarPlaceable.height.toDp() }
+                    )
+                )
             }
         }.first().measure(looseConstraints)
 
