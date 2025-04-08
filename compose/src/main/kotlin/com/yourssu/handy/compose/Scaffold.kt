@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.yourssu.handy.compose.ScaffoldSpacingValues.FabBottomSpacing
 import com.yourssu.handy.compose.ScaffoldSpacingValues.FabEndSpacing
 import com.yourssu.handy.compose.ScaffoldSpacingValues.SnackBarBottomSpacing
-import com.yourssu.handy.compose.ScaffoldSpacingValues.SnackBarHorizontalSpacing
 import com.yourssu.handy.compose.foundation.LocalContentColor
 
 /**
@@ -137,9 +136,10 @@ private fun ScaffoldLayout(
         }.first().measure(looseConstraints)
 
         val bottomBarVerticalOffset = layoutHeight - bottomBarPlaceable.height
-        val fabVerticalOffset =
-            bottomBarVerticalOffset - fabPlaceable.height - fabBottomMarginPxValue
-        val snackBarVerticalOffset = fabVerticalOffset - snackBarPlaceable.height - snackBarPxValue
+
+        val snackBarVerticalOffset = bottomBarVerticalOffset - snackBarPlaceable.height - snackBarPxValue
+
+        val fabVerticalOffset = bottomBarVerticalOffset - fabPlaceable.height - fabBottomMarginPxValue
         val fabHorizontalOffset = layoutWidth - fabPlaceable.width - fabEndMarginPxValue
 
         layout(layoutWidth, layoutHeight) {
@@ -156,7 +156,6 @@ object ScaffoldSpacingValues {
     val FabBottomSpacing = 32.dp
     val FabEndSpacing = 16.dp
     val SnackBarBottomSpacing = 16.dp
-    val SnackBarHorizontalSpacing = 16.dp
 }
 
 private enum class ScaffoldLayoutContent {
