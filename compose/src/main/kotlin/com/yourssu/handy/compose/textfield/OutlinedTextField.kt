@@ -1,0 +1,130 @@
+package com.yourssu.handy.compose.textfield
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import com.yourssu.handy.compose.HandyTheme
+import com.yourssu.handy.compose.Icon
+import com.yourssu.handy.compose.Surface
+import com.yourssu.handy.compose.Text
+import com.yourssu.handy.compose.foundation.HandyTypography
+import com.yourssu.handy.compose.foundation.Radius
+
+@Composable
+fun OutlinedTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    placeholder: String? = null,
+    trailingIcon: ImageVector? = null,
+    enabled: Boolean = true,
+    isError: Boolean = false,
+    isSingleLine: Boolean = true,
+    onClickTrailingIcon: () -> Unit = {}
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isFocused = interactionSource.collectIsFocusedAsState().value
+
+    val (borderColor, cursorColor, textColor, placeholderTextColor) = getTextFieldStyle(
+        enabled,
+        isError,
+        isFocused
+    )
+
+    Surface(
+        rounding = Radius.M.dp,
+        backgroundColor = HandyTheme.colors.bgBasicLight,
+        border = BorderStroke(1.dp, borderColor),
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier.padding(start = 16.dp, end = 12.dp, top = 12.dp, bottom = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            BasicTextField(
+                value = value,
+                onValueChange = onValueChange,
+                modifier = Modifier.fillMaxWidth().weight(1f),
+                textStyle = HandyTypography.B1Rg16.toTextStyle().copy(color = textColor),
+                enabled = enabled,
+                singleLine = isSingleLine,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                interactionSource = interactionSource,
+                cursorBrush = SolidColor(cursorColor),
+                decorationBox = { innerTextField ->
+                    if (value.isEmpty() && placeholder != null) {
+                        Text(
+                            text = placeholder,
+                            style = HandyTypography.B1Rg16,
+                            color = placeholderTextColor
+                        )
+                    }
+                    innerTextField()
+                }
+            )
+            
+            Spacer(modifier = Modifier.width(12.dp))
+
+            trailingIcon?.let {
+                Icon(
+                    imageVector = it,
+                    contentDescription = null,
+                    tint = HandyTheme.colors.iconBasicTertiary,
+                    modifier = Modifier
+                        .clickable(
+                            indication = null,
+                            interactionSource = interactionSource,
+                            onClick = onClickTrailingIcon
+                        )
+                )
+            }
+        }
+    }
+}
+
+data class TextFieldStyle(
+    val borderColor: Color,
+    val cursorColor: Color,
+    val textColor: Color,
+    val placeholderTextColor: Color
+)
+
+@Composable
+private fun getTextFieldStyle(
+    enabled: Boolean,
+    isError: Boolean,
+    isFocused: Boolean
+): TextFieldStyle {
+    return TextFieldStyle(
+        borderColor = when {
+            !enabled -> HandyTheme.colors.bgBasicLight
+            isError -> HandyTheme.colors.lineStatusNegative
+            isFocused -> HandyTheme.colors.lineStatusPositive
+            else -> HandyTheme.colors.bgBasicLight
+        },
+        cursorColor = when {
+            isError && isFocused -> HandyTheme.colors.lineStatusNegative
+            isFocused -> HandyTheme.colors.lineStatusPositive
+            else -> HandyTheme.colors.textBasicPrimary
+        },
+        textColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicPrimary,
+        placeholderTextColor = if (!enabled) HandyTheme.colors.textBasicDisabled else HandyTheme.colors.textBasicTertiary
+    )
+}
